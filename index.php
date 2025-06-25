@@ -5,13 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Last Trade Post - Home</title>
-    <link rel="stylesheet" href="headfoot.css" />
+    <link rel="stylesheet" href="assets/css/headfoot.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
 </head>
 
 <body>
 
-    <!-- Sticky Header -->
+    <!-- Header & Navigation -->
     <div class="sticky-header">
         <header>
             <div class="logo">The Last Trade Post</div>
