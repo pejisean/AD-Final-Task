@@ -1,41 +1,64 @@
-.home-container {
-    padding: 40px 20px;
-    background-color: #f5f5f5;
-}
-
 /* Hero Section */
 .hero {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    background-color: #263238;
+    justify-content: center;
+    /* Center both content blocks */
+    background-color: #0A1215;
     color: #fff;
-    padding: 30px;
+    padding: 40px 30px;
     border-radius: 8px;
     margin-bottom: 40px;
+    gap: 40px;
+    /* spacing between image and text */
 }
 
 .hero-text {
     flex: 1;
     min-width: 280px;
-    margin-right: 20px;
+    text-align: center;
+    max-width: 600px;
+    padding: 0 10px;
 }
 
 .hero-text h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     margin-bottom: 10px;
+    color: #A7875E;
+    /* Apocalyptic yellow */
 }
 
 .hero-text p {
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 15px;
 }
 
 .hero-image img {
-    max-width: 400px;
     width: 100%;
     border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 }
 
 /* Featured Categories */
@@ -52,8 +75,9 @@
 }
 
 .category-item {
-    background: #fff;
-    border-radius: 8px;
+    background: #2e7d32;
+    border-radius: 10px;
+    padding: 0%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -76,6 +100,7 @@
     padding: 30px;
     border-radius: 8px;
     text-align: center;
+    color: #A7875E;
 }
 
 .about-section p {
@@ -100,4 +125,42 @@
         margin-right: 0;
         margin-bottom: 20px;
     }
+}
+
+
+
+/* Overall Home Container Styling */
+.home-container {
+    background: linear-gradient(to bottom, #A7875E);
+    /* Soft texture background */
+    min-height: 100vh;
+}
+
+/* Add background & subtle border to sections */
+.featured-categories,
+.about-section {
+    background-color: #0A1215;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(145, 135, 135, 0.05);
+}
+
+/* Improve h2 style */
+.featured-categories h2,
+.about-section h2 {
+    font-size: 1.8em;
+    color: #A7875E;
+    ;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #A7875E;
+    padding-bottom: 15px;
+}
+
+/* Improve readability on category titles */
+.category-item h3 {
+    padding: 20px;
+    background-color: #f2f2f2;
+    font-weight: 600;
+    color: #222;
 }
