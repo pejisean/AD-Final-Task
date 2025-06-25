@@ -1,0 +1,25 @@
+{
+    "name": "sean/ad-final-task",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Sean\\AdFinalTask\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pejisean",
+            "email": "202311735@fit.edu.ph"
+        },
+        {
+            "name": "MadmanMigz",
+            "email": "202310011@fit.edu.ph"
+        },
+        {
+            "name" : "hoosierdaddy777",
+            "email": "202310776@fit.edu.ph"
+
+        }
+    ],
+    "require": {}
+}
