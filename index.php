@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Last Trade Post - Home</title>
     <link rel="stylesheet" href="headfoot.css" />
-    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
 </head>
 
 <body>
