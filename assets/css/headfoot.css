@@ -13,7 +13,7 @@ body {
 /* HEADER */
 header {
     background-color: #2e7d32;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -34,14 +34,15 @@ header {
 }
 
 .header-links a {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 0.9em;
 }
 
 /* NAVIGATION */
+
 nav {
-    background-color: #fff;
+    background-color: #A7875E;
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -51,9 +52,12 @@ nav {
 }
 
 nav a {
-    color: #333;
+    color: #000;
+    /* Set to pure black */
     text-decoration: none;
+    font-weight: bold;
 }
+
 
 /* STICKY HEADER WRAPPER */
 .sticky-header {
