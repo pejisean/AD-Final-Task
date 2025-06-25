@@ -39,48 +39,50 @@
     <!-- Main Content -->
     <main class="home-container">
 
+        <!-- Hero Section -->
         <section class="hero">
+            <div class="hero-image">
+                <img src="assets/img/home1.png" alt="Apocalyptic survivor hero image">
+            </div>
             <div class="hero-text">
-                <h1>Welcome to The Last Trade Post</h1>
+                <h1>The Last Trade Post</h1>
                 <p>Survive. Trade. Rebuild. In the aftermath of the collapse, this is your ultimate marketplace for
                     survival gear and critical supplies.</p>
             </div>
-            <div class="hero-image">
-                <!-- Add hero image here -->
-                <img src="images/hero-placeholder.jpg" alt="Survivor trading goods" />
-            </div>
         </section>
 
+        <!-- Featured Categories -->
         <section class="featured-categories">
             <h2>Featured Categories</h2>
             <div class="category-grid">
                 <div class="category-item">
-                    <img src="images/category1.jpg" alt="Electronics & Power" />
+                    <img src="assets/img/category1.jpg" alt="Electronics & Power" />
                     <h3>Electronics & Power</h3>
                 </div>
                 <div class="category-item">
-                    <img src="images/category2.jpg" alt="Tools & Equipment" />
+                    <img src="assets/img/category2.jpg" alt="Tools & Equipment" />
                     <h3>Tools & Equipment</h3>
                 </div>
                 <div class="category-item">
-                    <img src="images/category3.jpg" alt="Weapons & Defense" />
+                    <img src="assets/img/category3.jpg" alt="Weapons & Defense" />
                     <h3>Weapons & Defense</h3>
                 </div>
                 <div class="category-item">
-                    <img src="images/category4.jpg" alt="Food & Cooking" />
+                    <img src="assets/img/category4.jpg" alt="Food & Cooking" />
                     <h3>Food & Cooking</h3>
                 </div>
                 <div class="category-item">
-                    <img src="images/category5.jpg" alt="Other Essentials" />
+                    <img src="assets/img/category5.jpg" alt="Other Essentials" />
                     <h3>Other Essentials</h3>
                 </div>
                 <div class="category-item">
-                    <img src="images/category6.jpg" alt="Military Grade" />
+                    <img src="assets/img/category6.jpg" alt="Military Grade" />
                     <h3>Military Grade</h3>
                 </div>
             </div>
         </section>
 
+        <!-- About Section -->
         <section class="about-section">
             <h2>About The Last Trade Post</h2>
             <p>
@@ -89,8 +91,7 @@
                 Whether you're a lone scavenger or leading a crew, our inventory is your key to survival.
             </p>
             <div class="about-image">
-                <!-- Add image of a post-apocalyptic outpost -->
-                <img src="images/about-placeholder.jpg" alt="Trading outpost" />
+                <img src="assets/img/about-placeholder.jpg" alt="Trading outpost" />
             </div>
         </section>
 
@@ -115,6 +116,9 @@
             <a href="#">Community</a>
         </div>
     </footer>
+
+    <!-- Optional JS -->
+    <script src="assets/js/sample.js"></script>
 
 </body>
 
