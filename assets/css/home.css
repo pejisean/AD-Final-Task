@@ -8,8 +8,9 @@
     background-color: #0A1215;
     color: #fff;
     padding: 40px 30px;
-    border-radius: 8px;
     margin-bottom: 40px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     gap: 40px;
     /* spacing between image and text */
 }
