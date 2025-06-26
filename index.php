@@ -14,7 +14,10 @@
     <!-- Header & Navigation -->
     <div class="sticky-header">
         <header>
-            <div class="logo">The Last Trade Post</div>
+            <div class="logo">
+                <img src="assets/img/HomeLogo.png" alt="The Last Trade Post Logo">
+            </div>
+
             <div class="header-links">
                 <a href="#">👤 Login / Sign Up</a>
                 <a href="index.php">🏠 Home</a>
@@ -56,27 +59,27 @@
             <h2>Featured Categories</h2>
             <div class="category-grid">
                 <div class="category-item">
-                    <img src="assets/img/category1.jpg" alt="Electronics & Power" />
+                    <img src="assets/img/HomeElectronics.png" alt="Electronics & Power" />
                     <h3>Electronics & Power</h3>
                 </div>
                 <div class="category-item">
-                    <img src="assets/img/category2.jpg" alt="Tools & Equipment" />
+                    <img src="assets/img/HomeTools.png" alt="Tools & Equipment" />
                     <h3>Tools & Equipment</h3>
                 </div>
                 <div class="category-item">
-                    <img src="assets/img/category3.jpg" alt="Weapons & Defense" />
+                    <img src="assets/img/HomeWeapons.png" alt="Weapons & Defense" />
                     <h3>Weapons & Defense</h3>
                 </div>
                 <div class="category-item">
-                    <img src="assets/img/category4.jpg" alt="Food & Cooking" />
+                    <img src="assets/img/HomeFood.png" alt="Food & Cooking" />
                     <h3>Food & Cooking</h3>
                 </div>
                 <div class="category-item">
-                    <img src="assets/img/category5.jpg" alt="Other Essentials" />
+                    <img src="assets/img/HomeOther.png" alt="Other Essentials" />
                     <h3>Other Essentials</h3>
                 </div>
                 <div class="category-item">
-                    <img src="assets/img/category6.jpg" alt="Military Grade" />
+                    <img src="assets/img/HomeMilitary.png" alt="Military Grade" />
                     <h3>Military Grade</h3>
                 </div>
             </div>
