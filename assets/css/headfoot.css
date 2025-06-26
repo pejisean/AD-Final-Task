@@ -12,7 +12,7 @@ body {
 
 /* HEADER */
 header {
-    background-color: #2e7d32;
+    background-color: #1C1C1C;
     color: rgb(0, 0, 0);
     padding: 10px 20px;
     display: flex;
@@ -34,15 +34,19 @@ header {
 }
 
 .header-links a {
-    color: rgb(0, 0, 0);
+    color: #F5F5F5;
     text-decoration: none;
     font-size: 0.9em;
+}
+
+.header-links a:hover{
+    color: #A9A9A9;
 }
 
 /* NAVIGATION */
 
 nav {
-    background-color: #A7875E;
+    background-color: #4B3621;
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -52,12 +56,15 @@ nav {
 }
 
 nav a {
-    color: #000;
+    color: #F5F5F5;
     /* Set to pure black */
     text-decoration: none;
     font-weight: bold;
 }
 
+nav a:hover {
+    color: #A9A9A9;
+}
 
 /* STICKY HEADER WRAPPER */
 .sticky-header {
@@ -94,7 +101,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #fff;
+    color: #A9A9A9;
 }
 
 /* RESPONSIVE DESIGN */
