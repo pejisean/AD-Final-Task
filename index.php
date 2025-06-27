@@ -12,24 +12,14 @@
 <body>
 
     <!-- Header & Navigation -->
-    <div class="sticky-header">
-        <header>
-            <div class="logo">
-                <img src="assets/img/HomeLogo.png" alt="The Last Trade Post Logo">
-            </div>
+<!-- Header & Navigation -->
+<div class="sticky-header">
+    <header>
+        <div class="logo">
+            <img src="assets/img/HomeLogo.png" alt="The Last Trade Post Logo">
+        </div>
 
-            <div class="header-links">
-                <a href="#">👤 Login / Sign Up</a>
-                <a href="index.php">🏠 Home</a>
-                <a href="#">🛒 Cart (0)</a>
-                <a href="#">📄 History</a>
-                <a href="#">📍 Location</a>
-                <a href="#">💬 Feedback</a>
-                <a href="#">ℹ️ About Us</a>
-            </div>
-        </header>
-
-        <nav>
+        <nav class="main-nav">
             <a href="#">Electronics & Power</a>
             <a href="#">Tools & Equipment</a>
             <a href="#">Weapons & Defense</a>
@@ -37,7 +27,21 @@
             <a href="#">Other Essentials</a>
             <a href="#">Military Grade</a>
         </nav>
-    </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#">👤 Login / Sign Up</a>
+            <a href="index.php">🏠 Home</a>
+            <a href="#">🛒 Cart (0)</a>
+            <a href="#">📄 History</a>
+            <a href="#">📍 Location</a>
+            <a href="#">💬 Feedback</a>
+            <a href="#">ℹ️ About Us</a>
+        </div>
+    </header>
+</div>
+
 
     <!-- Main Content -->
     <main class="home-container">
