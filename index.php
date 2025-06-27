@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="assets/css/headfoot.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
     <script src="assets/js/script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">  <!-- for h4 h5 h6 like big headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet"> <!-- for <p> tag </p> -->
 </head>
 
 <body>
