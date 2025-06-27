@@ -24,12 +24,12 @@
 
         <div class="header-right">
             <nav class="main-nav">
-                <a href="#">Electronics & Power</a>
-                <a href="#">Tools & Equipment</a>
-                <a href="#">Weapons & Defense</a>
-                <a href="#">Food & Cooking</a>
-                <a href="#">Other Essentials</a>
-                <a href="#">Military Grade</a>
+                <a href="electronics.php">Electronics & Power</a>
+                <a href="tools.php">Tools & Equipment</a>
+                <a href="weapons.php">Weapons & Defense</a>
+                <a href="food.php">Food & Cooking</a>
+                <a href="other.php">Other Essentials</a>
+                <a href="military.php">Military Grade</a>
             </nav>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
         </div>
