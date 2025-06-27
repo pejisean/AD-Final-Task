@@ -43,8 +43,7 @@ nav {
 }
 
 nav a {
-    color: #F5F5F5;
-    /* Set to pure black */
+     color: #d3be78;
     text-decoration: none;
     font-weight: bold;
 }
