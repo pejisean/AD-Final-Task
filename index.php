@@ -21,16 +21,15 @@
             <img src="assets/img/HomeLogo.png" alt="The Last Trade Post Logo">
         </div>
 
-        <nav class="main-nav">
-            <a href="#">Electronics & Power</a>
-            <a href="#">Tools & Equipment</a>
-            <a href="#">Weapons & Defense</a>
-            <a href="#">Food & Cooking</a>
-            <a href="#">Other Essentials</a>
-            <a href="#">Military Grade</a>
-        </nav>
-
         <div class="header-right">
+            <nav class="main-nav">
+                <a href="#">Electronics & Power</a>
+                <a href="#">Tools & Equipment</a>
+                <a href="#">Weapons & Defense</a>
+                <a href="#">Food & Cooking</a>
+                <a href="#">Other Essentials</a>
+                <a href="#">Military Grade</a>
+            </nav>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
         </div>
 
@@ -45,6 +44,7 @@
         </div>
     </header>
 </div>
+
 
 
     <!-- Main Content -->
