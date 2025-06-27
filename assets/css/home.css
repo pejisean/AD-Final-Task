@@ -101,9 +101,9 @@ p {
 
 .category-item h3 {
     padding: 20px;
-    background-color: #f2f2f2;
+    background-color: #4d6637; /* CHANGED: From #f2f2f2 (white) to #4d6637 (army green) */
     font-weight: 600;
-    color: #222;
+    color: #f2f2f2; /* CHANGED: Made text color light for readability on dark green */
 }
 
 /* About Section */
