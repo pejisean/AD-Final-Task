@@ -7,6 +7,8 @@
     <title>The Last Trade Post - Home</title>
     <link rel="stylesheet" href="assets/css/headfoot.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
+    <script src="assets/js/script.js"></script>
+
 </head>
 
 <body>
@@ -28,7 +30,9 @@
             <a href="#">Military Grade</a>
         </nav>
 
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="header-right">
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
 
         <div class="dropdown-menu" id="dropdownMenu">
             <a href="#">👤 Login / Sign Up</a>
@@ -123,10 +127,6 @@
             <a href="#">Community</a>
         </div>
     </footer>
-
-    <!-- Optional JS -->
-    <script src="assets/js/sample.js"></script>
-
 </body>
 
 </html>
