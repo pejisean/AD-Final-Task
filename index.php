@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/home.css" />
     <script src="assets/js/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
