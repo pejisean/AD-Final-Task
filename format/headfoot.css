@@ -4,7 +4,6 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: #f5f5f5;
@@ -12,67 +11,122 @@ body {
 
 /* HEADER */
 header {
+    position: relative;
     background-color: #1C1C1C;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
+    color: #d4af37;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    border-bottom: 1.5px solid #d4af37;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.header-links {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
     align-items: center;
+    height: 60px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgb(0, 0, 0);
+    transition: transform 0.2s ease-in-out;
+    box-sizing: border-box;
 }
 
-.header-links a {
-    color: #F5F5F5;
-    text-decoration: none;
-    font-size: 0.9em;
+.logo:hover {
+    transform: scale(1.02);
 }
 
-.header-links a:hover{
-    color: #A9A9A9;
+.logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    border-radius: 3px;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
 }
 
-/* NAVIGATION */
-
-nav {
-    background-color: #4B3621;
-    padding: 10px 0;
+.header-right {
     display: flex;
-    justify-content: center;
+    align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
-    border-bottom: 1px solid #ccc;
+    margin-left: auto;
+    padding-right: 20px;
+    flex-grow: 1;
+    justify-content: flex-end;
+    overflow: visible;
 }
 
-nav a {
-    color: #F5F5F5;
-    /* Set to pure black */
+/* MAIN NAVIGATION (Moses Effect Rules) */
+.main-nav {
+    display: flex;
+    gap: 40px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+.main-nav a {
+    color: #d4af37;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.15em;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    display: inline-block;
+    padding: 0 5px;
+    transition: color 0.3s ease-in-out, text-shadow 0.1s ease-in-out,
+    transform 0.3s ease-in-out, margin 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 
-nav a:hover {
-    color: #A9A9A9;
+.main-nav a:hover {
+    color: #9e9781;
+    transform: scale(1.25);
+    padding: 0 45px;
+    margin: 0 -15px;
 }
 
-/* STICKY HEADER WRAPPER */
-.sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* HAMBURGER MENU */
+.hamburger {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #F5F5F5;
+    display: block;
+    margin-left: 20px;
+}
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 91px;
+    right: 0px;
+    width: 250px;
+    background-color: #1C1C1C;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dropdown-menu a {
+    color: #d4af37;
+    text-decoration: none;
+    font-size: 1.05em;
+    font-family: cursive, Arial, sans-serif;
+    transition: color 0.3s ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    color: #9b9583;
 }
 
 /* FOOTER */
@@ -91,28 +145,34 @@ footer div {
 
 footer h4 {
     margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: #d4af37;
+    text-transform: uppercase;
 }
 
 footer a {
-    color: #bbb;
+    color: #9e9781;
     display: block;
     margin: 5px 0;
     text-decoration: none;
+    transition: color 0.5s ease-in-out, text-shadow 0.1s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
 }
 
 footer a:hover {
-    color: #A9A9A9;
+    color: #d4af37;
 }
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-    .header-links {
-        justify-content: center;
-        margin-top: 10px;
+    .main-nav {
+        display: none;
     }
 
-    nav {
-        gap: 10px;
+    .hamburger {
+        display: block;
+        margin-left: auto;
     }
 }
 
@@ -122,7 +182,7 @@ footer a:hover {
         align-items: flex-start;
     }
 
-    .header-links {
+    .main-nav {
         width: 100%;
         justify-content: space-between;
         margin-top: 10px;
@@ -138,7 +198,6 @@ footer a:hover {
         position: sticky;
         top: 0;
         z-index: 1000;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
     }
 }
