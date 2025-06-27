@@ -66,30 +66,30 @@
         <section class="featured-categories">
             <h2>Featured Categories</h2>
             <div class="category-grid">
-                <div class="category-item">
+                <a href="pages/electronics.php"><div class="category-item">
                     <img src="assets/img/HomeElectronics.png" alt="Electronics & Power" />
                     <h3>Electronics & Power</h3>
-                </div>
-                <div class="category-item">
+                </div></a>
+                <a href="pages/tools.php"><div class="category-item">
                     <img src="assets/img/HomeTools.png" alt="Tools & Equipment" />
                     <h3>Tools & Equipment</h3>
-                </div>
-                <div class="category-item">
+                </div></a>
+                 <a href="pages/weapons.php"><div class="category-item">
                     <img src="assets/img/HomeWeapons.png" alt="Weapons & Defense" />
                     <h3>Weapons & Defense</h3>
-                </div>
-                <div class="category-item">
+                </div></a>
+                 <a href="pages/food.php"><div class="category-item">
                     <img src="assets/img/HomeFood.png" alt="Food & Cooking" />
                     <h3>Food & Cooking</h3>
-                </div>
-                <div class="category-item">
+                </div></a>
+                 <a href="pages/other.php"><div class="category-item">
                     <img src="assets/img/HomeOther.png" alt="Other Essentials" />
                     <h3>Other Essentials</h3>
-                </div>
-                <div class="category-item">
+                </div></a>
+                <a href="pages/military.php"> <div class="category-item">
                     <img src="assets/img/HomeMilitary.png" alt="Military Grade" />
                     <h3>Military Grade</h3>
-                </div>
+                </div></a>
             </div>
         </section>
 
