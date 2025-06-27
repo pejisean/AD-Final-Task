@@ -13,13 +13,13 @@ body {
 header {
     position: relative;
     background-color: #1C1C1C;
-    color: #d4af37;
+    color: #CC8833;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    border-bottom: 1.5px solid #d4af37;
+    border-bottom: 1.5px solid #CC8833;
 }
 
 .logo a {
@@ -72,7 +72,7 @@ header {
 }
 
 .main-nav a {
-    color: #d4af37;
+    color: #CC8833;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.15em;
@@ -118,7 +118,7 @@ header {
 }
 
 .dropdown-menu a {
-    color: #d4af37;
+    color: #CC8833;
     text-decoration: none;
     font-size: 1.05em;
     font-family: cursive, Arial, sans-serif;
@@ -147,7 +147,7 @@ footer h4 {
     margin-bottom: 10px;
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    color: #d4af37;
+    color: #CC8833;
     text-transform: uppercase;
 }
 
@@ -161,7 +161,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #d4af37;
+    color: #CC8833;
 }
 
 /* RESPONSIVE DESIGN */
