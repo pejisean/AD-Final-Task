@@ -109,7 +109,7 @@ nav a:hover {
     text-decoration: none;
     font-size: 1.05em;
     font-family: cursive, Arial, sans-serif;
-    transition: color 0.3s ease-in-out; /* Add this line for transition */
+    transition: color 0.3s ease-in-out;
 }
 
 .dropdown-menu a:hover {
@@ -146,6 +146,7 @@ footer {
     justify-content: space-around;
     padding: 30px 20px;
     flex-wrap: wrap;
+    
 }
 
 footer div {
@@ -162,6 +163,7 @@ footer a {
     margin: 5px 0;
     text-decoration: none;
     transition: color 0.5s ease-in-out, text-shadow 0.1s ease-in-out;
+    font-family: cursive, Arial, sans-serif;
 }
 
 footer a:hover {
