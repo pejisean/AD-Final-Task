@@ -36,6 +36,14 @@ h1,h2,h3 {
         font-family: 'Bebas Neue', sans-serif;
 }
 
+p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #f5f5f5;
+
+}
+
 .hero-text p {
     font-size: 1.2em;
     line-height: 1.8;
