@@ -15,6 +15,8 @@
     /* spacing between image and text */
 }
 
+
+
 .hero-text {
     flex: 1;
     min-width: 280px;
@@ -24,10 +26,14 @@
 }
 
 .hero-text h1 {
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 2.8em;
     margin-bottom: 10px;
     color: #A7875E;
-    /* Apocalyptic yellow */
+}
+
+h1,h2,h3 {
+        font-family: 'Bebas Neue', sans-serif;
 }
 
 .hero-text p {
