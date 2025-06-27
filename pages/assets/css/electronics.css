@@ -1,51 +1,65 @@
-  .section-title {
-      margin: 20px;
-      font-size: 1.5em;
-      color: #b71c1c;
-      border-bottom: 2px solid #b71c1c;
-      display: inline-block;
-    }
+/* Product Sections Styling (assuming this is part of your home.css or a new products.css) */
 
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 0 20px 40px;
-    }
+.section-title {
+    margin: 20px;
+    font-size: 1.5em;
+    color: #A7875E; /* Changed from red to your accent gold*/
+    border-bottom: 2px solid #A7875E; /* Changed border color to accent gold*/
+    display: inline-block;
+}
 
-    .products-container {
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 20px 40px;
+    /* You might want to add a background to the products container if it's not already covered */
+    /* background-color: #0A1215; */ /* Consider adding this if the section above it doesn't provide a background */
+}
+
+.products-container {
     max-width: 90%;
     margin: 0 auto;
+    background-color: #0A1215; /* Ensured product container has a dark background*/
+    padding: 40px 0; /* Add padding to give space around product sections */
+    border-radius: 8px; /* Consistent border-radius */
+    margin-bottom: 40px; /* Space from next section */
 }
 
-    .product-card {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      padding: 15px;
-      width: calc(100% / 4 - 20px);
-      box-sizing: border-box;
-      border-radius: 6px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 0 12px rgba(46, 125, 50, 0.4);
-      z-index: 2;
+.product-card {
+    background-color: #1C1C1C; /* CHANGED from white to a dark background from your palette [cite: 1, 2025-06-27]*/
+    border: 1px solid #41572f; /* Changed border to a subtle army green or a darker grey [cite: 1, 2025-06-27]*/
+    padding: 15px;
+    width: calc(100% / 4 - 20px);
+    box-sizing: border-box;
+    border-radius: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #f5f5f5; /* Ensure default text color is light for readability [cite: 1, 2025-06-27]*/
 }
 
-    .product-card h3 {
-      font-size: 1em;
-      margin: 10px 0;
-    }
+.product-card:hover {
+    transform: translateY(-10px);
+    /* Changed box-shadow color to your accent gold for consistency with your theme [cite: 1, 2025-06-27]*/
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(167, 135, 94, 0.6); /* Using #A7875E with alpha [cite: 1, 2025-06-27]*/
+    z-index: 2;
+}
 
-    .product-card p {
-      margin: 5px 0;
-    }
+.product-card h3 {
+    font-size: 1.2em; /* Slightly increased font size for product names */
+    margin: 10px 0;
+    color: #A7875E; /* Changed to accent gold for headings [cite: 1, 2025-06-27]*/
+    font-family: 'Bebas Neue', sans-serif; /* Use your heading font*/
+}
 
-    .add-cart-btn {
-    background-color: #ff9800;
-    color: white;
+.product-card p {
+    margin: 5px 0;
+    color: #ddd; /* Light color for paragraph text [cite: 1, 2025-06-27]*/
+    font-family: 'Roboto Condensed', sans-serif; /* Use your paragraph font*/
+}
+
+.add-cart-btn {
+    background-color: #A7875E; /* CHANGED from orange to your accent gold [cite: 1, 2025-06-27]*/
+    color: #0A1215; /* Dark text for button for contrast [cite: 1, 2025-06-27]*/
     padding: 8px 12px;
     text-align: center;
     display: inline-block;
@@ -54,38 +68,43 @@
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    }
-
-.add-cart-btn:hover {
-  background-color: #ef6c00;
 }
 
-    .buy-btn {
-      background-color: #263238;
-      color: white;
-      padding: 8px 12px;
-      text-align: center;
-      display: inline-block;
-      margin-top: 10px;
-      border-radius: 4px;
-      text-decoration: none;
-    }
+.add-cart-btn:hover {
+    background-color: #d4af37; /* Slightly lighter gold on hover [cite: 1, 2025-06-27]*/
+}
 
-    /* Mobile Responsive */
-    @media (max-width: 1024px) {
-      .product-card {
+.buy-btn {
+    background-color: #41572f; /* CHANGED from dark blue to your army green [cite: 1, 2025-06-27]*/
+    color: #f2f2f2; /* Light text for button [cite: 1, 2025-06-27]*/
+    padding: 8px 12px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #4d6637; /* Slightly lighter army green on hover*/
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .product-card {
         width: calc(100% / 3 - 20px);
-      }
     }
+}
 
-    @media (max-width: 768px) {
-      .product-card {
+@media (max-width: 768px) {
+    .product-card {
         width: calc(100% / 2 - 20px);
-      }
     }
+}
 
-    @media (max-width: 480px) {
-      .product-card {
+@media (max-width: 480px) {
+    .product-card {
         width: 100%;
-      }
     }
+}
