@@ -12,6 +12,7 @@ body {
 
 /* HEADER */
 header {
+    position: relative;
     background-color: #1C1C1C;
     color: rgb(0, 0, 0);
     padding: 10px 20px;
@@ -26,21 +27,8 @@ header {
     font-size: 1.2em;
 }
 
-.header-links {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.header-links a {
-    color: #F5F5F5;
-    text-decoration: none;
-    font-size: 0.9em;
-}
-
-.header-links a:hover{
-    color: #A9A9A9;
+.header-right {
+    margin-left: auto;
 }
 
 /* NAVIGATION */
@@ -152,10 +140,6 @@ footer a:hover {
 
     .hamburger {
         display: block;
-    }
-
-    .dropdown-menu {
-        display: flex;
     }
 }
 
