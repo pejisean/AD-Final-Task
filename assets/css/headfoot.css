@@ -108,7 +108,7 @@ nav a:hover {
     color: #d4af37;
     text-decoration: none;
     font-size: 1.05em;
-    font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+    font-family: cursive, Arial, sans-serif;
     transition: color 0.3s ease-in-out; /* Add this line for transition */
 }
 
@@ -128,7 +128,7 @@ nav a:hover {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.25em;
-    font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+    font-family: cursive, Arial, sans-serif;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     transition: color 0.3s ease-in-out, text-shadow 0.1s ease-in-out;
 
