@@ -24,7 +24,7 @@
 
         <div class="header-right">
             <nav class="main-nav">
-                <a href="electronics.php">Electronics & Power</a>
+                <a href="pages/electronics.php">Electronics & Power</a>
                 <a href="tools.php">Tools & Equipment</a>
                 <a href="weapons.php">Weapons & Defense</a>
                 <a href="food.php">Food & Cooking</a>
