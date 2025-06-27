@@ -10,16 +10,16 @@ body {
     background: #f5f5f5;
 }
 
-/* HEADER */
 header {
     position: relative;
     background-color: #1C1C1C;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
+    color: #d4af37; /* Changed text color to metallic gold */
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    border-bottom: 1.5px solid #d4af37; /* Metallic gold border */
 }
 
 .logo {
