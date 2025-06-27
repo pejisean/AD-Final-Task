@@ -40,7 +40,6 @@ nav {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    border-bottom: 1px solid #ccc;
 }
 
 nav a {
