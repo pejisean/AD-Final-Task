@@ -10,6 +10,7 @@
     <script src="assets/js/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">  <!-- for h4 h5 h6 like big headings -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet"> <!-- for <p> tag </p> -->
+    <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"> <!-- for header and footer </p> -->
 </head>
 
 <body>
