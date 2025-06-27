@@ -91,6 +91,7 @@ p {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .category-item img {
@@ -104,6 +105,12 @@ p {
     font-weight: 600;
     font-size: 1.5em;
     color: #f2f2f2;
+}
+
+.category-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(167, 135, 94, 0.6);
+    z-index: 2;
 }
 
 /* About Section */
