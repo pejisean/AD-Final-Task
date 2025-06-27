@@ -117,7 +117,7 @@ p {
 .category-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5), 0 0 15px rgba(167, 135, 94, 0.75);
-    z-index: 2;
+z-index: 2;
 }
 
 .category-grid a:nth-child(1) {
