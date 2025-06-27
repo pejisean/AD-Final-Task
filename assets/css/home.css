@@ -165,30 +165,3 @@
     font-weight: 600;
     color: #222;
 }
-
-
-
-.logo {
-    display: flex;
-    align-items: center;
-    height: 60px;
-    padding: 3px 3px;
-    background-color: rgba(0, 0, 0, 0.1);
-    /* subtle glow behind logo */
-    border-radius: 2px;
-    box-shadow: 0 2px 6px rgb(0, 0, 0);
-    transition: transform 0.2s ease-in-out;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
-.logo img {
-    height: 100%;
-    width: auto;
-    max-height: 50px;
-    object-fit: contain;
-    border-radius: 6px;
-    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
-}
