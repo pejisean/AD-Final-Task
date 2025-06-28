@@ -5,6 +5,7 @@
     border-bottom: 2px solid #A7875E;
     display: inline-block;
     padding-bottom: 5px;
+    animation: pulse-glow 3s ease-in-out infinite;
 }
 
 .section-title1 {
@@ -15,6 +16,7 @@
     display: inline-block;
     padding-bottom: 5px;
     margin-top: 30px;
+    animation: pulse-glow 4s ease-in-out infinite;
 }
 
 .products {
@@ -270,5 +272,14 @@
     }
     .showcase-right-column {
         padding-right: 0px;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+    text-shadow: 0 0 7px rgba(167, 135, 94, 0.1);
+    }
+    50% {
+    text-shadow: 0 0 25px rgba(167, 135, 94, 0.9);
     }
 }
