@@ -101,30 +101,30 @@
 <section class="products">
   <!-- First row -->
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱700</span>
+  <h3>UV-C Water Purification Pen</h3>
+  <p>₱3,250.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱300</span>
+  <h3>18650 Li-ion Smart Battery Charger</h3>
+  <p>₱1,250.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱250</span>
+  <h3>Compact Solar-Charging Lantern</h3>
+  <p>₱950.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱800</span>
+  <h3>50W Foldable Solar Panel</h3>
+  <p>₱4,250.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
@@ -136,59 +136,59 @@
 <section class="products">
   <!-- First row -->
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱650</span>
+  <h3>Hand-Crank AM/FM/NOAA Weather Radio</h3>
+  <p>₱2,800.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱4,500</span>
+  <h3>500Wh Portable Power Station</h3>
+  <p>₱25,000.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱900</span>
+  <h3>Long-Range Two-Way Radios (Pair)</h3>
+  <p>₱3,800.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <span>Save ₱2,500</span>
+  <h3>Rugged Handheld GPS Navigator</h3>
+  <p>₱15,000.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
   <!-- Second row -->
 <div class="product-card">
   <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <h3>10,000mAh Solar Power Bank</h3>
+  <p>₱1,950.00</p>
+  <a class="buy-btn" href="#">Buy Now</a>
+  <a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+<div class="product-card">
+  <span>Save ₱400</span>
+  <h3>High-Lumen LED Rechargeable Headlamp</h3>
+  <p>₱1,500.00</p>
+  <a class="buy-btn" href="#">Buy Now</a>
+  <a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+<div class="product-card">
+  <span>Save ₱1,200</span>
+  <h3>100W Monocrystalline Solar Panel Kit</h3>
+  <p>₱7,500.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
   <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
+  <h3>12V to 220V Power Inverter (300W)</h3>
+  <p>₱2,100.00</p>
   <a class="buy-btn" href="#">Buy Now</a>
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
