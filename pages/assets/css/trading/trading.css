@@ -168,6 +168,7 @@
     border-radius: 6px;
     border: 1px solid #41572f;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #A7875E;
 }
 
 .showcase-hero:hover {
@@ -206,10 +207,12 @@
 
 .showcase-card-top {
     background: url('https://images.unsplash.com/photo-1590439471364-192aa70c0b23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8Zmxhc2hsaWdodHx8fHx8fDE3E5NTk5OTA3&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center;
+    border-left: 4px solid #A7875E;
 }
 
 .showcase-card-bottom {
     background: url('https://images.unsplash.com/photo-1605992027176-c8a22a7e1f32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8d2F0ZXJ8fHx8fHwxNzE5NTk5OTU0&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center;
+    border-left: 4px solid #A7875E;
 }
 
 .showcase-promo-card h3 {
