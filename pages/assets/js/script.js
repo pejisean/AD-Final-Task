@@ -1,56 +1,64 @@
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+
+        preloader.classList.add('hidden');
+
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     const mainSortDropdown = document.querySelector('#sort-by-main');
 
-    if (!mainSortDropdown) {
-        return;
-    }
+    if (mainSortDropdown) {
+        const newArrivalsGrid = document.querySelector('#new-arrivals-grid');
+        const topSellersGrid = document.querySelector('#top-sellers-grid');
 
-    const newArrivalsGrid = document.querySelector('#new-arrivals-grid');
-    const topSellersGrid = document.querySelector('#top-sellers-grid');
+        if (newArrivalsGrid && topSellersGrid) {
+            const allCards = [
+                ...newArrivalsGrid.querySelectorAll('.product-card'),
+                ...topSellersGrid.querySelectorAll('.product-card')
+            ];
 
-    if (!newArrivalsGrid || !topSellersGrid) {
-        return;
-    }
+            const originalOrder = [...allCards];
+            const newArrivalsCapacity = newArrivalsGrid.children.length;
 
-    const allCards = [
-        ...newArrivalsGrid.querySelectorAll('.product-card'),
-        ...topSellersGrid.querySelectorAll('.product-card')
-    ];
+            mainSortDropdown.addEventListener('change', function() {
+                const sortBy = this.value;
+                let sortedProducts;
 
-    const originalOrder = [...allCards];
+                const listToSort = [...originalOrder];
 
-    const newArrivalsCapacity = newArrivalsGrid.children.length;
+                switch (sortBy) {
+                    case 'price-asc':
+                        sortedProducts = listToSort.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+                        break;
+                    case 'price-desc':
+                        sortedProducts = listToSort.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+                        break;
+                    default:
+                        sortedProducts = originalOrder;
+                        break;
+                }
 
-    mainSortDropdown.addEventListener('change', function() {
-        const sortBy = this.value;
-        let sortedProducts;
+                newArrivalsGrid.innerHTML = '';
+                topSellersGrid.innerHTML = '';
 
-        const listToSort = [...originalOrder];
-
-        switch (sortBy) {
-            case 'price-asc':
-                sortedProducts = listToSort.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
-                break;
-            case 'price-desc':
-                sortedProducts = listToSort.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
-                break;
-            default:
-                sortedProducts = originalOrder;
-                break;
+                sortedProducts.forEach((product, index) => {
+                    if (index < newArrivalsCapacity) {
+                        newArrivalsGrid.appendChild(product);
+                    } else {
+                        topSellersGrid.appendChild(product);
+                    }
+                });
+            });
         }
+    }
 
-        newArrivalsGrid.innerHTML = '';
-        topSellersGrid.innerHTML = '';
-
-        sortedProducts.forEach((product, index) => {
-            if (index < newArrivalsCapacity) {
-                newArrivalsGrid.appendChild(product);
-            } else {
-                topSellersGrid.appendChild(product);
-            }
-        });
-    });
     try {
         const currentPage = window.location.pathname.split('/').pop();
         if (currentPage) {
@@ -66,12 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
-        function toggleMenu() {
-            var menu = document.getElementById("dropdownMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
+function toggleMenu() {
+    var menu = document.getElementById("dropdownMenu");
+    if (menu.style.display === "flex") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex";
+    }
+}
