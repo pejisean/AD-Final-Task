@@ -277,9 +277,11 @@
 
 @keyframes pulse-glow {
     0%, 100% {
-    text-shadow: 0 0 7px rgba(167, 135, 94, 0.1);
+    color: #A7875E;
+    text-shadow: 0 0 7px rgba(167, 135, 94, 0.4);
     }
     50% {
+    color: #E6C8A3;
     text-shadow: 0 0 25px rgba(167, 135, 94, 0.9);
     }
 }
