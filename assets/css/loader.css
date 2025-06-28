@@ -7,6 +7,7 @@
   -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 13px),#000 calc(100% - 12px));
   border-radius: 50%;
   animation: l19 2s infinite linear;
+  scale: 3;
 }
 .loader::before,
 .loader::after {    
