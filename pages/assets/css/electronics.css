@@ -1,6 +1,6 @@
 .section-title {
     margin: 20px;
-    font-size: 1.5em;
+    font-size: 2.5em;
     color: #A7875E;
     border-bottom: 2px solid #A7875E;
     display: inline-block;
@@ -14,6 +14,7 @@
     border-bottom: 2px solid #A7875E;
     display: inline-block;
     padding-bottom: 5px;
+    margin-top: 30px;
 }
 
 .products {
@@ -23,15 +24,12 @@
     padding: 0 20px 40px;
 }
 
-
-
 .products-container {
     max-width: 90%;
     margin: 0 auto;
     background-color: #0A1215;
     padding: 40px 0;
     border-radius: 8px;
-    margin-bottom: 40px;
 }
 
 .product-card {
