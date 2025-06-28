@@ -15,8 +15,9 @@
 </head>
 
 <body>
-
-    <!-- Header & Navigation -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
     <div class="sticky-header">
         <header>
             <div class="logo">
