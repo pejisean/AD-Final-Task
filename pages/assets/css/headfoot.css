@@ -168,6 +168,19 @@ header {
     color: #9b9583;
 }
 
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #0A1215;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* FOOTER */
 footer {
     background-color: #212121;
