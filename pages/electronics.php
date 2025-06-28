@@ -19,17 +19,17 @@
 <div class="sticky-header">
     <header>
         <div class="logo">
-           <a href="../index.php"><img src="assets/img/HomeLogo.png" alt="The Last Trade Post Logo"></a>
+           <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
         </div>
 
         <div class="header-right">
             <nav class="main-nav">
-                <a href="electronics.php">Electronics & Power</a>
-                <a href="tools.php">Tools & Equipment</a>
-                <a href="weapons.php">Weapons & Defense</a>
-                <a href="food.php">Food & Cooking</a>
-                <a href="other.php">Other Essentials</a>
-                <a href="military.php">Military Grade</a>
+                <a href="electronics.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Electronics & Power</a>
+                <a href="tools.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Tools & Equipment</a>
+                <a href="weapons.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Weapons & Defense</a>
+                <a href="food.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Food & Cooking</a>
+                <a href="other.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Other Essentials</a>
+                <a href="military.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Military Grade</a>
             </nav>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
         </div>
@@ -50,7 +50,7 @@
 
 <div class="products-container">
 
-    <h2 class="section-title1">Featured Items</h2>
+    <h2 class="section-title1" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none;">Featured Items</h2>
 
     <div class="showcase-container">
 
@@ -97,7 +97,7 @@
     </div>
 
 <div class="products-container">
-<h2 class="section-title">New Arrivals</h2>
+<h2 class="section-title" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none;">New Arrivals</h2>
 <section class="products">
   <!-- First row -->
 <div class="product-card">
@@ -132,7 +132,7 @@
 </section>
 
 <!-- Top Sellers Section -->
-<h2 class="section-title">Top Sellers</h2>
+<h2 class="section-title" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none;">Top Sellers</h2>
 <section class="products">
   <!-- First row -->
 <div class="product-card">
