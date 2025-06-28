@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="hide-scrollbar">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8"/>
@@ -47,6 +47,51 @@
 </div>
 
 <body>
+
+<div class="products-container">
+    <div class="showcase-container">
+
+        <section class="showcase-hero">
+            <div class="showcase-content">
+                <span class="showcase-discount">Featured Deal: Save ₱1,500</span>
+                <h3>High-Capacity Solar Power Bank</h3>
+                <p>₱12,500.00</p>
+                <div class="showcase-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="showcase-right-column">
+
+            <section class="showcase-promo-card showcase-card-top">
+                 <div class="showcase-content">
+                    <span class="showcase-discount">Save ₱750</span>
+                    <h3>Tactical LED Flashlight</h3>
+                    <p>₱4,500.00</p>
+                    <div class="showcase-buttons">
+                       <a class="buy-btn" href="#">Buy Now</a>
+                       <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="showcase-promo-card showcase-card-bottom">
+                 <div class="showcase-content">
+                    <span class="showcase-discount">New Arrival!</span>
+                    <h3>Portable Water Purifier</h3>
+                    <p>₱6,250.00</p>
+                    <div class="showcase-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    </div>
 
 <div class="products-container">
 <h2 class="section-title">New Arrivals</h2>
