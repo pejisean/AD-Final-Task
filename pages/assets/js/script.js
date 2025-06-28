@@ -51,7 +51,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    try {
+        const currentPage = window.location.pathname.split('/').pop();
+        if (currentPage) {
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href').endsWith(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    } catch (e) {
+        console.error("Error setting active navigation link:", e);
+    }
 });
+
 
         function toggleMenu() {
             var menu = document.getElementById("dropdownMenu");
