@@ -19,7 +19,7 @@
 <div class="sticky-header">
     <header>
         <div class="logo">
-           <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+          <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
         </div>
 
         <div class="header-right">
@@ -27,7 +27,6 @@
                 <a href="electronics.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Electronics & Power</a>
                 <a href="tools.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Tools & Equipment</a>
                 <a href="weapons.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Weapons & Defense</a>
-                <a href="food.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Food & Cooking</a>
                 <a href="other.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Other Essentials</a>
                 <a href="military.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Military Grade</a>
             </nav>

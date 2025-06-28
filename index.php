@@ -27,7 +27,6 @@
                 <a href="pages/electronics.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Electronics & Power</a>
                 <a href="pages/tools.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Tools & Equipment</a>
                 <a href="pages/weapons.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Weapons & Defense</a>
-                <a href="pages/food.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Food & Cooking</a>
                 <a href="pages/other.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Other Essentials</a>
                 <a href="pages/military.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Military Grade</a>
             </nav>
