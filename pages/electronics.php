@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Last Trade Post - Home</title>
     <link rel="stylesheet" href="assets/css/headfoot.css" />
-    <link rel="stylesheet" href="assets/css/trading.css" />
+    <link rel="stylesheet" href="assets/css/trading/trading.css" />
     <script src="assets/js/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">  <!-- for h4 h5 h6 like big headings -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet"> <!-- for <p> tag </p> -->
