@@ -49,6 +49,9 @@
 <body>
 
 <div class="products-container">
+
+    <h2 class="section-title1">Featured Items</h2>
+
     <div class="showcase-container">
 
         <section class="showcase-hero">
@@ -126,34 +129,6 @@
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
   <!-- Second row -->
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
 </section>
 
 <!-- Top Sellers Section -->
@@ -218,97 +193,6 @@
   <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 </section>
-
-<h2 class="section-title">Top Sellers</h2>
-<section class="products">
-  <!-- First row -->
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-  <!-- Second row -->
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱500</span>
-  <h3>Product Name</h3>
-  <p>₱8,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-</section>
-
 </div>
 
 </body>
