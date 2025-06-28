@@ -19,6 +19,25 @@
     animation: pulse-glow 4s ease-in-out infinite;
 }
 
+.section-title2 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #A7875E;
+    border-bottom: 2px solid #A7875E;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-top: 40px;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 20px;
+    margin-bottom: 5px;
+}
+
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -123,7 +142,7 @@
     background: rgba(10, 18, 21, 0.6);
     padding: 20px;
     border-radius: 6px;
-    border-left: 4px solid #A7875E;
+    border-left: 3px solid #A7875E;
 }
 
 .showcase-discount {
@@ -282,6 +301,14 @@
     .showcase-hero,
     .showcase-promo-card {
         min-height: 350px;
+    }
+
+    .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 20px;
+    margin-bottom: 20px;
     }
 }
 
