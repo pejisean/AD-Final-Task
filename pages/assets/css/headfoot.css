@@ -6,8 +6,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #0A1215; /* This should fill the entire visible background */
-    min-height: 100vh; /* Ensures body takes full height even with minimal content */
+    background-color: #0A1215;
+    min-height: 100vh;
 }
 
 a {
@@ -162,6 +162,8 @@ footer {
     justify-content: space-around;
     padding: 30px 20px;
     flex-wrap: wrap;
+    margin-top: 30px;
+    border-top: 1.5px solid #CC8833;
 }
 
 footer div {

@@ -10,6 +10,10 @@ body {
     min-height: 100vh;
 }
 
+a {
+    text-decoration: none;
+}
+
 .hide-scrollbar {
     overflow: auto;
 }
@@ -27,10 +31,6 @@ body {
 
 .hide-scrollbar {
     -ms-overflow-style: none;
-}
-
-a {
-    text-decoration: none;
 }
 
 /* HEADER */
@@ -162,6 +162,8 @@ footer {
     justify-content: space-around;
     padding: 30px 20px;
     flex-wrap: wrap;
+    margin-top: 30px;
+    border-top: 1.5px solid #CC8833;
 }
 
 footer div {
