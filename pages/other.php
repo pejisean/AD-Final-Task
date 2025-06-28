@@ -49,147 +49,142 @@
 
 <div class="products-container">
 
-    <h2 class="section-title1" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none;">Featured Items</h2>
+<h2 class="section-title1" style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">Featured Items</h2>
 
-    <div class="showcase-container">
+<div class="showcase-container">
 
-        <section class="showcase-hero">
-            <div class="showcase-content">
-                <span class="showcase-discount">Featured Deal: Save ₱1,500</span>
-                <h3>High-Capacity Solar Power Bank</h3>
-                <p>₱12,500.00</p>
-                <div class="showcase-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
-                </div>
-            </div>
-        </section>
-
-        <div class="showcase-right-column">
-
-            <section class="showcase-promo-card showcase-card-top">
-                 <div class="showcase-content">
-                    <span class="showcase-discount">Save ₱750</span>
-                    <h3>Tactical LED Flashlight</h3>
-                    <p>₱4,500.00</p>
-                    <div class="showcase-buttons">
-                       <a class="buy-btn" href="#">Buy Now</a>
-                       <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="showcase-promo-card showcase-card-bottom">
-                 <div class="showcase-content">
-                    <span class="showcase-discount">New Arrival!</span>
-                    <h3>Portable Water Purifier</h3>
-                    <p>₱6,250.00</p>
-                    <div class="showcase-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-    </div>
-    </div>
-
-<div class="products-container">
-<h2 class="section-title" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none;">New Arrivals</h2>
-<section class="products">
-  <!-- First row -->
-<div class="product-card">
-  <span>Save ₱700</span>
-  <h3>UV-C Water Purification Pen</h3>
-  <p>₱3,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<section class="showcase-hero">
+<div class="showcase-content">
+<span class="showcase-discount">Priority Kit: Save ₱1,200</span>
+<h3>Advanced First Aid Trauma Kit</h3>
+<p>₱5,500.00</p>
+<div class="showcase-buttons">
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
-<div class="product-card">
-  <span>Save ₱300</span>
-  <h3>18650 Li-ion Smart Battery Charger</h3>
-  <p>₱1,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
-<div class="product-card">
-  <span>Save ₱250</span>
-  <h3>Compact Solar-Charging Lantern</h3>
-  <p>₱950.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱800</span>
-  <h3>50W Foldable Solar Panel</h3>
-  <p>₱4,250.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-  <!-- Second row -->
 </section>
 
-<!-- Top Sellers Section -->
-<h2 class="section-title" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none;">Top Sellers</h2>
+<div class="showcase-right-column">
+
+<section class="showcase-promo-card showcase-card-top">
+<div class="showcase-content">
+<span class="showcase-discount">Save ₱2,500</span>
+<h3>72-Hour Survival Backpack</h3>
+<p>₱12,000.00</p>
+<div class="showcase-buttons">
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+</div>
+</section>
+
+<section class="showcase-promo-card showcase-card-bottom">
+<div class="showcase-content">
+<span class="showcase-discount">Save ₱950</span>
+<h3>High-Performance Water Filter Pump</h3>
+<p>₱4,800.00</p>
+<div class="showcase-buttons">
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+</div>
+</section>
+
+</div>
+</div>
+</div>
+
+<div class="products-container">
+<h2 class="section-title" style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">New Arrivals</h2>
 <section class="products">
-  <!-- First row -->
 <div class="product-card">
-  <span>Save ₱650</span>
-  <h3>Hand-Crank AM/FM/NOAA Weather Radio</h3>
-  <p>₱2,800.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<span>Save ₱300</span>
+<h3>Waterproof Survival Handbook</h3>
+<p>₱1,100.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱4,500</span>
-  <h3>500Wh Portable Power Station</h3>
-  <p>₱25,000.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<span>Save ₱200</span>
+<h3>Emergency Signal Mirror</h3>
+<p>₱650.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱900</span>
-  <h3>Long-Range Two-Way Radios (Pair)</h3>
-  <p>₱3,800.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<span>Save ₱250</span>
+<h3>Titanium Spork & Utensil Set</h3>
+<p>₱850.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱2,500</span>
-  <h3>Rugged Handheld GPS Navigator</h3>
-  <p>₱15,000.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<span>Save ₱350</span>
+<h3>Chemical Light Sticks (12-Pack)</h3>
+<p>₱1,200.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
-  <!-- Second row -->
+</section>
+
+<h2 class="section-title" style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">Top Sellers</h2>
+<section class="products">
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>10,000mAh Solar Power Bank</h3>
-  <p>₱1,950.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
-</div>
-<div class="product-card">
-  <span>Save ₱400</span>
-  <h3>High-Lumen LED Rechargeable Headlamp</h3>
-  <p>₱1,500.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<span>Save ₱450</span>
+<h3>"Lifestraw" Personal Water Filter</h3>
+<p>₱1,500.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱1,200</span>
-  <h3>100W Monocrystalline Solar Panel Kit</h3>
-  <p>₱7,500.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<span>Save ₱300</span>
+<h3>Ferro Rod & Striker Fire Starter</h3>
+<p>₱950.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 <div class="product-card">
-  <span>Save ₱500</span>
-  <h3>12V to 220V Power Inverter (300W)</h3>
-  <p>₱2,100.00</p>
-  <a class="buy-btn" href="#">Buy Now</a>
-  <a class="add-cart-btn" href="#">Add to Cart</a>
+<span>Save ₱250</span>
+<h3>Emergency Mylar Space Blankets (10-Pack)</h3>
+<p>₱900.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+<div class="product-card">
+<span>Save ₱500</span>
+<h3>Military-Style Lensatic Compass</h3>
+<p>₱1,800.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+<div class="product-card">
+<span>Save ₱200</span>
+<h3>100ft. 550 Paracord</h3>
+<p>₱650.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+<div class="product-card">
+<span>Save ₱150</span>
+<h3>High-Decibel Emergency Whistle</h3>
+<p>₱550.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+<div class="product-card">
+<span>Save ₱200</span>
+<h3>Waterproof Match Case with Matches</h3>
+<p>₱750.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
+</div>
+<div class="product-card">
+<span>Save ₱400</span>
+<h3>Rechargeable LED Headlamp</h3>
+<p>₱1,500.00</p>
+<a class="buy-btn" href="#">Buy Now</a>
+<a class="add-cart-btn" href="#">Add to Cart</a>
 </div>
 </section>
 </div>
