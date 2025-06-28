@@ -82,8 +82,9 @@
         </div>
     </div>
 
-    <div class="products-container">
-        <h2 class="section-title" style="user-select: none;">New Arrivals</h2>
+<div class="products-container">
+    <div class="section-header">
+        <h2 class="section-title2" style="user-select: none;">New Arrivals</h2>
         <div class="product-toolbar">
             <div class="filter-group">
                 <label for="sort-by-main">Sort By:</label>
@@ -94,7 +95,8 @@
                 </select>
             </div>
         </div>
-        <section class="products" id="new-arrivals-grid">
+    </div>
+    <section class="products" id="new-arrivals-grid">
             <div class="product-card" data-price="3200">
                 <span>Save ₱700</span>
                 <h3>Remote-Triggered Trap Mechanism</h3>
