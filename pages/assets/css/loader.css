@@ -22,11 +22,7 @@
 .loader::after {
   transform: rotate(45deg);
 }
-#preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
 
-@keyframes l19 { 
+@keyframes l19 {
   100%{transform: rotate(1turn)}
 }
