@@ -10,7 +10,7 @@
   scale: 3;
 }
 .loader::before,
-.loader::after {    
+.loader::after {
   content: "";
   grid-area: 1/1;
   background:
@@ -20,7 +20,11 @@
   background-repeat: no-repeat;
 }
 .loader::after {
-   transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 @keyframes l19 { 
