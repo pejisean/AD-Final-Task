@@ -18,7 +18,7 @@ img {
     -webkit-user-drag: none;
     user-drag: none;
     user-select: none;
-    pointer-events: auto; /* still allows clicks */
+    pointer-events: auto;
 }
 
 .hide-scrollbar {
@@ -33,10 +33,6 @@ img {
 
 .hide-scrollbar {
     scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.hide-scrollbar {
     -ms-overflow-style: none;
 }
 
@@ -117,11 +113,21 @@ header {
     transform 0.3s ease-in-out, margin 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 
+/* This rule now applies the animation to ALL links on hover */
 .main-nav a:hover {
-    color: #9e9781;
+    color: #ddb27e; /* The hover color for non-active links */
     transform: scale(1.25);
     padding: 20px 45px;
     margin: 0 -15px;
+}
+
+.main-nav a.active {
+    color: #f5f5f5;
+}
+
+/* This more specific rule ONLY overrides the color for the active link's hover state */
+.main-nav a.active:hover {
+    color: #c0c0c0; /* The hover color for the active link */
 }
 
 /* HAMBURGER MENU */
@@ -160,6 +166,19 @@ header {
 
 .dropdown-menu a:hover {
     color: #9b9583;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #0A1215;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* FOOTER */
