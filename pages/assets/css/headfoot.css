@@ -122,10 +122,21 @@ header {
 }
 
 .main-nav a:hover {
-    color: #9e9781;
+    color: #ddb27e;
     transform: scale(1.25);
     padding: 20px 45px;
     margin: 0 -15px;
+}
+
+.main-nav a.active {
+    color: #f5f5f5;
+}
+
+.main-nav a.active:hover {
+    color: #c0c0c0;
+    transform: none;
+    padding: 20px 15px;
+    margin: 0;
 }
 
 /* HAMBURGER MENU */
