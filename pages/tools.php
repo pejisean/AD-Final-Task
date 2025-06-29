@@ -45,7 +45,7 @@
     </div>
 
     <div class="products-container">
-        <h2 class="section-title1" style="user-select: none;">Featured Items</h2>
+        <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
         <div class="showcase-container">
             <section class="showcase-hero">
                 <div class="showcase-content">
@@ -87,7 +87,7 @@
 
 <div class="products-container">
     <div class="section-header">
-        <h2 class="section-title2" style="user-select: none;">New Arrivals</h2>
+        <h2 class="section-title2" style="user-select: none;">FRESH SALVAGE</h2>
         <div class="product-toolbar">
             <div class="filter-group">
                 <label for="sort-by-main">Sort By:</label>
@@ -132,7 +132,7 @@
     </div>
 
     <div class="products-container">
-        <h2 class="section-title" style="user-select: none;">Top Sellers</h2>
+        <h2 class="section-title" style="user-select: none;">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
             <div class="product-card" data-price="1800">
                 <span>Save ₱450</span>
