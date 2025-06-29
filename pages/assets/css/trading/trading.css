@@ -111,14 +111,16 @@
 }
 
 .product-discount {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 3;
     background-color: #A7875E;
     color: #0A1215;
     padding: 5px 10px;
     font-size: 0.9em;
     font-weight: bold;
     border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 10px;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
