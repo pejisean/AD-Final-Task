@@ -124,7 +124,7 @@
     font-weight: bold;
     border-radius: 4px;
     font-family: 'Roboto Condensed', sans-serif;
-    animation: pulse-discount-glow 4s ease-in-out infinite;
+    animation: pulse-discount-glow 3s ease-in-out infinite;
 }
 
 .product-buttons {
