@@ -68,6 +68,9 @@
     background-size: cover;
     background-position: center;
     min-height: 350px;
+
+
+
 }
 
 .product-card::before {
@@ -77,7 +80,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 18, 21, 0.7);
     z-index: 1;
 }
 
