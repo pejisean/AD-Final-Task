@@ -195,7 +195,8 @@
 }
 
 .showcase-discount {
-    background-color: #A7875E;
+    background-color: #e2c8a5;
+    border: 2px solid #948169;
     color: #0A1215;
     padding: 5px 10px;
     font-size: 0.9em;
