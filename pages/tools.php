@@ -130,7 +130,6 @@
             </div>
         </section>
     </div>
-IKMYUHNTGBF
     <div class="products-container">
         <h2 class="section-title" style="user-select: none;">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
