@@ -44,46 +44,46 @@
         </header>
     </div>
 
-    <div class="products-container">
-        <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
-        <div class="showcase-container">
-            <section class="showcase-hero">
+<div class="products-container">
+    <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
+    <div class="showcase-container">
+        <section class="showcase-hero" style="background-image: url('assets/img/products/sentry-platform-showcase.jpg');">
+            <div class="showcase-content">
+                <span class="showcase-discount">Ultimate Defense: Save ₱8,000</span>
+                <h3>Automated Sentry Platform (Unarmed)</h3>
+                <p>₱35,000.00</p>
+                <div class="showcase-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </section>
+        <div class="showcase-right-column">
+            <section class="showcase-promo-card showcase-card-top" style="background-image: url('assets/img/products/scrap-armor-showcase.jpg');">
                 <div class="showcase-content">
-                    <span class="showcase-discount">Ultimate Defense: Save ₱8,000</span>
-                    <h3>Automated Sentry Platform (Unarmed)</h3>
-                    <p>₱35,000.00</p>
+                    <span class="showcase-discount">Save ₱2,500</span>
+                    <h3>Scrap Metal Armor Set (Torso & Pauldrons)</h3>
+                    <p>₱15,000.00</p>
                     <div class="showcase-buttons">
                         <a class="buy-btn" href="#">Buy Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
             </section>
-            <div class="showcase-right-column">
-                <section class="showcase-promo-card showcase-card-top">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱2,500</span>
-                        <h3>Scrap Metal Armor Set (Torso & Pauldrons)</h3>
-                        <p>₱15,000.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
+            <section class="showcase-promo-card showcase-card-bottom" style="background-image: url('assets/img/products/pipe-pistol-kit-showcase.jpg');">
+                <div class="showcase-content">
+                    <span class="showcase-discount">Save ₱1,200</span>
+                    <h3>Pipe Pistol Assembly Kit (.38 Special)</h3>
+                    <p>₱7,800.00</p>
+                    <div class="showcase-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
-                </section>
-                <section class="showcase-promo-card showcase-card-bottom">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱1,200</span>
-                        <h3>Pipe Pistol Assembly Kit (.38 Special)</h3>
-                        <p>₱7,800.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 
 <div class="products-container">
     <div class="section-header">
