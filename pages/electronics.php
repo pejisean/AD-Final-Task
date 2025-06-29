@@ -47,47 +47,46 @@
         </header>
     </div>
 
-    <div class="products-container">
-        <h2 class="section-title1">BATTLE-TESTED</h2>
-        <div class="showcase-container">
-            <section class="showcase-hero">
+<div class="products-container">
+    <h2 class="section-title1">BATTLE-TESTED</h2>
+    <div class="showcase-container">
+        <section class="showcase-hero" style="background-image: url('assets/img/products/powerbank-showcase.jpg');">
+            <div class="showcase-content">
+                <span class="showcase-discount">Deal of the Week: Save ₱550</span>
+                <h3>20,000mAh Dual-Port Power Bank</h3>
+                <p>₱1,850.00</p>
+                <div class="showcase-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </section>
+        <div class="showcase-right-column">
+            <section class="showcase-promo-card showcase-card-top" style="background-image: url('assets/img/products/jumper-cables-showcase.jpg');">
                 <div class="showcase-content">
-                    <span class="showcase-discount">Deal of the Week: Save ₱550</span>
-                    <h3>20,000mAh Dual-Port Power Bank</h3>
-                    <p>₱1,850.00</p>
+                    <span class="showcase-discount">Save ₱400</span>
+                    <h3>Heavy-Duty Jumper Cables (8-Gauge)</h3>
+                    <p>₱1,500.00</p>
                     <div class="showcase-buttons">
                         <a class="buy-btn" href="#">Buy Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
             </section>
-            <div class="showcase-right-column">
-                <section class="showcase-promo-card showcase-card-top">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱400</span>
-                        <h3>Heavy-Duty Jumper Cables (8-Gauge)</h3>
-                        <p>₱1,500.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
+            <section class="showcase-promo-card showcase-card-bottom" style="background-image: url('assets/img/products/surge-protector-showcase.jpg');">
+                <div class="showcase-content">
+                    <span class="showcase-discount">Save ₱350</span>
+                    <h3>Smart Surge Protector Power Strip</h3>
+                    <p>₱1,250.00</p>
+                    <div class="showcase-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
-                </section>
-                <section class="showcase-promo-card showcase-card-bottom">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱350</span>
-                        <h3>Smart Surge Protector Power Strip</h3>
-                        <p>₱1,250.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
-
+</div>
     <!-- FRESH SALVAGE -->
     <div class="products-container">
         <div class="section-header">
