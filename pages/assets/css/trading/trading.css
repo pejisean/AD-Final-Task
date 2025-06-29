@@ -194,6 +194,7 @@
     padding: 20px;
     border-radius: 6px;
     border-left: 3px solid #A7875E;
+    border-bottom:3px solid #A7875E;
 }
 
 .showcase-discount {
