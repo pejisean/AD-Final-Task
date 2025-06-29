@@ -106,7 +106,7 @@
         </div>
 
         <section class="products" id="new-arrivals-grid">
-            <div class="product-card" style="background-image: url('assets/img/electronics/powerbank.png')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/multimeter.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱300</span>
                     <h3>Digital Multimeter</h3>
