@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/headlamp.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/led.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>Rechargeable LED Headlamp</h3>
@@ -128,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/circuitbreaker.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/circuit.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱150</span>
                     <h3>Automatic Circuit Breaker (20A)</h3>
@@ -139,7 +139,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/coinbatteries.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/lithium.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱100</span>
                     <h3>CR2032 Lithium Coin Batteries (10-Pack)</h3>
@@ -157,7 +157,7 @@
     <div class="products-container">
         <h2 class="section-title">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
-            <div class="product-card" style="background-image: url('assets/img/products/aa.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/aa.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>AA Alkaline Batteries (24-Pack)</h3>
@@ -168,7 +168,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/aaa.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/aaa.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>AAA Alkaline Batteries (24-Pack)</h3>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/slimpower.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/slimpower.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱450</span>
                     <h3>10,000mAh Slim Power Bank</h3>
@@ -190,7 +190,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/extension.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/extension.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>Heavy-Duty Extension Cord (10-meter)</h3>
@@ -201,7 +201,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/flashlight.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/ledflash.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱350</span>
                     <h3>Rechargeable LED Flashlight</h3>
@@ -212,7 +212,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/9vbatt.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/9v.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱150</span>
                     <h3>9V Alkaline Batteries (4-Pack)</h3>
@@ -223,7 +223,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/jumperwires.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/alligator.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱100</span>
                     <h3>Alligator Clip Jumper Wires (Set of 10)</h3>
@@ -234,7 +234,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="background-image: url('assets/img/products/emergencylight.jpg')">
+            <div class="product-card" style="background-image: url('assets/img/electronics/emergency.png')">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>LED Emergency Light with Battery Backup</h3>
