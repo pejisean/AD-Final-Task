@@ -105,37 +105,49 @@
         </div>
 
         <section class="products" id="new-arrivals-grid">
-            <div class="product-card">
-                <img src="assets/img/products/multimeter.jpg" alt="Digital Multimeter">
-                <span>Save ₱300</span>
-                <h3>Digital Multimeter</h3>
-                <p>₱950.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/electronics/powerbank.png')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱300</span>
+                    <h3>Digital Multimeter</h3>
+                    <p>₱950.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/headlamp.jpg" alt="Rechargeable LED Headlamp">
-                <span>Save ₱250</span>
-                <h3>Rechargeable LED Headlamp</h3>
-                <p>₱850.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/headlamp.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱250</span>
+                    <h3>Rechargeable LED Headlamp</h3>
+                    <p>₱850.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/circuitbreaker.jpg" alt="Automatic Circuit Breaker">
-                <span>Save ₱150</span>
-                <h3>Automatic Circuit Breaker (20A)</h3>
-                <p>₱450.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/circuitbreaker.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱150</span>
+                    <h3>Automatic Circuit Breaker (20A)</h3>
+                    <p>₱450.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/coinbatteries.jpg" alt="CR2032 Coin Batteries">
-                <span>Save ₱100</span>
-                <h3>CR2032 Lithium Coin Batteries (10-Pack)</h3>
-                <p>₱350.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/coinbatteries.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱100</span>
+                    <h3>CR2032 Lithium Coin Batteries (10-Pack)</h3>
+                    <p>₱350.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -144,69 +156,93 @@
     <div class="products-container">
         <h2 class="section-title">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
-            <div class="product-card">
-                <img src="assets/img/products/aa.jpg" alt="AA Batteries">
-                <span>Save ₱200</span>
-                <h3>AA Alkaline Batteries (24-Pack)</h3>
-                <p>₱750.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/aa.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱200</span>
+                    <h3>AA Alkaline Batteries (24-Pack)</h3>
+                    <p>₱750.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/aaa.jpg" alt="AAA Batteries">
-                <span>Save ₱200</span>
-                <h3>AAA Alkaline Batteries (24-Pack)</h3>
-                <p>₱750.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/aaa.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱200</span>
+                    <h3>AAA Alkaline Batteries (24-Pack)</h3>
+                    <p>₱750.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/slimpower.jpg" alt="Slim Power Bank">
-                <span>Save ₱450</span>
-                <h3>10,000mAh Slim Power Bank</h3>
-                <p>₱1,200.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/slimpower.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱450</span>
+                    <h3>10,000mAh Slim Power Bank</h3>
+                    <p>₱1,200.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/extension.jpg" alt="Extension Cord">
-                <span>Save ₱250</span>
-                <h3>Heavy-Duty Extension Cord (10-meter)</h3>
-                <p>₱900.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/extension.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱250</span>
+                    <h3>Heavy-Duty Extension Cord (10-meter)</h3>
+                    <p>₱900.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/flashlight.jpg" alt="LED Flashlight">
-                <span>Save ₱350</span>
-                <h3>Rechargeable LED Flashlight</h3>
-                <p>₱1,100.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/flashlight.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱350</span>
+                    <h3>Rechargeable LED Flashlight</h3>
+                    <p>₱1,100.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/9vbatt.jpg" alt="9V Batteries">
-                <span>Save ₱150</span>
-                <h3>9V Alkaline Batteries (4-Pack)</h3>
-                <p>₱550.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/9vbatt.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱150</span>
+                    <h3>9V Alkaline Batteries (4-Pack)</h3>
+                    <p>₱550.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/jumperwires.jpg" alt="Alligator Clip Jumper Wires">
-                <span>Save ₱100</span>
-                <h3>Alligator Clip Jumper Wires (Set of 10)</h3>
-                <p>₱300.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/jumperwires.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱100</span>
+                    <h3>Alligator Clip Jumper Wires (Set of 10)</h3>
+                    <p>₱300.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="assets/img/products/emergencylight.jpg" alt="LED Emergency Light">
-                <span>Save ₱250</span>
-                <h3>LED Emergency Light with Battery Backup</h3>
-                <p>₱950.00</p>
-                <a class="buy-btn" href="#">Buy Now</a>
-                <a class="add-cart-btn" href="#">Add to Cart</a>
+            <div class="product-card" style="background-image: url('assets/img/products/emergencylight.jpg')">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱250</span>
+                    <h3>LED Emergency Light with Battery Backup</h3>
+                    <p>₱950.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
