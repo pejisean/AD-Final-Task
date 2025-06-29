@@ -44,46 +44,46 @@
         </header>
     </div>
 
-    <div class="products-container">
-        <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
-        <div class="showcase-container">
-            <section class="showcase-hero">
+<div class="products-container">
+    <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
+    <div class="showcase-container">
+        <section class="showcase-hero" style="background-image: url('assets/img/products/first-aid-kit-showcase.jpg');">
+            <div class="showcase-content">
+                <span class="showcase-discount">Priority Kit: Save ₱1,200</span>
+                <h3>Advanced First Aid Trauma Kit</h3>
+                <p>₱5,500.00</p>
+                <div class="showcase-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </section>
+        <div class="showcase-right-column">
+            <section class="showcase-promo-card showcase-card-top" style="background-image: url('assets/img/products/survival-backpack-showcase.jpg');">
                 <div class="showcase-content">
-                    <span class="showcase-discount">Priority Kit: Save ₱1,200</span>
-                    <h3>Advanced First Aid Trauma Kit</h3>
-                    <p>₱5,500.00</p>
+                    <span class="showcase-discount">Save ₱2,500</span>
+                    <h3>72-Hour Survival Backpack</h3>
+                    <p>₱12,000.00</p>
                     <div class="showcase-buttons">
                         <a class="buy-btn" href="#">Buy Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
             </section>
-            <div class="showcase-right-column">
-                <section class="showcase-promo-card showcase-card-top">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱2,500</span>
-                        <h3>72-Hour Survival Backpack</h3>
-                        <p>₱12,000.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
+            <section class="showcase-promo-card showcase-card-bottom" style="background-image: url('assets/img/products/water-filter-pump-showcase.jpg');">
+                <div class="showcase-content">
+                    <span class="showcase-discount">Save ₱950</span>
+                    <h3>High-Performance Water Filter Pump</h3>
+                    <p>₱4,800.00</p>
+                    <div class="showcase-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
-                </section>
-                <section class="showcase-promo-card showcase-card-bottom">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱950</span>
-                        <h3>High-Performance Water Filter Pump</h3>
-                        <p>₱4,800.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 
 <div class="products-container">
     <div class="section-header">
