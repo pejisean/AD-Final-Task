@@ -85,17 +85,14 @@
 
 .product-content {
     position: absolute;
-    /* Take it out of the normal flow */
     bottom: 0;
-    /* Pin it to the bottom */
     left: 0;
     right: 0;
     z-index: 2;
     background: rgba(10, 18, 21, 0.6);
     padding: 20px;
     border-radius: 0 0 6px 6px;
-    /* Rounded only on the bottom */
-    border-left: 3px solid #A7875E;
+
 }
 
 .product-card:hover {
