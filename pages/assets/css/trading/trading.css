@@ -117,13 +117,14 @@
     top: 15px;
     right: 15px;
     z-index: 3;
-    background-color: #A7875E;
+    background-color: #e2c8a5;
     color: #0A1215;
     padding: 5px 10px;
     font-size: 0.9em;
     font-weight: bold;
     border-radius: 4px;
     font-family: 'Roboto Condensed', sans-serif;
+    animation: pulse-discount-glow 3s ease-in-out infinite;
 }
 
 .product-buttons {
@@ -419,5 +420,14 @@
     50% {
         color: #E6C8A3;
         text-shadow: 0 0 25px rgba(167, 135, 94, 0.9);
+    }
+}
+
+@keyframes pulse-discount-glow {
+    0%, 100% {
+    box-shadow: 0 0 8px rgba(226, 200, 165, 0.5);
+    }
+    50% {
+    box-shadow: 0 0 20px rgba(226, 200, 165, 0.9);
     }
 }
