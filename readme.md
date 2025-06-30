@@ -22,6 +22,11 @@
 <!-- TODO: Change the WD-Template-Project into the same name of your folder -->
 
 ![](https://visit-counter.vercel.app/counter.png?page=pejisean/AD-Final-Task)
+![](https://visit-counter.vercel.app/counter.png?page=dulutancarlo1975/AD-Final-Task)
+![](https://visit-counter.vercel.app/counter.png?page=PrismaVL/AD-Final-Task)
+![](https://visit-counter.vercel.app/counter.png?page=ANTONIO-JUAN-MIGUEL/AD-Final-Task)
+
+
 
 [![wakatime](https://wakatime.com/badge/github/pejisean/AD-Final-Task.svg)]
 ---
