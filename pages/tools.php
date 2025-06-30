@@ -22,7 +22,8 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
             <div class="header-right">
                 <nav class="main-nav">
@@ -49,7 +50,7 @@
     <div class="products-container">
         <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
         <div class="showcase-container">
-            <section class="showcase-hero" style="background-image: url('assets/img/tools/halligan-bar-showcase.jpg');">
+            <section class="showcase-hero" style="background-image: url('assets/img/tools/breacher.png');">
                 <div class="showcase-content">
                     <span class="showcase-discount">Essential Gear: Save ₱1,500</span>
                     <h3>36-inch "Breacher" Halligan Bar</h3>
@@ -61,7 +62,8 @@
                 </div>
             </section>
             <div class="showcase-right-column">
-                <section class="showcase-promo-card showcase-card-top" style="background-image: url('assets/img/tools/bolt-cutters-showcase.jpg');">
+                <section class="showcase-promo-card showcase-card-top"
+                    style="background-image: url('assets/img/tools/bolt.png');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱900</span>
                         <h3>Heavy-Duty Bolt Cutters (30-inch)</h3>
@@ -72,7 +74,8 @@
                         </div>
                     </div>
                 </section>
-                <section class="showcase-promo-card showcase-card-bottom" style="background-image: url('assets/img/tools/hand-drill-showcase.jpg');">
+                <section class="showcase-promo-card showcase-card-bottom"
+                    style="background-image: url('assets/img/tools/hand.png');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱750</span>
                         <h3>Carpenter's Manual Hand Drill Set</h3>
@@ -102,7 +105,7 @@
             </div>
         </div>
         <section class="products" id="new-arrivals-grid">
-            <div class="product-card" data-price="3500" style="background-image: url('assets/img/tools/lockpick-set.jpg');">
+            <div class="product-card" data-price="3500" style="background-image: url('assets/img/tools/lockpick.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱850</span>
                     <h3>Professional Lockpick Set (24-Piece)</h3>
@@ -113,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1600" style="background-image: url('assets/img/tools/folding-saw.jpg');">
+            <div class="product-card" data-price="1600" style="background-image: url('assets/img/tools/saw.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱400</span>
                     <h3>Collapsible Folding Saw</h3>
@@ -124,7 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="2200" style="background-image: url('assets/img/tools/pry-bar.jpg');">
+            <div class="product-card" data-price="2200" style="background-image: url('assets/img/tools/pry.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱500</span>
                     <h3>Titanium Pry Bar</h3>
@@ -135,7 +138,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1250" style="background-image: url('assets/img/tools/engineers-hammer.jpg');">
+            <div class="product-card" data-price="1250" style="background-image: url('assets/img/tools/hammer.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱350</span>
                     <h3>Engineer's Hammer (4 lb)</h3>
@@ -152,7 +155,7 @@
     <div class="products-container">
         <h2 class="section-title" style="user-select: none;">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
-            <div class="product-card" data-price="1800" style="background-image: url('assets/img/tools/crowbar.jpg');">
+            <div class="product-card" data-price="1800" style="background-image: url('assets/img/tools/crowbar.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱450</span>
                     <h3>24-inch Go-Bar (Crowbar)</h3>
@@ -163,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="4800" style="background-image: url('assets/img/tools/splitting-axe.jpg');">
+            <div class="product-card" data-price="4800" style="background-image: url('assets/img/tools/axe.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱1,100</span>
                     <h3>Forged Steel Splitting Axe</h3>
@@ -174,7 +177,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="2500" style="background-image: url('assets/img/tools/sledgehammer.jpg');">
+            <div class="product-card" data-price="2500"
+                style="background-image: url('assets/img/tools/sledgehammer.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱600</span>
                     <h3>10-lb Sledgehammer</h3>
@@ -185,7 +189,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="4100" style="background-image: url('assets/img/tools/tomahawk.jpg');">
+            <div class="product-card" data-price="4100" style="background-image: url('assets/img/tools/tomahawk.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱950</span>
                     <h3>All-Purpose Tactical Tomahawk</h3>
@@ -196,7 +200,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1950" style="background-image: url('assets/img/tools/trench-shovel.jpg');">
+            <div class="product-card" data-price="1950" style="background-image: url('assets/img/tools/trench.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱550</span>
                     <h3>Folding Trench Shovel w/ Pick</h3>
@@ -207,7 +211,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1500" style="background-image: url('assets/img/tools/sharpening-stone.jpg');">
+            <div class="product-card" data-price="1500" style="background-image: url('assets/img/tools/dual.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱400</span>
                     <h3>Dual-Grit Sharpening Stone Kit</h3>
@@ -218,7 +222,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="950" style="background-image: url('assets/img/tools/work-gloves.jpg');">
+            <div class="product-card" data-price="950" style="background-image: url('assets/img/tools/gloves.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱300</span>
                     <h3>Heavy Leather Work Gloves</h3>
@@ -229,7 +233,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="5500" style="background-image: url('assets/img/tools/wrench-roll.jpg');">
+            <div class="product-card" data-price="5500" style="background-image: url('assets/img/tools/wrench.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱1,200</span>
                     <h3>Mechanic's Wrench & Socket Roll</h3>
@@ -262,4 +266,5 @@
         </div>
     </footer>
 </body>
+
 </html>
