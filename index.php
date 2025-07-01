@@ -31,7 +31,9 @@
 
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="pages/electronics.php"
+<a href="pages/marketplace.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Marketplace</a>                   
+                         <a href="pages/electronics.php"
                         style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Electronics
                         & Power</a>
                     <a href="pages/tools.php"
