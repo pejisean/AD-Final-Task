@@ -13,8 +13,8 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=wrap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=wrap" rel="stylesheet">
 </head>
 
 <body>
@@ -59,147 +59,134 @@
         <div class="all-products-container">
             <div class="marketplace-grid" id="marketplaceGrid">
                 <div class="product-card" data-name="Tactical Backpack" data-price="85.50" data-description="Durable tactical backpack with multiple compartments, ideal for outdoor survival.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Tactical Backpack</p>
                         <p class="item-price">85.50</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Tactical Backpack">
                     </div>
-                    <div class="item-actions">
-                        <button class="more-info-btn">More Info</button>
+                    <div class="item-bottom-actions"> <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Solar Charger Kit" data-price="120.00" data-description="Portable solar charger kit for electronics, essential for off-grid power.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Solar Charger Kit</p>
                         <p class="item-price">120.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Solar Charger Kit">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Multi-Tool Pliers" data-price="45.99" data-description="Compact multi-tool with various functions including pliers, knife, and saw.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Multi-Tool Pliers</p>
                         <p class="item-price">45.99</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Multi-Tool Pliers">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Water Purifier Bottle" data-price="60.25" data-description="Personal water filter bottle, capable of removing contaminants.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Water Purifier Bottle</p>
                         <p class="item-price">60.25</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Water Purifier Bottle">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Survival First Aid Kit" data-price="75.00" data-description="Comprehensive first aid kit for emergencies in wilderness or urban environments.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Survival First Aid Kit</p>
                         <p class="item-price">75.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Survival First Aid Kit">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Night Vision Goggles" data-price="950.00" data-description="High-quality night vision goggles for low-light observation.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Night Vision Goggles</p>
                         <p class="item-price">950.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Night Vision Goggles">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Compact Tent" data-price="180.00" data-description="Lightweight and compact tent for 2-3 persons, quick to set up.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Compact Tent</p>
                         <p class="item-price">180.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Compact Tent">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Emergency Radio" data-price="55.00" data-description="Hand-crank and solar-powered emergency radio with NOAA weather alerts.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Emergency Radio</p>
                         <p class="item-price">55.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Emergency Radio">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Durable Shovel" data-price="30.00" data-description="Foldable military-grade shovel for digging and chopping.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Durable Shovel</p>
                         <p class="item-price">30.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Durable Shovel">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Portable Cooking Stove" data-price="90.00" data-description="Compact and efficient portable stove for cooking in any outdoor setting.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Portable Cooking Stove</p>
                         <p class="item-price">90.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Portable Cooking Stove">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Rechargeable LED Lantern" data-price="40.00" data-description="Bright LED lantern, rechargeable via USB, perfect for camping or power outages.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Rechargeable LED Lantern</p>
                         <p class="item-price">40.00</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Rechargeable LED Lantern">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
                 <div class="product-card" data-name="Sport Gloves Pandora's Box" data-price="109931.04" data-description="Factory New Sport Gloves Pandora's Box. Exceedingly rare and highly sought after.">
-                    <div class="item-details">
+                    <div class="item-image">
                         <p class="item-name">Sport Gloves Pandora's Box</p>
                         <p class="item-price">109,931.04</p>
-                    </div>
-                    <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Item Image">
                     </div>
-                    <div class="item-actions">
+                    <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
+                        <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
             </div>
