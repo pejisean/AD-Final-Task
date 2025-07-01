@@ -32,7 +32,7 @@
 
 .marketplace-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columns */
+    grid-template-columns: repeat(6, 1fr); /* Changed to 6 columns */
     gap: 20px;
     padding: 10px;
 }
@@ -265,6 +265,12 @@
 }
 
 /* Responsive adjustments for marketplace grid */
+@media (max-width: 1600px) { /* Added new breakpoint for 5 columns */
+    .marketplace-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
 @media (max-width: 1200px) {
     .marketplace-grid {
         grid-template-columns: repeat(4, 1fr); /* 4 columns */
