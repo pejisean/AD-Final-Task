@@ -85,7 +85,6 @@
     height: auto; /* Maintain aspect ratio */
     display: block; /* Remove extra space below image */
     border-radius: 5px; /* Adjust if you want rounded image corners */
-    /* Remove any top/bottom padding from image if it was here */
 }
 
 .item-name,
