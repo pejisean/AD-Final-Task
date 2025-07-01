@@ -57,11 +57,10 @@
     background-color: #1C1C1C;
     border: 1px solid #333;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; /* Important for keeping absolutely positioned elements inside */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column; /* Stacks children vertically */
-    /* Removed justify-content: space-between; from here as the internal structure will handle it */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -70,58 +69,72 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(204, 136, 51, 0.7);
 }
 
-/* New container for name, price, and buttons */
-.item-info-and-actions {
-    padding: 10px;
-    text-align: center;
-    display: flex; /* Makes its children (name, price, buttons) a flex row */
-    flex-direction: column; /* Stacks name, price, and buttons vertically */
-    justify-content: flex-start; /* Aligns content to the start of the column */
-    align-items: center; /* Centers items horizontally within this column */
-    border-bottom: 1px solid #333; /* Adds a separator below this section */
-    padding-bottom: 15px; /* More space at the bottom of this section */
-}
-
-.item-name {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #f5f5f5;
-    margin-bottom: 5px; /* Space between name and price */
-}
-
-.item-price {
-    font-size: 1.2em;
-    color: #CC8833;
-    font-weight: bold;
-    margin-bottom: 15px; /* Space between price and buttons */
-}
-
 .item-image {
-    padding: 10px;
+    position: relative; /* Crucial for positioning name/price absolutely within it */
+    padding: 0; /* Remove padding here, add to name/price instead */
     text-align: center;
-    flex-grow: 1; /* Allows the image section to take up available space */
-    display: flex; /* Use flex to center image vertically if needed */
+    flex-grow: 1; /* Allows the image area to take up available space */
+    display: flex; /* Helps center the actual image */
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Ensures name/price don't go outside if too big */
 }
 
 .item-image img {
     max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+    border-radius: 5px; /* Adjust if you want rounded image corners */
+    /* Remove any top/bottom padding from image if it was here */
 }
 
-/* Container for the buttons */
-.item-buttons {
-    display: flex;
+.item-name,
+.item-price {
+    position: absolute; /* Take out of normal flow, position relative to parent */
+    left: 0;
+    width: 100%; /* Make them span the width of the image container */
+    padding: 5px 10px; /* Add internal padding */
+    text-align: left; /* Align text to the left as per diagram */
+    box-sizing: border-box; /* Include padding in width calculation */
+    z-index: 2; /* Ensure they appear above the image */
+    background-color: rgba(28, 28, 28, 0.7); /* Semi-transparent background */
+    color: #f5f5f5; /* Default color for name */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Subtle text shadow for readability */
+}
+
+.item-name {
+    top: 0; /* Position at the top */
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 0; /* No margin on actual element, spacing from price is padding */
+    padding-top: 10px; /* More padding at the very top */
+    padding-bottom: 2px; /* Less padding below name */
+}
+
+.item-price {
+    top: 35px; /* Position below the name (adjust based on font size of name) */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #CC8833; /* Price color */
+    margin-top: 0; /* No margin here */
+    padding-top: 2px; /* Less padding above price */
+    padding-bottom: 10px; /* More padding at the very bottom */
+}
+
+
+/* New container for the buttons at the bottom */
+.item-bottom-actions {
+    padding: 10px; /* Padding inside this section */
+    border-top: 1px solid #333; /* Separator line above buttons */
+    background-color: #2a2a2a; /* Background for this section */
+    display: flex; /* Use flexbox for horizontal button layout */
     justify-content: center; /* Center buttons horizontally */
     gap: 10px; /* Space between buttons */
-    width: 100%; /* Make buttons container take full width */
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    flex-shrink: 0; /* Prevent this section from shrinking */
 }
 
 .more-info-btn,
-.buy-now-btn { /* Apply common styles to both buttons */
+.buy-now-btn {
     background-color: #A7875E;
     color: white;
     border: none;
@@ -134,7 +147,7 @@
 }
 
 .buy-now-btn {
-    background-color: #4CAF50; /* A distinct color for Buy Now */
+    background-color: #4CAF50;
 }
 
 .more-info-btn:hover {
@@ -143,10 +156,9 @@
 }
 
 .buy-now-btn:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
     transform: translateY(-1px);
 }
-
 
 /* --- Remaining (unchanged) Styles --- */
 .price-change {
@@ -321,14 +333,13 @@
     .marketplace-container {
         padding: 20px 20px;
     }
-    /* Adjust button layout for smaller screens */
-    .item-buttons {
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 8px; /* Reduce gap */
+    .item-bottom-actions {
+        flex-direction: column;
+        gap: 8px;
     }
     .more-info-btn,
     .buy-now-btn {
-        width: 100%; /* Make buttons full width */
+        width: 100%;
     }
 }
 
