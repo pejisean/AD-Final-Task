@@ -30,21 +30,21 @@
 
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="pages/marketplace.php"
+                    <a href="marketplace.php"
                         style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Marketplace</a>
-                    <a href="pages/electronics.php"
+                    <a href="electronics.php"
                         style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Electronics
                         & Power</a>
-                    <a href="pages/tools.php"
+                    <a href="tools.php"
                         style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Tools
                         & Equipment</a>
-                    <a href="pages/weapons.php"
+                    <a href="weapons.php"
                         style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Weapons
                         & Defense</a>
-                    <a href="pages/other.php"
+                    <a href="other.php"
                         style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Other
                         Essentials</a>
-                    <a href="pages/military.php"
+                    <a href="military.php"
                         style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Military
                         Grade</a>
                 </nav>
