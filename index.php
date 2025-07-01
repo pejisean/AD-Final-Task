@@ -16,6 +16,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,7 +60,7 @@
                 <a href="#">🛒 Cart (0)</a>
                 <a href="#">📄 History</a>
                 <a href="#">💬 Feedback</a>
-                <a href="#">ℹ️ About Us</a>
+                <a href="#about">ℹ️ About Us</a>
             </div>
         </header>
     </div>
@@ -117,8 +123,7 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about-section">
+        <section id="about" class="about-section">
             <h2>About The Last Trade Post</h2>
             <p>
                 Once the cities fell and the systems collapsed, only a few outposts remained—places where survivors
@@ -132,7 +137,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer>
         <div>
             <h4>Customer Service</h4>
