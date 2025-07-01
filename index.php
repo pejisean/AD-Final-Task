@@ -55,7 +55,6 @@
                 <a href="index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
                 <a href="#">📄 History</a>
-                <a href="#">📍 Location</a>
                 <a href="#">💬 Feedback</a>
                 <a href="#">ℹ️ About Us</a>
             </div>
