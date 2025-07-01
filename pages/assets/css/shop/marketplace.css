@@ -1,21 +1,33 @@
 .marketplace-container {
-    padding: 20px;
+    padding: 20px 40px; /* Added left and right padding here */
     background-color: #0A1215;
     color: #f5f5f5;
     min-height: calc(100vh - 180px);
 }
 
+.marketplace-header-controls {
+    display: flex;
+    /* Changed to center the items horizontally */
+    justify-content: center;
+    align-items: center;
+    /* Increased margin-bottom for more space below the button */
+    margin-bottom: 40px; /* Adjust this value as needed */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens */
+    text-align: center; /* Ensures the h1 is centered within its own space */
+}
+
 .marketplace-container h1 {
-    text-align: center;
+    text-align: center; /* Ensures the text inside h1 is centered */
     color: #A7875E;
-    margin-bottom: 30px;
+    /* Added margin-bottom to create space between the heading and the button */
+    margin-bottom: 20px; /* Adjust this value for vertical space */
     font-size: 2.5em;
     animation: pulse-glow 3s ease-in-out infinite;
+    width: 100%; /* Makes the h1 take full width within its flex container */
 }
 
 .add-item-button {
-    display: block;
-    margin: 20px auto 40px auto;
+    /* No changes needed here, as spacing is handled by h1's margin-bottom */
     padding: 12px 25px;
     background-color: #CC8833;
     color: #1C1C1C;
@@ -24,6 +36,7 @@
     font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 0; /* Keep this at 0 as h1 margin handles vertical spacing */
 }
 
 .add-item-button:hover {
@@ -31,12 +44,12 @@
     transform: translateY(-2px);
 }
 
-/* Styles for the new all-products-container */
+/* --- The rest of your CSS remains the same --- */
+
 .all-products-container {
     background-color: #0F1A1F;
     border: 1px solid #333;
     padding: 20px;
-    margin-top: 30px;
     border-radius: 10px;
 }
 
@@ -274,6 +287,7 @@
     background-color: #e09f4b;
 }
 
+/* Responsive adjustments for marketplace grid */
 @media (max-width: 1600px) {
     .marketplace-grid {
         grid-template-columns: repeat(5, 1fr);
@@ -290,11 +304,18 @@
     .marketplace-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+    /* Adjust padding for smaller screens */
+    .marketplace-container {
+        padding: 20px 30px;
+    }
 }
 
 @media (max-width: 768px) {
     .marketplace-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .marketplace-container {
+        padding: 20px 20px;
     }
 }
 
@@ -305,16 +326,17 @@
     .modal-content {
         padding: 20px;
     }
+    .marketplace-container {
+        padding: 15px 15px; /* Even less padding on very small screens */
+    }
 }
 
 @keyframes pulse-glow {
-
     0%,
     100% {
         color: #A7875E;
         text-shadow: 0 0 7px rgba(167, 135, 94, 0.4);
     }
-
     50% {
         color: #E6C8A3;
         text-shadow: 0 0 25px rgba(167, 135, 94, 0.9);
