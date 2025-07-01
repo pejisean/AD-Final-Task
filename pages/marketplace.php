@@ -25,7 +25,7 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="index.php"><img src="assets/img/HomeLogo.png" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
             </div>
 
             <div class="header-right">
