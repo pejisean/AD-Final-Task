@@ -4,48 +4,63 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Last Trade Post - Electronics & Power</title>
+    <title>The Last Trade Post - Home</title>
+    <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
-    <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
+    <link rel="stylesheet" href="assets/css/shop/marketplace.css"/>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- for h4 h5 h6 like big headings -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <!-- for <p> tag </p> -->
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- for header and footer </p> -->
 </head>
 
 <body>
     <div id="preloader">
         <div class="loader"></div>
     </div>
-
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
-                        alt="The Last Trade Post Logo"></a>
+                <a href="index.php"><img src="assets/img/HomeLogo.png" alt="The Last Trade Post Logo"></a>
             </div>
+
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="electronics.php">Electronics & Power</a>
-                    <a href="tools.php">Tools & Equipment</a>
-                    <a href="weapons.php">Weapons & Defense</a>
-                    <a href="other.php">Other Essentials</a>
-                    <a href="military.php">Military Grade</a>
+                    <a href="pages/marketplace.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Marketplace</a>
+                    <a href="pages/electronics.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Electronics
+                        & Power</a>
+                    <a href="pages/tools.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Tools
+                        & Equipment</a>
+                    <a href="pages/weapons.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Weapons
+                        & Defense</a>
+                    <a href="pages/other.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Other
+                        Essentials</a>
+                    <a href="pages/military.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Military
+                        Grade</a>
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
+
             <div class="dropdown-menu" id="dropdownMenu">
-                <a href="#"> Login / Sign Up</a>
-                <a href="../index.php"> Home</a>
-                <a href="#"> Cart (0)</a>
-                <a href="#"> History</a>
-                <a href="#"> Feedback</a>
-                <a href="#"> About Us</a>
+                <a href="#">👤 Login / Sign Up</a>
+                <a href="index.php">🏠 Home</a>
+                <a href="#">🛒 Cart (0)</a>
+                <a href="#">📄 History</a>
+                <a href="#">💬 Feedback</a>
+                <a href="#">ℹ️ About Us</a>
             </div>
         </header>
     </div>
@@ -57,18 +72,14 @@
 
         <div class="marketplace-grid" id="marketplaceGrid">
             <div class="product-card" data-name="Sport Gloves Pandora's Box" data-price="109931.04" data-description="Factory New Sport Gloves Pandora's Box. Exceedingly rare and highly sought after.">
-                <div class="item-header">
-                    <span class="item-condition">FACTORY NEW - 0.005</span>
-                </div>
                 <div class="item-image">
                     <img src="https://via.placeholder.com/150x100" alt="Item Image">
                 </div>
                 <div class="item-details">
                     <p class="item-name">Sport Gloves Pandora's Box</p>
-                    <p class="item-price">109,931.04<span class="price-change positive">+1.67%</span></p>
+                    <p class="item-price">109,931.04</p>
                 </div>
                 <div class="item-actions">
-                    <span class="item-status offline">Offline</span>
                     <button class="more-info-btn">More Info</button>
                 </div>
             </div>
@@ -89,23 +100,8 @@
                     <input type="number" id="itemPrice" step="0.01" required>
                 </div>
                 <div class="form-group">
-                    <label for="itemCondition">Item Condition:</label>
-                    <input type="text" id="itemCondition" placeholder="e.g., FACTORY NEW - 0.005">
-                </div>
-                <div class="form-group">
-                    <label for="itemStatus">Status:</label>
-                    <select id="itemStatus">
-                        <option value="online">Online</option>
-                        <option value="offline">Offline</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="itemPriceChange">Price Change (e.g., +1.67%):</label>
-                    <input type="text" id="itemPriceChange" placeholder="+1.67%">
-                </div>
-                <div class="form-group">
-                    <label for="itemImage">Image URL:</label>
-                    <input type="url" id="itemImage" placeholder="https://via.placeholder.com/150x100">
+                    <label for="itemImage">Item Image (PNG only):</label>
+                    <input type="file" id="itemImage" accept=".png" required>
                 </div>
                 <div class="form-group">
                     <label for="itemDescription">Item Description:</label>
