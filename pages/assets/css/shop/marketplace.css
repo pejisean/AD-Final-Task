@@ -5,29 +5,30 @@
     min-height: calc(100vh - 180px);
 }
 
+/* --- Corrected Styles for Header Controls --- */
 .marketplace-header-controls {
-    display: flex;
-    /* Changed to center the items horizontally */
-    justify-content: center;
-    align-items: center;
-    /* Increased margin-bottom for more space below the button */
-    margin-bottom: 40px; /* Adjust this value as needed */
-    flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens */
-    text-align: center; /* Ensures the h1 is centered within its own space */
+    display: flex; /* Makes children (h1 and button) align in a row */
+    justify-content: space-between; /* Pushes h1 to left, button to right */
+    align-items: center; /* Vertically aligns them in the middle */
+    margin-bottom: 20px; /* Space between this section and the products container */
+    /* Remove text-align: center; and flex-wrap: wrap; for this layout */
 }
 
 .marketplace-container h1 {
-    text-align: center; /* Ensures the text inside h1 is centered */
+    /* Keep existing h1 styles */
     color: #A7875E;
-    /* Added margin-bottom to create space between the heading and the button */
-    margin-bottom: 20px; /* Adjust this value for vertical space */
     font-size: 2.5em;
     animation: pulse-glow 3s ease-in-out infinite;
-    width: 100%; /* Makes the h1 take full width within its flex container */
+    /* Important: Removed margin-bottom and width: 100%; for h1
+       This allows it to take only the space it needs, letting the button move right.
+       We'll add vertical space below the heading/button pair using the container's margin-bottom.
+    */
+    margin-bottom: 0; /* Ensures no extra space below h1 if it's not the primary spacing element */
+    text-align: left; /* Default alignment within its flex item space */
+    /* Remove width: 100%; as it would force the button to a new line */
 }
 
 .add-item-button {
-    /* No changes needed here, as spacing is handled by h1's margin-bottom */
     padding: 12px 25px;
     background-color: #CC8833;
     color: #1C1C1C;
@@ -36,7 +37,8 @@
     font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin: 0; /* Keep this at 0 as h1 margin handles vertical spacing */
+    margin-left: 20px; /* Added margin-left for vertical space between heading and button */
+    /* Adjust this value to add more or less horizontal space */
 }
 
 .add-item-button:hover {
