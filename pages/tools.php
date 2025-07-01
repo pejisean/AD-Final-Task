@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Last Trade Post - Tools & Equipment</title>
-    <link rel="stylesheet" href="assets/css/headfoot.css" />
+    <title>The Last Trade Post - Electronics & Power</title>
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <link rel="stylesheet" href="assets/css/trading/trading.css" />
     <script src="assets/js/script.js"></script>
