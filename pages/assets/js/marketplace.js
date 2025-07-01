@@ -38,11 +38,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const itemName = document.getElementById('itemName').value;
         const itemPrice = parseFloat(document.getElementById('itemPrice').value).toFixed(2);
-        const itemCondition = document.getElementById('itemCondition').value;
-        const itemStatus = document.getElementById('itemStatus').value;
-        const itemPriceChange = document.getElementById('itemPriceChange').value;
-        const itemImage = document.getElementById('itemImage').value;
+        const itemImageInput = document.getElementById('itemImage');
         const itemDescription = document.getElementById('itemDescription').value;
+
+        // Handle file upload
+        let itemImageUrl = 'https://via.placeholder.com/150x100'; // Default placeholder
+        if (itemImageInput.files.length > 0) {
+            const file = itemImageInput.files[0];
+            if (file.type === 'image/png') {
+                itemImageUrl = URL.createObjectURL(file); // Create a URL for the selected file
+            } else {
+                alert('Please upload a PNG image file.');
+                return; // Stop form submission if not PNG
+            }
+        }
 
         // Create new product card
         const newProductCard = document.createElement('div');
@@ -52,18 +61,14 @@ document.addEventListener('DOMContentLoaded', function() {
         newProductCard.dataset.description = itemDescription;
 
         newProductCard.innerHTML = `
-            <div class="item-header">
-                <span class="item-condition">${itemCondition || 'N/A'}</span>
-            </div>
             <div class="item-image">
-                <img src="${itemImage || 'https://via.placeholder.com/150x100'}" alt="${itemName}">
+                <img src="${itemImageUrl}" alt="${itemName}">
             </div>
             <div class="item-details">
                 <p class="item-name">${itemName}</p>
-                <p class="item-price">${itemPrice}<span class="price-change ${itemPriceChange.includes('+') ? 'positive' : (itemPriceChange.includes('-') ? 'negative' : '')}">${itemPriceChange || ''}</span></p>
+                <p class="item-price">${itemPrice}</p>
             </div>
             <div class="item-actions">
-                <span class="item-status ${itemStatus}">${itemStatus.charAt(0).toUpperCase() + itemStatus.slice(1)}</span>
                 <button class="more-info-btn">More Info</button>
             </div>
         `;
