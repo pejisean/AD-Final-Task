@@ -11,21 +11,14 @@
     justify-content: space-between; /* Pushes h1 to left, button to right */
     align-items: center; /* Vertically aligns them in the middle */
     margin-bottom: 20px; /* Space between this section and the products container */
-    /* Remove text-align: center; and flex-wrap: wrap; for this layout */
 }
 
 .marketplace-container h1 {
-    /* Keep existing h1 styles */
     color: #A7875E;
     font-size: 2.5em;
     animation: pulse-glow 3s ease-in-out infinite;
-    /* Important: Removed margin-bottom and width: 100%; for h1
-       This allows it to take only the space it needs, letting the button move right.
-       We'll add vertical space below the heading/button pair using the container's margin-bottom.
-    */
-    margin-bottom: 0; /* Ensures no extra space below h1 if it's not the primary spacing element */
-    text-align: left; /* Default alignment within its flex item space */
-    /* Remove width: 100%; as it would force the button to a new line */
+    margin-bottom: 0;
+    text-align: left;
 }
 
 .add-item-button {
@@ -37,8 +30,7 @@
     font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-left: 20px; /* Added margin-left for vertical space between heading and button */
-    /* Adjust this value to add more or less horizontal space */
+    margin-left: 20px; /* Added margin-left for horizontal space between heading and button */
 }
 
 .add-item-button:hover {
@@ -46,7 +38,7 @@
     transform: translateY(-2px);
 }
 
-/* --- The rest of your CSS remains the same --- */
+/* --- Existing Styles (Mostly unchanged, with minor adjustments for item-details) --- */
 
 .all-products-container {
     background-color: #0F1A1F;
@@ -69,7 +61,7 @@
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* This is key for vertical stacking */
     justify-content: space-between;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -95,6 +87,8 @@
 .item-image {
     padding: 10px;
     text-align: center;
+    /* Added some bottom margin for space between image and actions */
+    margin-bottom: 10px;
 }
 
 .item-image img {
@@ -106,7 +100,9 @@
 .item-details {
     padding: 10px;
     text-align: center;
-    flex-grow: 1;
+    /* Removed flex-grow: 1; if it makes item-details take up too much vertical space when placed first */
+    /* Add some bottom margin for space between details and image */
+    margin-bottom: 10px;
 }
 
 .item-name {
@@ -306,7 +302,6 @@
     .marketplace-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    /* Adjust padding for smaller screens */
     .marketplace-container {
         padding: 20px 30px;
     }
@@ -329,7 +324,7 @@
         padding: 20px;
     }
     .marketplace-container {
-        padding: 15px 15px; /* Even less padding on very small screens */
+        padding: 15px 15px;
     }
 }
 
