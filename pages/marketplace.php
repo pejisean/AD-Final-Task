@@ -14,9 +14,8 @@
     <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    </head>
 
 <body>
     <div id="preloader">
@@ -30,20 +29,12 @@
 
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="marketplace.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Marketplace</a>
-                    <a href="electronics.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Electronics</a>
-                    <a href="tools.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Tools</a>
-                    <a href="weapons.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Weapons</a>
-                    <a href="other.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Other
-                        Essentials</a>
-                    <a href="military.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Military
-                        Grade</a>
+                    <a href="marketplace.php">Marketplace</a>
+                    <a href="electronics.php">Electronics & Power</a>
+                    <a href="tools.php">Tools & Equipment</a>
+                    <a href="weapons.php">Weapons & Defense</a>
+                    <a href="other.php">Other Essentials</a>
+                    <a href="military.php">Military Grade</a>
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
@@ -60,12 +51,25 @@
     </div>
 
     <main class="marketplace-container">
-        <h1>Marketplace</h1>
-
-        <button id="addItemBtn" class="add-item-button">Add New Item</button>
+        <div class="marketplace-header-controls">
+            <h1>Marketplace</h1>
+            <button id="addItemBtn" class="add-item-button">Add New Item</button>
+        </div>
 
         <div class="all-products-container">
             <div class="marketplace-grid" id="marketplaceGrid">
+                <div class="product-card" data-name="Sport Gloves Pandora's Box" data-price="109931.04" data-description="Factory New Sport Gloves Pandora's Box. Exceedingly rare and highly sought after.">
+                    <div class="item-image">
+                        <img src="https://via.placeholder.com/150x100" alt="Item Image">
+                    </div>
+                    <div class="item-details">
+                        <p class="item-name">Sport Gloves Pandora's Box</p>
+                        <p class="item-price">109,931.04</p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="more-info-btn">More Info</button>
+                    </div>
+                </div>
                 <div class="product-card" data-name="Tactical Backpack" data-price="85.50" data-description="Durable tactical backpack with multiple compartments, ideal for outdoor survival.">
                     <div class="item-image">
                         <img src="https://via.placeholder.com/150x100" alt="Tactical Backpack">
