@@ -77,6 +77,8 @@ function handleLogin() {
     } else if (foundUser.password !== password) { // In a real app, compare hashed passwords!
         displayFormMessage('Incorrect password. Please try again.', 'error');
     } else {
+        localStorage.setItem('loggedInCodename', codename); // Store the logged-in codename
+
         displayFormMessage('Login successful! Redirecting to home...', 'success');
         // Redirect to index.php after successful login
         setTimeout(() => {
