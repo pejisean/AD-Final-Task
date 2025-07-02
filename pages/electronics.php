@@ -2,20 +2,19 @@
 <html lang="en" class="hide-scrollbar">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Last Trade Post - Electronics</title>
-    <link rel="stylesheet" href="assets/css/global.css"/>
-    <link rel="stylesheet" href="assets/css/header.css"/>
-    <link rel="stylesheet" href="assets/css/footer.css"/>
-    <link rel="stylesheet" href="assets/css/shop/trading.css"/>
-    <link rel="stylesheet" href="assets/css/loader.css"/>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
+    <link rel="stylesheet" href="assets/css/loader.css" />
     <script src="assets/js/script.js"></script>
     <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
@@ -26,17 +25,26 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
 
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="marketplace.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Marketplace</a>
-                    <a href="electronics.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Electronics</a>
-                    <a href="tools.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Tools</a>
-                    <a href="weapons.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Weapons</a>
-                    <a href="other.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Other Essentials</a>
-                    <a href="military.php" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Military Grade</a>
+                    <a href="marketplace.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Marketplace</a>
+                    <a href="electronics.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Electronics</a>
+                    <a href="tools.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Tools</a>
+                    <a href="weapons.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Weapons</a>
+                    <a href="other.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Other
+                        Essentials</a>
+                    <a href="military.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Military
+                        Grade</a>
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>

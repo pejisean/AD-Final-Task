@@ -3,19 +3,18 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Last Trade Post - Weapons</title>
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/shop/trading.css"/>
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <script src="assets/js/script.js"></script>
     <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
@@ -25,7 +24,8 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
 
             <div class="header-right">
@@ -62,7 +62,8 @@
     <div class="products-container">
         <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
         <div class="showcase-container">
-            <section class="showcase-hero" style="background-image: url('assets/img/weapons/sentry-platform-showcase.jpg');">
+            <section class="showcase-hero"
+                style="background-image: url('assets/img/weapons/sentry-platform-showcase.jpg');">
                 <div class="showcase-content">
                     <span class="showcase-discount">Ultimate Defense: Save ₱8,000</span>
                     <h3>Automated Sentry Platform (Unarmed)</h3>
@@ -74,7 +75,8 @@
                 </div>
             </section>
             <div class="showcase-right-column">
-                <section class="showcase-promo-card showcase-card-top" style="background-image: url('assets/img/weapons/scrap-armor-showcase.jpg');">
+                <section class="showcase-promo-card showcase-card-top"
+                    style="background-image: url('assets/img/weapons/scrap-armor-showcase.jpg');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱2,500</span>
                         <h3>Scrap Metal Armor Set (Torso & Pauldrons)</h3>
@@ -85,7 +87,8 @@
                         </div>
                     </div>
                 </section>
-                <section class="showcase-promo-card showcase-card-bottom" style="background-image: url('assets/img/weapons/pipe-pistol-kit-showcase.jpg');">
+                <section class="showcase-promo-card showcase-card-bottom"
+                    style="background-image: url('assets/img/weapons/pipe-pistol-kit-showcase.jpg');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱1,200</span>
                         <h3>Pipe Pistol Assembly Kit (.38 Special)</h3>
@@ -115,7 +118,8 @@
             </div>
         </div>
         <section class="products" id="new-arrivals-grid">
-            <div class="product-card" data-price="3200" style="background-image: url('assets/img/weapons/trap-mechanism.jpg');">
+            <div class="product-card" data-price="3200"
+                style="background-image: url('assets/img/weapons/trap-mechanism.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱700</span>
                     <h3>Remote-Triggered Trap Mechanism</h3>
@@ -126,7 +130,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1800" style="background-image: url('assets/img/weapons/caltrops.jpg');">
+            <div class="product-card" data-price="1800"
+                style="background-image: url('assets/img/weapons/caltrops.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱400</span>
                     <h3>Caltrops (Bag of 50)</h3>
@@ -137,7 +142,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="4500" style="background-image: url('assets/img/weapons/riot-shield.jpg');">
+            <div class="product-card" data-price="4500"
+                style="background-image: url('assets/img/weapons/riot-shield.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱950</span>
                     <h3>Welded Steel Riot Shield</h3>
@@ -148,7 +154,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1500" style="background-image: url('assets/img/weapons/slingshot.jpg');">
+            <div class="product-card" data-price="1500"
+                style="background-image: url('assets/img/weapons/slingshot.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱350</span>
                     <h3>Heavy-Duty Slingshot & Steel Bearings</h3>
@@ -165,7 +172,8 @@
     <div class="products-container">
         <h2 class="section-title" style="user-select: none;">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
-            <div class="product-card" data-price="1200" style="background-image: url('assets/img/weapons/barbed-bat.jpg');">
+            <div class="product-card" data-price="1200"
+                style="background-image: url('assets/img/weapons/barbed-bat.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱300</span>
                     <h3>Reinforced Baseball Bat (Barbed Wire)</h3>
@@ -176,7 +184,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="2500" style="background-image: url('assets/img/weapons/machete.jpg');">
+            <div class="product-card" data-price="2500"
+                style="background-image: url('assets/img/weapons/machete.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱500</span>
                     <h3>Combat Machete with Sheath</h3>
@@ -187,7 +196,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="4100" style="background-image: url('assets/img/weapons/breaching-tomahawk.jpg');">
+            <div class="product-card" data-price="4100"
+                style="background-image: url('assets/img/weapons/breaching-tomahawk.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱800</span>
                     <h3>Breaching Tomahawk</h3>
@@ -198,7 +208,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="2800" style="background-image: url('assets/img/weapons/forearm-guards.jpg');">
+            <div class="product-card" data-price="2800"
+                style="background-image: url('assets/img/weapons/forearm-guards.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱650</span>
                     <h3>Plated Forearm Guards (Pair)</h3>
@@ -209,7 +220,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="950" style="background-image: url('assets/img/weapons/shotgun-blueprints.jpg');">
+            <div class="product-card" data-price="950"
+                style="background-image: url('assets/img/weapons/shotgun-blueprints.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>Slam-Fire Shotgun Blueprints (12 Gauge)</h3>
@@ -220,7 +232,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="900" style="background-image: url('assets/img/weapons/rebar-spear.jpg');">
+            <div class="product-card" data-price="900"
+                style="background-image: url('assets/img/weapons/rebar-spear.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>Sharpened Rebar Spear</h3>
@@ -231,7 +244,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="2600" style="background-image: url('assets/img/weapons/tripwire-alarm.jpg');">
+            <div class="product-card" data-price="2600"
+                style="background-image: url('assets/img/weapons/tripwire-alarm.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱550</span>
                     <h3>Tripwire Flare Alarm Kit (4-Pack)</h3>
@@ -242,7 +256,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="3100" style="background-image: url('assets/img/weapons/modded-helmet.jpg');">
+            <div class="product-card" data-price="3100"
+                style="background-image: url('assets/img/weapons/modded-helmet.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱700</span>
                     <h3>Modified Motorcycle Helmet</h3>
@@ -275,4 +290,5 @@
         </div>
     </footer>
 </body>
+
 </html>
