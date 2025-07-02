@@ -149,6 +149,12 @@ z-index: 2;
     margin-bottom: 40px;
 }
 
+.about-section-p {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+}
+
 .about-section h2 {
     font-size: 1.8em;
     color: #A7875E;
