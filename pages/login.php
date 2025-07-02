@@ -29,17 +29,10 @@
                 <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
             </div>
             <div class="header-right">
-                <nav class="main-nav">
-                    <a href="electronics.php">Electronics & Power</a>
-                    <a href="tools.php">Tools & Equipment</a>
-                    <a href="weapons.php">Weapons & Defense</a>
-                    <a href="other.php">Other Essentials</a>
-                    <a href="military.php">Military Grade</a>
-                </nav>
+
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
             <div class="dropdown-menu" id="dropdownMenu">
-                <!-- This link now points to itself as the entry point for login/signup flow -->
                 <a href="login.php">👤 Login / Sign Up</a>
                 <a href="../index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
