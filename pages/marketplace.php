@@ -27,14 +27,23 @@
                 <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
             </div>
 
+
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="marketplace.php">Marketplace</a>
-                    <a href="electronics.php">Electronics</a>
-                    <a href="tools.php">Tools</a>
-                    <a href="weapons.php">Weapons</a>
-                    <a href="other.php">Other Essentials</a>
-                    <a href="military.php">Military Grade</a>
+                    <a href="marketplace.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Marketplace</a>
+                    <a href="electronics.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Electronics</a>
+                    <a href="tools.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Tools</a>
+                    <a href="weapons.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Weapons</a>
+                    <a href="other.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Other
+                        Essentials</a>
+                    <a href="military.php"
+                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; cursor: pointer;">Military
+                        Grade</a>
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
