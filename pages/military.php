@@ -59,8 +59,50 @@
             </div>
         </header>
     </div>
-
-
+<body>
+    <div class="products-container">
+    <h2 class="section-title1">MILITARY GRADED WEAPONS AND ITEMS</h2>
+    <div class="showcase-container reversed-showcase">
+        <div class="showcase-left-column">
+            <section class="showcase-promo-card showcase-card-top"
+                     style="background-image: url('assets/img/electronics/jumper.png');">
+                <div class="showcase-content">
+                    <span class="showcase-discount">Save ₱400</span>
+                    <h3>Heavy-Duty Jumper Cables (8-Gauge)</h3>
+                    <p>₱1,500.00</p>
+                    <div class="showcase-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </section>
+            <section class="showcase-promo-card showcase-card-bottom"
+                     style="background-image: url('assets/img/electronics/surge.png');">
+                <div class="showcase-content">
+                    <span class="showcase-discount">Save ₱350</span>
+                    <h3>Smart Surge Protector Power Strip</h3>
+                    <p>₱1,250.00</p>
+                    <div class="showcase-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="showcase-hero" style="background-image: url('assets/img/electronics/powerbank.png');">
+            <div class="showcase-content">
+                <span class="showcase-discount">Deal of the Week: Save ₱550</span>
+                <h3>20,000mAh Dual-Port Power Bank</h3>
+                <p>₱1,850.00</p>
+                <div class="showcase-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
     <!-- Footer -->
     <footer>
         <div>
