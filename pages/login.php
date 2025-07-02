@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
-    <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
     <!-- Link to your new login CSS -->
     <link rel="stylesheet" href="assets/css/login.css" />
     <!-- Link to your general script.js (for toggleMenu etc.) -->
