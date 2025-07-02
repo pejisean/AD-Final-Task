@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
     <!-- Link to your new sign-up CSS -->
     <link rel="stylesheet" href="assets/css/signup.css" />
+    <!-- Link to your general script.js -->
     <script src="assets/js/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
@@ -112,6 +113,9 @@
             <a href="#">Community</a>
         </div>
     </footer>
+
+    <!-- Link to the external signup JavaScript file -->
+    <script src="assets/js/signup.js"></script>
 </body>
 
 </html>
