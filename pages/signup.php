@@ -25,14 +25,12 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <!-- Ensure this path is correct relative to signup.php -->
                 <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
             </div>
             <div class="header-right">
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
             <div class="dropdown-menu" id="dropdownMenu">
-                <!-- This link now points to login.php as the entry point for login/signup flow -->
                 <a href="login.php">👤 Login / Sign Up</a>
                 <a href="../index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
