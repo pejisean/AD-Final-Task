@@ -1,8 +1,8 @@
 services:
-  web-app-php:
+  the-last-tradepost:
     build:
       context: .
-    container_name: web-app-php-service
+    container_name: the-last-tradepost-service
     ports:
       - "8000:8000"
     develop:
@@ -15,23 +15,11 @@ services:
         - path: ./composer.lock
           action: rebuild
     depends_on:
-      - mongodb
-
-  mongodb:
-    image: mongo:latest
-    container_name: web-app-php-mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootPassword
-      MONGO_INITDB_DATABASE: mydatabase
-    ports:
-      - "27111:27017"
-    volumes:
-      - web-app-php-mongodb:/data/db/mongodb
+      - postgresql
 
   postgresql:
     image: postgres:15
-    container_name: web-app-php-postgresql
+    container_name: the-last-tradepost-postgresql
     restart: always
     environment:
       POSTGRES_USER: user
@@ -40,10 +28,8 @@ services:
     ports:
       - "5112:5432"
     volumes:
-      - web-app-php-postgresql:/data/db/postgresql
+      - the-last-tradepost-postgresql:/data/db/postgresql
 
 volumes:
-  web-app-php-mongodb:
-    driver: local
-  web-app-php-postgresql:
+  the-last-tradepost-postgresql:
     driver: local
