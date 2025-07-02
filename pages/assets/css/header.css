@@ -76,8 +76,6 @@ header {
 .main-nav a:hover {
     color: #ddb27e;
     transform: scale(1.25);
-    padding: 20px 45px;
-    margin: 0 -15px;
 }
 
 .main-nav a.active {
