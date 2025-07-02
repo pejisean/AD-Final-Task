@@ -67,7 +67,7 @@
 .login-button {
     width: 100%;
     padding: 15px;
-    background-color: var(--vibrant-blue, #3498db);
+    background-color: var(--vibrant-blue, rgb(53, 115, 156));
     color: #ffffff;
     border: none;
     border-radius: 5px;
