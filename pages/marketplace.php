@@ -30,8 +30,8 @@
             <div class="header-right">
                 <nav class="main-nav">
                     <a href="marketplace.php">Marketplace</a>
-                    <a href="electronics.php">Electronics & Power</a>
-                    <a href="tools.php">Tools & Equipment</a>
+                    <a href="electronics.php">Electronics</a>
+                    <a href="tools.php">Tools</a>
                     <a href="weapons.php">Weapons & Defense</a>
                     <a href="other.php">Other Essentials</a>
                     <a href="military.php">Military Grade</a>
