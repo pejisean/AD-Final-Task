@@ -27,7 +27,6 @@
                 <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
             </div>
 
-
             <div class="header-right">
                 <nav class="main-nav">
                     <a href="marketplace.php"
