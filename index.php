@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+
     <style>
         html {
             scroll-behavior: smooth;
@@ -74,7 +74,7 @@
                 <img src="assets/img/home1.png" alt="Apocalyptic survivor hero image">
             </div>
             <div class="hero-text">
-                <h1>The Last Trade Postss</h1>
+                <h1>The Last Trade Post</h1>
                 <p>Survive. Trade. Rebuild. In the aftermath of the collapse, this is your ultimate marketplace for
                     survival gear and critical supplies.</p>
             </div>
