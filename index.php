@@ -71,13 +71,13 @@
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-image">
-                <img src="assets/img/home1.png" alt="Apocalyptic survivor hero image">
-            </div>
-            <div class="hero-text">
-                <h1>The Last Trade Post</h1>
-                <p>Survive. Trade. Rebuild. In the aftermath of the collapse, this is your ultimate marketplace for
-                    survival gear and critical supplies.</p>
+            <div class="hero-wrapper">
+                <div class="hero-text">
+                    <span class="hero-subtitle">Survive. Trade. Rebuild.</span>
+                    <h1 class="hero-title">Your ultimate marketplace for survival gear and supplies.</h1>
+                    <p class="hero-description">Post-apocalyptic trading begins here.</p>
+                </div>
+                <img src="assets/img/home1.png" alt="Apocalyptic survivor hero image" class="hero-image">
             </div>
         </section>
 
@@ -127,9 +127,34 @@
         <section id="about" class="about-section">
             <h2>About The Last Trade Post</h2>
             <p class="about-section-p">
-Let's be real—the world's a mess. Ever since the great burnout, it’s all been about picking through the bones of the old world, trying to find something useful before something nasty finds you. Out in the wastes, you hear whispers on scrambled comms about a place that's more than just another ruin, a spot on the map with lights that stay on. That's us. The Last Trade Post. We’re the anchor in the chaos, the place you limp to when you need to re-equip and reload. Before you even get to the people, you see our own stock, and we don't mess around with junk. We’ve got the gear that actually works, the real stuff that keeps you breathing for another day. You need power? We’ve got juice boxes and patched-up solar rigs that’ll get your corner of the world lit again. Our tool section is packed with hardened steel that won't snap on you when you're prying open a sealed door or trying to fix your ride. And yeah, we've got the hardware that solves the kind of problems you run into out there. We’ve got everything from a simple hand-cannon to the serious, military-grade ordnance the old-world soldiers dropped when they ran. This is the top-tier stuff you hear stories about—armor plates that’ll actually stop a round, scopes that see in the dead of night, and weapons that make damn sure you're the one walking away. It’s all here, a one-stop shop for not dying.
-<br><br>
-But here’s the real secret to this place, the thing that makes it tick: it's not just about what we stock. The Last Trade Post is a living, breathing marketplace, the biggest flea market at the end of the world, and it's powered entirely by people like you. It's driven by the lone scavengers hauling in a bag of salvaged components, by the organized crews looking to offload surplus gear after a successful run, and by the twitchy tech-head who just jury-rigged some new gadget and wants to trade it for something they need. Found something valuable out in the rust? Don't just sit on it. Bring it here, post it up, and turn that lucky find into a real payday. You're not just buying from some faceless shop; you're trading with another survivor who pulled that very item out of the rubble, probably with a hell of a story to tell about how they got it. It’s a whole ecosystem built on hustle and street cred. This is where you can turn a bag of bolts into a new weapon, or trade that extra armor plate for a water purifier that'll save your life next week. We just run the place and keep things from getting too bloody. You, the people, are the pulse. This is the new economy—it's raw, it's direct, and it's how we're all gonna build something new from the wreckage. One trade at a time.
+                Let's be real—the world's a mess. Ever since the great burnout, it’s all been about picking through the
+                bones of the old world, trying to find something useful before something nasty finds you. Out in the
+                wastes, you hear whispers on scrambled comms about a place that's more than just another ruin, a spot on
+                the map with lights that stay on. That's us. The Last Trade Post. We’re the anchor in the chaos, the
+                place you limp to when you need to re-equip and reload. Before you even get to the people, you see our
+                own stock, and we don't mess around with junk. We’ve got the gear that actually works, the real stuff
+                that keeps you breathing for another day. You need power? We’ve got juice boxes and patched-up solar
+                rigs that’ll get your corner of the world lit again. Our tool section is packed with hardened steel that
+                won't snap on you when you're prying open a sealed door or trying to fix your ride. And yeah, we've got
+                the hardware that solves the kind of problems you run into out there. We’ve got everything from a simple
+                hand-cannon to the serious, military-grade ordnance the old-world soldiers dropped when they ran. This
+                is the top-tier stuff you hear stories about—armor plates that’ll actually stop a round, scopes that see
+                in the dead of night, and weapons that make damn sure you're the one walking away. It’s all here, a
+                one-stop shop for not dying.
+                <br><br>
+                But here’s the real secret to this place, the thing that makes it tick: it's not just about what we
+                stock. The Last Trade Post is a living, breathing marketplace, the biggest flea market at the end of the
+                world, and it's powered entirely by people like you. It's driven by the lone scavengers hauling in a bag
+                of salvaged components, by the organized crews looking to offload surplus gear after a successful run,
+                and by the twitchy tech-head who just jury-rigged some new gadget and wants to trade it for something
+                they need. Found something valuable out in the rust? Don't just sit on it. Bring it here, post it up,
+                and turn that lucky find into a real payday. You're not just buying from some faceless shop; you're
+                trading with another survivor who pulled that very item out of the rubble, probably with a hell of a
+                story to tell about how they got it. It’s a whole ecosystem built on hustle and street cred. This is
+                where you can turn a bag of bolts into a new weapon, or trade that extra armor plate for a water
+                purifier that'll save your life next week. We just run the place and keep things from getting too
+                bloody. You, the people, are the pulse. This is the new economy—it's raw, it's direct, and it's how
+                we're all gonna build something new from the wreckage. One trade at a time.
             </p>
         </section>
 
