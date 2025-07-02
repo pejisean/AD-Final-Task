@@ -10,18 +10,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const descriptionModalTitle = document.getElementById('descriptionModalTitle');
     const descriptionModalText = document.getElementById('descriptionModalText');
 
-    // Show Add Item Modal
     addItemBtn.addEventListener('click', function() {
         addItemModal.style.display = 'flex';
     });
 
-    // Close Add Item Modal
     closeAddItemModal.addEventListener('click', function() {
         addItemModal.style.display = 'none';
-        addItemForm.reset(); // Clear form on close
+        addItemForm.reset();
     });
 
-    // Close modal if clicked outside
     window.addEventListener('click', function(event) {
         if (event.target == addItemModal) {
             addItemModal.style.display = 'none';
@@ -32,9 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle Add Item Form Submission
     addItemForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
         const itemName = document.getElementById('itemName').value;
         const itemPrice = parseFloat(document.getElementById('itemPrice').value).toFixed(2);
@@ -42,14 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const itemDescription = document.getElementById('itemDescription').value;
 
         // Handle file upload
-        let itemImageUrl = 'https://via.placeholder.com/150x100'; // Default placeholder
+        let itemImageUrl = 'https://via.placeholder.com/150x100';
         if (itemImageInput.files.length > 0) {
             const file = itemImageInput.files[0];
             if (file.type === 'image/png') {
-                itemImageUrl = URL.createObjectURL(file); // Create a URL for the selected file
+                itemImageUrl = URL.createObjectURL(file);
             } else {
                 alert('Please upload a PNG image file.');
-                return; // Stop form submission if not PNG
+                return;
             }
         }
 
@@ -73,16 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
-        marketplaceGrid.prepend(newProductCard); // Add new card to the beginning of the grid
+        marketplaceGrid.prepend(newProductCard);
 
-        addItemModal.style.display = 'none'; // Hide modal
-        addItemForm.reset(); // Reset form
+        addItemModal.style.display = 'none';
+        addItemForm.reset();
 
-        // Re-attach event listener for the new "More Info" button
         attachMoreInfoListeners();
     });
 
-    // Function to attach More Info button listeners
     function attachMoreInfoListeners() {
         document.querySelectorAll('.more-info-btn').forEach(button => {
             button.onclick = function() {
@@ -97,10 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Attach listeners initially for existing cards
     attachMoreInfoListeners();
 
-    // Close Item Description Modal
     closeDescriptionModal.addEventListener('click', function() {
         itemDescriptionModal.style.display = 'none';
     });
