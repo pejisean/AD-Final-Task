@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
     <!-- Link to your new sign-up CSS -->
     <link rel="stylesheet" href="assets/css/signup.css" />
-    <!-- Link to your general script.js -->
+    <!-- Link to your general script.js (for toggleMenu etc.) -->
     <script src="assets/js/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
