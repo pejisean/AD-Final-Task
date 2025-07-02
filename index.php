@@ -54,10 +54,8 @@
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
 
-            <!-- UPDATED DROPDOWN MENU LINKS -->
             <div class="dropdown-menu" id="dropdownMenu">
-                <a href="pages/login.php">👤 Login</a>
-                <a href="pages/signup.php">➕ Sign Up</a>
+                <a href="#">👤 Login / Sign Up</a>
                 <a href="index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
                 <a href="#">📄 History</a>
