@@ -13,11 +13,14 @@
 }
 
 .marketplace-container h1 {
-    color: #A7875E;
+    margin: 20px;
     font-size: 2.5em;
-    animation: pulse-glow 3s ease-in-out infinite;
-    margin-bottom: 0;
-    text-align: left;
+    color: #A7875E;
+    border-bottom: 2px solid #A7875E;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    animation: pulse-glow 4s ease-in-out infinite;
 }
 
 .add-item-button {
@@ -95,9 +98,9 @@
     font-size: 1.1em;
     font-weight: bold;
     color: #f5f5f5;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%);
     z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .item-price {
@@ -109,9 +112,9 @@
     font-size: 1.2em;
     font-weight: bold;
     color: #CC8833;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0.7) 100%);
     z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .item-bottom-actions {
@@ -190,7 +193,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
 }
@@ -204,7 +207,7 @@
     width: 90%;
     max-width: 500px;
     position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     color: #f5f5f5;
 }
 
@@ -310,6 +313,7 @@
     .marketplace-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
     .marketplace-container {
         padding: 20px 30px;
     }
@@ -319,13 +323,16 @@
     .marketplace-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .marketplace-container {
         padding: 20px 20px;
     }
+
     .item-bottom-actions {
         flex-direction: column;
         gap: 8px;
     }
+
     .more-info-btn,
     .buy-now-btn {
         width: 100%;
@@ -336,20 +343,24 @@
     .marketplace-grid {
         grid-template-columns: 1fr;
     }
+
     .modal-content {
         padding: 20px;
     }
+
     .marketplace-container {
         padding: 15px 15px;
     }
 }
 
 @keyframes pulse-glow {
+
     0%,
     100% {
         color: #A7875E;
         text-shadow: 0 0 7px rgba(167, 135, 94, 0.4);
     }
+
     50% {
         color: #E6C8A3;
         text-shadow: 0 0 25px rgba(167, 135, 94, 0.9);
