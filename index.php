@@ -130,9 +130,6 @@ Let's be real—the world's a mess. Ever since the great burnout, it’s all bee
 <br><br>
 But here’s the real secret to this place, the thing that makes it tick: it's not just about what we stock. The Last Trade Post is a living, breathing marketplace, the biggest flea market at the end of the world, and it's powered entirely by people like you. It's driven by the lone scavengers hauling in a bag of salvaged components, by the organized crews looking to offload surplus gear after a successful run, and by the twitchy tech-head who just jury-rigged some new gadget and wants to trade it for something they need. Found something valuable out in the rust? Don't just sit on it. Bring it here, post it up, and turn that lucky find into a real payday. You're not just buying from some faceless shop; you're trading with another survivor who pulled that very item out of the rubble, probably with a hell of a story to tell about how they got it. It’s a whole ecosystem built on hustle and street cred. This is where you can turn a bag of bolts into a new weapon, or trade that extra armor plate for a water purifier that'll save your life next week. We just run the place and keep things from getting too bloody. You, the people, are the pulse. This is the new economy—it's raw, it's direct, and it's how we're all gonna build something new from the wreckage. One trade at a time.
             </p>
-            <div class="about-image">
-                <img src="assets/img/about-placeholder.jpg" alt="Trading outpost" />
-            </div>
         </section>
 
     </main>
