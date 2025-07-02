@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
+    <!-- All combined JavaScript is now in script.js -->
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -54,10 +54,9 @@
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
 
-            <!-- UPDATED DROPDOWN MENU LINKS -->
             <div class="dropdown-menu" id="dropdownMenu">
-                <!-- This single link now directs to login.php as requested -->
-                <a href="pages/login.php">👤 Login / Sign Up</a>
+                <!-- This link will be dynamically updated by JavaScript in script.js -->
+                <a id="login-signup-link" href="pages/login.php">👤 Login / Sign Up</a>
                 <a href="index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
                 <a href="#">📄 History</a>
