@@ -3,19 +3,18 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Last Trade Post - Other Essentials</title>
     <link rel="stylesheet" href="assets/css/global.css" />
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/shop/trading.css"/>
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <script src="assets/js/script.js"></script>
     <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
@@ -26,7 +25,8 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
 
             <div class="header-right">
@@ -62,7 +62,8 @@
     <div class="products-container">
         <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
         <div class="showcase-container">
-            <section class="showcase-hero" style="background-image: url('assets/img/products/first-aid-kit-showcase.jpg');">
+            <section class="showcase-hero"
+                style="background-image: url('assets/img/products/first-aid-kit-showcase.jpg');">
                 <div class="showcase-content">
                     <span class="showcase-discount">Priority Kit: Save ₱1,200</span>
                     <h3>Advanced First Aid Trauma Kit</h3>
@@ -74,7 +75,8 @@
                 </div>
             </section>
             <div class="showcase-right-column">
-                <section class="showcase-promo-card showcase-card-top" style="background-image: url('assets/img/products/survival-backpack-showcase.jpg');">
+                <section class="showcase-promo-card showcase-card-top"
+                    style="background-image: url('assets/img/products/survival-backpack-showcase.jpg');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱2,500</span>
                         <h3>72-Hour Survival Backpack</h3>
@@ -85,7 +87,8 @@
                         </div>
                     </div>
                 </section>
-                <section class="showcase-promo-card showcase-card-bottom" style="background-image: url('assets/img/products/water-filter-pump-showcase.jpg');">
+                <section class="showcase-promo-card showcase-card-bottom"
+                    style="background-image: url('assets/img/products/water-filter-pump-showcase.jpg');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱950</span>
                         <h3>High-Performance Water Filter Pump</h3>
@@ -116,7 +119,8 @@
         </div>
 
         <section class="products" id="new-arrivals-grid">
-            <div class="product-card" data-price="1100" style="background-image: url('assets/img/products/survival-handbook.jpg');">
+            <div class="product-card" data-price="1100"
+                style="background-image: url('assets/img/products/survival-handbook.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱300</span>
                     <h3>Waterproof Survival Handbook</h3>
@@ -127,7 +131,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="650" style="background-image: url('assets/img/products/signal-mirror.jpg');">
+            <div class="product-card" data-price="650"
+                style="background-image: url('assets/img/products/signal-mirror.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>Emergency Signal Mirror</h3>
@@ -138,7 +143,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="850" style="background-image: url('assets/img/products/utensil-set.jpg');">
+            <div class="product-card" data-price="850"
+                style="background-image: url('assets/img/products/utensil-set.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>Titanium Spork & Utensil Set</h3>
@@ -149,7 +155,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1200" style="background-image: url('assets/img/products/light-sticks.jpg');">
+            <div class="product-card" data-price="1200"
+                style="background-image: url('assets/img/products/light-sticks.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱350</span>
                     <h3>Chemical Light Sticks (12-Pack)</h3>
@@ -166,7 +173,8 @@
     <div class="products-container">
         <h2 class="section-title" style="user-select: none;">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
-            <div class="product-card" data-price="1500" style="background-image: url('assets/img/products/lifestraw.jpg');">
+            <div class="product-card" data-price="1500"
+                style="background-image: url('assets/img/products/lifestraw.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱450</span>
                     <h3>"Lifestraw" Personal Water Filter</h3>
@@ -177,7 +185,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="950" style="background-image: url('assets/img/products/ferro-rod.jpg');">
+            <div class="product-card" data-price="950"
+                style="background-image: url('assets/img/products/ferro-rod.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱300</span>
                     <h3>Ferro Rod & Striker Fire Starter</h3>
@@ -188,7 +197,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="900" style="background-image: url('assets/img/products/mylar-blankets.jpg');">
+            <div class="product-card" data-price="900"
+                style="background-image: url('assets/img/products/mylar-blankets.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>Emergency Mylar Space Blankets (10-Pack)</h3>
@@ -199,7 +209,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1800" style="background-image: url('assets/img/products/lensatic-compass.jpg');">
+            <div class="product-card" data-price="1800"
+                style="background-image: url('assets/img/products/lensatic-compass.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱500</span>
                     <h3>Military-Style Lensatic Compass</h3>
@@ -210,7 +221,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="650" style="background-image: url('assets/img/products/paracord.jpg');">
+            <div class="product-card" data-price="650"
+                style="background-image: url('assets/img/products/paracord.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>100ft. 550 Paracord</h3>
@@ -221,7 +233,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="550" style="background-image: url('assets/img/products/whistle.jpg');">
+            <div class="product-card" data-price="550"
+                style="background-image: url('assets/img/products/whistle.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱150</span>
                     <h3>High-Decibel Emergency Whistle</h3>
@@ -232,7 +245,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="750" style="background-image: url('assets/img/products/waterproof-matches.jpg');">
+            <div class="product-card" data-price="750"
+                style="background-image: url('assets/img/products/waterproof-matches.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>Waterproof Match Case with Matches</h3>
@@ -243,7 +257,8 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1500" style="background-image: url('assets/img/products/headlamp.jpg');">
+            <div class="product-card" data-price="1500"
+                style="background-image: url('assets/img/products/headlamp.jpg');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱400</span>
                     <h3>Rechargeable LED Headlamp</h3>
@@ -276,4 +291,5 @@
         </div>
     </footer>
 </body>
+
 </html>
