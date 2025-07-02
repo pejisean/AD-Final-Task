@@ -1,23 +1,14 @@
-/* Color Palette: Inspired by a sleek, tech-oriented, slightly dark aesthetic */
-/* Primary: #2c3e50 (Dark Blue/Gray - background) */
-/* Secondary: #34495e (Slightly lighter Dark Blue/Gray - form background) */
-/* Accent 1: #3498db (Vibrant Blue - buttons, highlights) */
-/* Accent 2: #ecf0f1 (Light Gray - text, borders) */
-/* Error: #e74c3c (Red) */
-/* Success: #2ecc71 (Green) */
-
 .signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Adjusted min-height for robustness, using fallback values */
     min-height: calc(100vh - var(--header-height, 80px) - var(--footer-height, 200px));
-    background-color: var(--primary-dark-blue-gray, #2c3e50);
+    background-color: var(--primary-dark-blue-gray, #0A1215);
     padding: 40px 20px;
 }
 
 .signup-form-wrapper {
-    background-color: var(--secondary-dark-blue-gray, #34495e);
+    background-color: var(--secondary-dark-blue-gray, #15262c);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
