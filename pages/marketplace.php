@@ -49,11 +49,11 @@
 
             <div class="dropdown-menu" id="dropdownMenu">
                 <a href="#">👤 Login / Sign Up</a>
-                <a href="index.php">🏠 Home</a>
+                <a href="/index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
                 <a href="#">📄 History</a>
                 <a href="#">💬 Feedback</a>
-                <a href="#">ℹ️ About Us</a>
+                <a href="/index.php#about">ℹ️ About Us</a>
             </div>
         </header>
     </div>
