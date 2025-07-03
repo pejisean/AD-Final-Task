@@ -14,12 +14,10 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/login.js"></script>
     <script src="assets/js/signup.js"></script>
-        <script src="assets/js/history.js"></script>
+    <script src="assets/js/history.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
 </head>
 
 <body>
@@ -49,8 +47,8 @@
             <div class="dropdown-menu" id="dropdownMenu">
                 <a id="login-signup-link" href="login.php">👤 Login / Sign Up</a>
                 <a href="../index.php">🏠 Home</a>
-                <a href="history.php" class="active">📄 History</a> 
-                <a href="#">🛒 Cart (0)</a>
+                <a href="#" onclick="openCart(); return false;">🛒 Cart (<span id="cart-item-count">0</span>)</a>
+                <a href="history.php" class="active">📄 History</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
                 <a href="../index.php#about">ℹ️ About Us</a>
             </div>
@@ -84,7 +82,7 @@
         </section>
     </main>
 
-    <!-- Feedback Overlay HTML (copied from previous instructions) -->
+    <!-- Feedback Overlay HTML -->
     <div id="feedbackOverlay" class="feedback-overlay">
         <div class="feedback-modal">
             <button class="close-button" onclick="closeFeedback()">×</button>
@@ -130,6 +128,44 @@
     </div>
     <!-- End Feedback Overlay HTML -->
 
+    <!-- Cart Overlay HTML -->
+    <div id="cartOverlay" class="cart-overlay">
+        <div class="cart-modal">
+            <button class="close-button" onclick="closeCart()">×</button>
+            <div class="cart-content">
+                <div class="cart-items-section">
+                    <h2 class="cart-title">Bag</h2>
+                    <div id="cart-items-list" class="cart-items-list">
+                        <p class="empty-cart-message">There are no items in your bag.</p>
+                        <!-- Cart items will be dynamically loaded here -->
+                    </div>
+                </div>
+                <div class="cart-summary-section">
+                    <h2 class="cart-title">Summary</h2>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">₱0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Estimated Delivery & Handling</span>
+                            <span>Free</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span id="cart-total">₱0.00</span>
+                        </div>
+                    </div>
+                    <div class="checkout-buttons">
+                        <button class="checkout-button guest-checkout">Guest Checkout</button>
+                        <button class="checkout-button member-checkout">Member Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Cart Overlay HTML -->
+
     <footer>
         <div>
             <h4>Customer Service</h4>
@@ -148,6 +184,8 @@
             <a href="#">Community</a>
         </div>
     </footer>
+
+    <script src="../assets/js/history.js"></script>
 </body>
 
 </html>
