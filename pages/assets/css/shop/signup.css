@@ -60,10 +60,9 @@ main.signup-container {
     background-position: center;
     transform: translateY(-50%) rotate(0deg);
     transition: transform 0.3s ease-in-out;
-    pointer-events: none; /* Allows clicks to pass through to the select box */
+    pointer-events: none;
 }
 
-/* When the select box is focused, rotate the arrow */
 .select-wrapper:focus-within::after {
     transform: translateY(-50%) rotate(180deg);
 }
