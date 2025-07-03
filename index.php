@@ -56,7 +56,6 @@
             </div>
 
             <div class="dropdown-menu" id="dropdownMenu">
-                <!-- This link will be dynamically updated by JavaScript in script.js -->
                 <a id="login-signup-link" href="pages/login.php">👤 Login / Sign Up</a>
                 <a href="index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
