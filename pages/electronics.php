@@ -47,7 +47,6 @@
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
-
             <div class="dropdown-menu" id="dropdownMenu">
                 <a id="login-signup-link" href="login.php">👤 Login / Sign Up</a>
                 <a href="/index.php">🏠 Home</a>
