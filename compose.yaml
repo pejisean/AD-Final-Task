@@ -22,9 +22,9 @@ services:
     container_name: the-last-tradepost-postgresql
     restart: always
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: thelasttradepost_user
+      POSTGRES_PASSWORD: x7P5yKLMtCaODHi
+      POSTGRES_DB: thelasttradepost_db
     ports:
       - "5112:5432"
     volumes:
