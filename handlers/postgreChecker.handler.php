@@ -8,7 +8,7 @@ $dbname = getenv('PG_DB') ?: 'weatherdatabase';
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
-$dbconn = pg_connect($conn_string);
+$dbconn = pg_connect($conn_string); 
 
 if (!$dbconn) {
     echo "❌ Connection Failed: ", pg_last_error() . "  <br>";
