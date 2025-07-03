@@ -161,8 +161,6 @@ input[type="radio"]:checked + .emoji-option .emoji,
     filter: grayscale(0%);
 }
 
-
-/* Textarea for Suggestions */
 #suggestionTextbox {
     width: 100%;
     padding: 15px;
