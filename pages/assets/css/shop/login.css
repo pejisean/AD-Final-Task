@@ -1,6 +1,6 @@
 main.login-container {
     display: flex;
-    flex-grow: 1; /* Allows this section to grow and push the footer down */
+    flex-grow: 1; 
     justify-content: center;
     align-items: flex-start;
     padding: 80px 20px 40px; /* This controls the padding above and below the form */
@@ -58,10 +58,12 @@ main.login-container {
     color: #666;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group input:not(:placeholder-shown) {
     border-color: #DA6015;
     box-shadow: 0 0 10px -2px #DA6015;
     outline: none;
+    animation: pulse-orange 2.5s infinite ease-in-out;
 }
 
 .login-button {
@@ -116,5 +118,18 @@ main.login-container {
     }
     .login-form-wrapper h2 {
         font-size: 2.2em;
+    }
+}
+
+/* Keyframe animation for the pulsating glow */
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 10px -2px #DA6015;
+    }
+    50% {
+        box-shadow: 0 0 18px 0px #ff7f2a; /* Brighter orange and larger glow at midpoint */
+    }
+    100% {
+        box-shadow: 0 0 10px -2px #DA6015;
     }
 }
