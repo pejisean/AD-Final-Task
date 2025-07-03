@@ -46,11 +46,11 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
+    background-color: rgba(0, 0, 0, 0.75); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; 
+    z-index: 1000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -62,14 +62,16 @@ img {
 }
 
 .feedback-modal {
-    background-color: #fff;
-    border-radius: 12px; 
-    padding: 30px; 
+    background-color: #1C1C1C; 
+    color: #f5f5f5; 
+    border-radius: 8px;
+    border-top: 4px solid #DA6015; 
+    padding: 30px;
     width: 90%;
-    max-width: 500px; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     position: relative;
-    transform: translateY(20px); 
+    transform: translateY(20px);
     transition: transform 0.3s ease-in-out;
 }
 
@@ -85,42 +87,38 @@ img {
     border: none;
     font-size: 28px;
     cursor: pointer;
-    color: #888;
-    transition: color 0.2s ease-in-out;
-    padding: 5px; 
+    color: #ddd; 
+    transition: color 0.2s ease-in-out, transform 0.2s ease;
+    padding: 5px;
 }
 
 .close-button:hover {
-    color: #333;
+    color: #DA6015; 
+    transform: scale(1.1);
 }
 
 .modal-title {
-    font-family: 'Bebas Neue', sans-serif; 
-    font-size: 2.2em; 
-    color: #2c3e50; 
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5em;
+    color: #DA6015; 
     text-align: center;
     margin-bottom: 30px;
-    letter-spacing: 1px; 
-}
-
-.satisfaction-section,
-.suggestion-section {
-    margin-bottom: 25px;
+    letter-spacing: 1.5px;
 }
 
 .question {
-    font-family: 'Roboto Condensed', sans-serif; 
+    font-family: 'Roboto Condensed', sans-serif;
     font-size: 1.1em;
-    color: #34495e;
-    margin-bottom: 15px;
+    color: #f5f5f5; 
+    margin-bottom: 20px;
     text-align: center;
-    font-weight: 700; 
+    font-weight: 700;
 }
 
 .emoji-rating {
     display: flex;
     justify-content: space-around;
-    gap: 10px; 
+    gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -128,71 +126,105 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px; 
+    width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 3px solid #eee; 
+    border: 3px solid #41572f; 
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    user-select: none; 
+    user-select: none;
+    background-color: #0A1215;
 }
 
 .emoji-option:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-3px); 
-    border-color: #a0a0a0;
+    background-color: #2a3438;
+    transform: translateY(-3px);
+    border-color: #628048; 
 }
 
 input[type="radio"]:checked + .emoji-option {
-    border-color: #2980b9; 
-    background-color: #e6f2fa; 
-    box-shadow: 0 0 10px rgba(41, 128, 185, 0.4); 
-    transform: scale(1.05); 
+    border-color: #DA6015;
+    background-color: #221a14;
+    transform: scale(1.05);
+    animation: pulse-orange 2.5s infinite ease-in-out;
 }
 
 .emoji {
-    font-size: 38px; 
-    line-height: 1; 
+    font-size: 38px;
+    line-height: 1;
+    filter: grayscale(40%); 
+    transition: filter 0.2s ease-in-out;
 }
 
+input[type="radio"]:checked + .emoji-option .emoji,
+.emoji-option:hover .emoji {
+    filter: grayscale(0%);
+}
+
+
+/* Textarea for Suggestions */
 #suggestionTextbox {
-    width: calc(100% - 20px); 
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #41572f; 
+    border-radius: 4px;
+    background-color: #0A1215; 
+    color: #f5f5f5; 
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 1em;
-    color: #333;
-    resize: vertical; 
-    min-height: 100px; 
-    outline: none; 
-    transition: border-color 0.2s ease, box-shadow 0.2s ease-in-out;
+    resize: vertical;
+    min-height: 100px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
 }
 
-#suggestionTextbox:focus {
-    border-color: #2980b9;
-    box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+#suggestionTextbox:focus,
+#suggestionTextbox:not(:placeholder-shown) {
+    border-color: #DA6015;
+    box-shadow: 0 0 10px -2px #DA6015;
 }
 
 .submit-button {
     display: block;
     width: 100%;
-    padding: 15px 25px;
-    background-color: #3498db; 
-    color: #fff;
+    padding: 15px;
+    background-color: #DA6015; 
+    color: #0A1215; 
     border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
+    border-radius: 4px;
+    font-size: 1.5em;
     font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.5px;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease-in-out;
-    margin-top: 30px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
 .submit-button:hover {
-    background-color: #2980b9; 
-    transform: translateY(-2px); 
+    background-color: #ff7f2a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 600px) {
+    .feedback-modal {
+        padding: 20px;
+    }
+    .modal-title {
+        font-size: 2em;
+    }
+    .emoji-option {
+        width: 50px;
+        height: 50px;
+    }
+    .emoji {
+        font-size: 32px;
+    }
+    .submit-button {
+        padding: 12px 20px;
+        font-size: 1.2em;
+    }
 }
 
 
@@ -200,22 +232,30 @@ input[type="radio"]:checked + .emoji-option {
     .feedback-modal {
         padding: 20px;
     }
-
     .modal-title {
-        font-size: 1.8em;
+        font-size: 2em;
     }
-
     .emoji-option {
         width: 50px;
         height: 50px;
     }
-
     .emoji {
         font-size: 32px;
     }
-
     .submit-button {
         padding: 12px 20px;
-        font-size: 1em;
+        font-size: 1.2em;
+    }
+}
+
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 10px -2px #DA6015;
+    }
+    50% {
+        box-shadow: 0 0 14px 0px #ff7f2a;
+    }
+    100% {
+        box-shadow: 0 0 10px -2px #DA6015;
     }
 }
