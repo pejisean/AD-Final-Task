@@ -46,7 +46,7 @@
             <div class="dropdown-menu" id="dropdownMenu">
                 <a id="login-signup-link" href="login.php">👤 Login / Sign Up</a>
                 <a href="../index.php">🏠 Home</a>
-                <a href="history.php" class="active">📄 History</a> <!-- Active link for History page -->
+                <a href="history.php" class="active">📄 History</a> 
                 <a href="#">🛒 Cart (0)</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
                 <a href="../index.php#about">ℹ️ About Us</a>
