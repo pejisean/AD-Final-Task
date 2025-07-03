@@ -1,15 +1,15 @@
+// Preloader functionality
 window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
     if (preloader) {
-
         preloader.classList.add('hidden');
-
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
     }
 });
 
+// All other DOM-related JavaScript should run after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
     const mainSortDropdown = document.querySelector('#sort-by-main');
@@ -64,7 +64,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentPage) {
             const navLinks = document.querySelectorAll('.main-nav a');
             navLinks.forEach(link => {
-                if (link.getAttribute('href').endsWith(currentPage)) {
+                const linkHref = link.getAttribute('href');
+                const linkPageName = linkHref.split('/').pop();
+
+                if (linkPageName === currentPage || (currentPage === 'index.php' && linkHref === 'index.php')) {
                     link.classList.add('active');
                 }
             });
@@ -72,6 +75,39 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch (e) {
         console.error("Error setting active navigation link:", e);
     }
+
+    const loggedInCodename = localStorage.getItem('loggedInCodename');
+    const loginSignupLink = document.getElementById('login-signup-link');
+
+    if (loginSignupLink) {
+        if (loggedInCodename) {
+            loginSignupLink.innerHTML = `👤 ${loggedInCodename}`;
+            loginSignupLink.href = 'pages/profile.php';
+
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const logoutLink = document.createElement('a');
+            logoutLink.href = '#';
+            logoutLink.innerHTML = '➡️ Logout';
+            logoutLink.classList.add('logout-link');
+
+            logoutLink.onclick = function(event) {
+                event.preventDefault();
+                localStorage.removeItem('loggedInCodename');
+                window.location.reload();
+            };
+
+            if (dropdownMenu.firstChild) {
+                dropdownMenu.insertBefore(logoutLink, loginSignupLink.nextSibling);
+            } else {
+                dropdownMenu.appendChild(logoutLink);
+            }
+
+        } else {
+            loginSignupLink.innerHTML = '👤 Login / Sign Up';
+            loginSignupLink.href = 'pages/login.php';
+        }
+    }
+
 });
 
 function toggleMenu() {
@@ -81,4 +117,39 @@ function toggleMenu() {
     } else {
         menu.style.display = "flex";
     }
+}
+
+function openFeedback() {
+    const feedbackOverlay = document.getElementById('feedbackOverlay');
+    if (feedbackOverlay) {
+        feedbackOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeFeedback() {
+    const feedbackOverlay = document.getElementById('feedbackOverlay');
+    if (feedbackOverlay) {
+        feedbackOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        const radioButtons = document.querySelectorAll('input[name="satisfaction"]');
+        radioButtons.forEach(radio => radio.checked = false);
+        document.getElementById('suggestionTextbox').value = '';
+    }
+}
+function submitFeedback() {
+    const selectedSatisfaction = document.querySelector('input[name="satisfaction"]:checked');
+    const suggestionText = document.getElementById('suggestionTextbox').value;
+
+    let satisfactionValue = "Not selected";
+    if (selectedSatisfaction) {
+        satisfactionValue = selectedSatisfaction.value;
+    }
+
+    console.log("Feedback Submitted:");
+    console.log("Satisfaction Level:", satisfactionValue);
+    console.log("Suggestion/Concern:", suggestionText);
+
+    alert('Thank you for your feedback! (This is a demo submission)');
+    closeFeedback();
 }
