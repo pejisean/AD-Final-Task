@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
             loginSignupLink.innerHTML = '👤 Login / Sign Up';
-            loginSignupLink.href = 'pages/login.php';
+            loginSignupLink.href = 'login.php';
         }
     }
 
