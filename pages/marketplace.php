@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/signup.js"></script>
+    <script src="assets/js/history.js"></script>
     <script src="assets/js/marketplace.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=wrap" rel="stylesheet">
