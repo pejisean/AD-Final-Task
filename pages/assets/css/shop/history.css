@@ -2,7 +2,7 @@
 
 .history-main {
     padding: 20px;
-    max-width: 1400px; /* Increased from 1200px */
+    max-width: 1600px; /* Increased from 1400px */
     margin: 0 auto;
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
     display: flex;
@@ -50,7 +50,7 @@
 
 .purchase-section {
     flex: 1;
-    min-width: 320px; /* Adjusted min-width slightly */
+    min-width: 350px; /* Adjusted min-width to support wider layout */
     background-color: #34495e;
     padding: 30px;
     border-radius: 12px;
@@ -72,7 +72,7 @@
 
 .purchase-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted minmax for larger cards/more columns */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Adjusted minmax for larger cards/more columns */
     gap: 25px;
     flex-grow: 1;
 }
