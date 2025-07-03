@@ -1,0 +1,208 @@
+/* history.css */
+
+.history-main {
+    padding: 20px;
+    max-width: 1600px; /* Increased from 1400px */
+    margin: 0 auto;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.history-hero {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 60px 40px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.history-hero-text h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.history-hero-text p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #bdc3c7;
+}
+
+.purchase-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.purchase-section {
+    flex: 1;
+    min-width: 350px; /* Adjusted min-width to support wider layout */
+    background-color: #34495e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.purchase-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5em;
+    color: #f39c12;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(243, 156, 18, 0.3);
+    padding-bottom: 15px;
+}
+
+.purchase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Adjusted minmax for larger cards/more columns */
+    gap: 25px;
+    flex-grow: 1;
+}
+
+.purchase-card {
+    background-color: #2c3e50;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.purchase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.purchase-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.purchase-details {
+    padding: 20px;
+    color: #ecf0f1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.purchase-details h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+.purchase-details p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #bdc3c7;
+}
+
+.purchase-details .purchase-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em;
+    color: #2ecc71;
+    margin-top: 15px;
+    text-align: right;
+}
+
+.no-history-message {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #bdc3c7;
+    text-align: center;
+    font-size: 1.1em;
+    padding: 30px 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .history-hero-text h1 {
+        font-size: 2.8em;
+    }
+
+    .history-hero-text p {
+        font-size: 1em;
+    }
+
+    .purchase-sections {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .purchase-section {
+        padding: 20px;
+    }
+
+    .purchase-section h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .purchase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .purchase-card img {
+        height: 180px;
+    }
+
+    .purchase-details h3 {
+        font-size: 1.2em;
+    }
+
+    .purchase-details p {
+        font-size: 0.9em;
+    }
+
+    .purchase-details .purchase-price {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .history-main {
+        padding: 15px;
+    }
+
+    .history-hero {
+        padding: 40px 20px;
+    }
+
+    .history-hero-text h1 {
+        font-size: 2.2em;
+    }
+
+    .purchase-section {
+        padding: 15px;
+    }
+
+    .purchase-section h2 {
+        font-size: 1.8em;
+    }
+}
