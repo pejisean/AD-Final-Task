@@ -101,7 +101,6 @@ main.signup-container {
     border-color: #DA6015;
     box-shadow: 0 0 10px -2px #DA6015;
     outline: none;
-    animation: pulse-orange 2.5s infinite ease-in-out;
 }
 
 .signup-button {
