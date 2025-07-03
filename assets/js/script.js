@@ -137,7 +137,6 @@ function closeFeedback() {
         document.getElementById('suggestionTextbox').value = '';
     }
 }
-
 function submitFeedback() {
     const selectedSatisfaction = document.querySelector('input[name="satisfaction"]:checked');
     const suggestionText = document.getElementById('suggestionTextbox').value;
