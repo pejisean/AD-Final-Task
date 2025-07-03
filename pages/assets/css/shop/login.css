@@ -1,3 +1,16 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #0A1215;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 main.login-container {
     display: flex;
     flex-grow: 1; 
@@ -127,7 +140,7 @@ main.login-container {
         box-shadow: 0 0 10px -2px #DA6015;
     }
     50% {
-        box-shadow: 0 0 18px 0px #ff7f2a; /* Brighter orange and larger glow at midpoint */
+        box-shadow: 0 0 14px 0px #ff7f2a; /* Reduced blur and spread for a smaller pulse */
     }
     100% {
         box-shadow: 0 0 10px -2px #DA6015;
