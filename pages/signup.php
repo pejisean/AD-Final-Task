@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <link rel="stylesheet" href="assets/css/shop/signup.css" />
     <script src="assets/js/script.js"></script>
@@ -35,9 +34,6 @@
             <div class="dropdown-menu" id="dropdownMenu">
                 <a href="login.php">👤 Login / Sign Up</a>
                 <a href="../index.php">🏠 Home</a>
-                <a href="#">🛒 Cart (0)</a>
-                <a href="#">📄 History</a>
-                <a href="#">💬 Feedback</a>
                 <a href="/index.php#about">ℹ️ About Us</a>
             </div>
         </header>
