@@ -1,5 +1,5 @@
 <?php
-require_once UTILS_PATH . 'envSetter.util.php';
+require_once UTILS_PATH . '/envSetter.util.php';
 $host = getenv('PG_HOST') ?: 'host.docker.internal';
 $port = getenv('PG_PORT') ?: '5555';
 $username = getenv('PG_USER') ?: 'user';
@@ -8,6 +8,7 @@ $dbname = getenv('PG_DB') ?: 'weatherdatabase';
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
+echo($conn_string);
 $dbconn = pg_connect($conn_string); 
 
 if (!$dbconn) {
