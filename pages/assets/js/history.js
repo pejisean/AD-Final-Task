@@ -1,20 +1,3 @@
-window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        preloader.classList.add('hidden');
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
-    }
-});
-
-function addPurchaseToHistory(item) {
-    let history = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
-    history.push(item);
-    localStorage.setItem('purchaseHistory', JSON.stringify(history));
-    console.log('Item added to history:', item);
-}
-
 function renderPurchaseHistory() {
     const marketplaceGrid = document.getElementById('marketplace-purchases');
     const shopGrid = document.getElementById('shop-purchases');
@@ -69,9 +52,7 @@ function renderPurchaseHistory() {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
-
     const mainSortDropdown = document.querySelector('#sort-by-main');
 
     if (mainSortDropdown) {
@@ -229,53 +210,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.includes('history.php')) {
         renderPurchaseHistory();
     }
-
 });
-
-function toggleMenu() {
-    var menu = document.getElementById("dropdownMenu");
-    if (menu.style.display === "flex") {
-        menu.style.display = "none";
-    } else {
-        menu.style.display = "flex";
-    }
-}
-
-function openFeedback() {
-    const feedbackOverlay = document.getElementById('feedbackOverlay');
-    if (feedbackOverlay) {
-        feedbackOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeFeedback() {
-    const feedbackOverlay = document.getElementById('feedbackOverlay');
-    if (feedbackOverlay) {
-        feedbackOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-        const radioButtons = document.querySelectorAll('input[name="satisfaction"]');
-        radioButtons.forEach(radio => radio.checked = false);
-        document.getElementById('suggestionTextbox').value = '';
-    }
-}
-
-function submitFeedback() {
-    const selectedSatisfaction = document.querySelector('input[name="satisfaction"]:checked');
-    const suggestionText = document.getElementById('suggestionTextbox').value;
-
-    let satisfactionValue = "Not selected";
-    if (selectedSatisfaction) {
-        satisfactionValue = selectedSatisfaction.value;
-    }
-
-    console.log("Feedback Submitted:");
-    console.log("Satisfaction Level:", satisfactionValue);
-    console.log("Suggestion/Concern:", suggestionText);
-
-    alert('Thank you for your feedback! The overlay will close shortly.');
-
-    setTimeout(() => {
-        closeFeedback();
-    }, 3000);
-}
