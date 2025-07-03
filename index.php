@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="assets/css/home.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <link rel="stylesheet" href="assets/css/feedback.css" />
-    <!-- All combined JavaScript is now in script.js -->
     <script src="assets/js/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
