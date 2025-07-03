@@ -150,6 +150,10 @@ function submitFeedback() {
     console.log("Satisfaction Level:", satisfactionValue);
     console.log("Suggestion/Concern:", suggestionText);
 
-    alert('Thank you for your feedback! (This is a demo submission)');
-    closeFeedback();
+    alert('Thank you for your feedback! The overlay will close shortly.'); // Changed alert message
+
+    // Close the feedback overlay after 3 seconds (3000 milliseconds)
+    setTimeout(() => {
+        closeFeedback();
+    }, 3000);
 }
