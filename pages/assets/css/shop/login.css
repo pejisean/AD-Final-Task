@@ -16,7 +16,7 @@ main.login-container {
     flex-grow: 1; 
     justify-content: center;
     align-items: flex-start;
-    padding: 80px 20px 40px; /* This controls the padding above and below the form */
+    padding: 80px 20px 40px;
     box-sizing: border-box;
 }
 
@@ -133,13 +133,12 @@ main.login-container {
     }
 }
 
-/* Keyframe animation for the pulsating glow */
 @keyframes pulse-orange {
     0% {
         box-shadow: 0 0 10px -2px #DA6015;
     }
     50% {
-        box-shadow: 0 0 14px 0px #ff7f2a; /* Reduced blur and spread for a smaller pulse */
+        box-shadow: 0 0 14px 0px #ff7f2a;
     }
     100% {
         box-shadow: 0 0 10px -2px #DA6015;
