@@ -293,12 +293,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
             loginSignupLink.innerHTML = '👤 Login / Sign Up';
-            loginSignupLink.href = 'pages/login.php';
+            //loginSignupLink.href = 'pages/login.php';
         }
     }
 
     const shopProductCards = document.querySelectorAll('.product-grid .product-card');
-    shopProductCards.forEach((card, index) => { // Added index for unique ID
+    shopProductCards.forEach((card, index) => {
         const buyButton = card.querySelector('.buy-btn');
         const addToCartButton = card.querySelector('.add-cart-btn');
         const itemName = card.querySelector('h3')?.textContent;
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderPurchaseHistory();
     }
 
-    updateCartIconCount(); // Initial update of cart count on page load
+    updateCartIconCount();
 
 });
 
