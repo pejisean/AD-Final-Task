@@ -1,4 +1,3 @@
-// Preloader functionality
 window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
     if (preloader) {
@@ -9,7 +8,6 @@ window.addEventListener('load', function() {
     }
 });
 
-// All other DOM-related JavaScript should run after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
     const mainSortDropdown = document.querySelector('#sort-by-main');
@@ -104,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
             loginSignupLink.innerHTML = '👤 Login / Sign Up';
+            loginSignupLink.href = 'login.php';
         }
     }
 
