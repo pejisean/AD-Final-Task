@@ -13,7 +13,7 @@ body {
 
 main.login-container {
     display: flex;
-    flex-grow: 1; 
+    flex-grow: 1;
     justify-content: center;
     align-items: flex-start;
     padding: 80px 20px 40px;
@@ -76,7 +76,7 @@ main.login-container {
     border-color: #DA6015;
     box-shadow: 0 0 10px -2px #DA6015;
     outline: none;
-    animation: pulse-orange 2.5s infinite ease-in-out;
+    animation: pulse-orange 2.5s infinite ease;
 }
 
 .login-button {
@@ -91,7 +91,7 @@ main.login-container {
     font-weight: bold;
     letter-spacing: 1.5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     margin-top: 10px;
 }
 
