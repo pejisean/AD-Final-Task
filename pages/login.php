@@ -25,7 +25,6 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <!-- Ensure this path is correct relative to login.php -->
                 <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
             </div>
             <div class="header-right">
@@ -86,8 +85,6 @@
             <a href="#">Community</a>
         </div>
     </footer>
-
-    <!-- Link to the external login JavaScript file -->
     <script src="assets/js/login.js"></script>
 </body>
 
