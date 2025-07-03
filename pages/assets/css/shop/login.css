@@ -13,10 +13,10 @@ body {
 
 main.login-container {
     display: flex;
-    flex-grow: 1; 
+    flex-grow: 1;
     justify-content: center;
     align-items: flex-start;
-    padding: 80px 20px 40px; /* This controls the padding above and below the form */
+    padding: 80px 20px 40px;
     box-sizing: border-box;
 }
 
@@ -76,7 +76,7 @@ main.login-container {
     border-color: #DA6015;
     box-shadow: 0 0 10px -2px #DA6015;
     outline: none;
-    animation: pulse-orange 2.5s infinite ease-in-out;
+    animation: pulse-orange 2.5s infinite ease;
 }
 
 .login-button {
@@ -91,7 +91,7 @@ main.login-container {
     font-weight: bold;
     letter-spacing: 1.5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     margin-top: 10px;
 }
 
@@ -111,12 +111,11 @@ main.login-container {
     color: #628048;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease-in-out;
 }
 
 .signup-link-text a:hover {
-    color: #8cc06b;
-    text-decoration: underline;
+    color: #DA6015;
 }
 
 .input-error-message, .info-message {
@@ -134,13 +133,12 @@ main.login-container {
     }
 }
 
-/* Keyframe animation for the pulsating glow */
 @keyframes pulse-orange {
     0% {
         box-shadow: 0 0 10px -2px #DA6015;
     }
     50% {
-        box-shadow: 0 0 14px 0px #ff7f2a; /* Reduced blur and spread for a smaller pulse */
+        box-shadow: 0 0 14px 0px #ff7f2a;
     }
     100% {
         box-shadow: 0 0 10px -2px #DA6015;
