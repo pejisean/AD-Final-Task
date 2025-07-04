@@ -8,7 +8,7 @@
     require 'bootstrap.php';
 
     // 3) envSetter
-    require_once UTILS_PATH . '/envSetter.util.php';
+    require_once UTILS_PATH . 'envSetter.util.php';
 
     // ——— Connecting to PostgreSQL ———
     $dsn = "pgsql:host={$pgConfig['pg_host']};port={$pgConfig['pg_port']};dbname={$pgConfig['pg_db']}";
