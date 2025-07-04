@@ -283,16 +283,10 @@
 
     <footer>
         <div>
-            <h4>Customer Service</h4>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Returns & Refunds</a>
-        </div>
-        <div>
             <h4>Company</h4>
             <a href="#">Contact Us</a>
             <a href="#">FAQs</a>
             <a href="#">Our Company</a>
-            <a href="#">Store Locations</a>
         </div>
         <div>
             <h4>Links</h4>
