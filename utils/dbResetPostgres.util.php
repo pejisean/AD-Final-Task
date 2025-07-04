@@ -18,7 +18,7 @@
 
     // Listing SQL files
     $sqlFiles = [
-        'database/user.model.sql'
+        'sql/user.model.sql'
     ];
 
     foreach ($sqlFiles as $file) {
