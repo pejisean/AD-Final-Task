@@ -1,5 +1,5 @@
 <?php
-function getUsersData() {
+
     return [
         [
             'username' => 'john.smith',
@@ -8,4 +8,3 @@ function getUsersData() {
             'role' => 'user'
         ]
     ];
-}

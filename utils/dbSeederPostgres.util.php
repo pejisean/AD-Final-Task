@@ -8,7 +8,7 @@
     require 'bootstrap.php';
 
     // 3) envSetter
-    require_once UTILS_PATH . 'envSetter.util.php';
+    require_once UTILS_PATH . '/envSetter.util.php';
 
     // ——— Connecting to PostgreSQL ———
     $dsn = "pgsql:host={$pgConfig['pg_host']};port={$pgConfig['pg_port']};dbname={$pgConfig['pg_db']}";
@@ -18,7 +18,7 @@
 
     // Listing SQL files
     $sqlFiles = [
-        'database/user.model.sql'
+        'sql/user.model.sql'
     ];
 
     foreach ($sqlFiles as $file) {
@@ -38,7 +38,7 @@
 
     // Define mapping of tables to their static data files (PHP files returning arrays)
     $seedFiles = [
-        'user' => DUMMIES_PATH . '/users.staticData.php',
+        'user' => DUMMIES_PATH . '/user.staticData.php',
     ];
 
     // Loop over each table and seed data
