@@ -90,32 +90,33 @@
     display: block;
 }
 
-.item-name {
+.item-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: 0;
     width: 100%;
-    padding: 12px 15px 5px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item-name {
     font-size: 1.1em;
     font-weight: bold;
     color: #f5f5f5;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%);
-    z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    margin: 0;
+    text-shadow: 1px 1px 2px #000;
 }
 
 .item-price {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 100%;
-    padding: 5px 15px 12px;
     font-size: 1.2em;
     font-weight: bold;
     color: #DA6015;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0.7) 100%);
-    z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    margin: 3px 0 0;
+    text-shadow: 1px 1px 2px #000;
 }
 
 .item-bottom-actions {
