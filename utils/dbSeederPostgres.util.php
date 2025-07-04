@@ -33,15 +33,56 @@
         echo "Schema applied successfully from {$file}\n";
     }
 
-    // Truncating tables
-    $tables = ['meeting', 'project_users', 'tasks'];
+    // Seeding tables with static data
+    echo "Seeding tables with static data...\n";
 
-    echo "Truncating tables…\n";
+    // Define mapping of tables to their static data files (PHP files returning arrays)
+    $seedFiles = [
+        'user' => 'staticDatas/user.seed.php',
+    ];
 
-    foreach ($tables as $table) {
-        $pdo->exec("TRUNCATE TABLE public.\"$table\" RESTART IDENTITY CASCADE;");
-        echo "Truncated table: $table\n";
+    // Loop over each table and seed data
+    foreach ($seedFiles as $table => $seedFile) {
+        echo "Seeding table: $table from $seedFile\n";
+
+        if (!file_exists($seedFile)) {
+            echo "Seed file $seedFile not found, skipping.\n";
+            continue;
+        }
+
+        // Load static data array from seed file
+        $data = require $seedFile;
+
+        if (!is_array($data)) {
+            echo "Seed file $seedFile did not return an array, skipping.\n";
+            continue;
+        }
+
+        // // Optional: Clear existing data before seeding (comment out if not desired)
+        // $pdo->exec("TRUNCATE TABLE public.\"$table\" RESTART IDENTITY CASCADE;");
+
+        // if (empty($data)) {
+        //     echo "No data to seed for table $table.\n";
+        //     continue;
+        // }
+
+        // Prepare insert statement dynamically based on keys of first row
+        $columns = array_keys($data[0]);
+        $columnsList = implode(', ', array_map(fn($col) => "\"$col\"", $columns));
+        $placeholders = implode(', ', array_map(fn($col) => ":$col", $columns));
+
+        $insertSql = "INSERT INTO public.\"$table\" ($columnsList) VALUES ($placeholders)";
+        $stmt = $pdo->prepare($insertSql);
+
+        // Insert each row
+        foreach ($data as $row) {
+            // Bind values dynamically
+            foreach ($row as $col => $val) {
+                $stmt->bindValue(":$col", $val);
+            }
+            $stmt->execute();
+        }
+
+        echo "Seeded " . count($data) . " rows into $table.\n";
     }
-
-    echo "Database reset completed successfully.\n";
 ?>
