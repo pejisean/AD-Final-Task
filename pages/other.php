@@ -63,8 +63,7 @@
     <div class="products-container">
         <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
         <div class="showcase-container">
-            <section class="showcase-hero"
-                style="background-image: url('assets/img/products/first-aid-kit-showcase.jpg');">
+            <section class="showcase-hero" style="background-image: url('assets/img/other/first.png');">
                 <div class="showcase-content">
                     <span class="showcase-discount">Priority Kit: Save ₱1,200</span>
                     <h3>Advanced First Aid Trauma Kit</h3>
@@ -77,7 +76,7 @@
             </section>
             <div class="showcase-right-column">
                 <section class="showcase-promo-card showcase-card-top"
-                    style="background-image: url('assets/img/products/survival-backpack-showcase.jpg');">
+                    style="background-image: url('assets/img/other/survival.png');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱2,500</span>
                         <h3>72-Hour Survival Backpack</h3>
@@ -89,7 +88,7 @@
                     </div>
                 </section>
                 <section class="showcase-promo-card showcase-card-bottom"
-                    style="background-image: url('assets/img/products/water-filter-pump-showcase.jpg');">
+                    style="background-image: url('assets/img/other/water.png');">
                     <div class="showcase-content">
                         <span class="showcase-discount">Save ₱950</span>
                         <h3>High-Performance Water Filter Pump</h3>
@@ -120,8 +119,7 @@
         </div>
 
         <section class="products" id="new-arrivals-grid">
-            <div class="product-card" data-price="1100"
-                style="background-image: url('assets/img/products/survival-handbook.jpg');">
+            <div class="product-card" data-price="1100" style="background-image: url('assets/img/other/handbook.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱300</span>
                     <h3>Waterproof Survival Handbook</h3>
@@ -132,8 +130,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="650"
-                style="background-image: url('assets/img/products/signal-mirror.jpg');">
+            <div class="product-card" data-price="650" style="background-image: url('assets/img/other/signal.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>Emergency Signal Mirror</h3>
@@ -144,8 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="850"
-                style="background-image: url('assets/img/products/utensil-set.jpg');">
+            <div class="product-card" data-price="850" style="background-image: url('assets/img/other/utensil.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>Titanium Spork & Utensil Set</h3>
@@ -156,8 +152,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1200"
-                style="background-image: url('assets/img/products/light-sticks.jpg');">
+            <div class="product-card" data-price="1200" style="background-image: url('assets/img/other/light.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱350</span>
                     <h3>Chemical Light Sticks (12-Pack)</h3>
@@ -175,7 +170,7 @@
         <h2 class="section-title" style="user-select: none;">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
             <div class="product-card" data-price="1500"
-                style="background-image: url('assets/img/products/lifestraw.jpg');">
+                style="background-image: url('assets/img/other/lifestraw.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱450</span>
                     <h3>"Lifestraw" Personal Water Filter</h3>
@@ -186,8 +181,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="950"
-                style="background-image: url('assets/img/products/ferro-rod.jpg');">
+            <div class="product-card" data-price="950" style="background-image: url('assets/img/other/ferro.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱300</span>
                     <h3>Ferro Rod & Striker Fire Starter</h3>
@@ -198,8 +192,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="900"
-                style="background-image: url('assets/img/products/mylar-blankets.jpg');">
+            <div class="product-card" data-price="900" style="background-image: url('assets/img/other/mylar.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱250</span>
                     <h3>Emergency Mylar Space Blankets (10-Pack)</h3>
@@ -210,8 +203,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1800"
-                style="background-image: url('assets/img/products/lensatic-compass.jpg');">
+            <div class="product-card" data-price="1800" style="background-image: url('assets/img/other/lensatic.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱500</span>
                     <h3>Military-Style Lensatic Compass</h3>
@@ -222,8 +214,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="650"
-                style="background-image: url('assets/img/products/paracord.jpg');">
+            <div class="product-card" data-price="650" style="background-image: url('assets/img/other/paracord.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>100ft. 550 Paracord</h3>
@@ -234,8 +225,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="550"
-                style="background-image: url('assets/img/products/whistle.jpg');">
+            <div class="product-card" data-price="550" style="background-image: url('assets/img/other/whistle.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱150</span>
                     <h3>High-Decibel Emergency Whistle</h3>
@@ -247,7 +237,7 @@
                 </div>
             </div>
             <div class="product-card" data-price="750"
-                style="background-image: url('assets/img/products/waterproof-matches.jpg');">
+                style="background-image: url('assets/img/other/waterproof.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱200</span>
                     <h3>Waterproof Match Case with Matches</h3>
@@ -258,8 +248,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card" data-price="1500"
-                style="background-image: url('assets/img/products/headlamp.jpg');">
+            <div class="product-card" data-price="1500" style="background-image: url('assets/img/other/headlamp.png');">
                 <div class="product-content">
                     <span class="product-discount">Save ₱400</span>
                     <h3>Rechargeable LED Headlamp</h3>
@@ -274,48 +263,49 @@
     </div>
 
     <div id="feedbackOverlay" class="feedback-overlay">
-    <div class="feedback-modal">
-        <button class="close-button" onclick="closeFeedback()">×</button>
-        <h2 class="modal-title">We want your opinion!</h2>
+        <div class="feedback-modal">
+            <button class="close-button" onclick="closeFeedback()">×</button>
+            <h2 class="modal-title">We want your opinion!</h2>
 
-        <div class="satisfaction-section">
-            <p class="question">How satisfied are you with our service?*</p>
-            <div class="emoji-rating">
-                <input type="radio" id="veryDissatisfied" name="satisfaction" value="very-dissatisfied" hidden>
-                <label for="veryDissatisfied" class="emoji-option" title="Very Dissatisfied">
-                    <span class="emoji">😞</span>
-                </label>
+            <div class="satisfaction-section">
+                <p class="question">How satisfied are you with our service?*</p>
+                <div class="emoji-rating">
+                    <input type="radio" id="veryDissatisfied" name="satisfaction" value="very-dissatisfied" hidden>
+                    <label for="veryDissatisfied" class="emoji-option" title="Very Dissatisfied">
+                        <span class="emoji">😞</span>
+                    </label>
 
-                <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied" hidden>
-                <label for="dissatisfied" class="emoji-option" title="Dissatisfied">
-                    <span class="emoji">😕</span>
-                </label>
+                    <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied" hidden>
+                    <label for="dissatisfied" class="emoji-option" title="Dissatisfied">
+                        <span class="emoji">😕</span>
+                    </label>
 
-                <input type="radio" id="neutral" name="satisfaction" value="neutral" hidden>
-                <label for="neutral" class="emoji-option" title="Neutral">
-                    <span class="emoji">😐</span>
-                </label>
+                    <input type="radio" id="neutral" name="satisfaction" value="neutral" hidden>
+                    <label for="neutral" class="emoji-option" title="Neutral">
+                        <span class="emoji">😐</span>
+                    </label>
 
-                <input type="radio" id="satisfied" name="satisfaction" value="satisfied" hidden>
-                <label for="satisfied" class="emoji-option" title="Satisfied">
-                    <span class="emoji">🙂</span>
-                </label>
+                    <input type="radio" id="satisfied" name="satisfaction" value="satisfied" hidden>
+                    <label for="satisfied" class="emoji-option" title="Satisfied">
+                        <span class="emoji">🙂</span>
+                    </label>
 
-                <input type="radio" id="verySatisfied" name="satisfaction" value="very-satisfied" hidden>
-                <label for="verySatisfied" class="emoji-option" title="Very Satisfied">
-                    <span class="emoji">😊</span>
-                </label>
+                    <input type="radio" id="verySatisfied" name="satisfaction" value="very-satisfied" hidden>
+                    <label for="verySatisfied" class="emoji-option" title="Very Satisfied">
+                        <span class="emoji">😊</span>
+                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="suggestion-section">
-            <p class="question">Do you have any concerns or suggestions about our service?</p>
-            <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..." rows="5"></textarea>
-        </div>
+            <div class="suggestion-section">
+                <p class="question">Do you have any concerns or suggestions about our service?</p>
+                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..."
+                    rows="5"></textarea>
+            </div>
 
-        <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
+            <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
+        </div>
     </div>
-</div>
 
     <footer>
         <div>
