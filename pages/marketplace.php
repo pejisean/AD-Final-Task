@@ -26,7 +26,8 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
 
             <div class="header-right">
@@ -48,7 +49,7 @@
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
-            
+
             <div class="dropdown-menu" id="dropdownMenu">
                 <a id="login-signup-link" href="login.php">👤 Login / Sign Up</a>
                 <a href="/index.php">🏠 Home</a>
@@ -68,139 +69,100 @@
 
         <div class="all-products-container">
             <div class="marketplace-grid" id="marketplaceGrid">
-                <div class="product-card" data-name="Tactical Backpack" data-price="85.50" data-description="Durable tactical backpack with multiple compartments, ideal for outdoor survival.">
+
+                <div class="product-card" data-name="Tactical Backpack" data-price="85.50"
+                    data-description="Durable tactical backpack with multiple compartments, ideal for outdoor survival.">
                     <div class="item-image">
-                        <p class="item-name">Tactical Backpack</p>
-                        <p class="item-price">85.50</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Tactical Backpack">
-                    </div>
-                    <div class="item-bottom-actions"> <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
-                    </div>
-                </div>
-                <div class="product-card" data-name="Solar Charger Kit" data-price="120.00" data-description="Portable solar charger kit for electronics, essential for off-grid power.">
-                    <div class="item-image">
-                        <p class="item-name">Solar Charger Kit</p>
-                        <p class="item-price">120.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Solar Charger Kit">
+                        <img src="assets/img/marketplace/tacticalbackpack.png" alt="Tactical Backpack">
+                        <div class="item-overlay">
+                            <p class="item-name">Tactical Backpack</p>
+                            <p class="item-price">85.50</p>
+                        </div>
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
                         <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
-                <div class="product-card" data-name="Multi-Tool Pliers" data-price="45.99" data-description="Compact multi-tool with various functions including pliers, knife, and saw.">
+
+                <div class="product-card" data-name="Solar Charger Kit" data-price="120.00"
+                    data-description="Portable solar charger kit for electronics, essential for off-grid power.">
                     <div class="item-image">
-                        <p class="item-name">Multi-Tool Pliers</p>
-                        <p class="item-price">45.99</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Multi-Tool Pliers">
+                        <img src="assets/img/marketplace/solarchargerkit.png" alt="Solar Charger Kit">
+                        <div class="item-overlay">
+                            <p class="item-name">Solar Charger Kit</p>
+                            <p class="item-price">120.00</p>
+                        </div>
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
                         <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
-                <div class="product-card" data-name="Water Purifier Bottle" data-price="60.25" data-description="Personal water filter bottle, capable of removing contaminants.">
+
+                <div class="product-card" data-name="Multi-Tool Pliers" data-price="45.99"
+                    data-description="Compact multi-tool with various functions including pliers, knife, and saw.">
                     <div class="item-image">
-                        <p class="item-name">Water Purifier Bottle</p>
-                        <p class="item-price">60.25</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Water Purifier Bottle">
+                        <img src="assets/img/marketplace/multitoolpliers.png" alt="Multi-Tool Pliers">
+                        <div class="item-overlay">
+                            <p class="item-name">Multi-Tool Pliers</p>
+                            <p class="item-price">45.99</p>
+                        </div>
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
                         <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
-                <div class="product-card" data-name="Survival First Aid Kit" data-price="75.00" data-description="Comprehensive first aid kit for emergencies in wilderness or urban environments.">
+
+                <div class="product-card" data-name="Steel Boxing Gloves" data-price="4,299.00"
+                    data-description="Boxing gloves made of steel for your own use.">
                     <div class="item-image">
-                        <p class="item-name">Survival First Aid Kit</p>
-                        <p class="item-price">75.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Survival First Aid Kit">
+                        <img src="assets/img/marketplace/steelgloves.jpg" alt="steelgloves">
+                        <div class="item-overlay">
+                            <p class="item-name">Steel Boxing Gloves</p>
+                            <p class="item-price">4,299.00</p>
+                        </div>
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
                         <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
-                <div class="product-card" data-name="Night Vision Goggles" data-price="950.00" data-description="High-quality night vision goggles for low-light observation.">
+
+                <div class="product-card" data-name="Stealth Boots" data-price="2,800.00"
+                    data-description="Boots made to provide silent movement and comfort during action.">
                     <div class="item-image">
-                        <p class="item-name">Night Vision Goggles</p>
-                        <p class="item-price">950.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Night Vision Goggles">
+                        <img src="assets/img/marketplace/stealthboots.png" alt="stealthboots">
+                        <div class="item-overlay">
+                            <p class="item-name">Stealth Boots</p>
+                            <p class="item-price">2,800.00</p>
+                        </div>
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
                         <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
-                <div class="product-card" data-name="Compact Tent" data-price="180.00" data-description="Lightweight and compact tent for 2-3 persons, quick to set up.">
+
+                <div class="product-card" data-name="Night Vision Goggles" data-price="950.00"
+                    data-description="High-quality night vision goggles for low-light observation.">
                     <div class="item-image">
-                        <p class="item-name">Compact Tent</p>
-                        <p class="item-price">180.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Compact Tent">
+                        <img src="assets/img/marketplace/nightvisiongoggles.png" alt="Night Vision Goggles">
+                        <div class="item-overlay">
+                            <p class="item-name">Night Vision Goggles</p>
+                            <p class="item-price">950.00</p>
+                        </div>
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
                         <button class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
-                <div class="product-card" data-name="Emergency Radio" data-price="55.00" data-description="Hand-crank and solar-powered emergency radio with NOAA weather alerts.">
-                    <div class="item-image">
-                        <p class="item-name">Emergency Radio</p>
-                        <p class="item-price">55.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Emergency Radio">
-                    </div>
-                    <div class="item-bottom-actions">
-                        <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
-                    </div>
-                </div>
-                <div class="product-card" data-name="Durable Shovel" data-price="30.00" data-description="Foldable military-grade shovel for digging and chopping.">
-                    <div class="item-image">
-                        <p class="item-name">Durable Shovel</p>
-                        <p class="item-price">30.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Durable Shovel">
-                    </div>
-                    <div class="item-bottom-actions">
-                        <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
-                    </div>
-                </div>
-                <div class="product-card" data-name="Portable Cooking Stove" data-price="90.00" data-description="Compact and efficient portable stove for cooking in any outdoor setting.">
-                    <div class="item-image">
-                        <p class="item-name">Portable Cooking Stove</p>
-                        <p class="item-price">90.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Portable Cooking Stove">
-                    </div>
-                    <div class="item-bottom-actions">
-                        <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
-                    </div>
-                </div>
-                <div class="product-card" data-name="Rechargeable LED Lantern" data-price="40.00" data-description="Bright LED lantern, rechargeable via USB, perfect for camping or power outages.">
-                    <div class="item-image">
-                        <p class="item-name">Rechargeable LED Lantern</p>
-                        <p class="item-price">40.00</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Rechargeable LED Lantern">
-                    </div>
-                    <div class="item-bottom-actions">
-                        <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
-                    </div>
-                </div>
-                <div class="product-card" data-name="Sport Gloves Pandora's Box" data-price="109931.04" data-description="Factory New Sport Gloves Pandora's Box. Exceedingly rare and highly sought after.">
-                    <div class="item-image">
-                        <p class="item-name">Sport Gloves Pandora's Box</p>
-                        <p class="item-price">109,931.04</p>
-                        <img src="https://via.placeholder.com/150x100" alt="Item Image">
-                    </div>
-                    <div class="item-bottom-actions">
-                        <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
-                    </div>
-                </div>
+
             </div>
         </div>
+
     </main>
 
     <div id="addItemModal" class="modal">
@@ -238,48 +200,49 @@
     </div>
 
     <div id="feedbackOverlay" class="feedback-overlay">
-    <div class="feedback-modal">
-        <button class="close-button" onclick="closeFeedback()">×</button>
-        <h2 class="modal-title">We want your opinion!</h2>
+        <div class="feedback-modal">
+            <button class="close-button" onclick="closeFeedback()">×</button>
+            <h2 class="modal-title">We want your opinion!</h2>
 
-        <div class="satisfaction-section">
-            <p class="question">How satisfied are you with our service?*</p>
-            <div class="emoji-rating">
-                <input type="radio" id="veryDissatisfied" name="satisfaction" value="very-dissatisfied" hidden>
-                <label for="veryDissatisfied" class="emoji-option" title="Very Dissatisfied">
-                    <span class="emoji">😞</span>
-                </label>
+            <div class="satisfaction-section">
+                <p class="question">How satisfied are you with our service?*</p>
+                <div class="emoji-rating">
+                    <input type="radio" id="veryDissatisfied" name="satisfaction" value="very-dissatisfied" hidden>
+                    <label for="veryDissatisfied" class="emoji-option" title="Very Dissatisfied">
+                        <span class="emoji">😞</span>
+                    </label>
 
-                <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied" hidden>
-                <label for="dissatisfied" class="emoji-option" title="Dissatisfied">
-                    <span class="emoji">😕</span>
-                </label>
+                    <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied" hidden>
+                    <label for="dissatisfied" class="emoji-option" title="Dissatisfied">
+                        <span class="emoji">😕</span>
+                    </label>
 
-                <input type="radio" id="neutral" name="satisfaction" value="neutral" hidden>
-                <label for="neutral" class="emoji-option" title="Neutral">
-                    <span class="emoji">😐</span>
-                </label>
+                    <input type="radio" id="neutral" name="satisfaction" value="neutral" hidden>
+                    <label for="neutral" class="emoji-option" title="Neutral">
+                        <span class="emoji">😐</span>
+                    </label>
 
-                <input type="radio" id="satisfied" name="satisfaction" value="satisfied" hidden>
-                <label for="satisfied" class="emoji-option" title="Satisfied">
-                    <span class="emoji">🙂</span>
-                </label>
+                    <input type="radio" id="satisfied" name="satisfaction" value="satisfied" hidden>
+                    <label for="satisfied" class="emoji-option" title="Satisfied">
+                        <span class="emoji">🙂</span>
+                    </label>
 
-                <input type="radio" id="verySatisfied" name="satisfaction" value="very-satisfied" hidden>
-                <label for="verySatisfied" class="emoji-option" title="Very Satisfied">
-                    <span class="emoji">😊</span>
-                </label>
+                    <input type="radio" id="verySatisfied" name="satisfaction" value="very-satisfied" hidden>
+                    <label for="verySatisfied" class="emoji-option" title="Very Satisfied">
+                        <span class="emoji">😊</span>
+                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="suggestion-section">
-            <p class="question">Do you have any concerns or suggestions about our service?</p>
-            <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..." rows="5"></textarea>
-        </div>
+            <div class="suggestion-section">
+                <p class="question">Do you have any concerns or suggestions about our service?</p>
+                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..."
+                    rows="5"></textarea>
+            </div>
 
-        <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
+            <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
+        </div>
     </div>
-</div>
 
     <footer>
         <div>
@@ -294,4 +257,5 @@
         </div>
     </footer>
 </body>
+
 </html>
