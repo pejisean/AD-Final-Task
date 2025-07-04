@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const addItemBtn = document.getElementById('addItemBtn');
     const addItemModal = document.getElementById('addItemModal');
     const closeAddItemModal = document.getElementById('closeAddItemModal');
@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const descriptionModalTitle = document.getElementById('descriptionModalTitle');
     const descriptionModalText = document.getElementById('descriptionModalText');
 
-    addItemBtn.addEventListener('click', function() {
+    addItemBtn.addEventListener('click', function () {
         addItemModal.style.display = 'flex';
     });
 
-    closeAddItemModal.addEventListener('click', function() {
+    closeAddItemModal.addEventListener('click', function () {
         addItemModal.style.display = 'none';
         addItemForm.reset();
     });
 
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         if (event.target == addItemModal) {
             addItemModal.style.display = 'none';
             addItemForm.reset();
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    addItemForm.addEventListener('submit', function(event) {
+    addItemForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
         const itemName = document.getElementById('itemName').value;
@@ -57,17 +57,19 @@ document.addEventListener('DOMContentLoaded', function() {
         newProductCard.dataset.description = itemDescription;
 
         newProductCard.innerHTML = `
-            <div class="item-image">
-                <img src="${itemImageUrl}" alt="${itemName}">
-            </div>
-            <div class="item-details">
-                <p class="item-name">${itemName}</p>
-                <p class="item-price">${itemPrice}</p>
-            </div>
-            <div class="item-actions">
-                <button class="more-info-btn">More Info</button>
-            </div>
-        `;
+    <div class="item-image">
+        <img src="${itemImageUrl}" alt="${itemName}">
+        <div class="item-overlay">
+            <p class="item-name">${itemName}</p>
+            <p class="item-price">${itemPrice}</p>
+        </div>
+    </div>
+    <div class="item-bottom-actions">
+        <button class="more-info-btn">More Info</button>
+        <button class="buy-now-btn">Buy Now</button>
+    </div>
+`;
+
 
         marketplaceGrid.prepend(newProductCard);
 
@@ -79,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function attachMoreInfoListeners() {
         document.querySelectorAll('.more-info-btn').forEach(button => {
-            button.onclick = function() {
+            button.onclick = function () {
                 const card = this.closest('.product-card');
                 const itemName = card.dataset.name;
                 const itemDescription = card.dataset.description;
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     attachMoreInfoListeners();
 
-    closeDescriptionModal.addEventListener('click', function() {
+    closeDescriptionModal.addEventListener('click', function () {
         itemDescriptionModal.style.display = 'none';
     });
 });
