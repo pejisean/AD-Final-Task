@@ -28,6 +28,7 @@
         "vlucas/phpdotenv": "^5.6"
     },
     "scripts": {
-        "start": "php -S localhost:8000 router.php"
+        "start": "php -S localhost:8000 router.php",
+        "postgresql:reset": "docker compose exec the-last-tradepost php utils/dbResetPostgresql.util.php"
     }
 }
