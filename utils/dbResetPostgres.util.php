@@ -34,7 +34,7 @@
     }
 
     // Truncating tables
-    $tables = ['meeting', 'project_users', 'tasks'];
+    $tables = ['user'];
 
     echo "Truncating tables…\n";
 
