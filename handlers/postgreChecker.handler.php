@@ -11,8 +11,10 @@ $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$pa
 echo($conn_string);
 $dbconn = pg_connect($conn_string); 
 
+
+
 if (!$dbconn) {
-    echo "❌ Connection Failed: ", pg_last_error() . "  <br>";
+    echo "❌ Connection Failed: ", pg_last_error($connection) . "  <br>";
     exit();
 } else {
     echo "✔️ PostgreSQL Connection  <br>";
