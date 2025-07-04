@@ -18,7 +18,7 @@
 
     // Listing SQL files
     $sqlFiles = [
-        'database/user.model.sql'
+        'sql/user.model.sql'
     ];
 
     foreach ($sqlFiles as $file) {
@@ -38,7 +38,7 @@
 
     // Define mapping of tables to their static data files (PHP files returning arrays)
     $seedFiles = [
-        'user' => DUMMIES_PATH . '/users.staticData.php',
+        'user' => DUMMIES_PATH . '/user.staticData.php',
     ];
 
     // Loop over each table and seed data

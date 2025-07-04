@@ -18,7 +18,7 @@
 
     // Listing SQL files
     $sqlFiles = [
-        'database/user.model.sql'
+        'sql/user.model.sql'
     ];
 
     foreach ($sqlFiles as $file) {
@@ -34,7 +34,7 @@
     }
 
     // Truncating tables
-    $tables = ['meeting', 'project_users', 'tasks'];
+    $tables = ['user'];
 
     echo "Truncating tables…\n";
 

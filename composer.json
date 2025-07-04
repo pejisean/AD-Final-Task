@@ -29,6 +29,7 @@
     },
     "scripts": {
         "start": "php -S localhost:8000 router.php",
-        "postgresql:reset": "docker compose exec the-last-tradepost php utils/dbResetPostgresql.util.php"
+        "postgresql:reset": "docker compose exec the-last-tradepost php utils/dbResetPostgres.util.php",
+        "postgresql:seed": "docker compose exec the-last-tradepost php utils/dbSeederPostgres.util.php"
     }
 }
