@@ -211,7 +211,15 @@
         </div>
         <div>
             <h4>Links</h4>
-            <a href="#">Community</a>
+            <a href="#">Home</a>
+            <a href="#">Marketplace</a>
+            <a href="#">Electronics</a>
+            <a href="#">Tool</a>
+            <a href="#">Weapons</a>
+            <a href="#">Other Essentials</a>
+            <a href="#">Military</a>
+            <a href="#">History</a>
+            <a href="#">About Us</a>
         </div>
     </footer>
 </body>
