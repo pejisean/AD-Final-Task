@@ -26,7 +26,8 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
             <div class="header-right">
 
@@ -46,13 +47,15 @@
             <form class="login-form" onsubmit="return handleLogin()">
                 <div class="form-group">
                     <label for="codename">Codename</label>
-                    <input type="text" id="codename" name="codename" required placeholder="Enter your codename" aria-label="Codename" />
+                    <input type="text" id="codename" name="codename" required placeholder="Enter your codename"
+                        aria-label="Codename" />
                     <p id="codename-error" class="input-error-message"></p>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Enter your password" aria-label="Password" />
+                    <input type="password" id="password" name="password" required placeholder="Enter your password"
+                        aria-label="Password" />
                     <p id="password-error" class="input-error-message"></p>
                 </div>
 
@@ -70,7 +73,7 @@
             <h4>Company</h4>
             <a href="#">Contact Us</a>
             <a href="#">FAQs</a>
-            <a href="#">Our Company</a>
+            <a href="#">Our Company.</a>
         </div>
         <div>
             <h4>Links</h4>
