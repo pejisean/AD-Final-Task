@@ -5,26 +5,16 @@
 <br />
 <div align="center">
   <a href="https://github.com/zyx-0314/">
-  <!-- TODO: If you want to add logo or banner you can add it here -->
-    <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
+    <img src="./assets/img/HomeLogo.png" alt="THE LAST TRADE POST" width="130" height="100">
   </a>
-<!-- TODO: Change Title to the name of the title of your Project -->
-  <h3 align="center">Title</h3>
+  <h3 align="center">THE LAST TRADE POST</h3>
 </div>
-<!-- TODO: Make a short description -->
 <div align="center">
-  Short Description. (Optional)
 </div>
 
 <br />
 
-<!-- TODO: Change the zyx-0314 into your github username  -->
-<!-- TODO: Change the WD-Template-Project into the same name of your folder -->
-
 ![](https://visit-counter.vercel.app/counter.png?page=pejisean/AD-Final-Task)
-
-
-
 
 [![wakatime](https://wakatime.com/badge/github/pejisean/AD-Final-Task.svg)]
 ---
@@ -32,7 +22,6 @@
 <br />
 <br />
 
-<!-- TODO: If you want to add more layers for your readme -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -60,22 +49,15 @@
 
 ## Overview
 
-<!-- TODO: To be changed -->
-<!-- The following are just sample -->
-
 Description of the project in details.
 
 ### Key Components
-
-<!-- TODO: List of Key Components -->
-<!-- The following are just sample -->
 
 - Authentication & Authorization
 - CRUD Operations for Invetory System
 
 ### Technology
 
-<!-- TODO: List of Technology Used -->
 #### Language
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -96,8 +78,6 @@ Description of the project in details.
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ## Rules, Practices and Principles
-
-<!-- Do not Change this -->
 
 1. Always use `AD-` in the front of the Title of the Project for the Subject followed by your custom naming.
 2. Do not rename `.php` files if they are pages; always use `index.php` as the filename.
@@ -157,11 +137,18 @@ AD-ProjectName
 
 ## Resources
 
-<!-- TODO: Add References -->
-
-| Title        | Purpose                                                                       | Link          |
-| ------------ | ----------------------------------------------------------------------------- | ------------- |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
+| Title                        | Purpose                                                      | Link                                                                 |
+|------------------------------|--------------------------------------------------------------|----------------------------------------------------------------------|
+| PHP Manual                   | Official PHP documentation                                   | https://www.php.net/manual/en/                                       |
+| CodeIgniter Documentation    | Guide for CodeIgniter framework                              | https://codeigniter.com/user_guide/                                  |
+| Bootstrap Documentation      | Frontend framework documentation                             | https://getbootstrap.com/docs/5.0/getting-started/introduction/      |
+| Tailwind CSS Documentation   | Utility-first CSS framework                                  | https://tailwindcss.com/docs                                         |
+| MySQL Documentation          | Official MySQL documentation                                 | https://dev.mysql.com/doc/                                           |
+| MongoDB Manual               | Official MongoDB documentation                               | https://www.mongodb.com/docs/manual/                                 |
+| PostgreSQL Documentation     | Official PostgreSQL documentation                            | https://www.postgresql.org/docs/                                     |
+| W3Schools HTML/CSS/JS        | Reference for HTML, CSS, and JavaScript basics               | https://www.w3schools.com/                                           |
+| Mozilla Developer Network    | In-depth web technology documentation                        | https://developer.mozilla.org/                                       |
+| Docker Documentation         | Containerization platform docs                               | https://docs.docker.com/                                             |
+| GitHub Docs                  | GitHub platform documentation                                | https://docs.github.com/                                             |
+| Composer PHP                 | Dependency manager for PHP                                   | https://getcomposer.org/doc/                                         |
+| Visual Studio Code Docs      | VS Code editor documentation                                 | https://code.visualstudio.com/docs                                   |
