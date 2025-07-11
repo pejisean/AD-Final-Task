@@ -44,7 +44,7 @@
     <main class="login-container">
         <div class="login-form-wrapper">
             <h2>Welcome Back!</h2>
-            <form class="login-form" onsubmit="return handleLogin()">
+            <form action="../utils/auth.util.php" class="login-form" onsubmit="return handleLogin()">
                 <div class="form-group">
                     <label for="codename">Codename</label>
                     <input type="text" id="codename" name="codename" required placeholder="Enter your codename"
