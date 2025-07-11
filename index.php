@@ -2,9 +2,9 @@
 <html lang="en" class="hide-scrollbar">
 
 <head>
-
-<?php require_once 'components/head.component.php'; ?>
-
+<title>The Last Trade Post - Home</title>
+<?php require_once 'components/head.component.php';?>
+<link rel="stylesheet" href="assets/css/home.css" />
 </head>
 
 <body>
