@@ -2,7 +2,9 @@
 <html lang="en" class="hide-scrollbar">
 
 <head>
+
 <?php require_once 'components/head.component.php'; ?>
+
 </head>
 
 <body>
