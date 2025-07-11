@@ -29,20 +29,13 @@
                 <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
                         alt="The Last Trade Post Logo"></a>
             </div>
-
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="marketplace.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Marketplace</a>
-                    <a href="electronics.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Electronics</a>
-                    <a href="tools.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Tools</a>
-                    <a href="weapons.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Weapons</a>
-                    <a href="other.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Other
-                        Essentials</a>
+                    <a href="marketplace.php">Marketplace</a>
+                    <a href="electronics.php">Electronics</a>
+                    <a href="tools.php">Tools</a>
+                    <a href="weapons.php">Weapons</a>
+                    <a href="other.php">Other Essentials</a>
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
@@ -58,7 +51,7 @@
     </div>
 
     <div class="products-container">
-        <h2 class="section-title1" style="user-select: none;">BATTLE-TESTED</h2>
+        <h2 class="section-title1" >BATTLE-TESTED</h2>
         <div class="showcase-container">
             <section class="showcase-hero" style="background-image: url('assets/img/other/first.png');">
                 <div class="showcase-content">
@@ -102,7 +95,7 @@
 
     <div class="products-container">
         <div class="section-header">
-            <h2 class="section-title2" style="user-select: none;">FRESH SALVAGE</h2>
+            <h2 class="section-title2" >FRESH SALVAGE</h2>
             <div class="product-toolbar">
                 <div class="filter-group">
                     <label for="sort-by-main">Sort By:</label>
@@ -164,7 +157,7 @@
     </div>
 
     <div class="products-container">
-        <h2 class="section-title" style="user-select: none;">SURVIVOR'S CHOICE</h2>
+        <h2 class="section-title" >SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
             <div class="product-card" data-price="1500"
                 style="background-image: url('assets/img/other/lifestraw.png');">

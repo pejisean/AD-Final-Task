@@ -14,8 +14,13 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-a {
+a,h2 {
     text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
 }
 
 img {
