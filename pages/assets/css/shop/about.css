@@ -1,0 +1,129 @@
+/* === Fixed About Page Styling - No Cutoff on Hover === */
+
+.about-container {
+    padding: 4rem 2rem;
+    background-color: #0A1215;
+    color: #f0f0f0;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.about-description {
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+}
+
+.about-description h1 {
+    font-size: 3rem;
+    color: #DA6015;
+    margin-bottom: 1rem;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.about-description p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #ccc;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.team-section {
+    position: relative;
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #111A1D;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 0 30px 5px rgba(255, 123, 20, 0.85);
+    /* Bright orange glow */
+}
+
+
+
+.team-section h2 {
+    font-size: 2.5rem;
+    color: #ff7f2a;
+    font-family: 'Bebas Neue', sans-serif;
+    margin-bottom: 2rem;
+}
+
+/* Full Width Row */
+.team-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 0 2rem;
+    overflow: visible;
+    position: relative;
+}
+
+/* ✅ Smooth hover without cropping */
+.team-member {
+    background-color: #1C1C1C;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 0.8s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 36px rgba(218, 96, 21, 0.4);
+    z-index: 5;
+    /* ✅ Bring on top so it won’t get clipped */
+}
+
+.team-member img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.team-member:hover img {
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.team-member h3 {
+    color: #DA6015;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.team-member p {
+    color: #aaa;
+    font-size: 0.95rem;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile stacking if needed */
+@media (max-width: 1280px) {
+    .team-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .team-member {
+        margin-bottom: 2rem;
+    }
+}
