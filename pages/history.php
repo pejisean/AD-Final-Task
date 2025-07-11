@@ -3,7 +3,7 @@
 
 <head>
     <title>The Last Trade Post - Purchase History</title>
-    <?php require_once '../components/head.component.php';?>
+    <?php require_once '../components/head.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/history.css" />
 </head>
 
@@ -34,7 +34,7 @@
                 <a href="#">🛒 Cart (0)</a>
                 <a href="history.php">📄 History</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
-                <a href="/index.php#about">ℹ️ About Us</a>
+                <a href="about.php">ℹ️ About Us</a>
             </div>
         </header>
     </div>
@@ -104,7 +104,8 @@
 
             <div class="suggestion-section">
                 <p class="question">Do you have any concerns or suggestions about our service?</p>
-                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..." rows="5"></textarea>
+                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..."
+                    rows="5"></textarea>
             </div>
 
             <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
@@ -152,14 +153,22 @@
 
     <footer>
         <div>
+            <h4>Links</h4>
+            <a href="../index.php">Home</a>
+            <a href="marketplace.php">Marketplace</a>
+            <a href="electronics.php">Electronics</a>
+            <a href="tools.php">Tools</a>
+            <a href="weapons.php">Weapons</a>
+            <a href="other.php">Other Essentials</a>
+            <a href="military.php">Military</a>
+        </div>
+        <div>
             <h4>Company</h4>
+            <a href="history.php">History</a>
+            <a href="about.php">About Us</a>
             <a href="#">Contact Us</a>
             <a href="#">FAQs</a>
             <a href="#">Our Company</a>
-        </div>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Community</a>
         </div>
     </footer>
 

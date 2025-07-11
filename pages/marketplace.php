@@ -3,7 +3,7 @@
 
 <head>
     <title>The Last Trade Post - Marketplace</title>
-    <?php require_once '../components/head.component.php';?>
+    <?php require_once '../components/head.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
 </head>
 
@@ -35,7 +35,7 @@
                 <a href="#">🛒 Cart (0)</a>
                 <a href="history.php">📄 History</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
-                <a href="/index.php#about">ℹ️ About Us</a>
+                <a href="about.php">ℹ️ About Us</a>
             </div>
         </header>
     </div>
@@ -225,14 +225,22 @@
 
     <footer>
         <div>
+            <h4>Links</h4>
+            <a href="../index.php">Home</a>
+            <a href="marketplace.php">Marketplace</a>
+            <a href="electronics.php">Electronics</a>
+            <a href="tools.php">Tools</a>
+            <a href="weapons.php">Weapons</a>
+            <a href="other.php">Other Essentials</a>
+            <a href="military.php">Military</a>
+        </div>
+        <div>
             <h4>Company</h4>
+            <a href="history.php">History</a>
+            <a href="about.php">About Us</a>
             <a href="#">Contact Us</a>
             <a href="#">FAQs</a>
             <a href="#">Our Company</a>
-        </div>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Community</a>
         </div>
     </footer>
 </body>
