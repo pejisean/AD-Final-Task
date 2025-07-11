@@ -20,6 +20,9 @@ a,h2 {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+a {
     cursor: pointer;
 }
 
