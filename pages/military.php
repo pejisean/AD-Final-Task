@@ -36,7 +36,6 @@
                     <a href="tools.php">Tools</a>
                     <a href="weapons.php">Weapons</a>
                     <a href="other.php">Other Essentials</a>
-                    <a href="military.php">Military Grade</a>
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
