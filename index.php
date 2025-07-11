@@ -211,15 +211,12 @@
             <a href="#">Tool</a>
             <a href="#">Weapons</a>
             <a href="#">Other Essentials</a>
-            <a href="#">Military</a>
         </div>
         <div>
             <h4>Company</h4>
-            <a href="#">History</a>
             <a href="#">About Us</a>
             <a href="#">Contact Us</a>
             <a href="#">FAQs</a>
-            <a href="#">Our Company</a>
         </div>
     </footer>
 </body>
