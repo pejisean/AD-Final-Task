@@ -10,6 +10,7 @@
   <h3 align="center">THE LAST TRADE POST</h3>
 </div>
 <div align="center">
+  <b>An advanced inventory and marketplace web application for trading and managing survival gear.</b>
 </div>
 
 <br />
@@ -17,6 +18,7 @@
 ![](https://visit-counter.vercel.app/counter.png?page=pejisean/AD-Final-Task)
 
 [![wakatime](https://wakatime.com/badge/github/pejisean/AD-Final-Task.svg)]
+
 ---
 
 <br />
@@ -37,7 +39,7 @@
       </ol>
     </li>
     <li>
-      <a href="#rule,-practices-and-principles">Rules, Practices and Principles</a>
+      <a href="#rules-practices-and-principles">Rules, Practices and Principles</a>
     </li>
     <li>
       <a href="#resources">Resources</a>
@@ -49,12 +51,17 @@
 
 ## Overview
 
-Description of the project in details.
+**THE LAST TRADE POST** is a modern web application designed for trading, buying, and managing survival and outdoor gear. It features a robust inventory system, user authentication, and a dynamic marketplace for users to list and purchase items. The project leverages PHP, CodeIgniter, and modern frontend frameworks for a seamless experience.
 
 ### Key Components
 
-- Authentication & Authorization
-- CRUD Operations for Invetory System
+- User Authentication & Authorization
+- Inventory Management (CRUD)
+- Marketplace for User Listings
+- Purchase History Tracking
+- Responsive UI with Tailwind CSS & Bootstrap
+- Feedback and Support Modal
+- Dockerized for easy deployment
 
 ### Technology
 
@@ -75,7 +82,10 @@ Description of the project in details.
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 
 #### Deployment
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+---
 
 ## Rules, Practices and Principles
 
@@ -87,43 +97,51 @@ Description of the project in details.
 6. Different file naming Cases
    | Naming Case | Type of code         | Example                           |
    | ----------- | -------------------- | --------------------------------- |
-   | Pascal      | Utility              | Accoun.util.php                   |
+   | Pascal      | Utility              | Account.util.php                  |
    | Camel       | Components and Pages | index.php or footer.component.php |
-8. Renaming of Pages folder names are a must, and relates to what it is doing or data it holding.
-9. Use proper label in your github commits: `feat`, `fix`, `refactor` and `docs`
-10. File Structure to follow below.
+7. Renaming of Pages folder names are a must, and relates to what it is doing or data it holding.
+8. Use proper label in your github commits: `feat`, `fix`, `refactor` and `docs`
+9. File Structure to follow below.
 
 ```
-AD-ProjectName
+AD-TheLastTradePost
 └─ assets
 |   └─ css
-|   |   └─ name.css
+|   |   └─ main.css
 |   └─ img
-|   |   └─ name.jpeg/.jpg/.webp/.png
+|   |   └─ logo.webp
 |   └─ js
-|       └─ name.js
+|       └─ script.js
 └─ components
-|   └─ name.component.php
+|   ├─ header.component.php
+|   ├─ footer.component.php
 |   └─ templates
-|      └─ name.component.php
+|       └─ card.component.php
 └─ handlers
-|   └─ name.handler.php
-└─ layout
-|   └─ name.layout.php
+|   ├─ user.handler.php
+|   └─ product.handler.php
+└─ layouts
+|   ├─ main.layout.php
+|   └─ auth.layout.php
 └─ pages
-|  └─ pageName
-|     └─ assets
-|     |  └─ css
-|     |  |  └─ name.css
-|     |  └─ img
-|     |  |  └─ name.jpeg/.jpg/.webp/.png
-|     |  └─ js
-|     |     └─ name.js
-|     └─ index.php
-└─ staticData
-|  └─ name.staticdata.php
+|   ├─ dashboard
+|   |   ├─ assets
+|   |   |   ├─ css
+|   |   |   |   └─ dashboard.css
+|   |   |   ├─ img
+|   |   |   |   └─ dashboard-bg.webp
+|   |   |   └─ js
+|   |   |       └─ dashboard.js
+|   |   └─ index.php
+|   ├─ login
+|   |   └─ index.php
+|   └─ register
+|       └─ index.php
+└─ staticDatas
+|   └─ items.staticdata.php
 └─ utils
-|   └─ name.utils.php
+|   ├─ Auth.util.php
+|   └─ Inventory.util.php
 └─ vendor
 └─ .gitignore
 └─ bootstrap.php
@@ -145,9 +163,14 @@ AD-ProjectName
 | MySQL Documentation          | Official MySQL documentation                                 | https://dev.mysql.com/doc/                                           |
 | MongoDB Manual               | Official MongoDB documentation                               | https://www.mongodb.com/docs/manual/                                 |
 | PostgreSQL Documentation     | Official PostgreSQL documentation                            | https://www.postgresql.org/docs/                                     |
-| W3Schools HTML/CSS/JS        | Reference for HTML, CSS, and JavaScript basics               | https://www.w3schools.com/                                           |
-| Mozilla Developer Network    | In-depth web technology documentation                        | https://developer.mozilla.org/                                       |
 | Docker Documentation         | Containerization platform docs                               | https://docs.docker.com/                                             |
-| GitHub Docs                  | GitHub platform documentation                                | https://docs.github.com/                                             |
 | Composer PHP                 | Dependency manager for PHP                                   | https://getcomposer.org/doc/                                         |
 | Visual Studio Code Docs      | VS Code editor documentation                                 | https://code.visualstudio.com/docs                                   |
+| W3Schools HTML/CSS/JS        | Reference for HTML, CSS, and JavaScript basics               | https://www.w3schools.com/                                           |
+| Mozilla Developer Network    | In-depth web technology documentation                        | https://developer.mozilla.org/                                       |
+| GitHub Docs                  | GitHub platform documentation                                | https://docs.github.com/                                             |
+| DigitalOcean PHP Deployment  | Guide for deploying PHP apps                                 | https://www.digitalocean.com/community/tutorials/tag/php             |
+| FreeCodeCamp PHP Tutorials   | Beginner to advanced PHP tutorials                           | https://www.freecodecamp.org/news/tag/php/                           |
+| Stack Overflow               | Community Q&A for programming                                | https://stackoverflow.com/questions/tagged/php                       |
+
+---
