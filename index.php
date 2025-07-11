@@ -15,13 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 </head>
 
 <body>
@@ -36,17 +29,11 @@
 
             <div class="header-right">
                 <nav class="main-nav">
-                    <a href="pages/marketplace.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Marketplace</a>
-                    <a href="pages/electronics.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Electronics</a>
-                    <a href="pages/tools.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Tools</a>
-                    <a href="pages/weapons.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Weapons</a>
-                    <a href="pages/other.php"
-                        style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; cursor: pointer;">Other
-                        Essentials</a>
+                    <a href="pages/marketplace.php">Marketplace</a>
+                    <a href="pages/electronics.php">Electronics</a>
+                    <a href="pages/tools.php">Tools</a>
+                    <a href="pages/weapons.php">Weapons</a>
+                    <a href="pages/other.php">Other Essentials</a>
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
