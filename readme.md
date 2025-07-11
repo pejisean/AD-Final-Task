@@ -133,7 +133,6 @@ AD-ProjectName
 └─ readme.md
 └─ router.php
 ```
-> The following should be renamed: name.css, name.js, name.jpeg/.jpg/.webp/.png, name.component.php(but not the part of the `component.php`), Name.utils.php(but not the part of the `utils.php`)
 
 ## Resources
 
