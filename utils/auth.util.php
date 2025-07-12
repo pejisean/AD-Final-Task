@@ -1,5 +1,5 @@
 <?php
-require_once BASE_PATH . '/handlers/postgreChecker.handler.php';
+require_once UTILS_PATH . '/database.util.php';
 
 class AuthUtil {
     
@@ -21,12 +21,21 @@ class AuthUtil {
     public static function login($username, $password) {
         self::startSession();
         
-        // TODO: Replace with actual database query
-        // For now, using static data
-        $staticUsers = require_once DUMMIES_PATH . '/user.staticData.php';
-        
-        foreach ($staticUsers as $user) {
-            if ($user['username'] === $username && $user['password'] === $password) {
+        try {
+            // Use DatabaseUtil to find user
+            $user = DatabaseUtil::findUserByUsername($username);
+            
+            if (!$user) {
+                return [
+                    'success' => false,
+                    'message' => 'Invalid username or password'
+                ];
+            }
+            
+            // Verify password (plain text for now)
+            // TODO: Implement password_verify() for hashed passwords
+            if ($user['password'] === $password) {
+                // Set session variables
                 $_SESSION['user_id'] = $user['username'];
                 $_SESSION['user_role'] = $user['role'];
                 $_SESSION['logged_in'] = true;
@@ -40,13 +49,64 @@ class AuthUtil {
                         'role' => $user['role']
                     ]
                 ];
+            } else {
+                return [
+                    'success' => false,
+                    'message' => 'Invalid username or password'
+                ];
             }
+            
+        } catch (Exception $e) {
+            error_log("Login error: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'An error occurred during login'
+            ];
         }
-        
-        return [
-            'success' => false,
-            'message' => 'Invalid username or password'
-        ];
+    }
+    
+    /**
+     * Register a new user
+     * @param string $username
+     * @param string $password
+     * @param string $role
+     * @return array
+     */
+    public static function register($username, $password, $role = 'user') {
+        try {
+            // Check if username already exists
+            if (DatabaseUtil::usernameExists($username)) {
+                return [
+                    'success' => false,
+                    'message' => 'Username already exists'
+                ];
+            }
+            
+            // TODO: Hash password for security
+            // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            
+            // Create new user
+            $success = DatabaseUtil::createUser($username, $password, $role);
+            
+            if ($success) {
+                return [
+                    'success' => true,
+                    'message' => 'User registered successfully'
+                ];
+            } else {
+                return [
+                    'success' => false,
+                    'message' => 'Failed to register user'
+                ];
+            }
+            
+        } catch (Exception $e) {
+            error_log("Registration error: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'An error occurred during registration'
+            ];
+        }
     }
     
     /**
