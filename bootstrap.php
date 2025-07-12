@@ -6,4 +6,6 @@ define('DUMMIES_PATH', BASE_PATH.'/staticDatas/');
 
 
 
+
+
 chdir(BASE_PATH);

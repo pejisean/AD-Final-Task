@@ -1,5 +1,5 @@
 <?php
-require_once UTILS_PATH . '/database.util.php';
+require_once UTILS_PATH . 'database.util.php';
 
 class AuthUtil {
     

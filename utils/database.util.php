@@ -1,5 +1,5 @@
 <?php
-require_once UTILS_PATH . '/envSetter.util.php';
+require_once UTILS_PATH . 'envSetter.util.php';
 
 class DatabaseUtil {
     
