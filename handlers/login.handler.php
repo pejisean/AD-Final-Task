@@ -1,10 +1,11 @@
 <?php
 require_once '../bootstrap.php';
-require_once UTILS_PATH . 'auth.util.php';
+require_once UTILS_PATH . 'envSetter.handler.php'; // Add this line
+require_once UTILS_PATH . 'auth.util.php'; // Fixed the missing slash
 
-// Enable error display for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Disable HTML error output for clean JSON
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
 
 header('Content-Type: application/json');
 
@@ -47,19 +48,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $debug['db_error'] = $e->getMessage();
     }
 
-    $result = AuthUtil::login($username, $password);
-    
-    // Add debug info to result
-    $result['debug'] = $debug;
-    
-    echo json_encode($result);
+    try {
+        $result = AuthUtil::login($username, $password);
+        
+        // Add debug info to result
+        $result['debug'] = $debug;
+        
+        echo json_encode($result);
+    } catch (Exception $e) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Login error: ' . $e->getMessage(),
+            'debug' => $debug
+        ]);
+    }
 } else {
     echo json_encode([
         'success' => false,
         'message' => 'Invalid request method',
         'debug' => ['method' => $_SERVER['REQUEST_METHOD']]
     ]);
-
 }
-
 ?>
