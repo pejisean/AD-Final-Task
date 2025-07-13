@@ -2,7 +2,9 @@
 <html lang="en" class="hide-scrollbar">
 
 <head>
-    <?php require_once '../components/head.component.php'; ?>
+    <title>The Last Trade Post - About Us</title>
+    <?php require_once '../components/head.component.php';?>
+    <?php require_once '../components/script.component.php';?>
     <link rel="stylesheet" href="assets/css/shop/about.css">
 </head>
 
