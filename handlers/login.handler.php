@@ -7,32 +7,28 @@ error_reporting(0);
 header('Content-Type: application/json');
 
 try {
-    // Step 1: Include bootstrap
+    // Include bootstrap
     require_once '../bootstrap.php';
     
-    // Step 2: Include environment setup
+    // Include required utilities
     require_once UTILS_PATH . '/envSetter.util.php';
-    
-    // Step 3: Include the file that contains ConnectDB() - UPDATE THIS PATH
-    // Look for one of these files in your project:
-    require_once BASE_PATH . '/handlers/postgreChecker.handler.php';  // Try this first
-    // OR require_once BASE_PATH . '/handlers/database.handler.php';
-    // OR require_once UTILS_PATH . '/database.util.php';
-    
-    // Step 4: Include auth utility
+    require_once HANDLERS_PATH . '/database.handler.php';
+    require_once UTILS_PATH . '/database.util.php';
     require_once UTILS_PATH . '/auth.util.php';
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
+        // Get input data
         $input = json_decode(file_get_contents('php://input'), true);
-        if(!$input){
+        if (!$input) {
             $input = $_POST;
         }
-
+        
         $username = trim($input['codename'] ?? '');
         $password = $input['password'] ?? '';
 
-        if (empty($username) || empty($password)){
+        // Validate input
+        if (empty($username) || empty($password)) {
             echo json_encode([
                 'success' => false,
                 'message' => 'Username and password are required'
@@ -40,7 +36,7 @@ try {
             exit();
         }
 
-        // Test database connection
+        // Test database connection first
         $connection = ConnectDB();
         if (!$connection) {
             echo json_encode([
@@ -51,7 +47,7 @@ try {
         }
         pg_close($connection);
 
-        // Try login
+        // Attempt login using AuthUtil
         $result = AuthUtil::login($username, $password);
         echo json_encode($result);
         
