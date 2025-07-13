@@ -1,3 +1,11 @@
+<?php
+require_once '../bootstrap.php';
+require_once UTILS_PATH . 'auth.util.php';
+    if (AuthUtil::isLoggedIn()) {
+        header("Location: ../index.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en" class="hide-scrollbar">
 
