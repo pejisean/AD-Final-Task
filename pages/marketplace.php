@@ -3,7 +3,7 @@
 
 <head>
     <title>The Last Trade Post - Marketplace</title>
-    <?php require_once '../components/head.component.php';?>
+    <?php require_once '../components/head.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
 </head>
 
@@ -223,18 +223,7 @@
         </div>
     </div>
 
-    <footer>
-        <div>
-            <h4>Company</h4>
-            <a href="#">Contact Us</a>
-            <a href="#">FAQs</a>
-            <a href="#">Our Company</a>
-        </div>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Community</a>
-        </div>
-    </footer>
+    <?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>

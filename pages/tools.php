@@ -3,8 +3,8 @@
 
 <head>
     <title>The Last Trade Post - Tools</title>
-    <?php require_once '../components/head.component.php';?>
-    <link rel="stylesheet" href="assets/css/shop/trading.css"/>
+    <?php require_once '../components/head.component.php'; ?>
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
 </head>
 
 <body>
@@ -15,7 +15,8 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
 
             <div class="header-right">
@@ -41,7 +42,7 @@
     </div>
 
     <div class="products-container">
-        <h2 class="section-title1" >BATTLE-TESTED</h2>
+        <h2 class="section-title1">BATTLE-TESTED</h2>
         <div class="showcase-container">
             <section class="showcase-hero" style="background-image: url('assets/img/tools/breacher.png');">
                 <div class="showcase-content">
@@ -85,7 +86,7 @@
 
     <div class="products-container">
         <div class="section-header">
-            <h2 class="section-title2" >FRESH SALVAGE</h2>
+            <h2 class="section-title2">FRESH SALVAGE</h2>
             <div class="product-toolbar">
                 <div class="filter-group">
                     <label for="sort-by-main">Sort By:</label>
@@ -146,7 +147,7 @@
     </div>
 
     <div class="products-container">
-        <h2 class="section-title" >SURVIVOR'S CHOICE</h2>
+        <h2 class="section-title">SURVIVOR'S CHOICE</h2>
         <section class="products" id="top-sellers-grid">
             <div class="product-card" data-price="1800" style="background-image: url('assets/img/tools/crowbar.png');">
                 <div class="product-content">
@@ -241,61 +242,51 @@
     </div>
 
     <div id="feedbackOverlay" class="feedback-overlay">
-    <div class="feedback-modal">
-        <button class="close-button" onclick="closeFeedback()">×</button>
-        <h2 class="modal-title">We want your opinion!</h2>
+        <div class="feedback-modal">
+            <button class="close-button" onclick="closeFeedback()">×</button>
+            <h2 class="modal-title">We want your opinion!</h2>
 
-        <div class="satisfaction-section">
-            <p class="question">How satisfied are you with our service?*</p>
-            <div class="emoji-rating">
-                <input type="radio" id="veryDissatisfied" name="satisfaction" value="very-dissatisfied" hidden>
-                <label for="veryDissatisfied" class="emoji-option" title="Very Dissatisfied">
-                    <span class="emoji">😞</span>
-                </label>
+            <div class="satisfaction-section">
+                <p class="question">How satisfied are you with our service?*</p>
+                <div class="emoji-rating">
+                    <input type="radio" id="veryDissatisfied" name="satisfaction" value="very-dissatisfied" hidden>
+                    <label for="veryDissatisfied" class="emoji-option" title="Very Dissatisfied">
+                        <span class="emoji">😞</span>
+                    </label>
 
-                <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied" hidden>
-                <label for="dissatisfied" class="emoji-option" title="Dissatisfied">
-                    <span class="emoji">😕</span>
-                </label>
+                    <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied" hidden>
+                    <label for="dissatisfied" class="emoji-option" title="Dissatisfied">
+                        <span class="emoji">😕</span>
+                    </label>
 
-                <input type="radio" id="neutral" name="satisfaction" value="neutral" hidden>
-                <label for="neutral" class="emoji-option" title="Neutral">
-                    <span class="emoji">😐</span>
-                </label>
+                    <input type="radio" id="neutral" name="satisfaction" value="neutral" hidden>
+                    <label for="neutral" class="emoji-option" title="Neutral">
+                        <span class="emoji">😐</span>
+                    </label>
 
-                <input type="radio" id="satisfied" name="satisfaction" value="satisfied" hidden>
-                <label for="satisfied" class="emoji-option" title="Satisfied">
-                    <span class="emoji">🙂</span>
-                </label>
+                    <input type="radio" id="satisfied" name="satisfaction" value="satisfied" hidden>
+                    <label for="satisfied" class="emoji-option" title="Satisfied">
+                        <span class="emoji">🙂</span>
+                    </label>
 
-                <input type="radio" id="verySatisfied" name="satisfaction" value="very-satisfied" hidden>
-                <label for="verySatisfied" class="emoji-option" title="Very Satisfied">
-                    <span class="emoji">😊</span>
-                </label>
+                    <input type="radio" id="verySatisfied" name="satisfaction" value="very-satisfied" hidden>
+                    <label for="verySatisfied" class="emoji-option" title="Very Satisfied">
+                        <span class="emoji">😊</span>
+                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="suggestion-section">
-            <p class="question">Do you have any concerns or suggestions about our service?</p>
-            <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..." rows="5"></textarea>
-        </div>
+            <div class="suggestion-section">
+                <p class="question">Do you have any concerns or suggestions about our service?</p>
+                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..."
+                    rows="5"></textarea>
+            </div>
 
-        <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
+            <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
+        </div>
     </div>
-</div>
 
-    <footer>
-        <div>
-            <h4>Company</h4>
-            <a href="#">Contact Us</a>
-            <a href="#">FAQs</a>
-            <a href="#">Our Company</a>
-        </div>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Community</a>
-        </div>
-    </footer>
+    <?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 
 <head>
     <title>The Last Trade Post - Purchase History</title>
-    <?php require_once '../components/head.component.php';?>
+    <?php require_once '../components/head.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/history.css" />
 </head>
 
@@ -104,7 +104,8 @@
 
             <div class="suggestion-section">
                 <p class="question">Do you have any concerns or suggestions about our service?</p>
-                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..." rows="5"></textarea>
+                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..."
+                    rows="5"></textarea>
             </div>
 
             <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
@@ -148,22 +149,8 @@
             </div>
         </div>
     </div>
-    <!-- End Cart Overlay HTML -->
 
-    <footer>
-        <div>
-            <h4>Company</h4>
-            <a href="#">Contact Us</a>
-            <a href="#">FAQs</a>
-            <a href="#">Our Company</a>
-        </div>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Community</a>
-        </div>
-    </footer>
-
-    <script src="../assets/js/history.js"></script>
+    <?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>
