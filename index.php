@@ -3,8 +3,8 @@
 
 <head>
     <title>The Last Trade Post - Home</title>
-    <?php require_once 'components/head.component.php';?>
-    <?php require_once 'components/script.component.php';?>
+    <?php require_once 'components/head.component.php'; ?>
+    <?php require_once 'components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/home.css" />
 
 
@@ -104,16 +104,26 @@
             <p class="about-section-p">
                 Let's be real—the world's a mess. Ever since the great burnout...
                 <br><br>
-                This is the new economy—it's raw, it's direct, and it's how we're all gonna build something new from the
-                wreckage. One trade at a time.
+                In the aftermath of a world left in ruin, where cities crumbled and systems failed, a group of survivors
+                banded together to build something rare — a spark of order in the chaos. From scattered zones and broken
+                comms, four specialists found each other across the wasteland. Juan Miguel Antonio, a sharp-eyed hunter
+                and frontend engineer, led the team in crafting a user-friendly interface for survivors to trade and
+                communicate. Beside him, Sean James Peji, a backend mastermind and former foreman, restored order to the
+                data and built the infrastructure that kept the digital pulse of the Trade Post alive. John Carlo
+                Dulutan, agile and resourceful, scavenged forgotten tech and repurposed it into tools for the frontend,
+                making sure the Post looked as strong as it functioned. And Jaymard Licas, the quartermaster, ensured
+                quality and stability — organizing supplies, testing systems, and keeping morale high. Together, they
+                built The Last Trade Post, a sanctuary for barter, supplies, and connection. It’s more than a
+                marketplace — it’s a lifeline for anyone still standing. In this world, trade is survival… and survival
+                starts here.
             </p>
         </section>
     </main>
 
 
-<?php include 'components/feedback.component.php';?>
+    <?php include 'components/feedback.component.php'; ?>
 
-<?php include 'components/footer.component.php';?>
+    <?php include 'components/footer.component.php'; ?>
 </body>
 
 </html>
