@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <script src="assets/js/script.js"></script>
     <script src="assets/js/login.js"></script>
