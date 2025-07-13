@@ -3,8 +3,8 @@
 
 <head>
     <title>The Last Trade Post - Home</title>
-    <?php require_once 'components/head.component.php';?>
-    <?php require_once 'components/script.component.php';?>
+    <?php require_once 'components/head.component.php'; ?>
+    <?php require_once 'components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/home.css" />
 
 
@@ -104,59 +104,26 @@
             <p class="about-section-p">
                 Let's be real—the world's a mess. Ever since the great burnout...
                 <br><br>
-                This is the new economy—it's raw, it's direct, and it's how we're all gonna build something new from the
-                wreckage. One trade at a time.
+                In the aftermath of a world left in ruin, where cities crumbled and systems failed, a group of survivors
+                banded together to build something rare — a spark of order in the chaos. From scattered zones and broken
+                comms, four specialists found each other across the wasteland. Juan Miguel Antonio, a sharp-eyed hunter
+                and frontend engineer, led the team in crafting a user-friendly interface for survivors to trade and
+                communicate. Beside him, Sean James Peji, a backend mastermind and former foreman, restored order to the
+                data and built the infrastructure that kept the digital pulse of the Trade Post alive. John Carlo
+                Dulutan, agile and resourceful, scavenged forgotten tech and repurposed it into tools for the frontend,
+                making sure the Post looked as strong as it functioned. And Jaymard Licas, the quartermaster, ensured
+                quality and stability — organizing supplies, testing systems, and keeping morale high. Together, they
+                built The Last Trade Post, a sanctuary for barter, supplies, and connection. It’s more than a
+                marketplace — it’s a lifeline for anyone still standing. In this world, trade is survival… and survival
+                starts here.
             </p>
         </section>
     </main>
 
-    <!-- Feedback Modal -->
-    <div id="feedbackOverlay" class="feedback-overlay">
-        <div class="feedback-modal">
-            <button class="close-button" onclick="closeFeedback()">×</button>
-            <h2 class="modal-title">We want your opinion!</h2>
 
-            <div class="satisfaction-section">
-                <p class="question">How satisfied are you with our service?*</p>
-                <div class="emoji-rating">
-                    <input type="radio" id="veryDissatisfied" name="satisfaction" value="very-dissatisfied" hidden>
-                    <label for="veryDissatisfied" class="emoji-option" title="Very Dissatisfied">
-                        <span class="emoji">😞</span>
-                    </label>
+    <?php include 'components/feedback.component.php'; ?>
 
-                    <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied" hidden>
-                    <label for="dissatisfied" class="emoji-option" title="Dissatisfied">
-                        <span class="emoji">😕</span>
-                    </label>
-
-                    <input type="radio" id="neutral" name="satisfaction" value="neutral" hidden>
-                    <label for="neutral" class="emoji-option" title="Neutral">
-                        <span class="emoji">😐</span>
-                    </label>
-
-                    <input type="radio" id="satisfied" name="satisfaction" value="satisfied" hidden>
-                    <label for="satisfied" class="emoji-option" title="Satisfied">
-                        <span class="emoji">🙂</span>
-                    </label>
-
-                    <input type="radio" id="verySatisfied" name="satisfaction" value="very-satisfied" hidden>
-                    <label for="verySatisfied" class="emoji-option" title="Very Satisfied">
-                        <span class="emoji">😊</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="suggestion-section">
-                <p class="question">Do you have any concerns or suggestions about our service?</p>
-                <textarea id="suggestionTextbox" placeholder="Tell us more about your experience..."
-                    rows="5"></textarea>
-            </div>
-
-            <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
-        </div>
-    </div>
-
-<?php include 'components/footer.component.php'; ?>
+    <?php include 'components/footer.component.php'; ?>
 </body>
 
 </html>

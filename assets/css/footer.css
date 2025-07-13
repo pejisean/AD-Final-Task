@@ -1,17 +1,38 @@
 footer {
     background-color: #212121;
     color: #fff;
-    display: flex;
-    justify-content: space-around;
-    padding: 30px 20px;
-    flex-wrap: wrap;
-    margin-top: 30px;
+    padding: 30px 40px 10px;
     border-top: 1.5px solid #DA6015;
     box-shadow: 0px -4px 12px -2px rgba(204, 136, 51, 0.4);
 }
 
-footer div {
-    margin: 10px;
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-logo-section {
+    flex: 1 1 200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+
+.footer-logo {
+    width: 200px;
+}
+
+.footer-links-section {
+    flex: 1 1 200px;
+    margin-right: 100px;
+}
+
+.footer-company-section {
+    flex: 1 1 200px;
+    margin-right: 300px;
 }
 
 footer h4 {
@@ -32,4 +53,14 @@ footer a {
 
 footer a:hover {
     color: #DA6015;
+}
+
+.footer-bottom-message {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #ccc;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
