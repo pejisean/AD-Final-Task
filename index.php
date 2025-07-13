@@ -6,7 +6,7 @@
     <?php require_once 'components/head.component.php';?>
     <?php require_once 'components/script.component.php';?>
     <link rel="stylesheet" href="assets/css/home.css" />
-</head>
+
 
 <body>
     <div id="preloader">
