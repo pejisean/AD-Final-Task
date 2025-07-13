@@ -4,6 +4,7 @@
 <head>
     <title>The Last Trade Post - Signup</title>
     <?php require_once '../components/head.component.php'; ?>
+    <?php require_once '../components/script.component.php';?>
     <link rel="stylesheet" href="assets/css/shop/signup.css" />
 </head>
 
