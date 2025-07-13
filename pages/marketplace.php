@@ -6,6 +6,7 @@
     <?php require_once '../components/head.component.php'; ?>
     <?php require_once '../components/script.component.php';?>
     <link rel="stylesheet" href="assets/css/shop/marketplace.css" />
+    <link rel ="stylesheet" href="assets/css/shop/buynowoverlay.css" />
 </head>
 
 <body>
@@ -61,7 +62,7 @@
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
+                        <button class="buy-now-btn" data-item-name="Tactical Backpack" data-item-price="85.50">Buy Now</button>
                     </div>
                 </div>
 
@@ -76,7 +77,7 @@
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
+                        <button class="buy-now-btn" data-item-name="Solar Charger Kit" data-item-price="120.00">Buy Now</button>
                     </div>
                 </div>
 
@@ -91,7 +92,7 @@
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
+                        <button class="buy-now-btn" data-item-name="Multi-Tool Pliers" data-item-price="45.99">Buy Now</button>
                     </div>
                 </div>
 
@@ -106,7 +107,7 @@
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
+                        <button class="buy-now-btn" data-item-name="Steel Boxing Gloves" data-item-price="4299.00">Buy Now</button>
                     </div>
                 </div>
 
@@ -121,7 +122,7 @@
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
+                        <button class="buy-now-btn" data-item-name="Stealth Boots" data-item-price="2800.00">Buy Now</button>
                     </div>
                 </div>
 
@@ -136,7 +137,7 @@
                     </div>
                     <div class="item-bottom-actions">
                         <button class="more-info-btn">More Info</button>
-                        <button class="buy-now-btn">Buy Now</button>
+                        <button class="buy-now-btn" data-item-name="Night Vision Goggles" data-item-price="950.00">Buy Now</button>
                     </div>
                 </div>
 
@@ -179,9 +180,22 @@
         </div>
     </div>
 
-<?php include '../components/feedback.component.php';?>
-
+<div id="buyNowOverlay" class="modal">
+    <div class="overlay-content">
+        <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
+        <h2>Confirm Purchase</h2>
+        <div class="receipt-details">
+            <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
+            <p><strong>Price:</strong> $<span id="receiptItemPrice"></span></p>
+            <p><strong>Total:</strong> $<span id="receiptTotalPrice"></span></p>
+            <p><strong>Secure Outpost IP:</strong> <span id="receiptIPAddress"></span></p>
+        </div>
+        <button id="proceedPaymentButton" class="proceed-payment-button">Proceed to Payment</button>
+    </div>
+</div>
+    <?php include '../components/feedback.component.php';?>
 <?php include '../components/footer.component.php'; ?>
+<script src="assets/js/shop/buynowoverlay.js"></script>
 </body>
 
 </html>
