@@ -58,7 +58,7 @@
         </div>
     </main>
 
-<?php include '../components/footer.component.php'; ?>
+<?php include '../components/footerpages.component.php'; ?>
 </body>
 
 </html>

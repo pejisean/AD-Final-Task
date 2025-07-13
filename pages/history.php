@@ -105,7 +105,7 @@
             </div>
         </div>
     </div>
-<?php include '../components/footer.component.php'; ?>
+<?php include '../components/footerpages.component.php'; ?>
 
     <script src="../assets/js/history.js"></script>
 </body>

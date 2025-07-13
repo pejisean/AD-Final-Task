@@ -123,7 +123,7 @@
 
     <?php include 'components/feedback.component.php'; ?>
 
-    <?php include 'components/footer.component.php'; ?>
+    <?php include 'components/footerindex.component.php'; ?>
 </body>
 
 </html>

@@ -244,7 +244,7 @@
 
 <?php include '../components/feedback.component.php';?>
 
-<?php include '../components/footer.component.php'; ?>
+<?php include '../components/footerpages.component.php'; ?>
 </body>
 
 </html>
