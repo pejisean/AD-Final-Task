@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
     <script src="assets/js/script.js"></script>
     <script src="assets/js/login.js"></script>
@@ -47,7 +48,7 @@
                 <a href="#">🛒 Cart (0)</a>
                 <a href="history.php">📄 History</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
-                <a href="/index.php#about">ℹ️ About Us</a>
+                <a href="about.php">ℹ️ About Us</a>
             </div>
         </header>
     </div>
