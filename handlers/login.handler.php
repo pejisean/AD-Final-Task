@@ -1,6 +1,6 @@
 <?php
 require_once '../bootstrap.php';
-require_once UTILS_PATH . 'envSetter.handler.php'; // Add this line
+require_once UTILS_PATH . 'envSetter.util.php'; // Add this line
 require_once UTILS_PATH . 'auth.util.php'; // Fixed the missing slash
 
 // Disable HTML error output for clean JSON
