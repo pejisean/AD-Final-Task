@@ -4,249 +4,214 @@
 <head>
     <title>The Last Trade Post - Weapons</title>
     <?php require_once '../components/head.component.php'; ?>
-    <?php require_once '../components/script.component.php';?>
-    <link rel="stylesheet" href="assets/css/shop/trading.css"/>
+    <?php require_once '../components/script.component.php'; ?>
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
+
 </head>
 
-<body>
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <div class="sticky-header">
-        <header>
-            <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
-                        alt="The Last Trade Post Logo"></a>
-            </div>
+<?php require_once '../components/dropdown.component.php'; ?>
 
-            <div class="header-right">
-                <nav class="main-nav">
-                    <a href="marketplace.php">Marketplace</a>
-                    <a href="electronics.php">Electronics</a>
-                    <a href="tools.php">Tools</a>
-                    <a href="weapons.php">Weapons</a>
-                    <a href="other.php">Other Essentials</a>
-                </nav>
-                <div class="hamburger" onclick="toggleMenu()">☰</div>
-            </div>
 
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a id="login-signup-link" href="login.php">👤 Login / Sign Up</a>
-                <a href="/index.php">🏠 Home</a>
-                <a href="#">🛒 Cart (0)</a>
-                <a href="history.php">📄 History</a>
-                <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
-                <a href="about.php">ℹ️ About Us</a>
+<div class="products-container">
+    <h2 class="section-title1">BATTLE-TESTED</h2>
+    <div class="showcase-container">
+        <section class="showcase-hero" style="background-image: url('assets/img/weapons/sentry.png');">
+            <div class="showcase-content">
+                <span class="showcase-discount">Ultimate Defense: Save ₱8,000</span>
+                <h3>Automated Sentry Platform (Unarmed)</h3>
+                <p>₱35,000.00</p>
+                <div class="showcase-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
             </div>
-        </header>
-    </div>
-
-    <div class="products-container">
-        <h2 class="section-title1">BATTLE-TESTED</h2>
-        <div class="showcase-container">
-            <section class="showcase-hero" style="background-image: url('assets/img/weapons/sentry.png');">
+        </section>
+        <div class="showcase-right-column">
+            <section class="showcase-promo-card showcase-card-top"
+                style="background-image: url('assets/img/weapons/scrap.png');">
                 <div class="showcase-content">
-                    <span class="showcase-discount">Ultimate Defense: Save ₱8,000</span>
-                    <h3>Automated Sentry Platform (Unarmed)</h3>
-                    <p>₱35,000.00</p>
+                    <span class="showcase-discount">Save ₱2,500</span>
+                    <h3>Scrap Metal Armor Set (Torso & Pauldrons)</h3>
+                    <p>₱15,000.00</p>
                     <div class="showcase-buttons">
                         <a class="buy-btn" href="#">Buy Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
             </section>
-            <div class="showcase-right-column">
-                <section class="showcase-promo-card showcase-card-top"
-                    style="background-image: url('assets/img/weapons/scrap.png');">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱2,500</span>
-                        <h3>Scrap Metal Armor Set (Torso & Pauldrons)</h3>
-                        <p>₱15,000.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
+            <section class="showcase-promo-card showcase-card-bottom"
+                style="background-image: url('assets/img/weapons/pipe.png');">
+                <div class="showcase-content">
+                    <span class="showcase-discount">Save ₱1,200</span>
+                    <h3>Pipe Pistol Assembly Kit (.38 Special)</h3>
+                    <p>₱7,800.00</p>
+                    <div class="showcase-buttons">
+                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
-                </section>
-                <section class="showcase-promo-card showcase-card-bottom"
-                    style="background-image: url('assets/img/weapons/pipe.png');">
-                    <div class="showcase-content">
-                        <span class="showcase-discount">Save ₱1,200</span>
-                        <h3>Pipe Pistol Assembly Kit (.38 Special)</h3>
-                        <p>₱7,800.00</p>
-                        <div class="showcase-buttons">
-                            <a class="buy-btn" href="#">Buy Now</a>
-                            <a class="add-cart-btn" href="#">Add to Cart</a>
-                        </div>
-                    </div>
-                </section>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="section-header">
+        <h2 class="section-title2">FRESH SALVAGE</h2>
+        <div class="product-toolbar">
+            <div class="filter-group">
+                <label for="sort-by-main">Sort By:</label>
+                <select id="sort-by-main" class="sort-options">
+                    <option value="default">Default</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                </select>
             </div>
         </div>
     </div>
-
-    <div class="products-container">
-        <div class="section-header">
-            <h2 class="section-title2">FRESH SALVAGE</h2>
-            <div class="product-toolbar">
-                <div class="filter-group">
-                    <label for="sort-by-main">Sort By:</label>
-                    <select id="sort-by-main" class="sort-options">
-                        <option value="default">Default</option>
-                        <option value="price-asc">Price: Low to High</option>
-                        <option value="price-desc">Price: High to Low</option>
-                    </select>
+    <section class="products" id="new-arrivals-grid">
+        <div class="product-card" data-price="3200" style="background-image: url('assets/img/weapons/trap.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱700</span>
+                <h3>Remote-Triggered Trap Mechanism</h3>
+                <p>₱3,200.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
         </div>
-        <section class="products" id="new-arrivals-grid">
-            <div class="product-card" data-price="3200" style="background-image: url('assets/img/weapons/trap.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱700</span>
-                    <h3>Remote-Triggered Trap Mechanism</h3>
-                    <p>₱3,200.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        <div class="product-card" data-price="1800" style="background-image: url('assets/img/weapons/caltrops.jpg');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱400</span>
+                <h3>Caltrops (Bag of 50)</h3>
+                <p>₱1,800.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="1800"
-                style="background-image: url('assets/img/weapons/caltrops.jpg');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱400</span>
-                    <h3>Caltrops (Bag of 50)</h3>
-                    <p>₱1,800.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="4500" style="background-image: url('assets/img/weapons/riot.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱950</span>
+                <h3>Welded Steel Riot Shield</h3>
+                <p>₱4,500.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="4500" style="background-image: url('assets/img/weapons/riot.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱950</span>
-                    <h3>Welded Steel Riot Shield</h3>
-                    <p>₱4,500.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="1500" style="background-image: url('assets/img/weapons/slingshot.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱350</span>
+                <h3>Heavy-Duty Slingshot & Steel Bearings</h3>
+                <p>₱1,500.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="1500"
-                style="background-image: url('assets/img/weapons/slingshot.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱350</span>
-                    <h3>Heavy-Duty Slingshot & Steel Bearings</h3>
-                    <p>₱1,500.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
-    <div class="products-container">
-        <h2 class="section-title">SURVIVOR'S CHOICE</h2>
-        <section class="products" id="top-sellers-grid">
-            <div class="product-card" data-price="1200" style="background-image: url('assets/img/weapons/barbed.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱300</span>
-                    <h3>Reinforced Baseball Bat (Barbed Wire)</h3>
-                    <p>₱1,200.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+<div class="products-container">
+    <h2 class="section-title">SURVIVOR'S CHOICE</h2>
+    <section class="products" id="top-sellers-grid">
+        <div class="product-card" data-price="1200" style="background-image: url('assets/img/weapons/barbed.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱300</span>
+                <h3>Reinforced Baseball Bat (Barbed Wire)</h3>
+                <p>₱1,200.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="2500"
-                style="background-image: url('assets/img/weapons/machete.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱500</span>
-                    <h3>Combat Machete with Sheath</h3>
-                    <p>₱2,500.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="2500" style="background-image: url('assets/img/weapons/machete.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱500</span>
+                <h3>Combat Machete with Sheath</h3>
+                <p>₱2,500.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="4100"
-                style="background-image: url('assets/img/weapons/breaching.jpg');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱800</span>
-                    <h3>Breaching Tomahawk</h3>
-                    <p>₱4,100.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="4100" style="background-image: url('assets/img/weapons/breaching.jpg');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱800</span>
+                <h3>Breaching Tomahawk</h3>
+                <p>₱4,100.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="2800"
-                style="background-image: url('assets/img/weapons/forearm.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱650</span>
-                    <h3>Plated Forearm Guards (Pair)</h3>
-                    <p>₱2,800.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="2800" style="background-image: url('assets/img/weapons/forearm.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱650</span>
+                <h3>Plated Forearm Guards (Pair)</h3>
+                <p>₱2,800.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="950" style="background-image: url('assets/img/weapons/slam.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱200</span>
-                    <h3>Slam-Fire Shotgun Blueprints (12 Gauge)</h3>
-                    <p>₱950.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="950" style="background-image: url('assets/img/weapons/slam.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱200</span>
+                <h3>Slam-Fire Shotgun Blueprints (12 Gauge)</h3>
+                <p>₱950.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="900" style="background-image: url('assets/img/weapons/spear.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱250</span>
-                    <h3>Sharpened Rebar Spear</h3>
-                    <p>₱900.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="900" style="background-image: url('assets/img/weapons/spear.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱250</span>
+                <h3>Sharpened Rebar Spear</h3>
+                <p>₱900.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="2600"
-                style="background-image: url('assets/img/weapons/tripwire.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱550</span>
-                    <h3>Tripwire Flare Alarm Kit (4-Pack)</h3>
-                    <p>₱2,600.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="2600" style="background-image: url('assets/img/weapons/tripwire.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱550</span>
+                <h3>Tripwire Flare Alarm Kit (4-Pack)</h3>
+                <p>₱2,600.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-            <div class="product-card" data-price="3100" style="background-image: url('assets/img/weapons/helmet.png');">
-                <div class="product-content">
-                    <span class="product-discount">Save ₱700</span>
-                    <h3>Modified Motorcycle Helmet</h3>
-                    <p>₱3,100.00</p>
-                    <div class="product-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
-                    </div>
+        </div>
+        <div class="product-card" data-price="3100" style="background-image: url('assets/img/weapons/helmet.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱700</span>
+                <h3>Modified Motorcycle Helmet</h3>
+                <p>₱3,100.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
-<?php include '../components/feedback.component.php';?>
+<?php include '../components/feedback.component.php'; ?>
 
 <?php include '../components/footer.component.php'; ?>
 </body>
