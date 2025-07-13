@@ -2,20 +2,9 @@
 <html lang="en" class="hide-scrollbar">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Last Trade Post - Sign Up</title>
-    <link rel="stylesheet" href="assets/css/header.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/loader.css" />
+    <title>The Last Trade Post - Signup</title>
+    <?php require_once '../components/head.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/signup.css" />
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/login.js"></script>
-    <script src="assets/js/signup.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -26,7 +15,8 @@
     <div class="sticky-header">
         <header>
             <div class="logo">
-                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false" alt="The Last Trade Post Logo"></a>
+                <a href="../index.php"><img src="assets/img/HomeLogo.png" draggable="false"
+                        alt="The Last Trade Post Logo"></a>
             </div>
             <div class="header-right">
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -34,7 +24,7 @@
             <div class="dropdown-menu" id="dropdownMenu">
                 <a href="login.php">👤 Login / Sign Up</a>
                 <a href="../index.php">🏠 Home</a>
-                <a href="/index.php#about">ℹ️ About Us</a>
+                <a href="about.php">ℹ️ About Us</a>
             </div>
         </header>
     </div>
@@ -45,7 +35,8 @@
             <form class="signup-form" onsubmit="return validateSignupForm()">
                 <div class="form-group">
                     <label for="codename">Codename</label>
-                    <input type="text" id="codename" name="codename" required placeholder="Enter your codename" aria-label="Codename" />
+                    <input type="text" id="codename" name="codename" required placeholder="Enter your codename"
+                        aria-label="Codename" />
                     <p id="codename-error" class="input-error-message"></p>
                 </div>
 
@@ -62,13 +53,15 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Enter your password" aria-label="Password" />
+                    <input type="password" id="password" name="password" required placeholder="Enter your password"
+                        aria-label="Password" />
                     <p id="password-error" class="input-error-message"></p>
                 </div>
 
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password" aria-label="Confirm Password" />
+                    <input type="password" id="confirm-password" name="confirm-password" required
+                        placeholder="Confirm your password" aria-label="Confirm Password" />
                     <p id="confirm-password-error" class="input-error-message"></p>
                 </div>
 
@@ -81,18 +74,7 @@
         </div>
     </main>
 
-    <footer>
-        <div>
-            <h4>Company</h4>
-            <a href="#">Contact Us</a>
-            <a href="#">FAQs</a>
-            <a href="#">Our Company</a>
-        </div>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Community</a>
-        </div>
-    </footer>
+<?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>
