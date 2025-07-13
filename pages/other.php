@@ -4,6 +4,7 @@
 <head>
     <title>The Last Trade Post - Other Essentials</title>
     <?php require_once '../components/head.component.php'; ?>
+    <?php require_once '../components/script.component.php';?>
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
 </head>
 
@@ -286,7 +287,7 @@
         </div>
     </div>
 
-    <?php include '../components/footer.component.php'; ?>
+<?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>

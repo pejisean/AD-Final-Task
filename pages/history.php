@@ -4,6 +4,7 @@
 <head>
     <title>The Last Trade Post - Purchase History</title>
     <?php require_once '../components/head.component.php'; ?>
+    <?php require_once '../components/script.component.php';?>
     <link rel="stylesheet" href="assets/css/shop/history.css" />
 </head>
 
@@ -149,8 +150,9 @@
             </div>
         </div>
     </div>
+<?php include '../components/footer.component.php'; ?>
 
-    <?php include '../components/footer.component.php'; ?>
+    <script src="../assets/js/history.js"></script>
 </body>
 
 </html>

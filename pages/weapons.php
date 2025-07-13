@@ -4,7 +4,8 @@
 <head>
     <title>The Last Trade Post - Weapons</title>
     <?php require_once '../components/head.component.php'; ?>
-    <link rel="stylesheet" href="assets/css/shop/trading.css" />
+    <?php require_once '../components/script.component.php';?>
+    <link rel="stylesheet" href="assets/css/shop/trading.css"/>
 </head>
 
 <body>
@@ -290,7 +291,7 @@
         </div>
     </div>
 
-    <?php include '../components/footer.component.php'; ?>
+<?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>

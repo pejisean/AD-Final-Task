@@ -2,10 +2,11 @@
 <html lang="en" class="hide-scrollbar">
 
 <head>
+    <title>The Last Trade Post - Home</title>
+    <?php require_once 'components/head.component.php';?>
+    <?php require_once 'components/script.component.php';?>
+    <link rel="stylesheet" href="assets/css/home.css" />
 
-    <?php require_once 'components/head.component.php'; ?>
-
-</head>
 
 <body>
     <div id="preloader">
@@ -155,7 +156,7 @@
         </div>
     </div>
 
-    <?php include '../components/footer.component.php'; ?>
+<?php include 'components/footer.component.php'; ?>
 </body>
 
 </html>
