@@ -1,10 +1,12 @@
-<?php
+<?php 
 require_once '../bootstrap.php';
-require_once UTILS_PATH . 'auth.util.php';
-    if (AuthUtil::isLoggedIn()) {
-        header("Location: ../index.php");
-        exit();
-    }
+require_once '../components/auth.component.php';
+
+// Redirect if already logged in
+if (AuthUtil::isLoggedIn()) {
+    header("Location: ../index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" class="hide-scrollbar">
@@ -38,7 +40,6 @@ require_once UTILS_PATH . 'auth.util.php';
                         alt="The Last Trade Post Logo"></a>
             </div>
             <div class="header-right">
-
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
             <div class="dropdown-menu" id="dropdownMenu">
@@ -52,7 +53,7 @@ require_once UTILS_PATH . 'auth.util.php';
     <main class="login-container">
         <div class="login-form-wrapper">
             <h2>Welcome Back!</h2>
-            <form action="../utils/auth.util.php" class="login-form" onsubmit="return handleLogin()">
+            <form class="login-form" onsubmit="return handleLogin()">
                 <div class="form-group">
                     <label for="codename">Codename</label>
                     <input type="text" id="codename" name="codename" required placeholder="Enter your codename"
