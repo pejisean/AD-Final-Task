@@ -298,8 +298,7 @@
             <button class="submit-button" onclick="submitFeedback()">Submit Feedback</button>
         </div>
     </div>
-
-    <?php include '../components/footer.component.php'; ?>
+<?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>

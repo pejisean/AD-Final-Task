@@ -149,8 +149,9 @@
             </div>
         </div>
     </div>
+<?php include '../components/footer.component.php'; ?>
 
-    <?php include '../components/footer.component.php'; ?>
+    <script src="../assets/js/history.js"></script>
 </body>
 
 </html>

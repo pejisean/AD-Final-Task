@@ -155,7 +155,7 @@
         </div>
     </div>
 
-    <?php include '../components/footer.component.php'; ?>
+<?php include 'components/footer.component.php'; ?>
 </body>
 
 </html>
