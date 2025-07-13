@@ -84,7 +84,7 @@ if (AuthUtil::isLoggedIn()) {
             <div class="dropdown-menu" id="dropdownMenu">
                 <a href="login.php">👤 Login / Sign Up</a>
                 <a href="../index.php">🏠 Home</a>
-                <a href="/index.php#about">ℹ️ About Us</a>
+                <a href="about.php">ℹ️ About Us</a>
             </div>
         </header>
     </div>
@@ -116,18 +116,9 @@ if (AuthUtil::isLoggedIn()) {
         </div>
     </main>
 
-    <footer>
-        <div>
-            <h4>Company</h4>
-            <a href="#">Contact Us</a>
-            <a href="#">FAQs</a>
-            <a href="#">Our Company.</a>
-        </div>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Community</a>
-        </div>
-    </footer>
+
+
+    <?php include '../components/footer.component.php'; ?>
 </body>
 
 </html>
