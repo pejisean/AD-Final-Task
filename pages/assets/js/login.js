@@ -51,9 +51,6 @@ function handleLogin() {
     const codename = document.getElementById('codename').value.trim();
     const password = document.getElementById('password').value;
 
-    // Debug logging
-    console.log('Login attempt:', { codename, passwordLength: password.length });
-
     let isValid = true;
 
     if (codename === '') {
@@ -82,36 +79,23 @@ function handleLogin() {
         })
     })
     .then(response => {
-        console.log('Response status:', response.status);
-        return response.text(); // Use text() first to see raw response
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
     })
-    .then(text => {
-        console.log('Raw response:', text);
-        try {
-            const data = JSON.parse(text);
-            console.log('Parsed response:', data);
-            
-            if (data.success) {
-                displayFormMessage('Login successful! Redirecting...', 'success');
-                setTimeout(() => {
-                    window.location.href = '../index.php';
-                }, 1500);
-            } else {
-                displayFormMessage(data.message, 'error');
-                
-                // Show debug info if available
-                if (data.debug) {
-                    console.log('Debug info:', data.debug);
-                }
-            }
-        } catch (e) {
-            console.error('JSON parse error:', e);
-            console.log('Response was not valid JSON:', text);
-            displayFormMessage('Server error occurred', 'error');
+    .then(data => {
+        if (data.success) {
+            displayFormMessage('Login successful! Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = '../index.php';
+            }, 1500);
+        } else {
+            displayFormMessage(data.message || 'Login failed', 'error');
         }
     })
     .catch(error => {
-        console.error('Fetch error:', error);
+        console.error('Error:', error);
         displayFormMessage('An error occurred. Please try again.', 'error');
     });
 
