@@ -140,27 +140,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div>
-            <h4>Links</h4>
-            <a href="#">Home</a>
-            <a href="#">Marketplace</a>
-            <a href="#">Electronics</a>
-            <a href="#">Tool</a>
-            <a href="#">Weapons</a>
-            <a href="#">Other Essentials</a>
-            <a href="#">Military</a>
-        </div>
-        <div>
-            <h4>Company</h4>
-            <a href="#">History</a>
-            <a href="pages/about.php">About Us</a> <!-- ✅ updated -->
-            <a href="#">Contact Us</a>
-            <a href="#">FAQs</a>
-            <a href="#">Our Company</a>
-        </div>
-    </footer>
+<?php include 'components/footer.component.php'; ?>
 </body>
 
 </html>
