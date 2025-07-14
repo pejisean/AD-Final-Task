@@ -16,13 +16,21 @@
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     ]);
 
-    // Listing SQL files
+    // Listing SQL files in correct order (respecting foreign key dependencies)
     $sqlFiles = [
-        'sql/user.model.sql'
+        'sql/users.model.sql',      // Must be first (referenced by others)
+        'sql/items.model.sql',      // Second (references users)
+        'sql/cart.model.sql',       // Third (references users and items)
+        'sql/receipts.model.sql'    // Last (references users and items)
     ];
 
     foreach ($sqlFiles as $file) {
         echo "Applying schema from {$file}...\n";
+
+        if (!file_exists($file)) {
+            echo "❌ File $file not found, skipping.\n";
+            continue;
+        }
 
         $sql = file_get_contents($file);
         if ($sql === false) {
@@ -30,15 +38,16 @@
         }
 
         $pdo->exec($sql);
-        echo "Schema applied successfully from {$file}\n";
+        echo "✅ Schema applied successfully from {$file}\n";
     }
 
     // Seeding tables with static data
-    echo "Seeding tables with static data...\n";
+    echo "\nSeeding tables with static data...\n";
 
     // Define mapping of tables to their static data files (PHP files returning arrays)
     $seedFiles = [
-        'user' => DUMMIES_PATH . '/user.staticData.php',
+        'users' => DUMMIES_PATH . '/user.staticData.php',
+        'items' => DUMMIES_PATH . '/items.staticData.php',
     ];
 
     // Loop over each table and seed data
@@ -46,43 +55,46 @@
         echo "Seeding table: $table from $seedFile\n";
 
         if (!file_exists($seedFile)) {
-            echo "Seed file $seedFile not found, skipping.\n";
+            echo "⚠️ Seed file $seedFile not found, skipping.\n";
             continue;
         }
 
         // Load static data array from seed file
         $data = require $seedFile;
 
-        if (!is_array($data)) {
-            echo "Seed file $seedFile did not return an array, skipping.\n";
+        if (!is_array($data) || empty($data)) {
+            echo "⚠️ Seed file $seedFile did not return a valid array, skipping.\n";
             continue;
         }
 
-        // // Optional: Clear existing data before seeding (comment out if not desired)
+        // Optional: Clear existing data before seeding
         // $pdo->exec("TRUNCATE TABLE public.\"$table\" RESTART IDENTITY CASCADE;");
-
-        // if (empty($data)) {
-        //     echo "No data to seed for table $table.\n";
-        //     continue;
-        // }
 
         // Prepare insert statement dynamically based on keys of first row
         $columns = array_keys($data[0]);
         $columnsList = implode(', ', array_map(fn($col) => "\"$col\"", $columns));
         $placeholders = implode(', ', array_map(fn($col) => ":$col", $columns));
 
-        $insertSql = "INSERT INTO public.\"$table\" ($columnsList) VALUES ($placeholders)";
+        $insertSql = "INSERT INTO public.\"$table\" ($columnsList) VALUES ($placeholders) ON CONFLICT DO NOTHING";
         $stmt = $pdo->prepare($insertSql);
 
         // Insert each row
+        $insertedCount = 0;
         foreach ($data as $row) {
-            // Bind values dynamically
-            foreach ($row as $col => $val) {
-                $stmt->bindValue(":$col", $val);
+            try {
+                // Bind values dynamically
+                foreach ($row as $col => $val) {
+                    $stmt->bindValue(":$col", $val);
+                }
+                $stmt->execute();
+                $insertedCount++;
+            } catch (PDOException $e) {
+                echo "⚠️ Skipping duplicate row in $table: " . $e->getMessage() . "\n";
             }
-            $stmt->execute();
         }
 
-        echo "Seeded " . count($data) . " rows into $table.\n";
+        echo "✅ Seeded $insertedCount rows into $table.\n";
     }
+
+    echo "\n🎉 Database setup completed successfully!\n";
 ?>
