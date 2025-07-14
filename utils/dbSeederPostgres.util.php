@@ -80,17 +80,20 @@
 
         // Insert each row
         $insertedCount = 0;
-        foreach ($data as $row) {
-            try {
-                // Bind values dynamically
-                foreach ($row as $col => $val) {
-                    $stmt->bindValue(":$col", $val);
-                }
-                $stmt->execute();
-                $insertedCount++;
-            } catch (PDOException $e) {
-                echo "⚠️ Skipping duplicate row in $table: " . $e->getMessage() . "\n";
-            }
+        try {  
+            $pdo->beginTransaction();  
+            foreach ($data as $row) {  
+                // Bind values dynamically  
+                foreach ($row as $col => $val) {  
+                    $stmt->bindValue(":$col", $val);  
+                }  
+                $stmt->execute();  
+                $insertedCount++;  
+            }  
+            $pdo->commit();  
+        } catch (PDOException $e) {  
+            $pdo->rollBack();  
+            echo "⚠️ Error seeding table $table: " . $e->getMessage() . "\n";  
         }
 
         echo "✅ Seeded $insertedCount rows into $table.\n";
