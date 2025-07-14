@@ -1,43 +1,48 @@
-function clearErrorMessages() {
-    document.querySelectorAll('.input-error-message').forEach(el => el.textContent = '');
-    document.getElementById('form-message').textContent = '';
-    document.getElementById('form-message').className = 'info-message';
-}
-
 /**
- * @param {string} elementId
- * @param {string} message
+ * Display input error message
+ * @param {string} elementId - The ID of the error element
+ * @param {string} message - The error message to display
  */
 function displayInputError(elementId, message) {
     const errorElement = document.getElementById(elementId);
     if (errorElement) {
         errorElement.textContent = message;
-        errorElement.style.color = '#e74c3c';
+        errorElement.style.display = 'block';
     }
 }
 
 /**
- *
- * @param {string} message
- * @param {string} type
+ * Display form message
+ * @param {string} message - The message to display
+ * @param {string} type - The type of message ('success' or 'error')
  */
 function displayFormMessage(message, type) {
-    const formMessageElement = document.getElementById('form-message');
-    if (formMessageElement) {
-        formMessageElement.textContent = message;
-        formMessageElement.className = 'info-message';
-        if (type === 'success') {
-            formMessageElement.style.color = '#2ecc71';
-        } else if (type === 'error') {
-            formMessageElement.style.color = '#e74c3c';
-        } else {
-            formMessageElement.style.color = '#3498db';
-        }
+    const messageElement = document.getElementById('form-message');
+    if (messageElement) {
+        messageElement.textContent = message;
+        messageElement.className = `info-message ${type}`;
+        messageElement.style.display = 'block';
     }
 }
 
 /**
- *
+ * Clear all error messages
+ */
+function clearErrorMessages() {
+    const errorElements = document.querySelectorAll('.input-error-message');
+    errorElements.forEach(element => {
+        element.textContent = '';
+        element.style.display = 'none';
+    });
+    
+    const formMessage = document.getElementById('form-message');
+    if (formMessage) {
+        formMessage.style.display = 'none';
+    }
+}
+
+/**
+ * Handle login form submission
  * @returns {boolean}
  */
 function handleLogin() {
@@ -62,22 +67,37 @@ function handleLogin() {
         return false;
     }
 
-    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-
-    const foundUser = registeredUsers.find(user => user.codename === codename);
-
-    if (!foundUser) {
-        displayFormMessage('Codename not found. Please sign up first.', 'error');
-    } else if (foundUser.password !== password) {
-        displayFormMessage('Incorrect password. Please try again.', 'error');
-    } else {
-        localStorage.setItem('loggedInCodename', codename);
-
-        displayFormMessage('Login successful! Redirecting to home...', 'success');
-        setTimeout(() => {
-            window.location.href = '../index.php';
-        }, 1500);
-    }
+    // Send login request to server
+    fetch('../handlers/login.handler.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            codename: codename,
+            password: password
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            displayFormMessage('Login successful! Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = '../index.php';
+            }, 1500);
+        } else {
+            displayFormMessage(data.message || 'Login failed', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        displayFormMessage('An error occurred. Please try again.', 'error');
+    });
 
     return false;
 }
