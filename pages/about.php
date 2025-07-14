@@ -5,7 +5,8 @@
     <title>The Last Trade Post - Weapons</title>
     <?php require_once '../components/head.component.php'; ?>
     <?php require_once '../components/script.component.php'; ?>
-    <link rel="stylesheet" href="assets/css/shop/about.css" />
+    <link rel="stylesheet" href="/pages/assets/css/shop/about.css" />
+
 
 </head>
 
