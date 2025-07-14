@@ -33,8 +33,14 @@
         echo "Schema applied successfully from {$file}\n";
     }
 
-    // Truncating tables
-    $tables = ['user'];
+    // Truncating tables in reverse order (due to foreign key constraints)
+    $tables = [
+        'receipt_items', 
+        'receipts', 
+        'cart', 
+        'items', 
+        'users'
+    ];
 
     echo "Truncating tables…\n";
 
