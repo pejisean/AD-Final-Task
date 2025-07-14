@@ -84,9 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
       */
 
       // For a simple client-side example, you might store it in localStorage:
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
       cart.push(currentItem);
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem('cartItems', JSON.stringify(cart));
       alert("Item added to cart!"); // Or a more user-friendly message
 
       // Redirect to history.php

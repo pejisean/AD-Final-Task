@@ -20,7 +20,7 @@
                 <h3>20,000mAh Dual-Port Power Bank</h3>
                 <p>₱1,850.00</p>
                 <div class="showcase-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="20,000mAh Dual-Port Power Bank" data-item-price="1850.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>

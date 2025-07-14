@@ -28,7 +28,7 @@
         echo "Applying schema from {$file}...\n";
 
         if (!file_exists($file)) {
-            echo "❌ File $file not found, skipping.\n";
+            echo "[ERROR] File $file not found, skipping.\n";
             continue;
         }
 
@@ -46,7 +46,7 @@
 
     // Define mapping of tables to their static data files (PHP files returning arrays)
     $seedFiles = [
-        'users' => DUMMIES_PATH . '/user.staticData.php',
+        'users' => DUMMIES_PATH . '/users.staticData.php',
         'items' => DUMMIES_PATH . '/items.staticData.php',
     ];
 

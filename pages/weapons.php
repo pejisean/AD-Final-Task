@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="assets/css/shop/trading.css"/>
     <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css"/>
     <?php require_once '../components/script.component.php'; ?>
-    <link rel="stylesheet" href="assets/css/shop/trading.css" />
-
 </head>
 
 <?php require_once '../components/dropdown.component.php'; ?>
