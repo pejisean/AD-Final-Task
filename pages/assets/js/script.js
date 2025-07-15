@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const shopProductCards = document.querySelectorAll('.product-grid .product-card');
     shopProductCards.forEach((card, index) => {
-        const buyButton = card.querySelector('.buy-btn');
+        const buyButton = card.querySelector('.buy-btn:not(.buy-now-btn):not([data-item-name])');
         const addToCartButton = card.querySelector('.add-cart-btn');
         const itemName = card.querySelector('h3')?.textContent;
         const itemPrice = card.querySelector('p:not(.product-description)')?.textContent;

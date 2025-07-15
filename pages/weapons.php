@@ -6,6 +6,8 @@
     <?php require_once '../components/head.component.php'; ?>
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
+    <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
+
 
 </head>
 
@@ -21,7 +23,8 @@
                 <h3>Automated Sentry Platform (Unarmed)</h3>
                 <p>₱35,000.00</p>
                 <div class="showcase-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Automated Sentry Platform (Unarmed)"
+                        data-item-price="35000.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -34,7 +37,9 @@
                     <h3>Scrap Metal Armor Set (Torso & Pauldrons)</h3>
                     <p>₱15,000.00</p>
                     <div class="showcase-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="buy-btn buy-now-btn" href="#"
+                            data-item-name="Scrap Metal Armor Set (Torso & Pauldrons)" data-item-price="15000.00">Buy
+                            Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
@@ -46,7 +51,8 @@
                     <h3>Pipe Pistol Assembly Kit (.38 Special)</h3>
                     <p>₱7,800.00</p>
                     <div class="showcase-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="Pipe Pistol Assembly Kit (.38 Special)"
+                            data-item-price="7800.00">Buy Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
@@ -76,7 +82,8 @@
                 <h3>Remote-Triggered Trap Mechanism</h3>
                 <p>₱3,200.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Remote-Triggered Trap Mechanism"
+                        data-item-price="3200.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -87,7 +94,8 @@
                 <h3>Caltrops (Bag of 50)</h3>
                 <p>₱1,800.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Caltrops (Bag of 50)"
+                        data-item-price="1800.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -98,7 +106,8 @@
                 <h3>Welded Steel Riot Shield</h3>
                 <p>₱4,500.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Welded Steel Riot Shield"
+                        data-item-price="4500.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -109,7 +118,8 @@
                 <h3>Heavy-Duty Slingshot & Steel Bearings</h3>
                 <p>₱1,500.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Heavy-Duty Slingshot & Steel Bearings"
+                        data-item-price="1500.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -210,10 +220,127 @@
         </div>
     </section>
 </div>
+<div class="products-container">
+    <h2 class="section-title">SURVIVOR'S CHOICE</h2>
+    <section class="products" id="top-sellers-grid">
+        <div class="product-card" data-price="1200" style="background-image: url('assets/img/weapons/barbed.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱300</span>
+                <h3>Reinforced Baseball Bat (Barbed Wire)</h3>
+                <p>₱1,200.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Reinforced Baseball Bat (Barbed Wire)"
+                        data-item-price="1200.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-price="2500" style="background-image: url('assets/img/weapons/machete.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱500</span>
+                <h3>Combat Machete with Sheath</h3>
+                <p>₱2,500.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Combat Machete with Sheath"
+                        data-item-price="2500.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-price="4100" style="background-image: url('assets/img/weapons/breaching.jpg');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱800</span>
+                <h3>Breaching Tomahawk</h3>
+                <p>₱4,100.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Breaching Tomahawk"
+                        data-item-price="4100.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-price="2800" style="background-image: url('assets/img/weapons/forearm.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱650</span>
+                <h3>Plated Forearm Guards (Pair)</h3>
+                <p>₱2,800.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Plated Forearm Guards (Pair)"
+                        data-item-price="2800.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-price="950" style="background-image: url('assets/img/weapons/slam.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱200</span>
+                <h3>Slam-Fire Shotgun Blueprints (12 Gauge)</h3>
+                <p>₱950.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Slam-Fire Shotgun Blueprints (12 Gauge)"
+                        data-item-price="950.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-price="900" style="background-image: url('assets/img/weapons/spear.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱250</span>
+                <h3>Sharpened Rebar Spear</h3>
+                <p>₱900.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Sharpened Rebar Spear"
+                        data-item-price="900.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-price="2600" style="background-image: url('assets/img/weapons/tripwire.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱550</span>
+                <h3>Tripwire Flare Alarm Kit (4-Pack)</h3>
+                <p>₱2,600.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Tripwire Flare Alarm Kit (4-Pack)"
+                        data-item-price="2600.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-price="3100" style="background-image: url('assets/img/weapons/helmet.png');">
+            <div class="product-content">
+                <span class="product-discount">Save ₱700</span>
+                <h3>Modified Motorcycle Helmet</h3>
+                <p>₱3,100.00</p>
+                <div class="product-buttons">
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Modified Motorcycle Helmet"
+                        data-item-price="3100.00">Buy Now</a>
+                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="buyNowOverlay" class="overlay">
+    <div class="overlay-content">
+        <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
+        <h2>Order Summary</h2>
+        <div class="receipt">
+            <p><strong>Customer Name:</strong> <span id="receiptCustomerName"></span></p>
+            <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
+            <p><strong>Price:</strong> ₱<span id="receiptItemPrice"></span></p>
+            <p><strong>IP Address:</strong> <span id="receiptIPAddress"></span></p>
+            <hr>
+            <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
+        </div>
+        <button id="proceedPaymentButton">Proceed to Payment</button>
+    </div>
+</div>
 
 <?php include '../components/feedback.component.php'; ?>
-
 <?php include '../components/footer.component.php'; ?>
+<script src="./assets/js/buynowoverlay.js"></script>
 </body>
 
 </html>

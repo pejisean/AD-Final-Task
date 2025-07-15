@@ -6,7 +6,7 @@
     <?php require_once '../components/head.component.php'; ?>
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
-
+    <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
 </head>
 
 <?php require_once '../components/dropdown.component.php'; ?>
@@ -20,7 +20,7 @@
                 <h3>Advanced First Aid Trauma Kit</h3>
                 <p>₱5,500.00</p>
                 <div class="showcase-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Advanced First Aid Trauma Kit" data-item-price="5500.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     <h3>72-Hour Survival Backpack</h3>
                     <p>₱12,000.00</p>
                     <div class="showcase-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="72-Hour Survival Backpack" data-item-price="12000.00">Buy Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <h3>High-Performance Water Filter Pump</h3>
                     <p>₱4,800.00</p>
                     <div class="showcase-buttons">
-                        <a class="buy-btn" href="#">Buy Now</a>
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="High-Performance Water Filter Pump" data-item-price="4800.00">Buy Now</a>
                         <a class="add-cart-btn" href="#">Add to Cart</a>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                 <h3>Waterproof Survival Handbook</h3>
                 <p>₱1,100.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Waterproof Survival Handbook" data-item-price="1100.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                 <h3>Emergency Signal Mirror</h3>
                 <p>₱650.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Emergency Signal Mirror" data-item-price="650.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                 <h3>Titanium Spork & Utensil Set</h3>
                 <p>₱850.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Titanium Spork & Utensil Set" data-item-price="850.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                 <h3>Chemical Light Sticks (12-Pack)</h3>
                 <p>₱1,200.00</p>
                 <div class="product-buttons">
-                    <a class="buy-btn" href="#">Buy Now</a>
+                    <a class="buy-btn buy-now-btn" href="#" data-item-name="Chemical Light Sticks (12-Pack)" data-item-price="1200.00">Buy Now</a>
                     <a class="add-cart-btn" href="#">Add to Cart</a>
                 </div>
             </div>
@@ -210,10 +210,120 @@
         </div>
     </section>
 </div>
+    <div class="products-container">
+        <h2 class="section-title">SURVIVOR'S CHOICE</h2>
+        <section class="products" id="top-sellers-grid">
+            <div class="product-card" data-price="1500"
+                style="background-image: url('assets/img/other/lifestraw.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱450</span>
+                    <h3>"Lifestraw" Personal Water Filter</h3>
+                    <p>₱1,500.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="&quot;Lifestraw&quot; Personal Water Filter" data-item-price="1500.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="950" style="background-image: url('assets/img/other/ferro.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱300</span>
+                    <h3>Ferro Rod & Striker Fire Starter</h3>
+                    <p>₱950.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="Ferro Rod & Striker Fire Starter" data-item-price="950.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="900" style="background-image: url('assets/img/other/mylar.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱250</span>
+                    <h3>Emergency Mylar Space Blankets (10-Pack)</h3>
+                    <p>₱900.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="Emergency Mylar Space Blankets (10-Pack)" data-item-price="900.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="1800" style="background-image: url('assets/img/other/lensatic.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱500</span>
+                    <h3>Military-Style Lensatic Compass</h3>
+                    <p>₱1,800.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="Military-Style Lensatic Compass" data-item-price="1800.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="650" style="background-image: url('assets/img/other/paracord.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱200</span>
+                    <h3>100ft. 550 Paracord</h3>
+                    <p>₱650.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="100ft. 550 Paracord" data-item-price="650.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="550" style="background-image: url('assets/img/other/whistle.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱150</span>
+                    <h3>High-Decibel Emergency Whistle</h3>
+                    <p>₱550.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="High-Decibel Emergency Whistle" data-item-price="550.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="750"
+                style="background-image: url('assets/img/other/waterproof.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱200</span>
+                    <h3>Waterproof Match Case with Matches</h3>
+                    <p>₱750.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="Waterproof Match Case with Matches" data-item-price="750.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-price="1500" style="background-image: url('assets/img/other/headlamp.png');">
+                <div class="product-content">
+                    <span class="product-discount">Save ₱400</span>
+                    <h3>Rechargeable LED Headlamp</h3>
+                    <p>₱1,500.00</p>
+                    <div class="product-buttons">
+                        <a class="buy-btn buy-now-btn" href="#" data-item-name="Rechargeable LED Headlamp" data-item-price="1500.00">Buy Now</a>
+                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<div id="buyNowOverlay" class="overlay">
+    <div class="overlay-content">
+        <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span> <h2>Order Summary</h2>
+        <div class="receipt">
+            <p><strong>Customer Name:</strong> <span id="receiptCustomerName"></span></p>
+            <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
+            <p><strong>Price:</strong> ₱<span id="receiptItemPrice"></span></p>
+            <p><strong>IP Address:</strong> <span id="receiptIPAddress"></span></p>
+            <hr>
+            <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
+        </div>
+        <button id="proceedPaymentButton">Proceed to Payment</button>
+    </div>
+</div>
 
 <?php include '../components/feedback.component.php'; ?>
-
 <?php include '../components/footer.component.php'; ?>
+<script src="./assets/js/buynowoverlay.js"></script>
 </body>
 
 </html>
