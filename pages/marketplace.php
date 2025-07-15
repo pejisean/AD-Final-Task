@@ -149,14 +149,14 @@
     </div>
 </div>
 
-<div id="buyNowOverlay" class="modal">
+<div id="buyNowOverlay" class="overlay">
     <div class="overlay-content">
         <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
         <h2>Confirm Purchase</h2>
         <div class="receipt-details">
             <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
             <p><strong>Price:</strong> $<span id="receiptItemPrice"></span></p>
-            <p><strong>Total:</strong> $<span id="receiptTotalPrice"></span></p>
+            <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
             <p><strong>Secure Outpost IP:</strong> <span id="receiptIPAddress"></span></p>
         </div>
         <button id="proceedPaymentButton" class="proceed-payment-button">Proceed to Payment</button>

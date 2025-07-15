@@ -18,11 +18,19 @@
 
     // Listing SQL files
     $sqlFiles = [
-        'sql/user.model.sql'
+        'sql/users.model.sql',      // Changed from 'sql/user.model.sql'
+        'sql/items.model.sql',      
+        'sql/cart.model.sql',       
+        'sql/receipts.model.sql'    
     ];
 
     foreach ($sqlFiles as $file) {
         echo "Applying schema from {$file}...\n";
+
+        if (!file_exists($file)) {
+            echo "❌ File $file not found, skipping.\n";
+            continue;
+        }
 
         $sql = file_get_contents($file);
         if ($sql === false) {
@@ -30,18 +38,28 @@
         }
 
         $pdo->exec($sql);
-        echo "Schema applied successfully from {$file}\n";
+        echo "✅ Schema applied successfully from {$file}\n";
     }
 
-    // Truncating tables
-    $tables = ['user'];
+    // Truncating tables in reverse order (due to foreign key constraints)
+    $tables = [
+        'receipt_items', 
+        'receipts', 
+        'cart', 
+        'items', 
+        'users'
+    ];
 
     echo "Truncating tables…\n";
 
     foreach ($tables as $table) {
-        $pdo->exec("TRUNCATE TABLE public.\"$table\" RESTART IDENTITY CASCADE;");
-        echo "Truncated table: $table\n";
+        try {
+            $pdo->exec("TRUNCATE TABLE public.\"$table\" RESTART IDENTITY CASCADE;");
+            echo "✅ Truncated table: $table\n";
+        } catch (PDOException $e) {
+            echo "⚠️ Could not truncate table $table: " . $e->getMessage() . "\n";
+        }
     }
 
-    echo "Database reset completed successfully.\n";
+    echo "🎉 Database reset completed successfully.\n";
 ?>
