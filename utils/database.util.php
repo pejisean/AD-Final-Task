@@ -33,10 +33,11 @@ class DatabaseUtil {
             $result = pg_query_params($connection, $query, $params);
             
             if (!$result) {
+                $error_message = pg_last_error($connection);
                 pg_close($connection);
                 return [
                     'success' => false,
-                    'message' => 'Query execution failed: ' . pg_last_error($connection),
+                    'message' => 'Query execution failed: ' . $error_message,
                     'data' => null
                 ];
             }
@@ -46,6 +47,7 @@ class DatabaseUtil {
                 $data[] = $row;
             }
             
+            // Close the connection afterwards
             pg_close($connection);
             
             return [
@@ -58,7 +60,7 @@ class DatabaseUtil {
             error_log("Database error: " . $e->getMessage());
             return [
                 'success' => false,
-                'message' => 'Database error occurred',
+                'message' => 'Database error occurred: ' . $e->getMessage(),
                 'data' => null
             ];
         }

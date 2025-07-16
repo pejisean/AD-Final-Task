@@ -22,6 +22,7 @@ class AuthUtil {
         self::startSession();
         
         try {
+            // Use UserUtil to find user
             $user = UserUtil::findUserByUsername($username);
             
             if (!$user) {
@@ -33,6 +34,7 @@ class AuthUtil {
             
             // Verify password (plain text for now)
             if ($user['password'] === $password) {
+                // Set session variables
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['user_role'] = $user['role'];
@@ -60,54 +62,6 @@ class AuthUtil {
             return [
                 'success' => false,
                 'message' => 'An error occurred during login'
-            ];
-        }
-    }
-    
-    /**
-     * Register a new user
-     * @param string $username
-     * @param string $email
-     * @param string $password
-     * @param string $gender
-     * @param string $role
-     * @return array
-     */
-    public static function register($username, $email, $password, $gender = null, $role = 'user') {
-        try {
-            if (UserUtil::usernameExists($username)) {
-                return [
-                    'success' => false,
-                    'message' => 'Username already exists'
-                ];
-            }
-            
-            if (!empty($email) && UserUtil::emailExists($email)) {
-                return [
-                    'success' => false,
-                    'message' => 'Email already exists'
-                ];
-            }
-            
-            $success = UserUtil::createUser($username, $email, $password, $gender, $role);
-            
-            if ($success) {
-                return [
-                    'success' => true,
-                    'message' => 'User registered successfully'
-                ];
-            } else {
-                return [
-                    'success' => false,
-                    'message' => 'Failed to register user'
-                ];
-            }
-            
-        } catch (Exception $e) {
-            error_log("Registration error: " . $e->getMessage());
-            return [
-                'success' => false,
-                'message' => 'An error occurred during registration'
             ];
         }
     }
@@ -163,28 +117,6 @@ class AuthUtil {
         }
         
         session_destroy();
-    }
-    
-    /**
-     * Require login - redirect to login page if not logged in
-     * @param string $redirectTo
-     */
-    public static function requireLogin($redirectTo = 'login.php') {
-        if (!self::isLoggedIn()) {
-            header("Location: " . $redirectTo);
-            exit();
-        }
-    }
-    
-    /**
-     * Require admin role
-     * @param string $redirectTo
-     */
-    public static function requireAdmin($redirectTo = 'login.php?error=unauthorized') {
-        if (!self::hasRole('admin')) {
-            header("Location: " . $redirectTo);
-            exit();
-        }
     }
 }
 ?>
