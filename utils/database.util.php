@@ -8,7 +8,7 @@ class DatabaseUtil {
      * Get database connection
      * @return resource|false
      */
-    private static function getConnection() {
+    protected static function getConnection() {
         return ConnectDB();
     }
     
@@ -36,7 +36,7 @@ class DatabaseUtil {
                 pg_close($connection);
                 return [
                     'success' => false,
-                    'message' => 'Query execution failed',
+                    'message' => 'Query execution failed: ' . pg_last_error($connection),
                     'data' => null
                 ];
             }
@@ -65,79 +65,31 @@ class DatabaseUtil {
     }
     
     /**
-     * Find user by username
-     * @param string $username
-     * @return array|null
+     * Generate receipt number
+     * @return string
      */
-    public static function findUserByUsername($username) {
-        $query = "SELECT username, password, role FROM users WHERE username = $1";
-        $result = self::executeQuery($query, [$username]);
-        
-        if ($result['success'] && !empty($result['data'])) {
-            return $result['data'][0];
-        }
-        
-        return null;
+    public static function generateReceiptNumber() {
+        $date = date('Ymd');
+        $random = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
+        return "RCP-{$date}-{$random}";
     }
     
     /**
-     * Create a new user
-     * @param string $username
-     * @param string $password
-     * @param string $role
-     * @return bool
+     * Generate random delivery address
+     * @return string
      */
-    public static function createUser($username, $password, $role = 'user') {
-        $query = "INSERT INTO users (username, password, role) VALUES ($1, $2, $3)";
-        $result = self::executeQuery($query, [$username, $password, $role]);
+    public static function generateDeliveryAddress() {
+        $streets = ['Wasteland Ave', 'Survivor St', 'Bunker Blvd', 'Scavenger Ln', 'Fortress Dr', 'Outpost Way'];
+        $cities = ['New Haven', 'Safe Zone Alpha', 'Sanctuary Hills', 'Trading Post Central', 'Survivor\'s Rest'];
+        $zones = ['Zone A', 'Zone B', 'Zone C', 'Sector 7', 'District 9'];
         
-        return $result['success'];
-    }
-    
-    /**
-     * Check if username exists
-     * @param string $username
-     * @return bool
-     */
-    public static function usernameExists($username) {
-        $user = self::findUserByUsername($username);
-        return $user !== null;
-    }
-    
-    /**
-     * Get all users (admin function)
-     * @return array
-     */
-    public static function getAllUsers() {
-        $query = "SELECT username, role, created_at FROM users ORDER BY created_at DESC";
-        $result = self::executeQuery($query);
+        $number = mt_rand(100, 9999);
+        $street = $streets[array_rand($streets)];
+        $city = $cities[array_rand($cities)];
+        $zone = $zones[array_rand($zones)];
+        $postcode = mt_rand(10000, 99999);
         
-        return $result['success'] ? $result['data'] : [];
-    }
-    
-    /**
-     * Update user role
-     * @param string $username
-     * @param string $role
-     * @return bool
-     */
-    public static function updateUserRole($username, $role) {
-        $query = "UPDATE users SET role = $2 WHERE username = $1";
-        $result = self::executeQuery($query, [$username, $role]);
-        
-        return $result['success'];
-    }
-    
-    /**
-     * Delete user
-     * @param string $username
-     * @return bool
-     */
-    public static function deleteUser($username) {
-        $query = "DELETE FROM users WHERE username = $1";
-        $result = self::executeQuery($query, [$username]);
-        
-        return $result['success'];
+        return "{$number} {$street}, {$city}, {$zone} {$postcode}";
     }
 }
 ?>
