@@ -24,7 +24,6 @@
                 <a id="login-signup-link" href="/pages/login.php">👤 Login / Sign Up</a>
                 <a href="/index.php">🏠 Home</a>
                 <a href="#">🛒 Cart (0)</a>
-                <a href="/pages/history.php">📄 History</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
                 <a href="/pages/about.php">ℹ️ About Us</a>
             </div>
