@@ -70,12 +70,29 @@ function handleGetCart($sessionToken) {
 
 function handleAddToCart($input, $sessionToken) {
     // Validate required fields
-    if (empty($input['item_id'])) {
-        echo json_encode(['success' => false, 'message' => 'Item ID is required']);
+    if (empty($input['item_id']) && empty($input['item_name'])) {
+        echo json_encode(['success' => false, 'message' => 'Item ID or Item Name is required']);
         return;
     }
     
-    $itemId = (int)$input['item_id'];
+    $itemId = null;
+    
+    // If item_id is provided, use it
+    if (!empty($input['item_id'])) {
+        $itemId = (int)$input['item_id'];
+    } 
+    // If only item_name is provided, try to find or create the item
+    else if (!empty($input['item_name'])) {
+        require_once UTILS_PATH . '/item.util.php';
+        $price = (float)($input['item_price'] ?? 0);
+        $itemId = ItemUtil::getOrCreateItemByName($input['item_name'], $price, 'shop');
+        
+        if (!$itemId) {
+            echo json_encode(['success' => false, 'message' => 'Could not find or create item']);
+            return;
+        }
+    }
+    
     $quantity = (int)($input['quantity'] ?? 1);
     
     if ($quantity <= 0) {
