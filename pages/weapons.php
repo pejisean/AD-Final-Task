@@ -7,6 +7,7 @@
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
+    <link rel="stylesheet" href="assets/css/shop/addtocartoverlay.css" />
 
 
 </head>
@@ -275,7 +276,6 @@
         <button id="proceedAddButton">Add to Cart</button>
     </div>
 </div>
-
 
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>

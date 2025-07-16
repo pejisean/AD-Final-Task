@@ -7,6 +7,7 @@
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
+    <link rel="stylesheet" href="assets/css/shop/addtocartoverlay.css" />
 </head>
 
 <?php require_once '../components/dropdown.component.php'; ?>
