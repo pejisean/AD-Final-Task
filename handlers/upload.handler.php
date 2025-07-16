@@ -40,10 +40,21 @@ try {
         exit;
     }
 
+    // Use UPLOAD_PATH from bootstrap.php
+    $uploadDir = UPLOAD_PATH;
+
     // Create upload directory if it doesn't exist
-    $uploadDir = '../assets/img/marketplace/uploads/';
     if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0755, true);
+        if (!mkdir($uploadDir, 0755, true)) {
+            echo json_encode(['success' => false, 'message' => 'Failed to create upload directory: ' . $uploadDir]);
+            exit;
+        }
+    }
+
+    // Check if directory is writable
+    if (!is_writable($uploadDir)) {
+        echo json_encode(['success' => false, 'message' => 'Upload directory is not writable: ' . $uploadDir]);
+        exit;
     }
 
     // Generate unique filename
@@ -60,7 +71,7 @@ try {
             'image_url' => $relativePath
         ]);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Failed to move uploaded file']);
+        echo json_encode(['success' => false, 'message' => 'Failed to move uploaded file to: ' . $targetPath]);
     }
 
 } catch (Exception $e) {
