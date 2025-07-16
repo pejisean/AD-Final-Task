@@ -32,6 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
     addItemForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
+        const loggedInCodename = localStorage.getItem('loggedInCodename');
+        if (!loggedInCodename) {
+            alert('You must be logged in to add items.');
+            addItemModal.style.display = 'none';
+            addItemForm.reset();
+            return;
+        }
+
         const itemName = document.getElementById('itemName').value;
         const itemPrice = parseFloat(document.getElementById('itemPrice').value).toFixed(2);
         const itemImageInput = document.getElementById('itemImage');
