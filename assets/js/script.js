@@ -9,6 +9,38 @@ window.addEventListener('load', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Check authentication from server first
+    fetch('../handlers/check-session.handler.php', {
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        const loginSignupLink = document.getElementById('login-signup-link');
+        if (!loginSignupLink) return;
+
+        if (data.success && data.logged_in && data.user) {
+            // User is logged in
+            updateUIForLoggedInUser(data.user.username, loginSignupLink);
+            localStorage.setItem('loggedInCodename', data.user.username);
+        } else {
+            // User is not logged in
+            localStorage.removeItem('loggedInCodename');
+            updateUIForLoggedOutUser(loginSignupLink);
+        }
+    })
+    .catch(error => {
+        console.error('Session check failed:', error);
+        // Fallback to localStorage
+        const loggedInCodename = localStorage.getItem('loggedInCodename');
+        const loginSignupLink = document.getElementById('login-signup-link');
+        if (loginSignupLink) {
+            if (loggedInCodename) {
+                updateUIForLoggedInUser(loggedInCodename, loginSignupLink);
+            } else {
+                updateUIForLoggedOutUser(loginSignupLink);
+            }
+        }
+    });
 
     const mainSortDropdown = document.querySelector('#sort-by-main');
 
@@ -106,7 +138,76 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    updateCartIconCount();
 });
+
+function updateUIForLoggedInUser(username, loginSignupLink) {
+    loginSignupLink.innerHTML = `👤 ${username}`;
+    loginSignupLink.href = 'profile.php';
+
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    if (dropdownMenu) {
+        const existingLogout = dropdownMenu.querySelector('.logout-link');
+        if (existingLogout) {
+            existingLogout.remove();
+        }
+
+        const logoutLink = document.createElement('a');
+        logoutLink.href = '#';
+        logoutLink.innerHTML = '➡️ Logout';
+        logoutLink.classList.add('logout-link');
+        logoutLink.onclick = function(event) {
+            event.preventDefault();
+            handleLogout();
+        };
+
+        dropdownMenu.appendChild(logoutLink);
+    }
+}
+
+function updateUIForLoggedOutUser(loginSignupLink) {
+    loginSignupLink.innerHTML = '👤 Login / Sign Up';
+    loginSignupLink.href = 'login.php';
+    
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    if (dropdownMenu) {
+        const existingLogout = dropdownMenu.querySelector('.logout-link');
+        if (existingLogout) {
+            existingLogout.remove();
+        }
+    }
+}
+
+function handleLogout() {
+    const logoutButton = document.querySelector('.logout-link');
+    if (logoutButton) {
+        logoutButton.innerHTML = '⏳ Logging out...';
+        logoutButton.style.pointerEvents = 'none';
+    }
+
+    fetch('../handlers/logout.handler.php', {
+        method: 'POST',
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            localStorage.removeItem('loggedInCodename');
+            localStorage.removeItem('cartItems');
+            window.location.href = '../index.php';
+        } else {
+            localStorage.removeItem('loggedInCodename');
+            localStorage.removeItem('cartItems');
+            window.location.reload();
+        }
+    })
+    .catch(error => {
+        console.error('Logout error:', error);
+        localStorage.removeItem('loggedInCodename');
+        localStorage.removeItem('cartItems');
+        window.location.reload();
+    });
+}
 
 function toggleMenu() {
     var menu = document.getElementById("dropdownMenu");
