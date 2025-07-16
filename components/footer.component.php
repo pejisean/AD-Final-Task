@@ -9,16 +9,16 @@
 
             <a href="/index.php">Home</a>
 
-            <a href="/pages/marketplace.php">Marketplace</a>
-            <a href="/pages/electronics.php">Electronics</a>
-            <a href="/pages/tools.php">Tools</a>
-            <a href="/pages/weapons.php">Weapons</a>
-            <a href="/pages/other.php">Other Essentials</a>
+            <a href="/pages/marketplace/index.php">Marketplace</a>
+            <a href="/pages/electronics/index.php">Electronics</a>
+            <a href="/pages/tools/index.php">Tools</a>
+            <a href="/pages/weapons/index.php">Weapons</a>
+            <a href="/pages/other/index.php">Other Essentials</a>
         </div>
 
         <div class="footer-company-section">
             <h4>Company</h4>
-            <a href="/pages/about.php">About Us</a>
+            <a href="/pages/about/index.php">About Us</a>
         </div>
     </div>
 
