@@ -4,6 +4,54 @@ require_once UTILS_PATH . 'database.util.php';
 class ItemUtil extends DatabaseUtil {
     
     /**
+     * Find item by name (for legacy support)
+     * @param string $name
+     * @return array|null
+     */
+    public static function findItemByName($name) {
+        $query = "SELECT id, name, description, price, image_url, seller_id, category, stock_quantity, is_active, source, created_at 
+                  FROM items 
+                  WHERE name = $1 AND is_active = true 
+                  LIMIT 1";
+        $result = self::executeQuery($query, [$name]);
+        
+        return $result['success'] && !empty($result['data']) ? $result['data'][0] : null;
+    }
+    
+    /**
+     * Get or create item by name (for adding from product pages)
+     * @param string $name
+     * @param float $price
+     * @param string $source
+     * @return int|null Item ID
+     */
+    public static function getOrCreateItemByName($name, $price, $source = 'shop') {
+        // First try to find existing item
+        $existing = self::findItemByName($name);
+        if ($existing) {
+            return $existing['id'];
+        }
+        
+        // Create new item if not found
+        $query = "INSERT INTO items (name, description, price, seller_id, category, stock_quantity, is_active, source) 
+                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+                  RETURNING id";
+        
+        $result = self::executeQuery($query, [
+            $name,
+            "Auto-generated item from shop",
+            $price,
+            1, // Default seller (admin)
+            'general',
+            99,
+            true,
+            $source
+        ]);
+        
+        return $result['success'] && !empty($result['data']) ? $result['data'][0]['id'] : null;
+    }
+    
+    /**
      * Get all items with filters and pagination
      * @param array $filters
      * @param int $limit
