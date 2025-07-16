@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Ensure we only run once
+    if (window.marketplaceInitialized) {
+        console.log('Marketplace already initialized, skipping...');
+        return;
+    }
+    window.marketplaceInitialized = true;
+
     const addItemBtn = document.getElementById('addItemBtn');
     const addItemModal = document.getElementById('addItemModal');
     const closeAddItemModal = document.getElementById('closeAddItemModal');
@@ -12,98 +19,138 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Track submission state to prevent double submissions
     let isSubmitting = false;
+    let formSubmissionCount = 0; // Additional tracking
 
-    addItemBtn.addEventListener('click', function () {
-        // Check if user is logged in
-        fetch('../handlers/check-session.handler.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.logged_in) {
-                    addItemModal.style.display = 'flex';
-                } else {
-                    alert('You must be logged in to add items to the marketplace.');
-                }
-            })
-            .catch(error => {
-                console.error('Session check failed:', error);
-                alert('Please log in to add items.');
-            });
-    });
+    // Remove any existing event listeners first
+    if (addItemBtn) {
+        addItemBtn.replaceWith(addItemBtn.cloneNode(true));
+        const newAddItemBtn = document.getElementById('addItemBtn');
+        
+        newAddItemBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            console.log('Add item button clicked');
+            
+            // Check if user is logged in
+            fetch('../handlers/check-session.handler.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.logged_in) {
+                        addItemModal.style.display = 'flex';
+                    } else {
+                        alert('You must be logged in to add items to the marketplace.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Session check failed:', error);
+                    alert('Please log in to add items.');
+                });
+        });
+    }
 
-    closeAddItemModal.addEventListener('click', function () {
-        addItemModal.style.display = 'none';
-        addItemForm.reset();
-        isSubmitting = false; // Reset submission state
-    });
+    if (closeAddItemModal) {
+        closeAddItemModal.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            addItemModal.style.display = 'none';
+            addItemForm.reset();
+            resetSubmissionState();
+        });
+    }
 
     window.addEventListener('click', function (event) {
         if (event.target == addItemModal) {
             addItemModal.style.display = 'none';
             addItemForm.reset();
-            isSubmitting = false; // Reset submission state
+            resetSubmissionState();
         }
         if (event.target == itemDescriptionModal) {
             itemDescriptionModal.style.display = 'none';
         }
     });
 
-    addItemForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        event.stopPropagation(); // Prevent event bubbling
-
-        // Prevent double submission
-        if (isSubmitting) {
-            console.log('Submission already in progress, ignoring...');
-            return;
-        }
-
-        isSubmitting = true;
-
-        const submitButton = addItemForm.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
-        submitButton.textContent = 'Adding Item...';
-
-        const formData = new FormData(addItemForm);
+    // Remove existing form listeners and add new one
+    if (addItemForm) {
+        // Clone form to remove all existing listeners
+        const newForm = addItemForm.cloneNode(true);
+        addItemForm.parentNode.replaceChild(newForm, addItemForm);
+        const form = document.getElementById('addItemForm');
         
-        // First upload the image
-        const imageFile = formData.get('image');
-        if (imageFile && imageFile.size > 0) {
-            const imageFormData = new FormData();
-            imageFormData.append('image', imageFile);
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            
+            formSubmissionCount++;
+            console.log(`Form submission attempt #${formSubmissionCount}`);
 
-            fetch('../handlers/upload.handler.php', {
-                method: 'POST',
-                body: imageFormData
-            })
-            .then(response => response.json())
-            .then(uploadResult => {
-                if (uploadResult.success) {
-                    // Image uploaded successfully, now create the item
-                    createItem(formData, uploadResult.image_url);
-                } else {
-                    alert('Image upload failed: ' + uploadResult.message);
+            // Prevent double submission
+            if (isSubmitting) {
+                console.log('Submission already in progress, ignoring...');
+                return false;
+            }
+
+            isSubmitting = true;
+            console.log('Starting form submission...');
+
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Adding Item...';
+            }
+
+            const formData = new FormData(form);
+            
+            // First upload the image
+            const imageFile = formData.get('image');
+            if (imageFile && imageFile.size > 0) {
+                console.log('Uploading image...');
+                const imageFormData = new FormData();
+                imageFormData.append('image', imageFile);
+
+                fetch('../handlers/upload.handler.php', {
+                    method: 'POST',
+                    body: imageFormData
+                })
+                .then(response => response.json())
+                .then(uploadResult => {
+                    console.log('Upload result:', uploadResult);
+                    if (uploadResult.success) {
+                        // Image uploaded successfully, now create the item
+                        createItem(formData, uploadResult.image_url);
+                    } else {
+                        alert('Image upload failed: ' + uploadResult.message);
+                        resetSubmissionState();
+                    }
+                })
+                .catch(error => {
+                    console.error('Upload error:', error);
+                    alert('Failed to upload image. Please try again.');
                     resetSubmissionState();
-                }
-            })
-            .catch(error => {
-                console.error('Upload error:', error);
-                alert('Failed to upload image. Please try again.');
-                resetSubmissionState();
-            });
-        } else {
-            // No image provided, create item without image
-            createItem(formData, null);
-        }
-    });
+                });
+            } else {
+                console.log('No image provided, creating item without image...');
+                // No image provided, create item without image
+                createItem(formData, null);
+            }
+            
+            return false; // Ensure form doesn't submit normally
+        });
+    }
 
     function resetSubmissionState() {
+        console.log('Resetting submission state...');
         isSubmitting = false;
-        const submitButton = addItemForm.querySelector('button[type="submit"]');
-        submitButton.disabled = false;
-        submitButton.textContent = 'Add Item';
+        const submitButton = document.querySelector('#addItemForm button[type="submit"]');
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Add Item';
+        }
     }
 
     function createItem(formData, imageUrl) {
+        console.log('Creating item with image URL:', imageUrl);
+        
         const itemData = {
             name: formData.get('name'),
             description: formData.get('description'),
@@ -114,6 +161,8 @@ document.addEventListener('DOMContentLoaded', function () {
             source: 'marketplace'
         };
 
+        console.log('Item data:', itemData);
+
         fetch('../handlers/item.handler.php', {
             method: 'POST',
             headers: {
@@ -121,14 +170,18 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(itemData)
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('Item creation response status:', response.status);
+            return response.json();
+        })
         .then(result => {
+            console.log('Item creation result:', result);
             resetSubmissionState();
 
             if (result.success) {
                 alert('Item added successfully!');
-                addItemModal.style.display = 'none';
-                addItemForm.reset();
+                document.getElementById('addItemModal').style.display = 'none';
+                document.getElementById('addItemForm').reset();
                 
                 // Instead of reloading, dynamically add the new item
                 addNewItemToGrid(itemData, result.item_id);
@@ -144,6 +197,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function addNewItemToGrid(itemData, itemId) {
+        console.log('Adding new item to grid:', itemData);
+        
         // Remove "No items available" message if it exists
         const noItemsMessage = marketplaceGrid.querySelector('p');
         if (noItemsMessage && noItemsMessage.textContent.includes('No items available')) {
@@ -208,26 +263,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function attachMoreInfoListeners() {
-        document.querySelectorAll('.more-info-btn').forEach(button => {
-            // Remove any existing listeners first
-            const newButton = button.cloneNode(true);
-            button.parentNode.replaceChild(newButton, button);
-            
-            newButton.onclick = function () {
-                const card = this.closest('.product-card');
-                const itemName = card.dataset.name;
-                const itemDescription = card.dataset.description;
-
-                descriptionModalTitle.textContent = itemName;
-                descriptionModalText.textContent = itemDescription;
-                itemDescriptionModal.style.display = 'flex';
-            };
-        });
+        // Use event delegation instead of adding individual listeners
+        marketplaceGrid.removeEventListener('click', handleMoreInfoClick);
+        marketplaceGrid.addEventListener('click', handleMoreInfoClick);
     }
 
+    function handleMoreInfoClick(event) {
+        if (event.target.classList.contains('more-info-btn')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            
+            const card = event.target.closest('.product-card');
+            const itemName = card.dataset.name;
+            const itemDescription = card.dataset.description;
+
+            descriptionModalTitle.textContent = itemName;
+            descriptionModalText.textContent = itemDescription;
+            itemDescriptionModal.style.display = 'flex';
+        }
+    }
+
+    // Initial setup
     attachMoreInfoListeners();
 
-    closeDescriptionModal.addEventListener('click', function () {
-        itemDescriptionModal.style.display = 'none';
-    });
+    if (closeDescriptionModal) {
+        closeDescriptionModal.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            itemDescriptionModal.style.display = 'none';
+        });
+    }
 });

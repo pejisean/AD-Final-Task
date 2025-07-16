@@ -12,7 +12,7 @@
 <?php 
 require_once '../components/dropdown.component.php';
 require_once '../utils/item.util.php';
-require_once '../utils/imagePath.util.php'; // Add this line
+require_once '../utils/imagePath.util.php'; 
 
 // Get items from database
 $items = ItemUtil::getItems(['source' => 'marketplace'], 50, 0);
