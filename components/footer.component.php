@@ -19,8 +19,6 @@
         <div class="footer-company-section">
             <h4>Company</h4>
             <a href="/pages/about.php">About Us</a>
-            <a href="/pages/contact.php">Contact Us</a>
-            <a href="/pages/faq.php">FAQs</a>
         </div>
     </div>
 
