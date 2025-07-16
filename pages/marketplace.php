@@ -12,6 +12,7 @@
 <?php 
 require_once '../components/dropdown.component.php';
 require_once '../utils/item.util.php';
+require_once '../utils/imagePath.util.php'; // Add this line
 
 // Get items from database
 $items = ItemUtil::getItems(['source' => 'marketplace'], 50, 0);
@@ -33,11 +34,13 @@ $items = ItemUtil::getItems(['source' => 'marketplace'], 50, 0);
                          data-description="<?= htmlspecialchars($item['description']) ?>"
                          data-item-id="<?= $item['id'] ?>">
                         <div class="item-image">
-                            <img src="<?= htmlspecialchars($item['image_url'] ?? 'assets/img/placeholder.jpg') ?>" 
-                                 alt="<?= htmlspecialchars($item['name']) ?>">
+                            <img src="<?= ImagePathUtil::resolve($item['image_url'], 'pages') ?>" 
+                                 alt="<?= htmlspecialchars($item['name']) ?>"
+                                 loading="lazy"
+                                 onerror="this.src='../assets/img/placeholder.jpg'">
                             <div class="item-overlay">
                                 <p class="item-name"><?= htmlspecialchars($item['name']) ?></p>
-                                <p class="item-price"><?= number_format($item['price'], 2) ?></p>
+                                <p class="item-price">₱<?= number_format($item['price'], 2) ?></p>
                             </div>
                         </div>
                         <div class="item-bottom-actions">
