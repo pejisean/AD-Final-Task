@@ -8,6 +8,7 @@ header('Content-Type: application/json');
 try {
     require_once '../bootstrap.php';
     require_once UTILS_PATH . '/auth.util.php';
+    require_once UTILS_PATH . '/imagePath.util.php'; // Add this line
 
     if (!AuthUtil::isLoggedIn()) {
         echo json_encode(['success' => false, 'message' => 'Must be logged in to upload images']);
@@ -40,8 +41,8 @@ try {
         exit;
     }
 
-    // Use UPLOAD_PATH from bootstrap.php
-    $uploadDir = UPLOAD_PATH;
+    // Use ImagePathUtil to get upload directory
+    $uploadDir = ImagePathUtil::getUploadDirectory();
 
     // Create upload directory if it doesn't exist
     if (!is_dir($uploadDir)) {
@@ -64,6 +65,7 @@ try {
 
     // Move uploaded file
     if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+        // Return absolute path from domain root
         $relativePath = '/assets/img/marketplace/uploads/' . $filename;
         echo json_encode([
             'success' => true, 
