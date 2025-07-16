@@ -30,22 +30,30 @@
             <div class="team-member">
                 <img src="assets/img/about/migzabout.png" alt="Migz Antonio">
                 <h3>Juan Miguel Antonio</h3>
-                <p>Frontend Dev / QA / Hunter</p>
+                <p>Frontend / Backend / Hunter</p>
+                <p>migzantonio@gmail.com</p>
+
             </div>
             <div class="team-member">
                 <img src="assets/img/about/seanabout.png" alt="Sean">
                 <h3>Sean James Peji</h3>
-                <p>Database / Backend / QA / Foreman</p>
+                <p>Backend / QA / Foreman</p>
+                <p>seanjames@gmail.com</p>
+
             </div>
             <div class="team-member">
                 <img src="assets/img/about/carloabout.png" alt="Carlo">
                 <h3>John Carlo Dulutan</h3>
-                <p>Frontend Dev / Scavenger</p>
+                <p>Frontend / Scavenger</p>
+                <p>carlodulutan@gmail.com</p>
+
             </div>
             <div class="team-member">
                 <img src="assets/img/about/jayabout.png" alt="Jay">
                 <h3>Jaymard Licas</h3>
-                <p>Frontend Dev / QA / Quartermaster</p>
+                <p>Frontend / Quartermaster</p>
+                <p>jaymardslicas@gmail.com</p>
+
             </div>
         </div>
     </section>
