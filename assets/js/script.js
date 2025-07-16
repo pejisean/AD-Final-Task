@@ -255,14 +255,14 @@ function submitFeedback() {
 
 function updateCartIconCount() {
     // Check if user is logged in first
-    fetch('../handlers/check-session.handler.php', {
+    fetch('handlers/check-session.handler.php', {
         credentials: 'same-origin'
     })
     .then(response => response.json())
     .then(data => {
         if (data.success && data.logged_in) {
             // User is logged in - get count from server
-            fetch('../handlers/cart.handler.php', {
+            fetch('handlers/cart.handler.php', {
                 credentials: 'same-origin'
             })
             .then(response => response.json())
@@ -289,7 +289,7 @@ function updateCartIconCount() {
 
 function updateCartIconCountFromLocalStorage() {
     const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
     const cartCountElement = document.getElementById('cart-item-count');
     if (cartCountElement) {
         cartCountElement.textContent = totalItems;
