@@ -1,18 +1,19 @@
+/* Overlay Container */
 .overlay {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 2000;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(10, 18, 21, 0.85);
-  /* matches .products-container bg */
   backdrop-filter: blur(4px);
   justify-content: center;
   align-items: center;
 }
 
+/* Overlay Content */
 .overlay-content {
   background: linear-gradient(135deg, #1C1C1C 80%, #DA6015 100%);
   margin: auto;
@@ -27,8 +28,10 @@
   position: relative;
   animation: fadeIn 0.3s ease-out;
   transition: box-shadow 0.3s;
+  z-index: 2100;
 }
 
+/* Overlay Title */
 .overlay-content h2 {
   color: #DA6015;
   text-align: center;
@@ -39,6 +42,7 @@
   text-shadow: 0 2px 8px #1C1C1C;
 }
 
+/* Close Button */
 .close-button {
   color: #DA6015;
   float: right;
@@ -49,6 +53,8 @@
   right: 28px;
   cursor: pointer;
   transition: color 0.2s;
+  pointer-events: auto;
+  z-index: 2200;
   text-shadow: 0 2px 8px #1C1C1C;
 }
 
@@ -59,22 +65,7 @@
   cursor: pointer;
 }
 
-.close-button:hover,
-.close-button:focus {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.receipt {
-  background: rgba(51, 51, 51, 0.95);
-  border: 1px solid #2ecc40;
-  padding: 24px;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(44, 204, 64, 0.10);
-}
-
+/* Receipt Box */
 .receipt {
   background: rgba(28, 28, 28, 0.98);
   border: 1px solid #DA6015;
@@ -101,29 +92,13 @@
   margin: 18px 0;
 }
 
-#proceedAddButton {
-  display: block;
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(90deg, #2ecc40 80%, #27ae60 100%);
-  color: #222;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.25em;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 2px;
-  box-shadow: 0 2px 8px rgba(44, 204, 64, 0.15);
-}
-
+/* Buttons */
 #proceedPaymentButton,
 #proceedAddButton,
 .overlay-content button[type="submit"] {
   display: block;
   width: 100%;
-  padding: 6px;
+  padding: 16px;
   background: linear-gradient(90deg, #DA6015 80%, #41572f 100%);
   color: #1C1C1C;
   border: none;
@@ -145,6 +120,7 @@
   color: #fff;
 }
 
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -1,3 +1,12 @@
+
+function closeBuyNowOverlay() {
+  const buyNowOverlay = document.getElementById("buyNowOverlay");
+  if (buyNowOverlay) {
+    buyNowOverlay.style.display = "none";
+    buyNowOverlay.classList.remove("active");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const buyNowButtons = document.querySelectorAll(".buy-now-btn");
   const overlay = document.getElementById("buyNowOverlay");
@@ -5,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const itemPriceEl = document.getElementById("receiptItemPrice");
   const totalPriceEl = document.getElementById("receiptTotalPrice");
   const ipAddressEl = document.getElementById("receiptIPAddress");
-  const closeButton = document.getElementById("closeBuyNowOverlayBtn");
   const proceedPaymentButton = document.getElementById("proceedPaymentButton");
 
   if (!overlay) {
@@ -13,9 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Use direct event binding for the close button
+  const closeButton = document.getElementById("closeBuyNowOverlayBtn");
   if (closeButton) {
-    closeButton.addEventListener("click", closeOverlay);
+    closeButton.addEventListener("click", closeBuyNowOverlay);
   }
+
 
   // Generate random IP address (simulating secure outpost location)
   function generateRandomIP() {
@@ -28,17 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", event => {
       event.preventDefault();
 
-      /*
-      
-      THIS PART IS COMMENTED OUT TO ALLOW BUYING WITHOUT LOGIN
-
-      const loggedInCodename = localStorage.getItem('loggedInCodename');
-      if (!loggedInCodename) {
-        alert("You must be logged in to buy items.");
-        closeOverlay();
-        return;
-      }
-      */
       const itemName = button.getAttribute("data-item-name");
       const itemPrice = button.getAttribute("data-item-price");
       const ip = generateRandomIP();
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ip: ip
       };
 
-      // Only show overlay if logged in
       overlay.style.display = "flex";
     });
   });
@@ -77,7 +76,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function closeOverlay() {
-  document.getElementById("buyNowOverlay").style.display = "none";
-  document.getElementById("addToCartOverlay").style.display = "none";
-}
