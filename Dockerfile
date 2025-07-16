@@ -15,6 +15,8 @@ COPY --from=composer:2.6 /usr/bin/composer /usr/local/bin/composer
 
 COPY . /var/www/html/
 
+RUN mkdir -p /var/www/html/assets/img/marketplace/uploads && chmod -R 777 /var/www/html/assets/img/marketplace/uploads
+
 USER yourUsernameHere
 
 EXPOSE 8000
