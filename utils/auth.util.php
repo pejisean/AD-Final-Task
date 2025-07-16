@@ -1,5 +1,5 @@
 <?php
-require_once UTILS_PATH . 'database.util.php';
+require_once UTILS_PATH . 'user.util.php';
 
 class AuthUtil {
     
@@ -22,8 +22,7 @@ class AuthUtil {
         self::startSession();
         
         try {
-            // Use DatabaseUtil to find user
-            $user = DatabaseUtil::findUserByUsername($username);
+            $user = UserUtil::findUserByUsername($username);
             
             if (!$user) {
                 return [
@@ -33,10 +32,9 @@ class AuthUtil {
             }
             
             // Verify password (plain text for now)
-            // TODO: Implement password_verify() for hashed passwords
             if ($user['password'] === $password) {
-                // Set session variables
-                $_SESSION['user_id'] = $user['username'];
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
                 $_SESSION['user_role'] = $user['role'];
                 $_SESSION['logged_in'] = true;
                 $_SESSION['login_time'] = time();
@@ -45,6 +43,7 @@ class AuthUtil {
                     'success' => true,
                     'message' => 'Login successful',
                     'user' => [
+                        'id' => $user['id'],
                         'username' => $user['username'],
                         'role' => $user['role']
                     ]
@@ -68,25 +67,29 @@ class AuthUtil {
     /**
      * Register a new user
      * @param string $username
+     * @param string $email
      * @param string $password
+     * @param string $gender
      * @param string $role
      * @return array
      */
-    public static function register($username, $password, $role = 'user') {
+    public static function register($username, $email, $password, $gender = null, $role = 'user') {
         try {
-            // Check if username already exists
-            if (DatabaseUtil::usernameExists($username)) {
+            if (UserUtil::usernameExists($username)) {
                 return [
                     'success' => false,
                     'message' => 'Username already exists'
                 ];
             }
             
-            // TODO: Hash password for security
-            // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            if (!empty($email) && UserUtil::emailExists($email)) {
+                return [
+                    'success' => false,
+                    'message' => 'Email already exists'
+                ];
+            }
             
-            // Create new user
-            $success = DatabaseUtil::createUser($username, $password, $role);
+            $success = UserUtil::createUser($username, $email, $password, $gender, $role);
             
             if ($success) {
                 return [
@@ -119,6 +122,16 @@ class AuthUtil {
     }
     
     /**
+     * Check if user has specific role
+     * @param string $role
+     * @return bool
+     */
+    public static function hasRole($role) {
+        self::startSession();
+        return self::isLoggedIn() && isset($_SESSION['user_role']) && $_SESSION['user_role'] === $role;
+    }
+    
+    /**
      * Get current logged in user info
      * @return array|null
      */
@@ -126,7 +139,8 @@ class AuthUtil {
         self::startSession();
         if (self::isLoggedIn()) {
             return [
-                'username' => $_SESSION['user_id'],
+                'id' => $_SESSION['user_id'],
+                'username' => $_SESSION['username'],
                 'role' => $_SESSION['user_role']
             ];
         }
@@ -155,7 +169,7 @@ class AuthUtil {
      * Require login - redirect to login page if not logged in
      * @param string $redirectTo
      */
-    public static function requireLogin($redirectTo = 'pages/login.php') {
+    public static function requireLogin($redirectTo = 'login.php') {
         if (!self::isLoggedIn()) {
             header("Location: " . $redirectTo);
             exit();
@@ -163,12 +177,14 @@ class AuthUtil {
     }
     
     /**
-     * Check if user has specific role
-     * @param string $role
-     * @return bool
+     * Require admin role
+     * @param string $redirectTo
      */
-    public static function hasRole($role) {
-        self::startSession();
-        return self::isLoggedIn() && $_SESSION['user_role'] === $role;
+    public static function requireAdmin($redirectTo = 'login.php?error=unauthorized') {
+        if (!self::hasRole('admin')) {
+            header("Location: " . $redirectTo);
+            exit();
+        }
     }
 }
+?>
