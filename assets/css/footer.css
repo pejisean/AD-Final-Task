@@ -27,12 +27,12 @@ footer {
 
 .footer-links-section {
     flex: 1 1 200px;
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 .footer-company-section {
     flex: 1 1 200px;
-    margin-right: 300px;
+    margin-right: 200px;
 }
 
 footer h4 {
