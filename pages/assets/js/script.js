@@ -80,7 +80,41 @@ function getCart() {
 }
 
 function updateCartIconCount() {
-    const cart = getCart();
+    // Check if user is logged in first
+    fetch('../handlers/check-session.handler.php', {
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.logged_in) {
+            // User is logged in - get count from server
+            fetch('../handlers/cart.handler.php', {
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(cartData => {
+                const cartCountElement = document.getElementById('cart-item-count');
+                if (cartCountElement && cartData.success) {
+                    cartCountElement.textContent = cartData.data.item_count || 0;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cart count:', error);
+                updateCartIconCountFromLocalStorage();
+            });
+        } else {
+            // User not logged in - use localStorage
+            updateCartIconCountFromLocalStorage();
+        }
+    })
+    .catch(error => {
+        console.error('Session check failed:', error);
+        updateCartIconCountFromLocalStorage();
+    });
+}
+
+function updateCartIconCountFromLocalStorage() {
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const cartCountElement = document.getElementById('cart-item-count');
     if (cartCountElement) {
