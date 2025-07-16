@@ -94,22 +94,32 @@
 
 .item-image {
     position: relative;
-    height: 150px; /* Fixed height for consistency */
+    height: 150px;
     width: 100%;
     overflow: hidden;
     background-color: #2a2a2a;
+    border-radius: 8px 8px 0 0; /* Round top corners */
 }
 
 .item-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* This ensures the image covers the container while maintaining aspect ratio */
+    object-position: center; /* Centers the image within the container */
     display: block;
     transition: transform 0.3s ease;
 }
 
 .item-image:hover img {
     transform: scale(1.05);
+}
+
+/* Ensure uploaded images are properly sized */
+.product-card .item-image img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: none; /* Allow scaling */
+    max-height: none; /* Allow scaling */
 }
 
 .item-overlay {
