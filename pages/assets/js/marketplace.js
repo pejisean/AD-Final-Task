@@ -137,21 +137,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Create new product card element
         const productCard = document.createElement('div');
-        productCard.className = 'product-card';
+        productCard.className = 'product-card new-item'; // Add new-item class for animation
         productCard.setAttribute('data-name', itemData.name);
         productCard.setAttribute('data-price', itemData.price.toFixed(2));
         productCard.setAttribute('data-description', itemData.description);
         productCard.setAttribute('data-item-id', itemId);
 
-        // Use placeholder image with proper sizing if no image provided
-        const imageUrl = itemData.image_url || `https://via.placeholder.com/150x150/1C1C1C/DA6015?text=${encodeURIComponent(itemData.name.substring(0, 10))}`;
+        // Use proper placeholder with theme colors and better text handling
+        const placeholderText = encodeURIComponent(itemData.name.substring(0, 8));
+        const imageUrl = itemData.image_url || `https://via.placeholder.com/150x150/1C1C1C/DA6015?text=${placeholderText}`;
 
         productCard.innerHTML = `
             <div class="item-image">
-                <img src="${imageUrl}" alt="${itemData.name}" style="width: 150px; height: 150px; object-fit: cover;">
+                <img src="${imageUrl}" 
+                     alt="${itemData.name}" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150x150/1C1C1C/DA6015?text=No+Image'">
                 <div class="item-overlay">
                     <p class="item-name">${itemData.name}</p>
-                    <p class="item-price">${itemData.price.toFixed(2)}</p>
+                    <p class="item-price">₱${itemData.price.toFixed(2)}</p>
                 </div>
             </div>
             <div class="item-bottom-actions">
@@ -169,15 +173,16 @@ document.addEventListener('DOMContentLoaded', function () {
         // Reattach event listeners for the new card
         attachMoreInfoListeners();
         
-        // Add smooth scroll animation to show the new item
-        productCard.style.opacity = '0';
-        productCard.style.transform = 'translateY(-20px)';
-        
+        // Trigger the CSS animation by removing the new-item class after animation completes
         setTimeout(() => {
-            productCard.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            productCard.style.opacity = '1';
-            productCard.style.transform = 'translateY(0)';
-        }, 100);
+            productCard.classList.remove('new-item');
+        }, 500);
+
+        // Scroll to show the new item (helpful on mobile)
+        productCard.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'nearest' 
+        });
     }
 
     function attachMoreInfoListeners() {
