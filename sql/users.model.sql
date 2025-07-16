@@ -20,3 +20,10 @@ CREATE INDEX IF NOT EXISTS idx_users_username ON public."users" (username);
 CREATE INDEX IF NOT EXISTS idx_users_email ON public."users" (email);
 CREATE INDEX IF NOT EXISTS idx_users_role ON public."users" (role);
 CREATE INDEX IF NOT EXISTS idx_users_created_at ON public."users" (created_at);
+
+-- Add comments
+COMMENT ON TABLE public."users" IS 'User accounts for the trading platform';
+COMMENT ON COLUMN public."users".username IS 'Unique username/codename for login';
+COMMENT ON COLUMN public."users".email IS 'User email address (optional)';
+COMMENT ON COLUMN public."users".gender IS 'User gender selection';
+COMMENT ON COLUMN public."users".role IS 'User role: user or admin';
