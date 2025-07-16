@@ -64,7 +64,7 @@ try {
 
     // Move uploaded file
     if (move_uploaded_file($file['tmp_name'], $targetPath)) {
-        $relativePath = 'assets/img/marketplace/uploads/' . $filename;
+        $relativePath = '/assets/img/marketplace/uploads/' . $filename;
         echo json_encode([
             'success' => true, 
             'message' => 'Image uploaded successfully',
