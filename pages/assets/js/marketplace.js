@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const descriptionModalTitle = document.getElementById('descriptionModalTitle');
     const descriptionModalText = document.getElementById('descriptionModalText');
 
+    // Track submission state to prevent double submissions
+    let isSubmitting = false;
+
     addItemBtn.addEventListener('click', function () {
         // Check if user is logged in
         fetch('../handlers/check-session.handler.php')
@@ -30,12 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
     closeAddItemModal.addEventListener('click', function () {
         addItemModal.style.display = 'none';
         addItemForm.reset();
+        isSubmitting = false; // Reset submission state
     });
 
     window.addEventListener('click', function (event) {
         if (event.target == addItemModal) {
             addItemModal.style.display = 'none';
             addItemForm.reset();
+            isSubmitting = false; // Reset submission state
         }
         if (event.target == itemDescriptionModal) {
             itemDescriptionModal.style.display = 'none';
@@ -44,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     addItemForm.addEventListener('submit', function (event) {
         event.preventDefault();
+        event.stopPropagation(); // Prevent event bubbling
+
+        // Prevent double submission
+        if (isSubmitting) {
+            console.log('Submission already in progress, ignoring...');
+            return;
+        }
+
+        isSubmitting = true;
 
         const submitButton = addItemForm.querySelector('button[type="submit"]');
         submitButton.disabled = true;
@@ -68,21 +82,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     createItem(formData, uploadResult.image_url);
                 } else {
                     alert('Image upload failed: ' + uploadResult.message);
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Add Item';
+                    resetSubmissionState();
                 }
             })
             .catch(error => {
                 console.error('Upload error:', error);
                 alert('Failed to upload image. Please try again.');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Add Item';
+                resetSubmissionState();
             });
         } else {
             // No image provided, create item without image
             createItem(formData, null);
         }
     });
+
+    function resetSubmissionState() {
+        isSubmitting = false;
+        const submitButton = addItemForm.querySelector('button[type="submit"]');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Add Item';
+    }
 
     function createItem(formData, imageUrl) {
         const itemData = {
@@ -104,9 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(result => {
-            const submitButton = addItemForm.querySelector('button[type="submit"]');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Add Item';
+            resetSubmissionState();
 
             if (result.success) {
                 alert('Item added successfully!');
@@ -122,9 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Error creating item:', error);
             alert('Failed to add item. Please try again.');
-            const submitButton = addItemForm.querySelector('button[type="submit"]');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Add Item';
+            resetSubmissionState();
         });
     }
 
@@ -194,7 +209,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function attachMoreInfoListeners() {
         document.querySelectorAll('.more-info-btn').forEach(button => {
-            button.onclick = function () {
+            // Remove any existing listeners first
+            const newButton = button.cloneNode(true);
+            button.parentNode.replaceChild(newButton, button);
+            
+            newButton.onclick = function () {
                 const card = this.closest('.product-card');
                 const itemName = card.dataset.name;
                 const itemDescription = card.dataset.description;
