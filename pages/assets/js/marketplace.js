@@ -137,19 +137,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Create new product card element
         const productCard = document.createElement('div');
-        productCard.className = 'product-card new-item'; // Add new-item class for animation
+        productCard.className = 'product-card new-item';
         productCard.setAttribute('data-name', itemData.name);
         productCard.setAttribute('data-price', itemData.price.toFixed(2));
         productCard.setAttribute('data-description', itemData.description);
         productCard.setAttribute('data-item-id', itemId);
 
-        // Use the actual uploaded image URL, or fallback to placeholder
+        // Handle image URL - use uploaded image or placeholder
         let imageUrl;
         if (itemData.image_url && itemData.image_url !== null && itemData.image_url !== '') {
-            // Use the uploaded image
+            // Use the uploaded image URL as-is (it's already absolute from domain root)
             imageUrl = itemData.image_url;
         } else {
-            // Use placeholder with theme colors
+            // Use placeholder that matches the utility class format
             const placeholderText = encodeURIComponent(itemData.name.substring(0, 8));
             imageUrl = `https://via.placeholder.com/150x150/1C1C1C/DA6015?text=${placeholderText}`;
         }
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <img src="${imageUrl}" 
                      alt="${itemData.name}" 
                      loading="lazy"
-                     onerror="this.src='https://via.placeholder.com/150x150/1C1C1C/DA6015?text=No+Image'">
+                     onerror="this.src='../assets/img/placeholder.jpg'">
                 <div class="item-overlay">
                     <p class="item-name">${itemData.name}</p>
                     <p class="item-price">₱${itemData.price.toFixed(2)}</p>
@@ -174,18 +174,18 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
 
-        // Add the new card to the beginning of the grid (most recent first)
+        // Add the new card to the beginning of the grid
         marketplaceGrid.insertBefore(productCard, marketplaceGrid.firstChild);
 
-        // Reattach event listeners for the new card
+        // Reattach event listeners
         attachMoreInfoListeners();
         
-        // Trigger the CSS animation by removing the new-item class after animation completes
+        // Remove animation class after animation completes
         setTimeout(() => {
             productCard.classList.remove('new-item');
         }, 500);
 
-        // Scroll to show the new item (helpful on mobile)
+        // Scroll to show the new item
         productCard.scrollIntoView({ 
             behavior: 'smooth', 
             block: 'nearest' 
