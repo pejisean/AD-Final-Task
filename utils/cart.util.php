@@ -139,5 +139,16 @@ class CartUtil extends DatabaseUtil {
         
         return 0;
     }
+    
+    /**
+     * Clear all cart items for a user
+     * @param int $userId
+     * @return bool
+     */
+    public static function clearAllUserSessions($userId) {
+        $query = "DELETE FROM cart WHERE user_id = $1";
+        $result = self::executeQuery($query, [$userId]);
+        return $result['success'];
+    }
 }
 ?>
