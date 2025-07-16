@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Check authentication from server first
-    fetch('../handlers/check-session.handler.php', {
+    fetch('handlers/check-session.handler.php', {
         credentials: 'same-origin'
     })
     .then(response => response.json())
@@ -185,7 +185,7 @@ function handleLogout() {
         logoutButton.style.pointerEvents = 'none';
     }
 
-    fetch('../handlers/logout.handler.php', {
+    fetch('handlers/logout.handler.php', {
         method: 'POST',
         credentials: 'same-origin'
     })
@@ -194,7 +194,7 @@ function handleLogout() {
         if (data.success) {
             localStorage.removeItem('loggedInCodename');
             localStorage.removeItem('cartItems');
-            window.location.href = '../index.php';
+            window.location.href = 'index.php';
         } else {
             localStorage.removeItem('loggedInCodename');
             localStorage.removeItem('cartItems');
