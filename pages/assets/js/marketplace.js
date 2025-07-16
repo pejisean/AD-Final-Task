@@ -143,9 +143,16 @@ document.addEventListener('DOMContentLoaded', function () {
         productCard.setAttribute('data-description', itemData.description);
         productCard.setAttribute('data-item-id', itemId);
 
-        // Use proper placeholder with theme colors and better text handling
-        const placeholderText = encodeURIComponent(itemData.name.substring(0, 8));
-        const imageUrl = itemData.image_url || `https://via.placeholder.com/150x150/1C1C1C/DA6015?text=${placeholderText}`;
+        // Use the actual uploaded image URL, or fallback to placeholder
+        let imageUrl;
+        if (itemData.image_url && itemData.image_url !== null && itemData.image_url !== '') {
+            // Use the uploaded image
+            imageUrl = itemData.image_url;
+        } else {
+            // Use placeholder with theme colors
+            const placeholderText = encodeURIComponent(itemData.name.substring(0, 8));
+            imageUrl = `https://via.placeholder.com/150x150/1C1C1C/DA6015?text=${placeholderText}`;
+        }
 
         productCard.innerHTML = `
             <div class="item-image">
