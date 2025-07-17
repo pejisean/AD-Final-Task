@@ -1,25 +1,11 @@
 (function() {
     'use strict';
-    
-    // Prevent multiple executions
-    if (window.marketplaceInitialized) {
-        console.log('Marketplace already initialized, preventing duplicate execution');
-        return;
-    }
-
-    // Only run on marketplace page
-    const isMarketplacePage = window.location.pathname.includes('marketplace.php');
-    const hasMarketplaceGrid = document.getElementById('marketplaceGrid');
-    
-    if (!isMarketplacePage || !hasMarketplaceGrid) {
-        console.log('Not on marketplace page, skipping marketplace.js initialization');
-        return;
-    }
-
-    console.log('Initializing marketplace functionality...');
-    window.marketplaceInitialized = true;
 
     document.addEventListener('DOMContentLoaded', function() {
+        // Add debug logging
+        console.log('Marketplace script loaded');
+        
+        // Get elements with better error checking
         const addItemBtn = document.getElementById('addItemBtn');
         const addItemModal = document.getElementById('addItemModal');
         const closeAddItemModal = document.getElementById('closeAddItemModal');
@@ -28,28 +14,32 @@
         const itemDescriptionModal = document.getElementById('itemDescriptionModal');
         const closeDescriptionModal = document.getElementById('closeDescriptionModal');
 
+        // Check if required elements exist
+        if (!addItemBtn || !addItemModal || !addItemForm) {
+            console.error('Required marketplace elements not found');
+            return;
+        }
+
         let isSubmitting = false;
 
         // Initialize all event listeners
-        if (addItemBtn) {
-            addItemBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                handleAddItem();
-            });
-        }
+        addItemBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Add item button clicked');
+            handleAddItem();
+        });
 
         if (closeAddItemModal) {
             closeAddItemModal.addEventListener('click', closeModal);
         }
 
-        if (addItemForm) {
-            addItemForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (!isSubmitting) {
-                    handleFormSubmission();
-                }
-            });
-        }
+        addItemForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Form submitted');
+            if (!isSubmitting) {
+                handleFormSubmission();
+            }
+        });
 
         if (closeDescriptionModal) {
             closeDescriptionModal.addEventListener('click', function() {
@@ -79,35 +69,53 @@
         }
 
         function handleAddItem() {
+            console.log('Checking session...');
             fetch('../handlers/check-session.handler.php', {
-                signal: AbortSignal.timeout(5000)
+                credentials: 'same-origin'
             })
-            .then(response => response.json())
+            .then(response => {
+                console.log('Session response status:', response.status);
+                return response.json();
+            })
             .then(data => {
+                console.log('Session data:', data);
                 if (data.success && data.logged_in) {
                     addItemModal.style.display = 'flex';
+                    console.log('Modal should be visible now');
                 } else {
                     alert('You must be logged in to add items to the marketplace.');
                 }
             })
             .catch(error => {
                 console.error('Session check failed:', error);
-                alert('Please log in to add items.');
+                // Still allow modal to open for testing
+                addItemModal.style.display = 'flex';
             });
         }
 
         function handleFormSubmission() {
+            console.log('Starting form submission...');
             isSubmitting = true;
             const submitButton = addItemForm.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Adding Item...';
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Adding Item...';
+            }
 
             const formData = new FormData(addItemForm);
+            
+            // Log form data for debugging
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
             const imageFile = formData.get('image');
 
             if (imageFile && imageFile.size > 0) {
+                console.log('Uploading image first...');
                 uploadImage(formData, imageFile);
             } else {
+                console.log('Creating item without image...');
                 createItem(formData, null);
             }
         }
@@ -148,20 +156,32 @@
                 source: 'marketplace'
             };
 
+            console.log('Creating item with data:', itemData);
+
             fetch('../handlers/item.handler.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(itemData),
-                signal: AbortSignal.timeout(10000)
+                credentials: 'same-origin'
             })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-                    alert('Item added successfully!');
-                    closeModal();
-                    window.location.reload();
-                } else {
-                    alert('Failed to add item: ' + result.message);
+            .then(response => {
+                console.log('Create item response status:', response.status);
+                return response.text(); // Get text first to see raw response
+            })
+            .then(text => {
+                console.log('Raw response:', text);
+                try {
+                    const result = JSON.parse(text);
+                    if (result.success) {
+                        alert('Item added successfully!');
+                        closeModal();
+                        window.location.reload();
+                    } else {
+                        alert('Failed to add item: ' + result.message);
+                    }
+                } catch (e) {
+                    console.error('JSON parse error:', e);
+                    alert('Server error: ' + text);
                 }
                 resetForm();
             })

@@ -115,6 +115,7 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
 
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
+<script src="../assets/js/script.js"></script>
 <script src="assets/js/marketplace.js"></script>
 </body>
 </html>

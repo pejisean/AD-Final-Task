@@ -1,4 +1,5 @@
 <?php
+// filepath: handlers/item.handler.php
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
@@ -9,6 +10,10 @@ try {
     require_once '../bootstrap.php';
     require_once UTILS_PATH . '/item.util.php';
     require_once UTILS_PATH . '/auth.util.php';
+
+    // Log the request for debugging
+    error_log("Item handler called with method: " . $_SERVER['REQUEST_METHOD']);
+    error_log("Request input: " . file_get_contents('php://input'));
 
     $method = $_SERVER['REQUEST_METHOD'];
     $input = json_decode(file_get_contents('php://input'), true) ?: $_POST;
@@ -56,6 +61,8 @@ function handleGetItems() {
 }
 
 function handleCreateItem($input) {
+    error_log("Creating item with input: " . print_r($input, true));
+    
     // Check if user is logged in
     if (!AuthUtil::isLoggedIn()) {
         echo json_encode(['success' => false, 'message' => 'Must be logged in to create items']);
@@ -63,6 +70,7 @@ function handleCreateItem($input) {
     }
     
     $currentUser = AuthUtil::getCurrentUser();
+    error_log("Current user: " . print_r($currentUser, true));
     
     // Validate required fields
     $required = ['name', 'description', 'price'];
@@ -84,7 +92,11 @@ function handleCreateItem($input) {
         'source' => $input['source'] ?? 'marketplace'
     ];
     
+    error_log("Item data to create: " . print_r($itemData, true));
+    
     $result = ItemUtil::createItem($itemData);
+    
+    error_log("Create result: " . print_r($result, true));
     
     echo json_encode([
         'success' => $result !== false,
