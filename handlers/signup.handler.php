@@ -10,14 +10,12 @@ try {
     // Include bootstrap
     require_once '../bootstrap.php';
     
-    // Include required utilities
+    // Include required utilities 
     require_once UTILS_PATH . '/envSetter.util.php';
-    require_once HANDLERS_PATH . '/database.handler.php';
-    require_once UTILS_PATH . '/user.util.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-        // Get input data (exactly like login handler)
+        // Get input data
         $input = json_decode(file_get_contents('php://input'), true);
         if (!$input) {
             $input = $_POST;
@@ -28,6 +26,9 @@ try {
         $password = $input['password'] ?? '';
         $gender = $input['gender'] ?? '';
 
+        // Log the attempt for debugging
+        error_log("Signup attempt for username: " . $username);
+
         // Basic validation
         if (empty($username) || empty($password) || empty($gender)) {
             echo json_encode([
@@ -37,8 +38,19 @@ try {
             exit();
         }
 
-        // Check if username already exists (this works, so DB connection is fine)
-        if (UserUtil::usernameExists($username)) {
+        // Use the same connection method as the seeder utilities
+        // $pgConfig is available after including envSetter.util.php
+        $dsn = "pgsql:host={$pgConfig['pg_host']};port={$pgConfig['pg_port']};dbname={$pgConfig['pg_db']}";
+        $pdo = new PDO($dsn, $pgConfig['pg_user'], $pgConfig['pg_pass'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ]);
+
+        // Check if username already exists
+        $checkQuery = "SELECT username FROM users WHERE username = ?";
+        $stmt = $pdo->prepare($checkQuery);
+        $stmt->execute([$username]);
+        
+        if ($stmt->rowCount() > 0) {
             echo json_encode([
                 'success' => false,
                 'message' => 'This codename is already taken. Please choose another.'
@@ -47,47 +59,40 @@ try {
         }
 
         // Check if email already exists (if provided)
-        if (!empty($email) && UserUtil::emailExists($email)) {
-            echo json_encode([
-                'success' => false,
-                'message' => 'This email is already registered'
-            ]);
-            exit();
+        if (!empty($email)) {
+            $emailCheckQuery = "SELECT email FROM users WHERE email = ?";
+            $emailStmt = $pdo->prepare($emailCheckQuery);
+            $emailStmt->execute([$email]);
+            
+            if ($emailStmt->rowCount() > 0) {
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'This email is already registered'
+                ]);
+                exit();
+            }
         }
 
-        // Try to create user directly with a simple query (bypass UserUtil for now)
-        $connection = ConnectDB();
-        if (!$connection) {
-            echo json_encode([
-                'success' => false,
-                'message' => 'Database connection failed'
-            ]);
-            exit();
-        }
-
-        // Direct insert query (like your working handlers)
-        $query = "INSERT INTO users (username, email, password, gender, role) VALUES ($1, $2, $3, $4, $5)";
-        $result = pg_query_params($connection, $query, [
+        // Create the user with prepared statement 
+        $insertQuery = "INSERT INTO users (username, email, password, gender, role) VALUES (?, ?, ?, ?, ?)";
+        $insertStmt = $pdo->prepare($insertQuery);
+        $insertResult = $insertStmt->execute([
             $username,
             !empty($email) ? $email : null,
-            $password,
+            $password, 
             $gender,
             'user'
         ]);
 
-        pg_close($connection);
-
-        if ($result) {
+        if ($insertResult) {
             echo json_encode([
                 'success' => true,
                 'message' => 'Account created successfully! You can now log in.'
             ]);
         } else {
-            $error = pg_last_error();
-            error_log("Direct insert failed: " . $error);
             echo json_encode([
                 'success' => false,
-                'message' => 'Failed to create account: ' . $error
+                'message' => 'Failed to create account. Please try again.'
             ]);
         }
         
@@ -98,21 +103,28 @@ try {
         ]);
     }
 
-} catch (Error $e) {
-    error_log("Fatal Error in signup: " . $e->getMessage());
+} catch (PDOException $e) {
+    error_log("Database error in signup: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Fatal Error: ' . $e->getMessage(),
-        'file' => basename($e->getFile()),
-        'line' => $e->getLine()
+        'message' => 'Database error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
+    ]);
+} catch (Error $e) {
+    error_log("Fatal Error in signup: " . $e->getMessage());
+    error_log("Stack trace: " . $e->getTraceAsString());
+    echo json_encode([
+        'success' => false,
+        'message' => 'Server error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 } catch (Exception $e) {
     error_log("Exception in signup: " . $e->getMessage());
+    error_log("Stack trace: " . $e->getTraceAsString());
     echo json_encode([
         'success' => false,
-        'message' => 'Exception: ' . $e->getMessage(),
-        'file' => basename($e->getFile()),
-        'line' => $e->getLine()
+        'message' => 'An error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 }
 ?>

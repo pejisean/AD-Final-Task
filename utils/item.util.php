@@ -134,8 +134,10 @@ class ItemUtil extends DatabaseUtil {
      * @return int|false Item ID on success, false on failure
      */
     public static function createItem($itemData) {
-        $query = "INSERT INTO items (name, description, price, image_url, seller_id, category, stock_quantity, source) 
-                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id";
+        error_log("ItemUtil::createItem called with: " . json_encode($itemData));
+        
+        $query = "INSERT INTO items (name, description, price, image_url, seller_id, category, stock_quantity, source, is_active) 
+                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id";
         
         $params = [
             $itemData['name'],
@@ -145,16 +147,32 @@ class ItemUtil extends DatabaseUtil {
             $itemData['seller_id'],
             $itemData['category'] ?? 'general',
             $itemData['stock_quantity'] ?? 1,
-            $itemData['source'] ?? 'marketplace'
+            $itemData['source'] ?? 'marketplace',
+            true // is_active
         ];
         
-        $result = self::executeQuery($query, $params);
+        error_log("SQL Query: " . $query);
+        error_log("SQL Params: " . json_encode($params));
         
-        if ($result['success'] && !empty($result['data'])) {
-            return $result['data'][0]['id'];
+        try {
+            $result = self::executeQuery($query, $params);
+            
+            error_log("executeQuery result: " . json_encode($result));
+            
+            if ($result['success'] && !empty($result['data'])) {
+                $itemId = $result['data'][0]['id'];
+                error_log("Item created successfully with ID: " . $itemId);
+                return (int)$itemId;
+            } else {
+                error_log("executeQuery failed or returned no data");
+                error_log("Result details: " . json_encode($result));
+                return false;
+            }
+        } catch (Exception $e) {
+            error_log("Exception in createItem: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
+            return false;
         }
-        
-        return false;
     }
     
     /**

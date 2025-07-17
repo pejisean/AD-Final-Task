@@ -1,30 +1,30 @@
 <?php
 
 class ImagePathUtil {
-    
     /**
-     * Resolve image paths correctly for different contexts
-     * @param string|null $imagePath The image path to resolve
+     * Resolve image path based on context
+     * @param string $imagePath The image path from database
      * @param string $context The context ('pages' or 'root')
-     * @return string The resolved image path
+     * @return string The resolved path
      */
     public static function resolve($imagePath, $context = 'pages') {
-        if (!$imagePath) {
-            return $context === 'pages' ? '../assets/img/placeholder.jpg' : 'assets/img/placeholder.jpg';
+        // Handle null/empty paths
+        if (empty($imagePath)) {
+            return self::getPlaceholder();
         }
         
         // If path starts with /, it's absolute from domain root
-        if (str_starts_with($imagePath, '/')) {
+        if (strpos($imagePath, '/') === 0) {
             return $imagePath;
         }
         
         // If path starts with assets/, make it relative to context
-        if (str_starts_with($imagePath, 'assets/')) {
+        if (strpos($imagePath, 'assets/') === 0) {
             return $context === 'pages' ? '../' . $imagePath : $imagePath;
         }
         
-        // If path starts with ../, it's already relative to pages
-        if (str_starts_with($imagePath, '../')) {
+        // If path starts with ../, it's already relative to pages context
+        if (strpos($imagePath, '../') === 0) {
             return $context === 'pages' ? $imagePath : substr($imagePath, 3);
         }
         
@@ -61,6 +61,44 @@ class ImagePathUtil {
     public static function getPlaceholder($text = 'No Image', $width = 150, $height = 150) {
         $encodedText = urlencode($text);
         return "https://via.placeholder.com/{$width}x{$height}/1C1C1C/DA6015?text={$encodedText}";
+    }
+    
+    /**
+     * Check if image file exists
+     * @param string $imagePath The image path
+     * @param string $context The context ('pages' or 'root')
+     * @return bool Whether the file exists
+     */
+    public static function exists($imagePath, $context = 'pages') {
+        if (empty($imagePath)) {
+            return false;
+        }
+        
+        // Convert to server file path
+        $serverPath = self::toServerPath($imagePath, $context);
+        return file_exists($serverPath);
+    }
+    
+    /**
+     * Convert web path to server file path
+     * @param string $imagePath The web path
+     * @param string $context The context
+     * @return string The server file path
+     */
+    private static function toServerPath($imagePath, $context) {
+        $resolved = self::resolve($imagePath, $context);
+        
+        // Remove leading ../ if present
+        if (strpos($resolved, '../') === 0) {
+            $resolved = substr($resolved, 3);
+        }
+        
+        // Remove leading / if present
+        if (strpos($resolved, '/') === 0) {
+            $resolved = substr($resolved, 1);
+        }
+        
+        return BASE_PATH . '/' . $resolved;
     }
 }
 ?>

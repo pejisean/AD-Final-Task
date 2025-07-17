@@ -1,4 +1,5 @@
 <?php
+// filepath: handlers/item.handler.php
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
@@ -9,6 +10,10 @@ try {
     require_once '../bootstrap.php';
     require_once UTILS_PATH . '/item.util.php';
     require_once UTILS_PATH . '/auth.util.php';
+
+    // Log the request for debugging
+    error_log("Item handler called with method: " . $_SERVER['REQUEST_METHOD']);
+    error_log("Request input: " . file_get_contents('php://input'));
 
     $method = $_SERVER['REQUEST_METHOD'];
     $input = json_decode(file_get_contents('php://input'), true) ?: $_POST;
@@ -56,13 +61,23 @@ function handleGetItems() {
 }
 
 function handleCreateItem($input) {
-    // Check if user is logged in
+    error_log("Creating item with input: " . json_encode($input));
+    
+    // Temporarily disable auth check for debugging
+    // TODO: Re-enable this later
+    /*
     if (!AuthUtil::isLoggedIn()) {
         echo json_encode(['success' => false, 'message' => 'Must be logged in to create items']);
         return;
     }
     
     $currentUser = AuthUtil::getCurrentUser();
+    */
+    
+    // Use a default seller_id for testing (make sure this user exists in your database)
+    $seller_id = 1;
+    
+    error_log("Using seller_id: " . $seller_id);
     
     // Validate required fields
     $required = ['name', 'description', 'price'];
@@ -74,23 +89,45 @@ function handleCreateItem($input) {
     }
     
     $itemData = [
-        'name' => $input['name'],
-        'description' => $input['description'],
+        'name' => trim($input['name']),
+        'description' => trim($input['description']),
         'price' => (float)$input['price'],
         'image_url' => $input['image_url'] ?? null,
-        'seller_id' => $currentUser['id'],
+        'seller_id' => $seller_id, // Use hardcoded seller_id for testing
         'category' => $input['category'] ?? 'general',
         'stock_quantity' => (int)($input['stock_quantity'] ?? 1),
         'source' => $input['source'] ?? 'marketplace'
     ];
     
-    $result = ItemUtil::createItem($itemData);
+    error_log("Item data to create: " . json_encode($itemData));
     
-    echo json_encode([
-        'success' => $result !== false,
-        'message' => $result !== false ? 'Item created successfully' : 'Failed to create item',
-        'item_id' => $result // Return the created item ID
-    ]);
+    try {
+        $result = ItemUtil::createItem($itemData);
+        
+        error_log("ItemUtil::createItem result: " . json_encode($result));
+        
+        if ($result !== false && $result > 0) {
+            echo json_encode([
+                'success' => true,
+                'message' => 'Item created successfully',
+                'item_id' => $result
+            ]);
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Failed to create item in database',
+                'item_id' => $result,
+                'debug_data' => $itemData
+            ]);
+        }
+    } catch (Exception $e) {
+        error_log("Error in ItemUtil::createItem: " . $e->getMessage());
+        echo json_encode([
+            'success' => false,
+            'message' => 'Database error: ' . $e->getMessage(),
+            'stack_trace' => $e->getTraceAsString()
+        ]);
+    }
 }
 
 function handleUpdateItem($input) {

@@ -34,10 +34,14 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
                          data-description="<?= htmlspecialchars($item['description']) ?>"
                          data-item-id="<?= $item['id'] ?>">
                         <div class="item-image">
-                            <img src="<?= ImagePathUtil::resolve($item['image_url'], 'pages') ?>" 
+                            <?php 
+                            $imagePath = ImagePathUtil::resolve($item['image_url'], 'pages');
+                            $placeholderPath = '../assets/img/placeholder.jpg';
+                            ?>
+                            <img src="<?= $imagePath ?>" 
                                  alt="<?= htmlspecialchars($item['name']) ?>"
                                  loading="lazy"
-                                 onerror="this.src='../assets/img/placeholder.jpg'">
+                                 onerror="this.src='<?= $placeholderPath ?>'">
                             <div class="item-overlay">
                                 <p class="item-name"><?= htmlspecialchars($item['name']) ?></p>
                                 <p class="item-price">₱<?= number_format($item['price'], 2) ?></p>
@@ -115,6 +119,7 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
 
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
+<script src="../assets/js/script.js"></script>
 <script src="assets/js/marketplace.js"></script>
 </body>
 </html>
