@@ -84,16 +84,16 @@ function validateSignupForm() {
  * @returns {boolean}
  */
 function handleSignup() {
-    console.log('handleSignup() called'); // Debug log
+    console.log('handleSignup() called');
     
     // First validate the form
     if (!validateSignupForm()) {
-        console.log('Form validation failed'); // Debug log
+        console.log('Form validation failed');
         displayFormMessage('Please correct the errors above.', 'error');
         return false;
     }
 
-    console.log('Form validation passed'); // Debug log
+    console.log('Form validation passed');
 
     const submitButton = document.querySelector('.signup-button');
     const originalText = submitButton.textContent;
@@ -107,7 +107,7 @@ function handleSignup() {
         password: document.getElementById('password').value
     };
 
-    console.log('Sending data:', formData); // Debug log
+    console.log('Sending data:', formData);
 
     fetch('../handlers/signup.handler.php', {
         method: 'POST',
@@ -118,28 +118,45 @@ function handleSignup() {
         credentials: 'same-origin'
     })
     .then(response => {
-        console.log('Response received:', response.status); // Debug log
-        return response.json();
+        console.log('Response received:', response.status, response.statusText);
+        
+        // Check if response is ok
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        // Get response as text first to check if it's JSON
+        return response.text();
     })
-    .then(data => {
-        console.log('Response data:', data); // Debug log
-        if (data.success) {
-            displayFormMessage('Account created successfully! Redirecting to login...', 'success');
+    .then(text => {
+        console.log('Raw response:', text);
+        
+        try {
+            const data = JSON.parse(text);
+            console.log('Parsed response data:', data);
             
-            // Clear the form
-            document.querySelector('.signup-form').reset();
-            
-            // Redirect to login page after 2 seconds
-            setTimeout(() => {
-                window.location.href = 'login.php';
-            }, 2000);
-        } else {
-            displayFormMessage(data.message || 'Registration failed', 'error');
+            if (data.success) {
+                displayFormMessage('Account created successfully! Redirecting to login...', 'success');
+                
+                // Clear the form
+                document.querySelector('.signup-form').reset();
+                
+                // Redirect to login page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'login.php';
+                }, 2000);
+            } else {
+                displayFormMessage(data.message || 'Registration failed', 'error');
+            }
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            console.error('Response was not JSON:', text);
+            displayFormMessage('Server error. Please try again.', 'error');
         }
     })
     .catch(error => {
-        console.error('Fetch error:', error); // Debug log
-        displayFormMessage('An error occurred. Please try again.', 'error');
+        console.error('Fetch error:', error);
+        displayFormMessage('Network error. Please try again.', 'error');
     })
     .finally(() => {
         submitButton.textContent = originalText;
