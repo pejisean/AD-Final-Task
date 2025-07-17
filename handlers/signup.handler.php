@@ -17,7 +17,7 @@ try {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-        // Get input data (exactly like login handler)
+        // Get input data
         $input = json_decode(file_get_contents('php://input'), true);
         if (!$input) {
             $input = $_POST;
@@ -28,6 +28,9 @@ try {
         $password = $input['password'] ?? '';
         $gender = $input['gender'] ?? '';
 
+        // Log the attempt for debugging
+        error_log("Signup attempt for username: " . $username);
+
         // Basic validation
         if (empty($username) || empty($password) || empty($gender)) {
             echo json_encode([
@@ -37,25 +40,7 @@ try {
             exit();
         }
 
-        // Check if username already exists (this works, so DB connection is fine)
-        if (UserUtil::usernameExists($username)) {
-            echo json_encode([
-                'success' => false,
-                'message' => 'This codename is already taken. Please choose another.'
-            ]);
-            exit();
-        }
-
-        // Check if email already exists (if provided)
-        if (!empty($email) && UserUtil::emailExists($email)) {
-            echo json_encode([
-                'success' => false,
-                'message' => 'This email is already registered'
-            ]);
-            exit();
-        }
-
-        // Try to create user directly with a simple query (bypass UserUtil for now)
+        // Test database connection first
         $connection = ConnectDB();
         if (!$connection) {
             echo json_encode([
@@ -65,19 +50,57 @@ try {
             exit();
         }
 
-        // Direct insert query (like your working handlers)
-        $query = "INSERT INTO users (username, email, password, gender, role) VALUES ($1, $2, $3, $4, $5)";
-        $result = pg_query_params($connection, $query, [
+        // Check if username already exists using direct query
+        $checkQuery = "SELECT username FROM users WHERE username = $1";
+        $result = pg_query_params($connection, $checkQuery, [$username]);
+        
+        if (!$result) {
+            pg_close($connection);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Database query failed'
+            ]);
+            exit();
+        }
+
+        if (pg_num_rows($result) > 0) {
+            pg_close($connection);
+            echo json_encode([
+                'success' => false,
+                'message' => 'This codename is already taken. Please choose another.'
+            ]);
+            exit();
+        }
+
+        // Check if email already exists (if provided)
+        if (!empty($email)) {
+            $emailCheckQuery = "SELECT email FROM users WHERE email = $1";
+            $emailResult = pg_query_params($connection, $emailCheckQuery, [$email]);
+            
+            if ($emailResult && pg_num_rows($emailResult) > 0) {
+                pg_close($connection);
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'This email is already registered'
+                ]);
+                exit();
+            }
+        }
+
+        // Create the user with direct query
+        $insertQuery = "INSERT INTO users (username, email, password, gender, role, is_active) VALUES ($1, $2, $3, $4, $5, $6)";
+        $insertResult = pg_query_params($connection, $insertQuery, [
             $username,
             !empty($email) ? $email : null,
-            $password,
+            $password, // Store plain text for now (you should hash this in production)
             $gender,
-            'user'
+            'user',
+            true
         ]);
 
         pg_close($connection);
 
-        if ($result) {
+        if ($insertResult) {
             echo json_encode([
                 'success' => true,
                 'message' => 'Account created successfully! You can now log in.'
@@ -87,7 +110,7 @@ try {
             error_log("Direct insert failed: " . $error);
             echo json_encode([
                 'success' => false,
-                'message' => 'Failed to create account: ' . $error
+                'message' => 'Failed to create account. Please try again.'
             ]);
         }
         
@@ -102,17 +125,13 @@ try {
     error_log("Fatal Error in signup: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Fatal Error: ' . $e->getMessage(),
-        'file' => basename($e->getFile()),
-        'line' => $e->getLine()
+        'message' => 'Server error occurred. Please try again.'
     ]);
 } catch (Exception $e) {
     error_log("Exception in signup: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Exception: ' . $e->getMessage(),
-        'file' => basename($e->getFile()),
-        'line' => $e->getLine()
+        'message' => 'An error occurred. Please try again.'
     ]);
 }
 ?>
