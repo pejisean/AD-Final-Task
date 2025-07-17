@@ -36,6 +36,9 @@ try {
             exit();
         }
 
+        // Access the global pgConfig variable properly
+        global $pgConfig;
+        
         // Use the same connection method as the seeder utilities
         $dsn = "pgsql:host={$pgConfig['pg_host']};port={$pgConfig['pg_port']};dbname={$pgConfig['pg_db']}";
         $pdo = new PDO($dsn, $pgConfig['pg_user'], $pgConfig['pg_pass'], [
@@ -93,19 +96,22 @@ try {
     error_log("Database error in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Database error occurred. Please try again.'
+        'message' => 'Database error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 } catch (Error $e) {
     error_log("Fatal Error in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Server error occurred. Please try again.'
+        'message' => 'Server error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 } catch (Exception $e) {
     error_log("Exception in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'An error occurred. Please try again.'
+        'message' => 'An error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 }
 ?>
