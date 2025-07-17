@@ -3,3 +3,4 @@
 vendor
 .github
 .env
+assets/img/marketplace/uploads/*

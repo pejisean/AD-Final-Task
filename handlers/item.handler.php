@@ -73,21 +73,23 @@ function handleCreateItem($input) {
         }
     }
     
-    $result = ItemUtil::createItem(
-        $input['name'],
-        $input['description'],
-        (float)$input['price'],
-        $input['image_url'] ?? null,
-        $currentUser['id'], // seller_id
-        $input['category'] ?? 'general',
-        (int)($input['stock_quantity'] ?? 1),
-        $input['is_active'] ?? true,
-        $input['source'] ?? 'marketplace'
-    );
+    $itemData = [
+        'name' => $input['name'],
+        'description' => $input['description'],
+        'price' => (float)$input['price'],
+        'image_url' => $input['image_url'] ?? null,
+        'seller_id' => $currentUser['id'],
+        'category' => $input['category'] ?? 'general',
+        'stock_quantity' => (int)($input['stock_quantity'] ?? 1),
+        'source' => $input['source'] ?? 'marketplace'
+    ];
+    
+    $result = ItemUtil::createItem($itemData);
     
     echo json_encode([
-        'success' => $result,
-        'message' => $result ? 'Item created successfully' : 'Failed to create item'
+        'success' => $result !== false,
+        'message' => $result !== false ? 'Item created successfully' : 'Failed to create item',
+        'item_id' => $result // Return the created item ID
     ]);
 }
 

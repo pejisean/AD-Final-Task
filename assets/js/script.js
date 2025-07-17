@@ -9,6 +9,13 @@ window.addEventListener('load', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Prevent multiple initializations
+    if (window.scriptInitialized) {
+        console.log('Script already initialized, skipping...');
+        return;
+    }
+    window.scriptInitialized = true;
+
     // Check authentication from server first
     fetch('handlers/check-session.handler.php', {
         credentials: 'same-origin'
@@ -42,9 +49,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Initialize sorting only once
+    initializeSorting();
+    
+    // Initialize navigation
+    initializeNavigation();
+
+    // Update cart count only once on page load
+    updateCartIconCount();
+});
+
+function initializeSorting() {
     const mainSortDropdown = document.querySelector('#sort-by-main');
 
-    if (mainSortDropdown) {
+    if (mainSortDropdown && !mainSortDropdown.hasAttribute('data-initialized')) {
+        mainSortDropdown.setAttribute('data-initialized', 'true');
+        
         const newArrivalsGrid = document.querySelector('#new-arrivals-grid');
         const topSellersGrid = document.querySelector('#top-sellers-grid');
 
@@ -88,7 +108,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+}
 
+function initializeNavigation() {
     try {
         const currentPage = window.location.pathname.split('/').pop();
         if (currentPage) {
@@ -105,41 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch (e) {
         console.error("Error setting active navigation link:", e);
     }
-
-    const loggedInCodename = localStorage.getItem('loggedInCodename');
-    const loginSignupLink = document.getElementById('login-signup-link');
-
-    if (loginSignupLink) {
-        if (loggedInCodename) {
-            loginSignupLink.innerHTML = `👤 ${loggedInCodename}`;
-            loginSignupLink.href = 'pages/profile.php';
-
-            const dropdownMenu = document.getElementById('dropdownMenu');
-            const logoutLink = document.createElement('a');
-            logoutLink.href = '#';
-            logoutLink.innerHTML = '➡️ Logout';
-            logoutLink.classList.add('logout-link');
-
-            logoutLink.onclick = function(event) {
-                event.preventDefault();
-                localStorage.removeItem('loggedInCodename');
-                window.location.reload();
-            };
-
-            if (dropdownMenu.firstChild) {
-                dropdownMenu.insertBefore(logoutLink, loginSignupLink.nextSibling);
-            } else {
-                dropdownMenu.appendChild(logoutLink);
-            }
-
-        } else {
-            loginSignupLink.innerHTML = '👤 Login / Sign Up';
-            loginSignupLink.href = 'pages/login.php';
-        }
-    }
-
-    updateCartIconCount();
-});
+}
 
 function updateUIForLoggedInUser(username, loginSignupLink) {
     loginSignupLink.innerHTML = `👤 ${username}`;
@@ -236,6 +224,7 @@ function closeFeedback() {
         document.getElementById('suggestionTextbox').value = '';
     }
 }
+
 function submitFeedback() {
     const selectedSatisfaction = document.querySelector('input[name="satisfaction"]:checked');
     const suggestionText = document.getElementById('suggestionTextbox').value;
@@ -253,37 +242,73 @@ function submitFeedback() {
     closeFeedback();
 }
 
+// Cart update functions with throttling
+let cartUpdateInProgress = false;
+let cartUpdateTimeout = null;
+
 function updateCartIconCount() {
+    // Prevent multiple simultaneous requests
+    if (cartUpdateInProgress) {
+        console.log('Cart update already in progress, skipping...');
+        return;
+    }
+
+    // Throttle requests to prevent loops
+    if (cartUpdateTimeout) {
+        clearTimeout(cartUpdateTimeout);
+    }
+
+    cartUpdateTimeout = setTimeout(() => {
+        performCartUpdate();
+    }, 100); // Small delay to prevent rapid-fire requests
+}
+
+function performCartUpdate() {
+    if (cartUpdateInProgress) return;
+    
+    cartUpdateInProgress = true;
+    console.log('Performing cart update...');
+
     // Check if user is logged in first
     fetch('handlers/check-session.handler.php', {
-        credentials: 'same-origin'
+        credentials: 'same-origin',
+        signal: AbortSignal.timeout(5000) // 5 second timeout
     })
     .then(response => response.json())
     .then(data => {
         if (data.success && data.logged_in) {
             // User is logged in - get count from server
-            fetch('handlers/cart.handler.php', {
-                credentials: 'same-origin'
-            })
-            .then(response => response.json())
-            .then(cartData => {
-                const cartCountElement = document.getElementById('cart-item-count');
-                if (cartCountElement && cartData.success) {
-                    cartCountElement.textContent = cartData.data.item_count || 0;
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching cart count:', error);
-                updateCartIconCountFromLocalStorage();
+            return fetch('handlers/cart.handler.php', {
+                credentials: 'same-origin',
+                signal: AbortSignal.timeout(5000) // 5 second timeout
             });
         } else {
             // User not logged in - use localStorage
             updateCartIconCountFromLocalStorage();
+            return null;
+        }
+    })
+    .then(response => {
+        if (response) {
+            return response.json();
+        }
+        return null;
+    })
+    .then(cartData => {
+        if (cartData) {
+            const cartCountElement = document.getElementById('cart-item-count');
+            if (cartCountElement && cartData.success) {
+                cartCountElement.textContent = cartData.data.item_count || 0;
+            }
         }
     })
     .catch(error => {
-        console.error('Session check failed:', error);
+        console.error('Error fetching cart count:', error);
         updateCartIconCountFromLocalStorage();
+    })
+    .finally(() => {
+        cartUpdateInProgress = false;
+        console.log('Cart update completed');
     });
 }
 

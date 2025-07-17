@@ -9,7 +9,14 @@
     <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
 </head>
 
-<?php require_once '../components/dropdown.component.php'; ?>
+<?php 
+require_once '../components/dropdown.component.php';
+require_once '../utils/marketplace.util.php';
+require_once '../utils/imagePath.util.php';
+
+// Get items using the marketplace util
+$items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
+?>
 
 <main class="marketplace-container">
     <div class="marketplace-header-controls">
@@ -19,128 +26,79 @@
 
     <div class="all-products-container">
         <div class="marketplace-grid" id="marketplaceGrid">
-
-            <div class="product-card" data-name="Tactical Backpack" data-price="85.50"
-                data-description="Durable tactical backpack with multiple compartments, ideal for outdoor survival.">
-                <div class="item-image">
-                    <img src="assets/img/marketplace/tacticalbackpack.png" alt="Tactical Backpack">
-                    <div class="item-overlay">
-                        <p class="item-name">Tactical Backpack</p>
-                        <p class="item-price">85.50</p>
+            <?php if (!empty($items)): ?>
+                <?php foreach ($items as $item): ?>
+                    <div class="product-card" 
+                         data-name="<?= htmlspecialchars($item['name']) ?>" 
+                         data-price="<?= number_format($item['price'], 2) ?>"
+                         data-description="<?= htmlspecialchars($item['description']) ?>"
+                         data-item-id="<?= $item['id'] ?>">
+                        <div class="item-image">
+                            <img src="<?= ImagePathUtil::resolve($item['image_url'], 'pages') ?>" 
+                                 alt="<?= htmlspecialchars($item['name']) ?>"
+                                 loading="lazy"
+                                 onerror="this.src='../assets/img/placeholder.jpg'">
+                            <div class="item-overlay">
+                                <p class="item-name"><?= htmlspecialchars($item['name']) ?></p>
+                                <p class="item-price">₱<?= number_format($item['price'], 2) ?></p>
+                            </div>
+                        </div>
+                        <div class="item-bottom-actions">
+                            <button class="more-info-btn">More Info</button>
+                            <button class="buy-now-btn" 
+                                    data-item-name="<?= htmlspecialchars($item['name']) ?>" 
+                                    data-item-price="<?= $item['price'] ?>"
+                                    data-item-id="<?= $item['id'] ?>">Buy Now</button>
+                        </div>
                     </div>
-                </div>
-                <div class="item-bottom-actions">
-                    <button class="more-info-btn">More Info</button>
-                    <button class="buy-now-btn" data-item-name="Tactical Backpack" data-item-price="85.50">Buy
-                        Now</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="Solar Charger Kit" data-price="120.00"
-                data-description="Portable solar charger kit for electronics, essential for off-grid power.">
-                <div class="item-image">
-                    <img src="assets/img/marketplace/solarchargerkit.png" alt="Solar Charger Kit">
-                    <div class="item-overlay">
-                        <p class="item-name">Solar Charger Kit</p>
-                        <p class="item-price">120.00</p>
-                    </div>
-                </div>
-                <div class="item-bottom-actions">
-                    <button class="more-info-btn">More Info</button>
-                    <button class="buy-now-btn" data-item-name="Solar Charger Kit" data-item-price="120.00">Buy
-                        Now</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="Multi-Tool Pliers" data-price="45.99"
-                data-description="Compact multi-tool with various functions including pliers, knife, and saw.">
-                <div class="item-image">
-                    <img src="assets/img/marketplace/multitoolpliers.png" alt="Multi-Tool Pliers">
-                    <div class="item-overlay">
-                        <p class="item-name">Multi-Tool Pliers</p>
-                        <p class="item-price">45.99</p>
-                    </div>
-                </div>
-                <div class="item-bottom-actions">
-                    <button class="more-info-btn">More Info</button>
-                    <button class="buy-now-btn" data-item-name="Multi-Tool Pliers" data-item-price="45.99">Buy
-                        Now</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="Steel Boxing Gloves" data-price="4,299.00"
-                data-description="Boxing gloves made of steel for your own use.">
-                <div class="item-image">
-                    <img src="assets/img/marketplace/steelgloves.jpg" alt="steelgloves">
-                    <div class="item-overlay">
-                        <p class="item-name">Steel Boxing Gloves</p>
-                        <p class="item-price">4,299.00</p>
-                    </div>
-                </div>
-                <div class="item-bottom-actions">
-                    <button class="more-info-btn">More Info</button>
-                    <button class="buy-now-btn" data-item-name="Steel Boxing Gloves" data-item-price="4299.00">Buy
-                        Now</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="Stealth Boots" data-price="2,800.00"
-                data-description="Boots made to provide silent movement and comfort during action.">
-                <div class="item-image">
-                    <img src="assets/img/marketplace/stealthboots.png" alt="stealthboots">
-                    <div class="item-overlay">
-                        <p class="item-name">Stealth Boots</p>
-                        <p class="item-price">2,800.00</p>
-                    </div>
-                </div>
-                <div class="item-bottom-actions">
-                    <button class="more-info-btn">More Info</button>
-                    <button class="buy-now-btn" data-item-name="Stealth Boots" data-item-price="2800.00">Buy
-                        Now</button>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="Night Vision Goggles" data-price="950.00"
-                data-description="High-quality night vision goggles for low-light observation.">
-                <div class="item-image">
-                    <img src="assets/img/marketplace/nightvisiongoggles.png" alt="Night Vision Goggles">
-                    <div class="item-overlay">
-                        <p class="item-name">Night Vision Goggles</p>
-                        <p class="item-price">950.00</p>
-                    </div>
-                </div>
-                <div class="item-bottom-actions">
-                    <button class="more-info-btn">More Info</button>
-                    <button class="buy-now-btn" data-item-name="Night Vision Goggles" data-item-price="950.00">Buy
-                        Now</button>
-                </div>
-            </div>
-
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No items available in the marketplace.</p>
+            <?php endif; ?>
         </div>
     </div>
-
 </main>
 
+<!-- Modals -->
 <div id="addItemModal" class="modal">
     <div class="modal-content">
         <span class="close-button" id="closeAddItemModal">&times;</span>
         <h2>Add New Item</h2>
-        <form id="addItemForm">
+        <form id="addItemForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="itemName">Item Name:</label>
-                <input type="text" id="itemName" required>
+                <input type="text" id="itemName" name="name" required>
             </div>
             <div class="form-group">
                 <label for="itemPrice">Item Price:</label>
-                <input type="number" id="itemPrice" step="0.01" required>
+                <input type="number" id="itemPrice" name="price" step="0.01" required>
             </div>
             <div class="form-group">
-                <label for="itemImage">Item Image (PNG only):</label>
-                <input type="file" id="itemImage" accept=".png" required>
+                <label for="itemCategory">Category:</label>
+                <select id="itemCategory" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="weapons">Weapons</option>
+                    <option value="survival">Survival</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="medical">Medical</option>
+                    <option value="tools">Tools</option>
+                    <option value="apparel">Apparel</option>
+                    <option value="food">Food</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="itemImage">Item Image:</label>
+                <input type="file" id="itemImage" name="image" accept="image/*" required>
+                <small>Supported formats: JPG, PNG, GIF (Max 5MB)</small>
             </div>
             <div class="form-group">
                 <label for="itemDescription">Item Description:</label>
-                <textarea id="itemDescription" rows="5" required></textarea>
+                <textarea id="itemDescription" name="description" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="itemStock">Stock Quantity:</label>
+                <input type="number" id="itemStock" name="stock_quantity" min="1" value="1" required>
             </div>
             <button type="submit">Add Item</button>
         </form>
@@ -155,22 +113,8 @@
     </div>
 </div>
 
-<div id="buyNowOverlay" class="overlay" style="display: none;">
-    <div class="overlay-content">
-        <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
-        <h2>Confirm Purchase</h2>
-        <div class="receipt-details">
-            <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
-            <p><strong>Price:</strong> $<span id="receiptItemPrice"></span></p>
-            <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
-            <p><strong>Secure Address:</strong> <span id="receiptIPAddress"></span></p>
-        </div>
-        <button id="proceedPaymentButton" class="proceed-payment-button">Proceed to Payment</button>
-    </div>
-</div>
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
-<script src="..assets/js/shop/buynowoverlay.js"></script>
+<script src="assets/js/marketplace.js"></script>
 </body>
-
 </html>
