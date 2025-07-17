@@ -160,34 +160,51 @@
 
             fetch('../handlers/item.handler.php', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify(itemData),
                 credentials: 'same-origin'
             })
             .then(response => {
                 console.log('Create item response status:', response.status);
-                return response.text(); // Get text first to see raw response
+                return response.text();
             })
             .then(text => {
                 console.log('Raw response:', text);
                 try {
                     const result = JSON.parse(text);
+                    console.log('Parsed result:', result);
+                    
                     if (result.success) {
                         alert('Item added successfully!');
                         closeModal();
                         window.location.reload();
                     } else {
-                        alert('Failed to add item: ' + result.message);
+                        // Show detailed error information
+                        console.error('Creation failed:', result);
+                        let errorMessage = 'Failed to add item: ' + (result.message || 'Unknown error');
+                        
+                        if (result.debug_data) {
+                            console.error('Debug data:', result.debug_data);
+                        }
+                        if (result.stack_trace) {
+                            console.error('Stack trace:', result.stack_trace);
+                        }
+                        
+                        alert(errorMessage);
                     }
                 } catch (e) {
                     console.error('JSON parse error:', e);
-                    alert('Server error: ' + text);
+                    console.error('Response text:', text);
+                    alert('Server error. Check console for details.');
                 }
                 resetForm();
             })
             .catch(error => {
                 console.error('Error creating item:', error);
-                alert('Failed to add item. Please try again.');
+                alert('Failed to add item: ' + error.message);
                 resetForm();
             });
         }
