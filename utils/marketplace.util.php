@@ -1,7 +1,7 @@
 <?php
 require_once UTILS_PATH . 'database.util.php';
-require_once UTILS_PATH . '/item.util.php';
-require_once UTILS_PATH . '/imagePath.util.php';
+require_once UTILS_PATH . 'item.util.php';
+require_once UTILS_PATH . 'imagePath.util.php'; // Remove the extra slash
 
 class MarketplaceUtil extends DatabaseUtil {
     
