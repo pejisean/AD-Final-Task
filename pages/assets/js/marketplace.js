@@ -71,18 +71,11 @@
         function handleAddItem() {
             console.log('Checking session...');
             
-            // First check localStorage for logged in status
+            // Check both localStorage and server session
             const loggedInCodename = localStorage.getItem('loggedInCodename');
             console.log('localStorage loggedInCodename:', loggedInCodename);
             
-            if (loggedInCodename) {
-                // User appears to be logged in via localStorage, open modal
-                console.log('User logged in via localStorage, opening modal');
-                addItemModal.style.display = 'flex';
-                return;
-            }
-            
-            // Also check server session as backup
+            // Always check server session for security
             fetch('../handlers/check-session.handler.php', {
                 method: 'GET',
                 credentials: 'same-origin',
@@ -100,23 +93,20 @@
             })
             .then(data => {
                 console.log('Session data:', data);
+                
                 if (data.success && data.logged_in) {
                     console.log('User logged in via session, opening modal');
                     addItemModal.style.display = 'flex';
                 } else {
                     console.log('User not logged in via session');
                     alert('You must be logged in to add items to the marketplace. Please log in first.');
+                    // Redirect to login if not logged in
+                    window.location.href = '../pages/login.php';
                 }
             })
             .catch(error => {
                 console.error('Session check failed:', error);
-                // If session check fails, but localStorage shows logged in, allow it
-                if (loggedInCodename) {
-                    console.log('Session check failed but localStorage shows logged in, allowing modal');
-                    addItemModal.style.display = 'flex';
-                } else {
-                    alert('Session check failed. Please refresh the page and try again.');
-                }
+                alert('Session check failed. Please refresh the page and try logging in again.');
             });
         }
 

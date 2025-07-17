@@ -128,7 +128,7 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
 <!-- Pass PHP data to JavaScript -->
 <script>
 window.MARKETPLACE_CONFIG = {
-    PLACEHOLDER_PATH: '<?= ImagePathUtil::getMarketplaceFallback("pages") ?>',
+    PLACEHOLDER_PATH: '../assets/img/electronics/powerbank.png',
     FALLBACK_IMAGES: [
         '../assets/img/electronics/powerbank.png',
         '../assets/img/tools/crowbar.png',
