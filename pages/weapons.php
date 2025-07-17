@@ -26,8 +26,9 @@
                 <div class="showcase-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Automated Sentry Platform (Unarmed)"
                         data-item-price="35000.00">Buy Now</a>
+                    <!-- Automated Sentry Platform (Unarmed) -->
                     <a class="add-cart-btn" href="#" data-item-name="Automated Sentry Platform (Unarmed)"
-                        data-item-price="35000.00">Add to Cart</a>
+                        data-item-price="35000.00" data-item-image="assets/img/weapons/sentry.png">Add to Cart</a>
                 </div>
             </div>
         </section>
@@ -42,8 +43,9 @@
                         <a class="buy-btn buy-now-btn" href="#"
                             data-item-name="Scrap Metal Armor Set (Torso & Pauldrons)" data-item-price="15000.00">Buy
                             Now</a>
+                        <!-- Scrap Metal Armor Set (Torso & Pauldrons) -->
                         <a class="add-cart-btn" href="#" data-item-name="Scrap Metal Armor Set (Torso & Pauldrons)"
-                            data-item-price="15000.00">Add to Cart</a>
+                            data-item-price="15000.00" data-item-image="assets/img/weapons/scrap.png">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -56,8 +58,9 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="Pipe Pistol Assembly Kit (.38 Special)"
                             data-item-price="7800.00">Buy Now</a>
+                        <!-- Pipe Pistol Assembly Kit (.38 Special) -->
                         <a class="add-cart-btn" href="#" data-item-name="Pipe Pistol Assembly Kit (.38 Special)"
-                            data-item-price="7800.00">Add to Cart</a>
+                            data-item-price="7800.00" data-item-image="assets/img/weapons/pipe.png">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -88,8 +91,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Remote-Triggered Trap Mechanism"
                         data-item-price="3200.00">Buy Now</a>
+                    <!-- Remote-Triggered Trap Mechanism -->
                     <a class="add-cart-btn" href="#" data-item-name="Remote-Triggered Trap Mechanism"
-                        data-item-price="3200.00">Add to Cart</a>
+                        data-item-price="3200.00" data-item-image="assets/img/weapons/trap.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -101,8 +105,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Caltrops (Bag of 50)"
                         data-item-price="1800.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Caltrops (Bag of 50)" data-item-price="1800.00">Add
-                        to Cart</a>
+                    <!-- Caltrops (Bag of 50) -->
+                    <a class="add-cart-btn" href="#" data-item-name="Caltrops (Bag of 50)" data-item-price="1800.00"
+                        data-item-image="assets/img/weapons/caltrops.jpg">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -114,8 +119,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Welded Steel Riot Shield"
                         data-item-price="4500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Welded Steel Riot Shield"
-                        data-item-price="4500.00">Add to Cart</a>
+                    <!-- Welded Steel Riot Shield -->
+                    <a class="add-cart-btn" href="#" data-item-name="Welded Steel Riot Shield" data-item-price="4500.00"
+                        data-item-image="assets/img/weapons/riot.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -127,8 +133,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Heavy-Duty Slingshot & Steel Bearings"
                         data-item-price="1500.00">Buy Now</a>
+                    <!-- Heavy-Duty Slingshot & Steel Bearings -->
                     <a class="add-cart-btn" href="#" data-item-name="Heavy-Duty Slingshot & Steel Bearings"
-                        data-item-price="1500.00">Add to Cart</a>
+                        data-item-price="1500.00" data-item-image="assets/img/weapons/slingshot.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -147,8 +154,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Reinforced Baseball Bat (Barbed Wire)"
                         data-item-price="1200.00">Buy Now</a>
+                    <!-- Reinforced Baseball Bat (Barbed Wire) -->
                     <a class="add-cart-btn" href="#" data-item-name="Reinforced Baseball Bat (Barbed Wire)"
-                        data-item-price="1200.00">Add to Cart</a>
+                        data-item-price="1200.00" data-item-image="assets/img/weapons/barbed.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -160,8 +168,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Combat Machete with Sheath"
                         data-item-price="2500.00">Buy Now</a>
+                    <!-- Combat Machete with Sheath -->
                     <a class="add-cart-btn" href="#" data-item-name="Combat Machete with Sheath"
-                        data-item-price="2500.00">Add to Cart</a>
+                        data-item-price="2500.00" data-item-image="assets/img/weapons/machete.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -173,8 +182,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Breaching Tomahawk"
                         data-item-price="4100.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Breaching Tomahawk" data-item-price="4100.00">Add
-                        to Cart</a>
+                    <!-- Breaching Tomahawk -->
+                    <a class="add-cart-btn" href="#" data-item-name="Breaching Tomahawk" data-item-price="4100.00"
+                        data-item-image="assets/img/weapons/breaching.jpg">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -186,8 +196,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Plated Forearm Guards (Pair)"
                         data-item-price="2800.00">Buy Now</a>
+                    <!-- Plated Forearm Guards (Pair) -->
                     <a class="add-cart-btn" href="#" data-item-name="Plated Forearm Guards (Pair)"
-                        data-item-price="2800.00">Add to Cart</a>
+                        data-item-price="2800.00" data-item-image="assets/img/weapons/forearm.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -199,8 +210,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Slam-Fire Shotgun Blueprints (12 Gauge)"
                         data-item-price="950.00">Buy Now</a>
+                    <!-- Slam-Fire Shotgun Blueprints (12 Gauge) -->
                     <a class="add-cart-btn" href="#" data-item-name="Slam-Fire Shotgun Blueprints (12 Gauge)"
-                        data-item-price="950.00">Add to Cart</a>
+                        data-item-price="950.00" data-item-image="assets/img/weapons/slam.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -212,8 +224,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Sharpened Rebar Spear"
                         data-item-price="900.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Sharpened Rebar Spear" data-item-price="900.00">Add
-                        to Cart</a>
+                    <!-- Sharpened Rebar Spear -->
+                    <a class="add-cart-btn" href="#" data-item-name="Sharpened Rebar Spear" data-item-price="900.00"
+                        data-item-image="assets/img/weapons/spear.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -225,8 +238,10 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Tripwire Flare Alarm Kit (4-Pack)"
                         data-item-price="2600.00">Buy Now</a>
+                    <!-- Tripwire Flare Alarm Kit (4-Pack) -->
                     <a class="add-cart-btn" href="#" data-item-name="Tripwire Flare Alarm Kit (4-Pack)"
-                        data-item-price="2600.00">Add to Cart</a>
+                        data-item-price="2600.00" data-item-image="assets/img/weapons/tripwire.png">Add to Cart</a>
+
                 </div>
             </div>
         </div>
@@ -238,8 +253,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Modified Motorcycle Helmet"
                         data-item-price="3100.00">Buy Now</a>
+                    <!-- Modified Motorcycle Helmet -->
                     <a class="add-cart-btn" href="#" data-item-name="Modified Motorcycle Helmet"
-                        data-item-price="3100.00">Add to Cart</a>
+                        data-item-price="3100.00" data-item-image="assets/img/weapons/helmet.png">Add to Cart</a>
                 </div>
             </div>
         </div>
