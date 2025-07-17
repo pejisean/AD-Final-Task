@@ -1,7 +1,6 @@
 function clearErrorMessages() {
-    document.querySelectorAll('.input-error-message').forEach(el => el.textContent = '');
-    document.getElementById('form-message').textContent = '';
-    document.getElementById('form-message').className = 'info-message';
+    const errorMessages = document.querySelectorAll('.input-error-message');
+    errorMessages.forEach(msg => msg.textContent = '');
 }
 
 /**
@@ -12,7 +11,6 @@ function displayInputError(elementId, message) {
     const errorElement = document.getElementById(elementId);
     if (errorElement) {
         errorElement.textContent = message;
-        errorElement.style.color = '#e74c3c';
     }
 }
 
@@ -21,27 +19,22 @@ function displayInputError(elementId, message) {
  * @param {string} type
  */
 function displayFormMessage(message, type) {
-    const formMessageElement = document.getElementById('form-message');
-    if (formMessageElement) {
-        formMessageElement.textContent = message;
-        formMessageElement.className = 'info-message';
-        if (type === 'success') {
-            formMessageElement.style.color = '#2ecc71';
-        } else if (type === 'error') {
-            formMessageElement.style.color = '#e74c3c';
-        } else {
-            formMessageElement.style.color = '#3498db';
-        }
+    const messageElement = document.getElementById('form-message');
+    if (messageElement) {
+        messageElement.textContent = message;
+        messageElement.className = type === 'success' ? 'success-message' : 'error-message';
     }
 }
 
 /**
+ * Validate signup form on client side
  * @returns {boolean}
  */
 function validateSignupForm() {
     clearErrorMessages();
 
     const codename = document.getElementById('codename').value.trim();
+    const email = document.getElementById('email').value.trim();
     const gender = document.getElementById('gender').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
@@ -83,26 +76,64 @@ function validateSignupForm() {
         isValid = false;
     }
 
-    if (isValid) {
+    return isValid;
+}
 
-        const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-        const userExists = users.some(user => user.codename === codename);
+/**
+ * Handle signup form submission
+ * @returns {boolean}
+ */
+function handleSignup() {
+    // First validate the form
+    if (!validateSignupForm()) {
+        displayFormMessage('Please correct the errors above.', 'error');
+        return false;
+    }
 
-        if (userExists) {
-            displayFormMessage('This codename is already taken. Please choose another.', 'error');
-            isValid = false;
-        } else {
-            users.push({ codename: codename, password: password });
-            localStorage.setItem('registeredUsers', JSON.stringify(users));
+    const submitButton = document.querySelector('.signup-button');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Creating Account...';
+    submitButton.disabled = true;
+
+    const formData = {
+        username: document.getElementById('codename').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        gender: document.getElementById('gender').value,
+        password: document.getElementById('password').value
+    };
+
+    fetch('../handlers/signup.handler.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
             displayFormMessage('Account created successfully! Redirecting to login...', 'success');
-
+            
+            // Clear the form
+            document.querySelector('.signup-form').reset();
+            
+            // Redirect to login page after 2 seconds
             setTimeout(() => {
                 window.location.href = 'login.php';
             }, 2000);
+        } else {
+            displayFormMessage(data.message || 'Registration failed', 'error');
         }
-    } else {
-        displayFormMessage('Please correct the errors above.', 'error');
-    }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        displayFormMessage('An error occurred. Please try again.', 'error');
+    })
+    .finally(() => {
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+    });
 
-    return false;
+    return false; // Prevent form submission
 }
