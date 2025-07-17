@@ -7,8 +7,8 @@ header('Content-Type: application/json');
 
 try {
     require_once '../bootstrap.php';
-    require_once UTILS_PATH . '/auth.util.php';
-    require_once UTILS_PATH . '/imagePath.util.php'; // Add this line
+    require_once UTILS_PATH . 'auth.util.php';
+    require_once UTILS_PATH . 'imagePath.util.php'; // Remove the extra slash
 
     if (!AuthUtil::isLoggedIn()) {
         echo json_encode(['success' => false, 'message' => 'Must be logged in to upload images']);
