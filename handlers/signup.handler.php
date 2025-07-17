@@ -10,7 +10,7 @@ try {
     // Include bootstrap
     require_once '../bootstrap.php';
     
-    // Include required utilities
+    // Include required utilities 
     require_once UTILS_PATH . '/envSetter.util.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -39,6 +39,7 @@ try {
         }
 
         // Use the same connection method as the seeder utilities
+        // $pgConfig is available after including envSetter.util.php
         $dsn = "pgsql:host={$pgConfig['pg_host']};port={$pgConfig['pg_port']};dbname={$pgConfig['pg_db']}";
         $pdo = new PDO($dsn, $pgConfig['pg_user'], $pgConfig['pg_pass'], [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -72,19 +73,15 @@ try {
             }
         }
 
-        // Hash the password properly
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        // Create the user with prepared statement
-        $insertQuery = "INSERT INTO users (username, email, password, gender, role, is_active) VALUES (?, ?, ?, ?, ?, ?)";
+        // Create the user with prepared statement 
+        $insertQuery = "INSERT INTO users (username, email, password, gender, role) VALUES (?, ?, ?, ?, ?)";
         $insertStmt = $pdo->prepare($insertQuery);
         $insertResult = $insertStmt->execute([
             $username,
             !empty($email) ? $email : null,
-            $hashedPassword,
+            $password, 
             $gender,
-            'user',
-            true
+            'user'
         ]);
 
         if ($insertResult) {
@@ -110,21 +107,24 @@ try {
     error_log("Database error in signup: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Database error occurred. Please try again.'
+        'message' => 'Database error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 } catch (Error $e) {
     error_log("Fatal Error in signup: " . $e->getMessage());
     error_log("Stack trace: " . $e->getTraceAsString());
     echo json_encode([
         'success' => false,
-        'message' => 'Server error occurred. Please try again.'
+        'message' => 'Server error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 } catch (Exception $e) {
     error_log("Exception in signup: " . $e->getMessage());
     error_log("Stack trace: " . $e->getTraceAsString());
     echo json_encode([
         'success' => false,
-        'message' => 'An error occurred. Please try again.'
+        'message' => 'An error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 }
 ?>

@@ -10,7 +10,7 @@ try {
     // Include bootstrap
     require_once '../bootstrap.php';
     
-    // Include required utilities
+    // Include required utilities - this sets up $pgConfig
     require_once UTILS_PATH . '/envSetter.util.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -36,17 +36,15 @@ try {
             exit();
         }
 
-        // Access the global pgConfig variable properly
-        global $pgConfig;
-        
         // Use the same connection method as the seeder utilities
+        // $pgConfig is available after including envSetter.util.php
         $dsn = "pgsql:host={$pgConfig['pg_host']};port={$pgConfig['pg_port']};dbname={$pgConfig['pg_db']}";
         $pdo = new PDO($dsn, $pgConfig['pg_user'], $pgConfig['pg_pass'], [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ]);
 
         // Find user by username
-        $query = "SELECT id, username, password, role FROM users WHERE username = ? AND is_active = true";
+        $query = "SELECT id, username, password, role FROM users WHERE username = ?";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -60,7 +58,7 @@ try {
         }
 
         // Verify password
-        if (!password_verify($password, $user['password'])) {
+        if ($user['password'] !== $password) {
             echo json_encode([
                 'success' => false,
                 'message' => 'Invalid username or password'
