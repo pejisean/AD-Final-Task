@@ -3,7 +3,7 @@
 return [
     [
         'username' => 'john.smith',
-        'email' => 'john.smith@example.com',
+        'email' => 'john.smith@tradepost.com',
         'password' => 'p@ssW0rd1234',
         'gender' => 'male',
         'role' => 'user'

@@ -6,7 +6,6 @@
     <?php require_once '../components/head.component.php'; ?>
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="/pages/assets/css/shop/signup.css" />
-
 </head>
 
 <?php require_once '../components/dropdown.component.php'; ?>
@@ -14,12 +13,19 @@
 <main class="signup-container">
     <div class="signup-form-wrapper">
         <h2>Create Your Account</h2>
-        <form class="signup-form" onsubmit="return validateSignupForm()">
+        <form class="signup-form" onsubmit="return handleSignup()">
             <div class="form-group">
                 <label for="codename">Codename</label>
                 <input type="text" id="codename" name="codename" required placeholder="Enter your codename"
                     aria-label="Codename" />
                 <p id="codename-error" class="input-error-message"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email (Optional)</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email"
+                    aria-label="Email" />
+                <p id="email-error" class="input-error-message"></p>
             </div>
 
             <div class="form-group">
