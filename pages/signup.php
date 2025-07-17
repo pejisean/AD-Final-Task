@@ -6,7 +6,6 @@
     <?php require_once '../components/head.component.php'; ?>
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="/pages/assets/css/shop/signup.css" />
-    <script src="assets/js/signup.js" defer></script>
 </head>
 
 <?php require_once '../components/dropdown.component.php'; ?>

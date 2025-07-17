@@ -67,10 +67,27 @@ class UserUtil extends DatabaseUtil {
      * @return bool
      */
     public static function createUser($username, $email, $password, $gender = null, $role = 'user') {
-        $query = "INSERT INTO users (username, email, password, gender, role) VALUES ($1, $2, $3, $4, $5)";
-        $result = self::executeQuery($query, [$username, $email, $password, $gender, $role]);
-        
-        return $result['success'];
+        try {
+            // Log the attempt
+            error_log("UserUtil::createUser called with username: $username, email: " . ($email ?: 'NULL') . ", gender: $gender, role: $role");
+            
+            $query = "INSERT INTO users (username, email, password, gender, role) VALUES ($1, $2, $3, $4, $5)";
+            $result = self::executeQuery($query, [$username, $email, $password, $gender, $role]);
+            
+            // Log the detailed result
+            if (!$result['success']) {
+                error_log("User creation failed: " . $result['message']);
+                error_log("Query: $query");
+                error_log("Params: " . print_r([$username, $email, '[PASSWORD]', $gender, $role], true));
+            } else {
+                error_log("User creation succeeded for: $username");
+            }
+            
+            return $result['success'];
+        } catch (Exception $e) {
+            error_log("Exception in createUser: " . $e->getMessage());
+            return false;
+        }
     }
     
     /**

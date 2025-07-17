@@ -84,11 +84,16 @@ function validateSignupForm() {
  * @returns {boolean}
  */
 function handleSignup() {
+    console.log('handleSignup() called'); // Debug log
+    
     // First validate the form
     if (!validateSignupForm()) {
+        console.log('Form validation failed'); // Debug log
         displayFormMessage('Please correct the errors above.', 'error');
         return false;
     }
+
+    console.log('Form validation passed'); // Debug log
 
     const submitButton = document.querySelector('.signup-button');
     const originalText = submitButton.textContent;
@@ -102,6 +107,8 @@ function handleSignup() {
         password: document.getElementById('password').value
     };
 
+    console.log('Sending data:', formData); // Debug log
+
     fetch('../handlers/signup.handler.php', {
         method: 'POST',
         headers: {
@@ -110,8 +117,12 @@ function handleSignup() {
         body: JSON.stringify(formData),
         credentials: 'same-origin'
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Response received:', response.status); // Debug log
+        return response.json();
+    })
     .then(data => {
+        console.log('Response data:', data); // Debug log
         if (data.success) {
             displayFormMessage('Account created successfully! Redirecting to login...', 'success');
             
@@ -127,7 +138,7 @@ function handleSignup() {
         }
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Fetch error:', error); // Debug log
         displayFormMessage('An error occurred. Please try again.', 'error');
     })
     .finally(() => {
