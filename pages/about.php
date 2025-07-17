@@ -30,7 +30,7 @@
             <div class="team-member">
                 <img src="assets/img/about/migzabout.png" alt="Migz Antonio">
                 <h3>Juan Miguel Antonio</h3>
-                <p>Frontend / Backend / Hunter</p>
+                <p>Frontend / QA / Hunter</p>
                 <p>migzantonio@gmail.com</p>
 
             </div>
@@ -51,7 +51,7 @@
             <div class="team-member">
                 <img src="assets/img/about/jayabout.png" alt="Jay">
                 <h3>Jaymard Licas</h3>
-                <p>Frontend / Quartermaster</p>
+                <p>Frontend / Designer / Quartermaster</p>
                 <p>jaymardslicas@gmail.com</p>
 
             </div>
