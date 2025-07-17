@@ -7,6 +7,7 @@
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
+    <link rel="stylesheet" href="assets/css/shop/addtocartoverlay.css" />
 </head>
 
 <?php require_once '../components/dropdown.component.php'; ?>
@@ -22,7 +23,8 @@
                 <div class="showcase-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Advanced First Aid Trauma Kit"
                         data-item-price="5500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Advanced First Aid Trauma Kit"
+                        data-item-price="5500.00">Add to Cart</a>
                 </div>
             </div>
         </section>
@@ -36,7 +38,8 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="72-Hour Survival Backpack"
                             data-item-price="12000.00">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                        <a class="add-cart-btn" href="#" data-item-name="72-Hour Survival Backpack"
+                            data-item-price="12000.00">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -49,7 +52,8 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="High-Performance Water Filter Pump"
                             data-item-price="4800.00">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                        <a class="add-cart-btn" href="#" data-item-name="High-Performance Water Filter Pump"
+                            data-item-price="4800.00">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -81,7 +85,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Waterproof Survival Handbook"
                         data-item-price="1100.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Waterproof Survival Handbook"
+                        data-item-price="1100.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -93,7 +98,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Emergency Signal Mirror"
                         data-item-price="650.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Emergency Signal Mirror"
+                        data-item-price="650.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -105,7 +111,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Titanium Spork & Utensil Set"
                         data-item-price="850.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Titanium Spork & Utensil Set"
+                        data-item-price="850.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -117,7 +124,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Chemical Light Sticks (12-Pack)"
                         data-item-price="1200.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Chemical Light Sticks (12-Pack)"
+                        data-item-price="1200.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -136,7 +144,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="&quot;Lifestraw&quot; Personal Water Filter"
                         data-item-price="1500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="&quot;Lifestraw&quot; Personal Water Filter"
+                        data-item-price="1500.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -148,7 +157,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Ferro Rod & Striker Fire Starter"
                         data-item-price="950.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Ferro Rod & Striker Fire Starter"
+                        data-item-price="950.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -160,7 +170,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Emergency Mylar Space Blankets (10-Pack)"
                         data-item-price="900.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Emergency Mylar Space Blankets (10-Pack)"
+                        data-item-price="900.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -172,7 +183,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Military-Style Lensatic Compass"
                         data-item-price="1800.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Military-Style Lensatic Compass"
+                        data-item-price="1800.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -184,7 +196,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="100ft. 550 Paracord"
                         data-item-price="650.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="100ft. 550 Paracord" data-item-price="650.00">Add
+                        to Cart</a>
                 </div>
             </div>
         </div>
@@ -196,7 +209,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="High-Decibel Emergency Whistle"
                         data-item-price="550.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="High-Decibel Emergency Whistle"
+                        data-item-price="550.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -208,7 +222,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Waterproof Match Case with Matches"
                         data-item-price="750.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Waterproof Match Case with Matches"
+                        data-item-price="750.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -220,14 +235,15 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Rechargeable LED Headlamp"
                         data-item-price="1500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Rechargeable LED Headlamp"
+                        data-item-price="1500.00">Add to Cart</a>
                 </div>
             </div>
         </div>
     </section>
 </div>
 
-<div id="buyNowOverlay" class="overlay">
+<div id="buyNowOverlay" class="overlay" style="display: none;">
     <div class="overlay-content">
         <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
         <h2>Order Summary</h2>
@@ -235,7 +251,7 @@
             <p><strong>Customer Name:</strong> <span id="receiptCustomerName"></span></p>
             <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
             <p><strong>Price:</strong> ₱<span id="receiptItemPrice"></span></p>
-            <p><strong>IP Address:</strong> <span id="receiptIPAddress"></span></p>
+            <p><strong>Secure Address:</strong> <span id="receiptIPAddress"></span></p>
             <hr>
             <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
         </div>
@@ -243,9 +259,26 @@
     </div>
 </div>
 
+<div id="addToCartOverlay" class="overlay" style="display: none;">
+    <div class="overlay-content">
+        <span class="close-button" id="closeAddToCartOverlayBtn">&times;</span>
+        <h2>Add to Cart</h2>
+        <div class="receipt">
+            <p><strong>Item:</strong> <span id="cartItemName"></span></p>
+            <p><strong>Price:</strong> ₱<span id="cartItemPrice"></span></p>
+            <p><strong>Secure Address:</strong> <span id="cartIPAddress"></span></p>
+            <hr>
+            <p><strong>Total:</strong> ₱<span id="cartTotalPrice"></span></p>
+        </div>
+        <button id="proceedAddButton">Add to Cart</button>
+    </div>
+</div>
+
+
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
-<script src="./assets/js/buynowoverlay.js"></script>
+<script src="../assets/js/buynowoverlay.js"></script>
+<script src="../assets/js/addtocartoverlay.js"></script>
 </body>
 
 </html>

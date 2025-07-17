@@ -7,6 +7,7 @@
     <?php require_once '../components/script.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/trading.css" />
     <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
+    <link rel="stylesheet" href="assets/css/shop/addtocartoverlay.css" />
 
 
 </head>
@@ -25,7 +26,8 @@
                 <div class="showcase-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Automated Sentry Platform (Unarmed)"
                         data-item-price="35000.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Automated Sentry Platform (Unarmed)"
+                        data-item-price="35000.00">Add to Cart</a>
                 </div>
             </div>
         </section>
@@ -40,7 +42,8 @@
                         <a class="buy-btn buy-now-btn" href="#"
                             data-item-name="Scrap Metal Armor Set (Torso & Pauldrons)" data-item-price="15000.00">Buy
                             Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                        <a class="add-cart-btn" href="#" data-item-name="Scrap Metal Armor Set (Torso & Pauldrons)"
+                            data-item-price="15000.00">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -53,7 +56,8 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="Pipe Pistol Assembly Kit (.38 Special)"
                             data-item-price="7800.00">Buy Now</a>
-                        <a class="add-cart-btn" href="#">Add to Cart</a>
+                        <a class="add-cart-btn" href="#" data-item-name="Pipe Pistol Assembly Kit (.38 Special)"
+                            data-item-price="7800.00">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -84,7 +88,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Remote-Triggered Trap Mechanism"
                         data-item-price="3200.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Remote-Triggered Trap Mechanism"
+                        data-item-price="3200.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -96,7 +101,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Caltrops (Bag of 50)"
                         data-item-price="1800.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Caltrops (Bag of 50)" data-item-price="1800.00">Add
+                        to Cart</a>
                 </div>
             </div>
         </div>
@@ -108,7 +114,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Welded Steel Riot Shield"
                         data-item-price="4500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Welded Steel Riot Shield"
+                        data-item-price="4500.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -120,7 +127,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Heavy-Duty Slingshot & Steel Bearings"
                         data-item-price="1500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Heavy-Duty Slingshot & Steel Bearings"
+                        data-item-price="1500.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -139,7 +147,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Reinforced Baseball Bat (Barbed Wire)"
                         data-item-price="1200.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Reinforced Baseball Bat (Barbed Wire)"
+                        data-item-price="1200.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -151,7 +160,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Combat Machete with Sheath"
                         data-item-price="2500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Combat Machete with Sheath"
+                        data-item-price="2500.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -163,7 +173,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Breaching Tomahawk"
                         data-item-price="4100.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Breaching Tomahawk" data-item-price="4100.00">Add
+                        to Cart</a>
                 </div>
             </div>
         </div>
@@ -175,7 +186,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Plated Forearm Guards (Pair)"
                         data-item-price="2800.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Plated Forearm Guards (Pair)"
+                        data-item-price="2800.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -187,7 +199,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Slam-Fire Shotgun Blueprints (12 Gauge)"
                         data-item-price="950.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Slam-Fire Shotgun Blueprints (12 Gauge)"
+                        data-item-price="950.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -199,7 +212,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Sharpened Rebar Spear"
                         data-item-price="900.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Sharpened Rebar Spear" data-item-price="900.00">Add
+                        to Cart</a>
                 </div>
             </div>
         </div>
@@ -211,7 +225,8 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Tripwire Flare Alarm Kit (4-Pack)"
                         data-item-price="2600.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Tripwire Flare Alarm Kit (4-Pack)"
+                        data-item-price="2600.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -223,14 +238,15 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Modified Motorcycle Helmet"
                         data-item-price="3100.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Modified Motorcycle Helmet"
+                        data-item-price="3100.00">Add to Cart</a>
                 </div>
             </div>
         </div>
     </section>
 </div>
 
-<div id="buyNowOverlay" class="overlay">
+<div id="buyNowOverlay" class="overlay" style="display: none;">
     <div class="overlay-content">
         <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
         <h2>Order Summary</h2>
@@ -238,7 +254,7 @@
             <p><strong>Customer Name:</strong> <span id="receiptCustomerName"></span></p>
             <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
             <p><strong>Price:</strong> ₱<span id="receiptItemPrice"></span></p>
-            <p><strong>IP Address:</strong> <span id="receiptIPAddress"></span></p>
+            <p><strong>Secure Address:</strong> <span id="receiptIPAddress"></span></p>
             <hr>
             <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
         </div>
@@ -246,9 +262,25 @@
     </div>
 </div>
 
+<div id="addToCartOverlay" class="overlay" style="display: none;">
+    <div class="overlay-content">
+        <span class="close-button" id="closeAddToCartOverlayBtn">&times;</span>
+        <h2>Add to Cart</h2>
+        <div class="receipt">
+            <p><strong>Item:</strong> <span id="cartItemName"></span></p>
+            <p><strong>Price:</strong> ₱<span id="cartItemPrice"></span></p>
+            <p><strong>Secure Address:</strong> <span id="cartIPAddress"></span></p>
+            <hr>
+            <p><strong>Total:</strong> ₱<span id="cartTotalPrice"></span></p>
+        </div>
+        <button id="proceedAddButton">Add to Cart</button>
+    </div>
+</div>
+
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
-<script src="./assets/js/buynowoverlay.js"></script>
+<script src="../assets/js/buynowoverlay.js"></script>
+<script src="../assets/js/addtocartoverlay.js"></script>
 </body>
 
 </html>

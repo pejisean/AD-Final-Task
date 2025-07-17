@@ -67,7 +67,11 @@ function handleLogin() {
         return false;
     }
 
-    // Send login request to server
+    const submitButton = document.querySelector('.login-button');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Logging in...';
+    submitButton.disabled = true;
+
     fetch('../handlers/login.handler.php', {
         method: 'POST',
         headers: {
@@ -76,17 +80,18 @@ function handleLogin() {
         body: JSON.stringify({
             codename: codename,
             password: password
-        })
+        }),
+        credentials: 'same-origin'
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         if (data.success) {
             displayFormMessage('Login successful! Redirecting...', 'success');
+            
+            if (data.user) {
+                localStorage.setItem('loggedInCodename', data.user.username);
+            }
+            
             setTimeout(() => {
                 window.location.href = '../index.php';
             }, 1500);
@@ -97,6 +102,10 @@ function handleLogin() {
     .catch(error => {
         console.error('Error:', error);
         displayFormMessage('An error occurred. Please try again.', 'error');
+    })
+    .finally(() => {
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
     });
 
     return false;

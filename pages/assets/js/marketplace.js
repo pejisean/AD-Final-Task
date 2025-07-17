@@ -1,101 +1,248 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const addItemBtn = document.getElementById('addItemBtn');
-    const addItemModal = document.getElementById('addItemModal');
-    const closeAddItemModal = document.getElementById('closeAddItemModal');
-    const addItemForm = document.getElementById('addItemForm');
-    const marketplaceGrid = document.getElementById('marketplaceGrid');
+(function() {
+    'use strict';
+    
+    // Prevent multiple executions
+    if (window.marketplaceInitialized) {
+        console.log('Marketplace already initialized, preventing duplicate execution');
+        return;
+    }
 
-    const itemDescriptionModal = document.getElementById('itemDescriptionModal');
-    const closeDescriptionModal = document.getElementById('closeDescriptionModal');
-    const descriptionModalTitle = document.getElementById('descriptionModalTitle');
-    const descriptionModalText = document.getElementById('descriptionModalText');
+    // Only run on marketplace page
+    const isMarketplacePage = window.location.pathname.includes('marketplace.php');
+    const hasMarketplaceGrid = document.getElementById('marketplaceGrid');
+    
+    if (!isMarketplacePage || !hasMarketplaceGrid) {
+        console.log('Not on marketplace page, skipping marketplace.js initialization');
+        return;
+    }
 
-    addItemBtn.addEventListener('click', function () {
-        addItemModal.style.display = 'flex';
-    });
+    console.log('Initializing marketplace functionality...');
+    window.marketplaceInitialized = true;
 
-    closeAddItemModal.addEventListener('click', function () {
-        addItemModal.style.display = 'none';
-        addItemForm.reset();
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const addItemBtn = document.getElementById('addItemBtn');
+        const addItemModal = document.getElementById('addItemModal');
+        const closeAddItemModal = document.getElementById('closeAddItemModal');
+        const addItemForm = document.getElementById('addItemForm');
+        const marketplaceGrid = document.getElementById('marketplaceGrid');
+        const itemDescriptionModal = document.getElementById('itemDescriptionModal');
+        const closeDescriptionModal = document.getElementById('closeDescriptionModal');
 
-    window.addEventListener('click', function (event) {
-        if (event.target == addItemModal) {
-            addItemModal.style.display = 'none';
-            addItemForm.reset();
+        let isSubmitting = false;
+
+        // Initialize all event listeners
+        if (addItemBtn) {
+            addItemBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                handleAddItem();
+            });
         }
-        if (event.target == itemDescriptionModal) {
-            itemDescriptionModal.style.display = 'none';
+
+        if (closeAddItemModal) {
+            closeAddItemModal.addEventListener('click', closeModal);
         }
-    });
 
-    addItemForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+        if (addItemForm) {
+            addItemForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!isSubmitting) {
+                    handleFormSubmission();
+                }
+            });
+        }
 
-        const itemName = document.getElementById('itemName').value;
-        const itemPrice = parseFloat(document.getElementById('itemPrice').value).toFixed(2);
-        const itemImageInput = document.getElementById('itemImage');
-        const itemDescription = document.getElementById('itemDescription').value;
+        if (closeDescriptionModal) {
+            closeDescriptionModal.addEventListener('click', function() {
+                itemDescriptionModal.style.display = 'none';
+            });
+        }
 
-        // Handle file upload
-        let itemImageUrl = 'https://via.placeholder.com/150x100';
-        if (itemImageInput.files.length > 0) {
-            const file = itemImageInput.files[0];
-            if (file.type === 'image/png') {
-                itemImageUrl = URL.createObjectURL(file);
+        // Modal backdrop clicks
+        window.addEventListener('click', function(event) {
+            if (event.target === addItemModal) {
+                closeModal();
+            }
+            if (event.target === itemDescriptionModal) {
+                itemDescriptionModal.style.display = 'none';
+            }
+        });
+
+        // Grid event delegation
+        if (marketplaceGrid) {
+            marketplaceGrid.addEventListener('click', function(event) {
+                if (event.target.classList.contains('more-info-btn')) {
+                    handleMoreInfo(event);
+                } else if (event.target.classList.contains('buy-now-btn')) {
+                    handleBuyNow(event);
+                }
+            });
+        }
+
+        function handleAddItem() {
+            fetch('../handlers/check-session.handler.php', {
+                signal: AbortSignal.timeout(5000)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.logged_in) {
+                    addItemModal.style.display = 'flex';
+                } else {
+                    alert('You must be logged in to add items to the marketplace.');
+                }
+            })
+            .catch(error => {
+                console.error('Session check failed:', error);
+                alert('Please log in to add items.');
+            });
+        }
+
+        function handleFormSubmission() {
+            isSubmitting = true;
+            const submitButton = addItemForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Adding Item...';
+
+            const formData = new FormData(addItemForm);
+            const imageFile = formData.get('image');
+
+            if (imageFile && imageFile.size > 0) {
+                uploadImage(formData, imageFile);
             } else {
-                alert('Please upload a PNG image file.');
-                return;
+                createItem(formData, null);
             }
         }
 
-        // Create new product card
-        const newProductCard = document.createElement('div');
-        newProductCard.classList.add('product-card');
-        newProductCard.dataset.name = itemName;
-        newProductCard.dataset.price = itemPrice;
-        newProductCard.dataset.description = itemDescription;
+        function uploadImage(formData, imageFile) {
+            const imageFormData = new FormData();
+            imageFormData.append('image', imageFile);
 
-        newProductCard.innerHTML = `
-    <div class="item-image">
-        <img src="${itemImageUrl}" alt="${itemName}">
-        <div class="item-overlay">
-            <p class="item-name">${itemName}</p>
-            <p class="item-price">${itemPrice}</p>
-        </div>
-    </div>
-    <div class="item-bottom-actions">
-        <button class="more-info-btn">More Info</button>
-        <button class="buy-now-btn">Buy Now</button>
-    </div>
-`;
+            fetch('../handlers/upload.handler.php', {
+                method: 'POST',
+                body: imageFormData,
+                signal: AbortSignal.timeout(30000)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    createItem(formData, result.image_url);
+                } else {
+                    alert('Upload failed: ' + result.message);
+                    resetForm();
+                }
+            })
+            .catch(error => {
+                console.error('Upload error:', error);
+                alert('Upload failed. Please try again.');
+                resetForm();
+            });
+        }
 
-
-        marketplaceGrid.prepend(newProductCard);
-
-        addItemModal.style.display = 'none';
-        addItemForm.reset();
-
-        attachMoreInfoListeners();
-    });
-
-    function attachMoreInfoListeners() {
-        document.querySelectorAll('.more-info-btn').forEach(button => {
-            button.onclick = function () {
-                const card = this.closest('.product-card');
-                const itemName = card.dataset.name;
-                const itemDescription = card.dataset.description;
-
-                descriptionModalTitle.textContent = itemName;
-                descriptionModalText.textContent = itemDescription;
-                itemDescriptionModal.style.display = 'flex';
+        function createItem(formData, imageUrl) {
+            const itemData = {
+                name: formData.get('name'),
+                description: formData.get('description'),
+                price: parseFloat(formData.get('price')),
+                category: formData.get('category'),
+                stock_quantity: parseInt(formData.get('stock_quantity')),
+                image_url: imageUrl,
+                source: 'marketplace'
             };
-        });
-    }
 
-    attachMoreInfoListeners();
+            fetch('../handlers/item.handler.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(itemData),
+                signal: AbortSignal.timeout(10000)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Item added successfully!');
+                    closeModal();
+                    window.location.reload();
+                } else {
+                    alert('Failed to add item: ' + result.message);
+                }
+                resetForm();
+            })
+            .catch(error => {
+                console.error('Error creating item:', error);
+                alert('Failed to add item. Please try again.');
+                resetForm();
+            });
+        }
 
-    closeDescriptionModal.addEventListener('click', function () {
-        itemDescriptionModal.style.display = 'none';
+        function handleMoreInfo(event) {
+            event.preventDefault();
+            const card = event.target.closest('.product-card');
+            const itemName = card.dataset.name;
+            const itemDescription = card.dataset.description;
+
+            document.getElementById('descriptionModalTitle').textContent = itemName;
+            document.getElementById('descriptionModalText').textContent = itemDescription;
+            itemDescriptionModal.style.display = 'flex';
+        }
+
+        function handleBuyNow(event) {
+            event.preventDefault();
+            
+            const button = event.target;
+            const itemId = parseInt(button.getAttribute('data-item-id'));
+            const itemName = button.getAttribute('data-item-name');
+            
+            if (!itemId || !itemName) {
+                alert('Error: Invalid item data');
+                return;
+            }
+
+            button.disabled = true;
+            button.textContent = 'Adding...';
+
+            fetch('../handlers/cart.handler.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    item_id: itemId,
+                    quantity: 1
+                }),
+                credentials: 'same-origin',
+                signal: AbortSignal.timeout(10000)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`${itemName} added to cart!`);
+                    // Only update cart count once
+                    if (typeof updateCartIconCount === 'function') {
+                        updateCartIconCount();
+                    }
+                } else {
+                    alert('Failed to add to cart: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Cart error:', error);
+                alert('Error adding to cart. Please try again.');
+            })
+            .finally(() => {
+                button.disabled = false;
+                button.textContent = 'Buy Now';
+            });
+        }
+
+        function closeModal() {
+            addItemModal.style.display = 'none';
+            addItemForm.reset();
+            resetForm();
+        }
+
+        function resetForm() {
+            isSubmitting = false;
+            const submitButton = addItemForm.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Add Item';
+            }
+        }
     });
-});
+})();

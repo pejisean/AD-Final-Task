@@ -65,7 +65,26 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    height: 100%;
+    height: auto; /* Allow flexible height */
+    min-height: 250px; /* Minimum height for consistency */
+}
+
+/* Animation for new items */
+.product-card.new-item {
+    animation: slideInFromTop 0.5s ease-out;
+    border: 2px solid #DA6015;
+    box-shadow: 0 0 15px rgba(218, 96, 21, 0.5);
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .product-card:hover {
@@ -75,19 +94,32 @@
 
 .item-image {
     position: relative;
-    height: 0;
-    padding-bottom: 80%;
+    height: 150px;
+    width: 100%;
     overflow: hidden;
+    background-color: #2a2a2a;
+    border-radius: 8px 8px 0 0; /* Round top corners */
 }
 
 .item-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* This ensures the image covers the container while maintaining aspect ratio */
+    object-position: center; /* Centers the image within the container */
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.item-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Ensure uploaded images are properly sized */
+.product-card .item-image img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: none; /* Allow scaling */
+    max-height: none; /* Allow scaling */
 }
 
 .item-overlay {
@@ -130,7 +162,7 @@
 
 .more-info-btn,
 .buy-now-btn {
-    background-color: #A7875E;
+    background-color: #DA6015;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -141,16 +173,16 @@
 }
 
 .buy-now-btn {
-    background-color: #4CAF50;
+    background-color: #41572f;
 }
 
 .more-info-btn:hover {
-    background-color: #8a6f4e;
+    background-color: #DA6015;
     transform: translateY(-1px);
 }
 
 .buy-now-btn:hover {
-    background-color: #45a049;
+    background-color: #41572f;
     transform: translateY(-1px);
 }
 
@@ -161,7 +193,7 @@
 }
 
 .price-change.positive {
-    color: #4CAF50;
+    color: #41572f;
 }
 
 .price-change.negative {
@@ -176,7 +208,7 @@
 }
 
 .item-status.online {
-    background-color: #4CAF50;
+    background-color: #41572f;
     color: white;
 }
 
@@ -302,20 +334,23 @@
 @media (max-width: 1600px) {
     .marketplace-grid {
         grid-template-columns: repeat(5, 1fr);
+        gap: 18px;
     }
 }
 
 @media (max-width: 1200px) {
     .marketplace-grid {
         grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
     }
 }
 
 @media (max-width: 992px) {
     .marketplace-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
     }
-
+    
     .marketplace-container {
         padding: 20px 30px;
     }
@@ -324,35 +359,88 @@
 @media (max-width: 768px) {
     .marketplace-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .marketplace-container {
-        padding: 20px 20px;
+        padding: 15px 20px;
     }
 
     .item-bottom-actions {
         flex-direction: column;
         gap: 8px;
+        padding: 10px;
     }
 
     .more-info-btn,
     .buy-now-btn {
         width: 100%;
+        padding: 10px 12px;
+        font-size: 0.85em;
+    }
+    
+    /* Smaller image height on mobile for better proportion */
+    .item-image {
+        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
     .marketplace-grid {
         grid-template-columns: 1fr;
-    }
-
-    .modal-content {
-        padding: 20px;
+        gap: 10px;
     }
 
     .marketplace-container {
-        padding: 15px 15px;
+        padding: 10px 15px;
     }
+    
+    .marketplace-header-controls {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .add-item-button {
+        margin-left: 0;
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    /* Better mobile image sizing */
+    .item-image {
+        height: 180px;
+    }
+    
+    .item-name {
+        font-size: 1em;
+    }
+    
+    .item-price {
+        font-size: 1.1em;
+    }
+}
+
+/* Enhanced loading state for new items */
+.product-card.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.product-card.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(218, 96, 21, 0.1);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
 }
 
 @keyframes pulse-glow {

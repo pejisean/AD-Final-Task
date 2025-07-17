@@ -23,8 +23,7 @@
             <div class="dropdown-menu" id="dropdownMenu">
                 <a id="login-signup-link" href="/pages/login.php">👤 Login / Sign Up</a>
                 <a href="/index.php">🏠 Home</a>
-                <a href="#">🛒 Cart (0)</a>
-                <a href="/pages/history.php">📄 History</a>
+                <a href="pages/cart.php">🛒 Cart (<span id="cart-item-count">0</span>)</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
                 <a href="/pages/about.php">ℹ️ About Us</a>
             </div>
