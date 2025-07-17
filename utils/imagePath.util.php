@@ -125,25 +125,10 @@ class ImagePathUtil {
      * @param string $context The context ('pages' or 'root')
      * @return string The fallback image path
      */
-    public static function getMarketplaceFallback($context = 'pages') {
-        // Use actual product images as fallbacks for marketplace items
-        $fallbackImages = [
-            'assets/img/electronics/powerbank.png',
-            'assets/img/tools/crowbar.png',
-            'assets/img/weapons/machete.png',
-            'assets/img/other/first.png'
-        ];
-        
-        // Pick a random fallback image
-        $fallbackImage = $fallbackImages[array_rand($fallbackImages)];
-        $absolutePath = BASE_PATH . '/' . $fallbackImage;
-        
-        if (file_exists($absolutePath)) {
-            return $context === 'pages' ? '../' . $fallbackImage : $fallbackImage;
-        }
-        
-        // If that doesn't exist, use the generic placeholder
-        return self::getPlaceholder('Item Image');
+    public static function getMarketplaceFallback($context = 'root') {
+        // Use a local fallback image instead of placeholder service
+        $basePath = ($context === 'pages') ? '../' : '';
+        return $basePath . 'assets/img/electronics/powerbank.png'; // Use existing product image
     }
     
     /**
