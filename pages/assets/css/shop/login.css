@@ -24,7 +24,7 @@ main.login-container {
     font-size: 2.8em;
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .form-group {
@@ -104,9 +104,22 @@ main.login-container {
     color: #DA6015;
 }
 
-.input-error-message, .info-message {
+.input-error-message,
+.info-message {
     min-height: 1.2em;
     margin-top: 5px;
+}
+
+.info-message.error {
+    background-color: #ff4757;
+    color: #fff;
+    border: 1px solid #ff3742;
+}
+
+.info-message.success {
+    background-color: #2ed573;
+    color: #0A1215;
+    border: 1px solid #26d469;
 }
 
 @media (max-width: 600px) {
@@ -114,6 +127,7 @@ main.login-container {
         padding: 30px 20px;
         margin: 0 15px;
     }
+
     .login-form-wrapper h2 {
         font-size: 2.2em;
     }
@@ -123,9 +137,11 @@ main.login-container {
     0% {
         box-shadow: 0 0 10px -2px #DA6015;
     }
+
     50% {
         box-shadow: 0 0 14px 0px #ff7f2a;
     }
+
     100% {
         box-shadow: 0 0 10px -2px #DA6015;
     }

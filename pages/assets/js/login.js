@@ -34,7 +34,7 @@ function clearErrorMessages() {
         element.textContent = '';
         element.style.display = 'none';
     });
-    
+
     const formMessage = document.getElementById('form-message');
     if (formMessage) {
         formMessage.style.display = 'none';
@@ -83,30 +83,30 @@ function handleLogin() {
         }),
         credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            displayFormMessage('Login successful! Redirecting...', 'success');
-            
-            if (data.user) {
-                localStorage.setItem('loggedInCodename', data.user.username);
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                displayFormMessage('Login successful! Redirecting...', 'success');
+
+                if (data.user) {
+                    localStorage.setItem('loggedInCodename', data.user.username);
+                }
+
+                setTimeout(() => {
+                    window.location.href = '../index.php';
+                }, 1500);
+            } else {
+                displayFormMessage(data.message || 'Login failed', 'error');
             }
-            
-            setTimeout(() => {
-                window.location.href = '../index.php';
-            }, 1500);
-        } else {
-            displayFormMessage(data.message || 'Login failed', 'error');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        displayFormMessage('An error occurred. Please try again.', 'error');
-    })
-    .finally(() => {
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            displayFormMessage('An error occurred. Please try again.', 'error');
+        })
+        .finally(() => {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        });
 
     return false;
 }
