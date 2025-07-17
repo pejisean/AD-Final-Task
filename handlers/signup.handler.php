@@ -13,7 +13,6 @@ try {
     // Include required utilities
     require_once UTILS_PATH . '/envSetter.util.php';
     require_once HANDLERS_PATH . '/database.handler.php';
-    require_once UTILS_PATH . '/user.util.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
@@ -87,12 +86,15 @@ try {
             }
         }
 
+        // Hash the password properly
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         // Create the user with direct query
         $insertQuery = "INSERT INTO users (username, email, password, gender, role, is_active) VALUES ($1, $2, $3, $4, $5, $6)";
         $insertResult = pg_query_params($connection, $insertQuery, [
             $username,
             !empty($email) ? $email : null,
-            $password, // Store plain text for now (you should hash this in production)
+            $hashedPassword, // Use hashed password
             $gender,
             'user',
             true
@@ -123,12 +125,15 @@ try {
 
 } catch (Error $e) {
     error_log("Fatal Error in signup: " . $e->getMessage());
+    error_log("Stack trace: " . $e->getTraceAsString());
     echo json_encode([
         'success' => false,
-        'message' => 'Server error occurred. Please try again.'
+        'message' => 'Server error occurred. Please try again.',
+        'debug' => $e->getMessage() // Remove this in production
     ]);
 } catch (Exception $e) {
     error_log("Exception in signup: " . $e->getMessage());
+    error_log("Stack trace: " . $e->getTraceAsString());
     echo json_encode([
         'success' => false,
         'message' => 'An error occurred. Please try again.'
