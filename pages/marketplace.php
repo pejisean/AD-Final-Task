@@ -35,13 +35,13 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
                          data-item-id="<?= $item['id'] ?>">
                         <div class="item-image">
                             <?php 
-                            $imagePath = ImagePathUtil::resolve($item['image_url'], 'pages');
-                            $placeholderPath = '../assets/img/placeholder.jpg';
+                            // Use the improved getWebPath method with existence check
+                            $imagePath = ImagePathUtil::getWebPath($item['image_url'], 'pages', true);
                             ?>
                             <img src="<?= $imagePath ?>" 
                                  alt="<?= htmlspecialchars($item['name']) ?>"
                                  loading="lazy"
-                                 onerror="this.src='<?= $placeholderPath ?>'">
+                                 onerror="this.src='<?= ImagePathUtil::getMarketplaceFallback("pages") ?>'">
                             <div class="item-overlay">
                                 <p class="item-name"><?= htmlspecialchars($item['name']) ?></p>
                                 <p class="item-price">₱<?= number_format($item['price'], 2) ?></p>
@@ -116,6 +116,26 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
         <p id="descriptionModalText"></p>
     </div>
 </div>
+
+<!-- Pass PHP data to JavaScript -->
+<script>
+window.MARKETPLACE_CONFIG = {
+    PLACEHOLDER_PATH: '<?= ImagePathUtil::getMarketplaceFallback("pages") ?>',
+    FALLBACK_IMAGES: [
+        '../assets/img/electronics/powerbank.png',
+        '../assets/img/tools/crowbar.png',
+        '../assets/img/weapons/machete.png',
+        '../assets/img/other/first.png',
+        '../assets/img/electronics/led.png',
+        '../assets/img/tools/hammer.png',
+        '../assets/img/weapons/sentry.png',
+        '../assets/img/other/survival.png',
+        '../assets/img/electronics/circuit.png',
+        '../assets/img/tools/axe.png'
+    ],
+    BASE_PATH: '<?= BASE_PATH ?>'
+};
+</script>
 
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>

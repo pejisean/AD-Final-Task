@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log('Cart script loaded');
+    
     const cartItemsList = document.getElementById('cart-items-list');
     const cartSubtotalElement = document.getElementById('cart-subtotal');
     const cartTotalElement = document.getElementById('cart-total');
@@ -14,99 +16,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const receiptIPAddress = document.getElementById('receiptIPAddress');
     const finalCheckoutBtn = document.getElementById('finalCheckoutBtn');
 
+    // Check if elements exist
+    console.log('Cart elements found:', {
+        cartItemsList: !!cartItemsList,
+        cartLoading: !!cartLoading,
+        emptyCartMessage: !!emptyCartMessage,
+        checkoutBtn: !!checkoutBtn
+    });
+
     let currentCartData = null;
 
-    // Load cart from server
-    function loadCartFromServer() {
-        cartLoading.style.display = 'block';
-        cartItemsList.style.display = 'none';
-        cartSummary.style.display = 'none';
-        emptyCartMessage.style.display = 'none';
+    // Get configuration from the PHP-provided global
+    const config = window.CART_CONFIG || {
+        PLACEHOLDER_PATH: '../assets/img/electronics/powerbank.png',
+        FALLBACK_IMAGES: [
+            '../assets/img/electronics/powerbank.png',
+            '../assets/img/tools/crowbar.png',
+            '../assets/img/weapons/machete.png',
+            '../assets/img/other/first.png',
+            '../assets/img/electronics/led.png',
+            '../assets/img/tools/hammer.png',
+            '../assets/img/weapons/sentry.png',
+            '../assets/img/other/survival.png',
+            '../assets/img/electronics/circuit.png',
+            '../assets/img/tools/axe.png'
+        ],
+        BASE_PATH: ''
+    };
 
-        fetch('../handlers/cart.handler.php', {
-            method: 'GET',
-            credentials: 'same-origin'
-        })
-        .then(response => response.json())
-        .then(data => {
-            cartLoading.style.display = 'none';
-            
-            if (data.success) {
-                currentCartData = data.data;
-                renderServerCart(data.data);
-            } else {
-                console.error('Failed to load cart:', data.message);
-                showEmptyCart();
-            }
-        })
-        .catch(error => {
-            console.error('Error loading cart:', error);
-            cartLoading.style.display = 'none';
-            // Fallback to localStorage cart
-            loadLocalStorageCart();
-        });
+    console.log('Cart config:', config);
+
+    // Get a random fallback image from available product assets
+    function getRandomFallbackImage() {
+        const fallbackImages = config.FALLBACK_IMAGES || [
+            '../assets/img/electronics/powerbank.png'
+        ];
+        return fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
     }
 
-    // Render cart from server data
-    function renderServerCart(cartData) {
-        const items = cartData.items || [];
-        const total = cartData.total || 0;
-        const itemCount = cartData.item_count || 0;
-
-        if (items.length === 0) {
-            showEmptyCart();
-            return;
-        }
-
-        cartItemsList.style.display = 'block';
-        cartSummary.style.display = 'block';
-        cartItemsList.innerHTML = '';
-
-        items.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'cart-item';
-            itemElement.dataset.itemId = item.item_id;
-
-            const totalPrice = item.quantity * item.price_at_time;
-            
-            // Use the same image path resolution logic as marketplace
-            const imageUrl = resolveImagePath(item.image_url);
-
-            itemElement.innerHTML = `
-                <img src="${imageUrl}" alt="${item.name}" class="cart-item-image" 
-                     onerror="this.src='../assets/img/placeholder.jpg'">
-                <div class="cart-item-details">
-                    <h3>${item.name}</h3>
-                    <p class="item-description">${item.description || ''}</p>
-                    <p class="item-seller">Sold by: ${item.seller_name || 'Unknown'}</p>
-                    <p class="item-price">₱${parseFloat(item.price_at_time).toFixed(2)} each</p>
-                </div>
-                <div class="cart-item-controls">
-                    <div class="quantity-controls">
-                        <button class="quantity-btn minus-btn" data-item-id="${item.item_id}">-</button>
-                        <input type="number" value="${item.quantity}" min="1" max="${item.stock_quantity || 999}" 
-                               class="quantity-input" data-item-id="${item.item_id}">
-                        <button class="quantity-btn plus-btn" data-item-id="${item.item_id}">+</button>
-                    </div>
-                    <p class="item-total">₱${totalPrice.toFixed(2)}</p>
-                    <button class="remove-item-btn" data-item-id="${item.item_id}">Remove</button>
-                </div>
-            `;
-            cartItemsList.appendChild(itemElement);
-        });
-
-        // Update totals
-        cartSubtotalElement.textContent = `₱${total.toFixed(2)}`;
-        cartTotalElement.textContent = `₱${total.toFixed(2)}`;
-
-        // Add event listeners
-        addCartEventListeners();
-    }
-
-    // Add this function to handle image path resolution (same logic as marketplace)
+    // Improved image path resolution using actual product images
     function resolveImagePath(imagePath) {
         if (!imagePath) {
-            return '../assets/img/placeholder.jpg';
+            return config.PLACEHOLDER_PATH || getRandomFallbackImage();
         }
         
         // If path starts with /, it's absolute from domain root
@@ -128,32 +79,348 @@ document.addEventListener("DOMContentLoaded", () => {
         return '../' + imagePath;
     }
 
-    // Add event listeners to cart controls
+    // Create an image element with proper error handling
+    function createImageWithFallback(src, alt, className) {
+        const img = document.createElement('img');
+        img.src = resolveImagePath(src);
+        img.alt = alt;
+        img.className = className;
+        
+        // Handle image load errors by trying fallback product images
+        img.onerror = function() {
+            const fallbackImage = getRandomFallbackImage();
+            if (this.src !== fallbackImage) {
+                this.src = fallbackImage;
+            }
+        };
+        
+        return img;
+    }
+
+    // Show/hide elements using CSS classes
+    function showElement(element) {
+        if (element) {
+            element.classList.remove('hidden');
+            element.style.display = 'block';
+        }
+    }
+
+    function hideElement(element) {
+        if (element) {
+            element.classList.add('hidden');
+            element.style.display = 'none';
+        }
+    }
+
+    // Load cart from both server and localStorage
+    function loadCart() {
+        console.log('Loading cart from all sources...');
+        
+        showElement(cartLoading);
+        hideElement(cartItemsList);
+        hideElement(cartSummary);
+        hideElement(emptyCartMessage);
+
+        // First try to load from server
+        fetch('../handlers/cart.handler.php', {
+            method: 'GET',
+            credentials: 'same-origin'
+        })
+        .then(response => {
+            console.log('Cart response status:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Server cart data received:', data);
+            hideElement(cartLoading);
+            
+            if (data.success && data.data && data.data.items && data.data.items.length > 0) {
+                currentCartData = data.data;
+                renderServerCart(data.data);
+            } else {
+                console.log('No server cart data, trying localStorage...');
+                // Fallback to localStorage
+                loadLocalStorageCart();
+            }
+        })
+        .catch(error => {
+            console.error('Error loading server cart:', error);
+            hideElement(cartLoading);
+            // Fallback to localStorage cart
+            loadLocalStorageCart();
+        });
+    }
+
+    // Render cart from server data
+    function renderServerCart(cartData) {
+        console.log('Rendering server cart:', cartData);
+        
+        const items = cartData.items || [];
+        const total = cartData.total || 0;
+        const itemCount = cartData.item_count || 0;
+
+        if (items.length === 0) {
+            showEmptyCart();
+            return;
+        }
+
+        showElement(cartItemsList);
+        showElement(cartSummary);
+        hideElement(emptyCartMessage);
+        
+        if (cartItemsList) cartItemsList.innerHTML = '';
+
+        items.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.dataset.itemId = item.item_id;
+
+            const totalPrice = item.quantity * item.price_at_time;
+            
+            // Create image element with proper fallback
+            const imageElement = createImageWithFallback(item.image_url, item.name, 'cart-item-image');
+
+            itemElement.innerHTML = `
+                <div class="cart-item-image-container"></div>
+                <div class="cart-item-details">
+                    <h3>${item.name}</h3>
+                    <p class="item-description">${item.description || ''}</p>
+                    <p class="item-seller">Sold by: ${item.seller_name || 'Unknown'}</p>
+                    <p class="item-price">₱${parseFloat(item.price_at_time).toFixed(2)} each</p>
+                </div>
+                <div class="cart-item-controls">
+                    <div class="quantity-controls">
+                        <button class="quantity-btn minus-btn" data-item-id="${item.item_id}">-</button>
+                        <input type="number" value="${item.quantity}" min="1" max="${item.stock_quantity || 999}" 
+                               class="quantity-input" data-item-id="${item.item_id}">
+                        <button class="quantity-btn plus-btn" data-item-id="${item.item_id}">+</button>
+                    </div>
+                    <p class="item-total">₱${totalPrice.toFixed(2)}</p>
+                    <button class="remove-item-btn" data-item-id="${item.item_id}">Remove</button>
+                </div>
+            `;
+            
+            // Add the image element to the container
+            const imageContainer = itemElement.querySelector('.cart-item-image-container');
+            if (imageContainer) {
+                imageContainer.appendChild(imageElement);
+            }
+            
+            if (cartItemsList) {
+                cartItemsList.appendChild(itemElement);
+            }
+        });
+
+        // Update totals
+        if (cartSubtotalElement) cartSubtotalElement.textContent = `₱${total.toFixed(2)}`;
+        if (cartTotalElement) cartTotalElement.textContent = `₱${total.toFixed(2)}`;
+
+        // Add event listeners
+        addCartEventListeners();
+    }
+
+    // Show empty cart
+    function showEmptyCart() {
+        console.log('Showing empty cart');
+        hideElement(cartItemsList);
+        hideElement(cartSummary);
+        showElement(emptyCartMessage);
+    }
+
+    // Fallback to localStorage cart (enhanced version)
+    function loadLocalStorageCart() {
+        console.log('Loading localStorage cart...');
+        
+        const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        console.log('LocalStorage cart found:', cart);
+        
+        if (cart.length === 0) {
+            showEmptyCart();
+            return;
+        }
+
+        showElement(cartItemsList);
+        showElement(cartSummary);
+        hideElement(emptyCartMessage);
+        
+        if (cartItemsList) cartItemsList.innerHTML = '';
+
+        let subtotal = 0;
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.dataset.itemId = item.id || `local-${index}`;
+
+            // Handle price parsing for localStorage items
+            let itemPriceValue;
+            if (typeof item.price === 'string') {
+                itemPriceValue = parseFloat(item.price.replace('₱', '').replace(',', ''));
+            } else {
+                itemPriceValue = parseFloat(item.price);
+            }
+            
+            const quantity = parseInt(item.quantity) || 1;
+            const itemTotal = itemPriceValue * quantity;
+            subtotal += itemTotal;
+
+            // Create image element with proper fallback for localStorage items
+            const imageElement = createImageWithFallback(item.image, item.name, 'cart-item-image');
+
+            itemElement.innerHTML = `
+                <div class="cart-item-image-container"></div>
+                <div class="cart-item-details">
+                    <h3>${item.name}</h3>
+                    <p class="item-description">${item.description || ''}</p>
+                    <p class="item-price">₱${itemPriceValue.toFixed(2)} × ${quantity}</p>
+                    <p class="item-source">Source: ${item.source || 'Local Storage'}</p>
+                </div>
+                <div class="cart-item-controls">
+                    <div class="quantity-controls">
+                        <button class="quantity-btn minus-btn-local" data-item-id="${item.id || `local-${index}`}">-</button>
+                        <input type="number" value="${quantity}" min="1" max="999" 
+                               class="quantity-input-local" data-item-id="${item.id || `local-${index}`}">
+                        <button class="quantity-btn plus-btn-local" data-item-id="${item.id || `local-${index}`}">+</button>
+                    </div>
+                    <p class="item-total">₱${itemTotal.toFixed(2)}</p>
+                    <button class="remove-item-btn-local" data-item-id="${item.id || `local-${index}`}">Remove</button>
+                </div>
+            `;
+            
+            // Add the image element to the container
+            const imageContainer = itemElement.querySelector('.cart-item-image-container');
+            if (imageContainer) {
+                imageContainer.appendChild(imageElement);
+            }
+            
+            if (cartItemsList) {
+                cartItemsList.appendChild(itemElement);
+            }
+        });
+
+        // Update totals
+        if (cartSubtotalElement) cartSubtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
+        if (cartTotalElement) cartTotalElement.textContent = `₱${subtotal.toFixed(2)}`;
+
+        // Add event listeners for localStorage items
+        addLocalStorageEventListeners();
+        
+        // Set current cart data for localStorage
+        currentCartData = {
+            items: cart,
+            total: subtotal,
+            item_count: cart.length,
+            source: 'localStorage'
+        };
+    }
+
+    // Add event listeners for localStorage cart items
+    function addLocalStorageEventListeners() {
+        // Quantity controls for localStorage items
+        document.querySelectorAll('.minus-btn-local').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const itemId = e.target.dataset.itemId;
+                updateLocalStorageQuantity(itemId, -1);
+            });
+        });
+
+        document.querySelectorAll('.plus-btn-local').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const itemId = e.target.dataset.itemId;
+                updateLocalStorageQuantity(itemId, 1);
+            });
+        });
+
+        document.querySelectorAll('.quantity-input-local').forEach(input => {
+            input.addEventListener('change', (e) => {
+                const itemId = e.target.dataset.itemId;
+                const newQuantity = parseInt(e.target.value);
+                if (newQuantity > 0) {
+                    setLocalStorageQuantity(itemId, newQuantity);
+                } else {
+                    removeFromLocalStorage(itemId);
+                }
+            });
+        });
+
+        // Remove buttons for localStorage items
+        document.querySelectorAll('.remove-item-btn-local').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const itemId = e.target.dataset.itemId;
+                removeFromLocalStorage(itemId);
+            });
+        });
+    }
+
+    // Update localStorage item quantity
+    function updateLocalStorageQuantity(itemId, change) {
+        let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const itemIndex = cart.findIndex(item => (item.id || `local-${cart.indexOf(item)}`) === itemId);
+        
+        if (itemIndex > -1) {
+            cart[itemIndex].quantity = Math.max(1, (cart[itemIndex].quantity || 1) + change);
+            localStorage.setItem('cartItems', JSON.stringify(cart));
+            loadLocalStorageCart(); // Refresh display
+        }
+    }
+
+    // Set localStorage item quantity
+    function setLocalStorageQuantity(itemId, quantity) {
+        let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const itemIndex = cart.findIndex(item => (item.id || `local-${cart.indexOf(item)}`) === itemId);
+        
+        if (itemIndex > -1) {
+            cart[itemIndex].quantity = quantity;
+            localStorage.setItem('cartItems', JSON.stringify(cart));
+            loadLocalStorageCart(); // Refresh display
+        }
+    }
+
+    // Remove item from localStorage
+    function removeFromLocalStorage(itemId) {
+        if (!confirm('Are you sure you want to remove this item from your cart?')) {
+            return;
+        }
+        
+        let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        cart = cart.filter(item => (item.id || `local-${cart.indexOf(item)}`) !== itemId);
+        localStorage.setItem('cartItems', JSON.stringify(cart));
+        loadLocalStorageCart(); // Refresh display
+        
+        // Update cart icon count
+        if (typeof window.updateCartIconCount === 'function') {
+            window.updateCartIconCount();
+        }
+    }
+
+    // Add event listeners to cart controls (for server cart)
     function addCartEventListeners() {
         // Quantity controls
         document.querySelectorAll('.minus-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const itemId = e.target.dataset.itemId;
-                const input = document.querySelector(`.quantity-input[data-item-id="${itemId}"]`);
-                const newQuantity = Math.max(1, parseInt(input.value) - 1);
-                updateCartItemQuantity(itemId, newQuantity);
+                const quantityInput = document.querySelector(`input[data-item-id="${itemId}"]`);
+                const currentQuantity = parseInt(quantityInput.value);
+                
+                if (currentQuantity > 1) {
+                    updateCartItemQuantity(itemId, currentQuantity - 1);
+                } else {
+                    removeFromCart(itemId);
+                }
             });
         });
 
         document.querySelectorAll('.plus-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const itemId = e.target.dataset.itemId;
-                const input = document.querySelector(`.quantity-input[data-item-id="${itemId}"]`);
-                const newQuantity = parseInt(input.value) + 1;
-                updateCartItemQuantity(itemId, newQuantity);
-            });
-        });
-
-        document.querySelectorAll('.quantity-input').forEach(input => {
-            input.addEventListener('change', (e) => {
-                const itemId = e.target.dataset.itemId;
-                const newQuantity = Math.max(1, parseInt(e.target.value));
-                updateCartItemQuantity(itemId, newQuantity);
+                const quantityInput = document.querySelector(`input[data-item-id="${itemId}"]`);
+                const currentQuantity = parseInt(quantityInput.value);
+                const maxQuantity = parseInt(quantityInput.max);
+                
+                if (currentQuantity < maxQuantity) {
+                    updateCartItemQuantity(itemId, currentQuantity + 1);
+                } else {
+                    alert('Cannot add more items. Stock limit reached.');
+                }
             });
         });
 
@@ -166,7 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Update cart item quantity
+    // Update cart item quantity (for server cart)
     function updateCartItemQuantity(itemId, quantity) {
         fetch('../handlers/cart.handler.php', {
             method: 'PUT',
@@ -182,10 +449,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                loadCartFromServer(); // Reload cart
-                updateCartIconCount(); // Update header cart count
+                loadCart(); // Refresh cart
             } else {
-                alert('Failed to update cart: ' + (data.message || 'Unknown error'));
+                console.error('Failed to update cart:', data.message);
+                alert('Failed to update cart. Please try again.');
             }
         })
         .catch(error => {
@@ -194,10 +461,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Remove item from cart
+    // Remove item from cart (for server cart)
     function removeFromCart(itemId) {
-        console.log('Attempting to remove item:', itemId); // Debug log
-        
         if (!confirm('Are you sure you want to remove this item from your cart?')) {
             return;
         }
@@ -214,66 +479,17 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Remove response:', data); // Debug log
             if (data.success) {
-                loadCartFromServer(); // Reload cart
-                updateCartIconCount(); // Update header cart count
-                alert('Item removed from cart');
+                loadCart(); // Refresh cart
             } else {
-                alert('Failed to remove item: ' + (data.message || 'Unknown error'));
+                console.error('Failed to remove item:', data.message);
+                alert('Failed to remove item. Please try again.');
             }
         })
         .catch(error => {
-            console.error('Error removing from cart:', error);
+            console.error('Error removing item:', error);
             alert('Error removing item. Please try again.');
         });
-    }
-
-    // Show empty cart
-    function showEmptyCart() {
-        cartItemsList.style.display = 'none';
-        cartSummary.style.display = 'none';
-        emptyCartMessage.style.display = 'block';
-    }
-
-    // Fallback to localStorage cart
-    function loadLocalStorageCart() {
-        const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-        if (cart.length === 0) {
-            showEmptyCart();
-            return;
-        }
-
-        cartItemsList.style.display = 'block';
-        cartSummary.style.display = 'block';
-        cartItemsList.innerHTML = '';
-
-        let subtotal = 0;
-        cart.forEach(item => {
-            const itemPriceValue = parseFloat(item.price.replace('₱', '').replace(',', ''));
-            subtotal += itemPriceValue * item.quantity;
-
-            // Use the same image path resolution for localStorage items
-            const imageUrl = resolveImagePath(item.image);
-
-            const itemElement = document.createElement('div');
-            itemElement.className = 'cart-item';
-            itemElement.innerHTML = `
-                <img src="${imageUrl}" alt="${item.name}" class="cart-item-image" 
-                     onerror="this.src='../assets/img/placeholder.jpg'">
-                <div class="cart-item-details">
-                    <h3>${item.name}</h3>
-                    <p>₱${itemPriceValue.toFixed(2)} x ${item.quantity}</p>
-                </div>
-                <div class="cart-item-controls">
-                    <span>Local Storage Cart</span>
-                </div>
-            `;
-            cartItemsList.appendChild(itemElement);
-        });
-
-        cartSubtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
-        cartTotalElement.textContent = `₱${subtotal.toFixed(2)}`;
     }
 
     // Generate random IP
@@ -283,24 +499,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Open receipt overlay
     function openReceiptOverlay() {
-        if (!currentCartData || !currentCartData.items.length) {
+        if (!currentCartData || !currentCartData.items || currentCartData.items.length === 0) {
             alert('Your cart is empty!');
             return;
         }
 
-        receiptItems.innerHTML = '';
+        if (receiptItems) receiptItems.innerHTML = '';
+        
         currentCartData.items.forEach(item => {
-            const totalPrice = item.quantity * item.price_at_time;
-            receiptItems.innerHTML += `
-                <p>
-                    <strong>Item:</strong> ${item.name}<br>
-                    <strong>Quantity:</strong> ${item.quantity}<br>
-                    <strong>Price:</strong> ₱${totalPrice.toFixed(2)}
-                </p>
+            const itemDiv = document.createElement('div');
+            
+            // Handle both server and localStorage item formats
+            const itemName = item.name || 'Unknown Item';
+            const itemQuantity = item.quantity || 1;
+            const itemPrice = item.price_at_time || parseFloat((item.price || '0').replace('₱', '').replace(',', ''));
+            const itemTotal = itemQuantity * itemPrice;
+            
+            itemDiv.innerHTML = `
+                <p><strong>${itemName}</strong></p>
+                <p>Quantity: ${itemQuantity}</p>
+                <p>Price: ₱${itemPrice.toFixed(2)} each</p>
+                <p>Total: ₱${itemTotal.toFixed(2)}</p>
+                <hr>
             `;
+            if (receiptItems) receiptItems.appendChild(itemDiv);
         });
 
-        receiptTotalPrice.textContent = currentCartData.total.toFixed(2);
+        if (receiptTotalPrice) receiptTotalPrice.textContent = currentCartData.total.toFixed(2);
         
         // Get customer name from session or default
         fetch('../handlers/check-session.handler.php', {
@@ -309,97 +534,74 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if (data.success && data.logged_in) {
-                receiptCustomerName.textContent = data.user.username || 'Member';
+                if (receiptCustomerName) receiptCustomerName.textContent = data.user.username;
             } else {
-                receiptCustomerName.textContent = 'Guest';
+                if (receiptCustomerName) receiptCustomerName.textContent = 'Guest User';
             }
         })
         .catch(() => {
-            receiptCustomerName.textContent = 'Guest';
+            if (receiptCustomerName) receiptCustomerName.textContent = 'Guest User';
         });
 
-        receiptIPAddress.textContent = generateRandomIP();
-        receiptOverlay.style.display = 'flex';
+        if (receiptIPAddress) receiptIPAddress.textContent = generateRandomIP();
+        if (receiptOverlay) receiptOverlay.style.display = 'flex';
     }
 
     // Close receipt overlay
     function closeReceiptOverlay() {
-        receiptOverlay.style.display = 'none';
+        if (receiptOverlay) receiptOverlay.style.display = 'none';
     }
 
     // Complete checkout
     function completeCheckout() {
-        if (!currentCartData || !currentCartData.items.length) {
+        if (!currentCartData || !currentCartData.items || currentCartData.items.length === 0) {
             alert('Your cart is empty!');
             return;
         }
 
-        // Create receipt data in the format expected by the handler
-        const receiptData = {
-            total_amount: currentCartData.total,
-            tax_amount: currentCartData.total * 0.10, // 10% tax
-            shipping_address: receiptIPAddress.textContent,
-            billing_address: receiptIPAddress.textContent,
-            payment_method: 'cash',
-            payment_status: 'completed',
-            order_status: 'processing',
-            notes: 'Cart checkout order',
-            items: currentCartData.items.map(item => ({
-                item_id: item.item_id,
-                item_name: item.name,
-                item_description: item.description || '',
-                quantity: item.quantity,
-                unit_price: item.price_at_time,
-                total_price: item.quantity * item.price_at_time,
-                seller_name: item.seller_name || 'Unknown'
-            }))
-        };
-
-        console.log('Sending receipt data:', receiptData); // Debug log
-
-        fetch('../handlers/receipt.handler.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(receiptData),
-            credentials: 'same-origin'
-        })
-        .then(response => {
-            console.log('Receipt response status:', response.status);
-            return response.json();
-        })
-        .then(data => {
-            console.log('Receipt response:', data); // Debug log
-            if (data.success) {
-                // Show success message with receipt details
-                alert(`Order completed successfully!\nReceipt #${data.data.receipt_number || 'Generated'}\nTotal: ₱${currentCartData.total.toFixed(2)}`);
-                
-                // Close overlay and reload cart
-                closeReceiptOverlay();
-                loadCartFromServer(); // Reload cart (should be empty now)
-                updateCartIconCount(); // Update header cart count
-                
-                // Optionally redirect to a receipt page or show detailed receipt
-                if (data.data.receipt_id) {
-                    // You can redirect to a receipt detail page if you have one
-                    // window.location.href = `receipt.php?id=${data.data.receipt_id}`;
-                }
-            } else {
-                console.error('Receipt creation failed:', data.message);
-                alert('Failed to complete order: ' + (data.message || 'Unknown error'));
+        // Handle different checkout methods based on cart source
+        if (currentCartData.source === 'localStorage') {
+            // For localStorage carts, just clear the cart and show success
+            localStorage.removeItem('cartItems');
+            alert('Order completed successfully!');
+            closeReceiptOverlay();
+            loadCart(); // Refresh to show empty cart
+            
+            // Update cart icon count
+            if (typeof window.updateCartIconCount === 'function') {
+                window.updateCartIconCount();
             }
-        })
-        .catch(error => {
-            console.error('Error completing checkout:', error);
-            alert('Error completing order. Please try again.');
-        });
-    }
+        } else {
+            // For server carts, use the receipt handler
+            const checkoutData = {
+                items: currentCartData.items,
+                total_amount: currentCartData.total,
+                shipping_address: receiptIPAddress ? receiptIPAddress.textContent : 'Unknown',
+                payment_method: 'cash'
+            };
 
-    // Update cart icon count in header
-    function updateCartIconCount() {
-        if (typeof window.updateCartIconCount === 'function') {
-            window.updateCartIconCount();
+            fetch('../handlers/receipt.handler.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(checkoutData),
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Order completed successfully!');
+                    closeReceiptOverlay();
+                    loadCart(); // Refresh to show empty cart
+                } else {
+                    alert('Checkout failed: ' + (data.message || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Checkout error:', error);
+                alert('Checkout failed. Please try again.');
+            });
         }
     }
 
@@ -417,5 +619,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Initialize cart
-    loadCartFromServer();
+    console.log('Initializing cart...');
+    loadCart();
 });
