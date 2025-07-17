@@ -65,7 +65,7 @@ class CartUtil extends DatabaseUtil {
     }
     
     /**
-     * Clear entire cart
+     * Clear entire cart for session
      * @param string $sessionToken
      * @return bool
      */
@@ -109,6 +109,32 @@ class CartUtil extends DatabaseUtil {
         }
         
         return 0;
+    }
+    
+    /**
+     * Remove item from cart
+     * @param string $sessionToken
+     * @param int $itemId
+     * @return bool
+     */
+    public static function removeFromCart($sessionToken, $itemId) {
+        $query = "DELETE FROM cart WHERE session_token = $1 AND item_id = $2";
+        $result = self::executeQuery($query, [$sessionToken, $itemId]);
+        return $result['success'];
+    }
+
+    /**
+     * Update cart item quantity
+     * @param string $sessionToken
+     * @param int $itemId
+     * @param int $quantity
+     * @return bool
+     */
+    public static function updateCartItemQuantity($sessionToken, $itemId, $quantity) {
+        $query = "UPDATE cart SET quantity = $1, updated_at = CURRENT_TIMESTAMP 
+                  WHERE session_token = $2 AND item_id = $3";
+        $result = self::executeQuery($query, [$quantity, $sessionToken, $itemId]);
+        return $result['success'];
     }
 }
 ?>
