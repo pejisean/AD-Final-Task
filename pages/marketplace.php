@@ -11,11 +11,11 @@
 
 <?php 
 require_once '../components/dropdown.component.php';
-require_once '../utils/item.util.php';
-require_once '../utils/imagePath.util.php'; 
+require_once '../utils/marketplace.util.php'; // Use the new util
 
-// Get items from database
-$items = ItemUtil::getItems(['source' => 'marketplace'], 50, 0);
+// Get items using the marketplace util
+$items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
+$formattedItems = MarketplaceUtil::formatItemsForDisplay($items, 'pages');
 ?>
 
 <main class="marketplace-container">
