@@ -143,9 +143,33 @@ main.signup-container {
     text-decoration: underline;
 }
 
-.input-error-message, .info-message {
-    min-height: 1.2em;
+.input-error-message {
+    color: #ff4757;
+    font-size: 0.9em;
     margin-top: 5px;
+    display: block;
+    min-height: 20px;
+}
+
+.info-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+.success-message {
+    background-color: #2ed573;
+    color: #0A1215;
+    border: 1px solid #26d469;
+}
+
+.error-message {
+    background-color: #ff4757;
+    color: #ffffff;
+    border: 1px solid #ff3742;
 }
 
 @media (max-width: 600px) {
