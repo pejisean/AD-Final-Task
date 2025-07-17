@@ -12,9 +12,6 @@ try {
     
     // Include required utilities
     require_once UTILS_PATH . '/envSetter.util.php';
-    require_once HANDLERS_PATH . '/database.handler.php';
-    require_once UTILS_PATH . '/user.util.php';
-    require_once UTILS_PATH . '/auth.util.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
@@ -39,26 +36,51 @@ try {
             exit();
         }
 
-        // Test database connection (but don't close it)
-        $connection = ConnectDB();
-        if (!$connection) {
+        // Use the same connection method as the seeder utilities
+        $dsn = "pgsql:host={$pgConfig['pg_host']};port={$pgConfig['pg_port']};dbname={$pgConfig['pg_db']}";
+        $pdo = new PDO($dsn, $pgConfig['pg_user'], $pgConfig['pg_pass'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ]);
+
+        // Find user by username
+        $query = "SELECT id, username, password, role FROM users WHERE username = ? AND is_active = true";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user) {
             echo json_encode([
                 'success' => false,
-                'message' => 'Database connection failed'
+                'message' => 'Invalid username or password'
             ]);
             exit();
         }
-        
-        // Close the test connection since DatabaseUtil will create its own
-        pg_close($connection);
 
-        // Attempt login using AuthUtil (this will create new connections as needed)
-        $result = AuthUtil::login($username, $password);
-        
-        // Log the result for debugging
-        error_log("Login result: " . json_encode($result));
-        
-        echo json_encode($result);
+        // Verify password
+        if (!password_verify($password, $user['password'])) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Invalid username or password'
+            ]);
+            exit();
+        }
+
+        // Start session and store user data
+        session_start();
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role'];
+        $_SESSION['logged_in'] = true;
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Login successful',
+            'user' => [
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'role' => $user['role']
+            ]
+        ]);
         
     } else {
         echo json_encode([
@@ -67,21 +89,23 @@ try {
         ]);
     }
 
+} catch (PDOException $e) {
+    error_log("Database error in login: " . $e->getMessage());
+    echo json_encode([
+        'success' => false,
+        'message' => 'Database error occurred. Please try again.'
+    ]);
 } catch (Error $e) {
     error_log("Fatal Error in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Fatal Error: ' . $e->getMessage(),
-        'file' => basename($e->getFile()),
-        'line' => $e->getLine()
+        'message' => 'Server error occurred. Please try again.'
     ]);
 } catch (Exception $e) {
     error_log("Exception in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Exception: ' . $e->getMessage(),
-        'file' => basename($e->getFile()),
-        'line' => $e->getLine()
+        'message' => 'An error occurred. Please try again.'
     ]);
 }
 ?>
