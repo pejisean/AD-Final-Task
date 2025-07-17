@@ -13,6 +13,16 @@
 require_once '../components/dropdown.component.php';
 require_once '../utils/marketplace.util.php';
 require_once '../utils/imagePath.util.php';
+require_once '../utils/auth.util.php';
+
+// Debug: Check session status
+error_log("Marketplace page - Session check:");
+error_log("Session ID: " . session_id());
+error_log("Is logged in: " . (AuthUtil::isLoggedIn() ? 'YES' : 'NO'));
+if (AuthUtil::isLoggedIn()) {
+    $user = AuthUtil::getCurrentUser();
+    error_log("Current user: " . json_encode($user));
+}
 
 // Get items using the marketplace util
 $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
@@ -28,11 +38,9 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
         <div class="marketplace-grid" id="marketplaceGrid">
             <?php if (!empty($items)): ?>
                 <?php foreach ($items as $item): ?>
-                    <div class="product-card" 
-                         data-name="<?= htmlspecialchars($item['name']) ?>" 
-                         data-price="<?= number_format($item['price'], 2) ?>"
-                         data-description="<?= htmlspecialchars($item['description']) ?>"
-                         data-item-id="<?= $item['id'] ?>">
+                    <div class="marketplace-item" 
+                         data-item-id="<?= $item['id'] ?>"
+                         data-description="<?= htmlspecialchars($item['description']) ?>">
                         <div class="item-image">
                             <?php 
                             // Use the improved getWebPath method with existence check
@@ -45,14 +53,14 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
                             <div class="item-overlay">
                                 <p class="item-name"><?= htmlspecialchars($item['name']) ?></p>
                                 <p class="item-price">₱<?= number_format($item['price'], 2) ?></p>
+                                <div class="item-actions">
+                                    <button class="more-info-btn">More Info</button>
+                                    <button class="buy-now-btn" 
+                                            data-item-name="<?= htmlspecialchars($item['name']) ?>" 
+                                            data-item-price="<?= $item['price'] ?>"
+                                            data-item-id="<?= $item['id'] ?>">Buy Now</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="item-bottom-actions">
-                            <button class="more-info-btn">More Info</button>
-                            <button class="buy-now-btn" 
-                                    data-item-name="<?= htmlspecialchars($item['name']) ?>" 
-                                    data-item-price="<?= $item['price'] ?>"
-                                    data-item-id="<?= $item['id'] ?>">Buy Now</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -135,6 +143,14 @@ window.MARKETPLACE_CONFIG = {
     ],
     BASE_PATH: '<?= BASE_PATH ?>'
 };
+</script>
+
+<!-- Add debug console output -->
+<script>
+console.log('Marketplace page debug info:');
+console.log('Session ID from PHP: <?= session_id() ?>');
+console.log('Is logged in from PHP: <?= AuthUtil::isLoggedIn() ? "true" : "false" ?>');
+console.log('localStorage loggedInCodename:', localStorage.getItem('loggedInCodename'));
 </script>
 
 <?php include '../components/feedback.component.php'; ?>

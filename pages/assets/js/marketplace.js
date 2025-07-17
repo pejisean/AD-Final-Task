@@ -70,26 +70,53 @@
 
         function handleAddItem() {
             console.log('Checking session...');
+            
+            // First check localStorage for logged in status
+            const loggedInCodename = localStorage.getItem('loggedInCodename');
+            console.log('localStorage loggedInCodename:', loggedInCodename);
+            
+            if (loggedInCodename) {
+                // User appears to be logged in via localStorage, open modal
+                console.log('User logged in via localStorage, opening modal');
+                addItemModal.style.display = 'flex';
+                return;
+            }
+            
+            // Also check server session as backup
             fetch('../handlers/check-session.handler.php', {
-                credentials: 'same-origin'
+                method: 'GET',
+                credentials: 'same-origin',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
             })
             .then(response => {
                 console.log('Session response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 return response.json();
             })
             .then(data => {
                 console.log('Session data:', data);
                 if (data.success && data.logged_in) {
+                    console.log('User logged in via session, opening modal');
                     addItemModal.style.display = 'flex';
-                    console.log('Modal should be visible now');
                 } else {
-                    alert('You must be logged in to add items to the marketplace.');
+                    console.log('User not logged in via session');
+                    alert('You must be logged in to add items to the marketplace. Please log in first.');
                 }
             })
             .catch(error => {
                 console.error('Session check failed:', error);
-                // Still allow modal to open for testing
-                addItemModal.style.display = 'flex';
+                // If session check fails, but localStorage shows logged in, allow it
+                if (loggedInCodename) {
+                    console.log('Session check failed but localStorage shows logged in, allowing modal');
+                    addItemModal.style.display = 'flex';
+                } else {
+                    alert('Session check failed. Please refresh the page and try again.');
+                }
             });
         }
 
@@ -121,26 +148,45 @@
         }
 
         function uploadImage(formData, imageFile) {
-            const imageFormData = new FormData();
-            imageFormData.append('image', imageFile);
+            const uploadFormData = new FormData();
+            uploadFormData.append('image', imageFile);
+            uploadFormData.append('type', 'marketplace');
+
+            console.log('Uploading image...');
 
             fetch('../handlers/upload.handler.php', {
                 method: 'POST',
-                body: imageFormData,
-                signal: AbortSignal.timeout(30000)
+                body: uploadFormData,
+                credentials: 'same-origin'
             })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-                    createItem(formData, result.image_url);
-                } else {
-                    alert('Upload failed: ' + result.message);
+            .then(response => {
+                console.log('Upload response status:', response.status);
+                return response.text();
+            })
+            .then(text => {
+                console.log('Raw upload response:', text);
+                try {
+                    const result = JSON.parse(text);
+                    console.log('Parsed upload result:', result);
+                    
+                    if (result.success) {
+                        console.log('Image uploaded successfully:', result.data.url);
+                        createItem(formData, result.data.url);
+                    } else {
+                        console.error('Upload failed:', result.message);
+                        alert('Failed to upload image: ' + result.message);
+                        resetForm();
+                    }
+                } catch (e) {
+                    console.error('JSON parse error:', e);
+                    console.error('Response text:', text);
+                    alert('Server error during image upload.');
                     resetForm();
                 }
             })
             .catch(error => {
-                console.error('Upload error:', error);
-                alert('Upload failed. Please try again.');
+                console.error('Error uploading image:', error);
+                alert('Failed to upload image: ' + error.message);
                 resetForm();
             });
         }
@@ -180,6 +226,7 @@
                     if (result.success) {
                         alert('Item added successfully!');
                         closeModal();
+                        // Refresh the page to show the new item
                         window.location.reload();
                     } else {
                         // Show detailed error information
@@ -211,13 +258,24 @@
 
         function handleMoreInfo(event) {
             event.preventDefault();
-            const card = event.target.closest('.product-card');
-            const itemName = card.dataset.name;
-            const itemDescription = card.dataset.description;
-
-            document.getElementById('descriptionModalTitle').textContent = itemName;
-            document.getElementById('descriptionModalText').textContent = itemDescription;
-            itemDescriptionModal.style.display = 'flex';
+            
+            const button = event.target;
+            const itemCard = button.closest('.marketplace-item');
+            const itemName = itemCard.querySelector('.item-name').textContent;
+            const itemPrice = itemCard.querySelector('.item-price').textContent;
+            const itemDescription = itemCard.dataset.description || 'No description available';
+            
+            if (itemDescriptionModal) {
+                const titleElement = itemDescriptionModal.querySelector('.modal-title');
+                const priceElement = itemDescriptionModal.querySelector('.modal-price');
+                const descriptionElement = itemDescriptionModal.querySelector('.modal-description');
+                
+                if (titleElement) titleElement.textContent = itemName;
+                if (priceElement) priceElement.textContent = itemPrice;
+                if (descriptionElement) descriptionElement.textContent = itemDescription;
+                
+                itemDescriptionModal.style.display = 'flex';
+            }
         }
 
         function handleBuyNow(event) {
