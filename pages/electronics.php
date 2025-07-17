@@ -27,8 +27,9 @@
                 <div class="showcase-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="20,000mAh Dual-Port Power Bank"
                         data-item-price="1850.00">Buy Now</a>
+                    <!-- Power Bank -->
                     <a class="add-cart-btn" href="#" data-item-name="20,000mAh Dual-Port Power Bank"
-                        data-item-price="1850.00">Add to Cart</a>
+                        data-item-price="1850.00" data-item-image="assets/img/electronics/powerbank.png">Add to Cart</a>
                 </div>
             </div>
         </section>
@@ -42,8 +43,10 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="Heavy-Duty Jumper Cables (8-Gauge)"
                             data-item-price="1500.00">Buy Now</a>
+                        <!-- Jumper Cables -->
                         <a class="add-cart-btn" href="#" data-item-name="Heavy-Duty Jumper Cables (8-Gauge)"
-                            data-item-price="1500.00">Add to Cart</a>
+                            data-item-price="1500.00" data-item-image="assets/img/electronics/jumper.png">Add to
+                            Cart</a>
                     </div>
                 </div>
             </section>
@@ -58,7 +61,7 @@
                             data-item-price="1250.00">Buy Now</a>
                         <!-- Smart Surge Protector Power Strip -->
                         <a class="add-cart-btn" href="#" data-item-name="Smart Surge Protector Power Strip"
-                            data-item-price="1250.00">Add to Cart</a>
+                            data-item-price="1250.00" data-item-image="assets/img/electronics/surge.png">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -90,8 +93,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Digital Multimeter"
                         data-item-price="950.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Digital Multimeter" data-item-price="950.00">Add to
-                        Cart</a>
+                    <!-- Digital Multimeter -->
+                    <a class="add-cart-btn" href="#" data-item-name="Digital Multimeter" data-item-price="950.00"
+                        data-item-image="assets/img/electronics/multimeter.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -104,8 +108,8 @@
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Rechargeable LED Headlamp"
                         data-item-price="850.00">Buy Now</a>
                     <!-- Rechargeable LED Headlamp -->
-                    <a class="add-cart-btn" href="#" data-item-name="Rechargeable LED Headlamp"
-                        data-item-price="850.00">Add to Cart</a>
+                    <a class="add-cart-btn" href="#" data-item-name="Rechargeable LED Headlamp" data-item-price="850.00"
+                        data-item-image="assets/img/electronics/led.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -117,9 +121,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Automatic Circuit Breaker (20A)"
                         data-item-price="450.00">Buy Now</a>
+                    <!-- Automatic Circuit Breaker -->
                     <a class="add-cart-btn" href="#" data-item-name="Automatic Circuit Breaker (20A)"
-                        data-item-price="450.00">Add to Cart</a>
-
+                        data-item-price="450.00" data-item-image="assets/img/electronics/circuit.png">Add to Cart</a>
 
                 </div>
             </div>
@@ -132,8 +136,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="CR2032 Lithium Coin Batteries (10-Pack)"
                         data-item-price="350.00">Buy Now</a>
+                    <!-- CR2032 Lithium Coin Batteries -->
                     <a class="add-cart-btn" href="#" data-item-name="CR2032 Lithium Coin Batteries (10-Pack)"
-                        data-item-price="350.00">Add to Cart</a>
+                        data-item-price="350.00" data-item-image="assets/img/electronics/lithium.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -151,9 +156,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="AA Alkaline Batteries (24-Pack)"
                         data-item-price="750.00">Buy Now</a>
-                    <!-- AA Alkaline Batteries (24-Pack) -->
+                    <!-- AA Alkaline Batteries -->
                     <a class="add-cart-btn" href="#" data-item-name="AA Alkaline Batteries (24-Pack)"
-                        data-item-price="750.00">Add to Cart</a>
+                        data-item-price="750.00" data-item-image="assets/img/electronics/aa.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -165,9 +170,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="AAA Alkaline Batteries (24-Pack)"
                         data-item-price="750.00">Buy Now</a>
-                    <!-- AAA Alkaline Batteries (24-Pack) -->
+                    <!-- AAA Alkaline Batteries -->
                     <a class="add-cart-btn" href="#" data-item-name="AAA Alkaline Batteries (24-Pack)"
-                        data-item-price="750.00">Add to Cart</a>
+                        data-item-price="750.00" data-item-image="assets/img/electronics/aaa.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -181,7 +186,7 @@
                         data-item-price="1200.00">Buy Now</a>
                     <!-- 10,000mAh Slim Power Bank -->
                     <a class="add-cart-btn" href="#" data-item-name="10,000mAh Slim Power Bank"
-                        data-item-price="1200.00">Add to Cart</a>
+                        data-item-price="1200.00" data-item-image="assets/img/electronics/slimpower.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -194,8 +199,9 @@
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Heavy-Duty Extension Cord (10-meter)"
                         data-item-price="900.00">Buy Now</a>
                     <!-- Heavy-Duty Extension Cord (10-meter) -->
+                    <!-- Heavy-Duty Extension Cord -->
                     <a class="add-cart-btn" href="#" data-item-name="Heavy-Duty Extension Cord (10-meter)"
-                        data-item-price="900.00">Add to Cart</a>
+                        data-item-price="900.00" data-item-image="assets/img/electronics/extension.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -209,7 +215,8 @@
                         data-item-price="1100.00">Buy Now</a>
                     <!-- Rechargeable LED Flashlight -->
                     <a class="add-cart-btn" href="#" data-item-name="Rechargeable LED Flashlight"
-                        data-item-price="1100.00">Add to Cart</a>
+                        data-item-price="1100.00" data-item-image="assets/img/electronics/ledflash.png">Add to Cart</a>
+
                 </div>
             </div>
         </div>
@@ -221,9 +228,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="9V Alkaline Batteries (4-Pack)"
                         data-item-price="550.00">Buy Now</a>
-                    <!-- 9V Alkaline Batteries (4-Pack) -->
+                    <!-- 9V Alkaline Batteries -->
                     <a class="add-cart-btn" href="#" data-item-name="9V Alkaline Batteries (4-Pack)"
-                        data-item-price="550.00">Add to Cart</a>
+                        data-item-price="550.00" data-item-image="assets/img/electronics/9v.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -235,9 +242,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Alligator Clip Jumper Wires (Set of 10)"
                         data-item-price="300.00">Buy Now</a>
-                    <!-- Alligator Clip Jumper Wires (Set of 10) -->
+                    <!-- Alligator Clip Jumper Wires -->
                     <a class="add-cart-btn" href="#" data-item-name="Alligator Clip Jumper Wires (Set of 10)"
-                        data-item-price="300.00">Add to Cart</a>
+                        data-item-price="300.00" data-item-image="assets/img/electronics/alligator.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -249,9 +256,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="LED Emergency Light with Battery Backup"
                         data-item-price="950.00">Buy Now</a>
-                    <!-- LED Emergency Light with Battery Backup -->
+                    <!-- LED Emergency Light -->
                     <a class="add-cart-btn" href="#" data-item-name="LED Emergency Light with Battery Backup"
-                        data-item-price="950.00">Add to Cart</a>
+                        data-item-price="950.00" data-item-image="assets/img/electronics/emergency.png">Add to Cart</a>
                 </div>
             </div>
         </div>

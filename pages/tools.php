@@ -26,8 +26,9 @@
                 <div class="showcase-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="36-inch 'Breacher' Halligan Bar"
                         data-item-price="7500.00">Buy Now</a>
+                    <!-- 36-inch "Breacher" Halligan Bar -->
                     <a class="add-cart-btn" href="#" data-item-name="36-inch 'Breacher' Halligan Bar"
-                        data-item-price="7500.00">Add to Cart</a>
+                        data-item-price="7500.00" data-item-image="assets/img/tools/breacher.png">Add to Cart</a>
 
 
                 </div>
@@ -43,8 +44,9 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="Heavy-Duty Bolt Cutters (30-inch)"
                             data-item-price="4200.00">Buy Now</a>
+                        <!-- Heavy-Duty Bolt Cutters (30-inch) -->
                         <a class="add-cart-btn" href="#" data-item-name="Heavy-Duty Bolt Cutters (30-inch)"
-                            data-item-price="4200.00">Add to Cart</a>
+                            data-item-price="4200.00" data-item-image="assets/img/tools/bolt.png">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -57,8 +59,9 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="Carpenter's Manual Hand Drill Set"
                             data-item-price="3200.00">Buy Now</a>
+                        <!-- Carpenter's Manual Hand Drill Set -->
                         <a class="add-cart-btn" href="#" data-item-name="Carpenter's Manual Hand Drill Set"
-                            data-item-price="3200.00">Add to Cart</a>
+                            data-item-price="3200.00" data-item-image="assets/img/tools/hand.png">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -89,8 +92,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Professional Lockpick Set (24-Piece)"
                         data-item-price="3500.00">Buy Now</a>
+                    <!-- Professional Lockpick Set (24-Piece) -->
                     <a class="add-cart-btn" href="#" data-item-name="Professional Lockpick Set (24-Piece)"
-                        data-item-price="3500.00">Add to Cart</a>
+                        data-item-price="3500.00" data-item-image="assets/img/tools/lockpick.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -102,8 +106,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Collapsible Folding Saw"
                         data-item-price="1600.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Collapsible Folding Saw"
-                        data-item-price="1600.00">Add to Cart</a>
+                    <!-- Collapsible Folding Saw -->
+                    <a class="add-cart-btn" href="#" data-item-name="Collapsible Folding Saw" data-item-price="1600.00"
+                        data-item-image="assets/img/tools/saw.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -115,8 +120,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Titanium Pry Bar"
                         data-item-price="2200.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Titanium Pry Bar" data-item-price="2200.00">Add to
-                        Cart</a>
+                    <!-- Titanium Pry Bar -->
+                    <a class="add-cart-btn" href="#" data-item-name="Titanium Pry Bar" data-item-price="2200.00"
+                        data-item-image="assets/img/tools/pry.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -128,8 +134,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Engineer's Hammer (4 lb)"
                         data-item-price="1250.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Engineer's Hammer (4 lb)"
-                        data-item-price="1250.00">Add to Cart</a>
+                    <!-- Engineer's Hammer (4 lb) -->
+                    <a class="add-cart-btn" href="#" data-item-name="Engineer's Hammer (4 lb)" data-item-price="1250.00"
+                        data-item-image="assets/img/tools/hammer.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -148,8 +155,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="24-inch Go-Bar (Crowbar)"
                         data-item-price="1800.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="24-inch Go-Bar (Crowbar)"
-                        data-item-price="1800.00">Add to Cart</a>
+                    <!-- 24-inch Go-Bar (Crowbar) -->
+                    <a class="add-cart-btn" href="#" data-item-name="24-inch Go-Bar (Crowbar)" data-item-price="1800.00"
+                        data-item-image="assets/img/tools/crowbar.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -161,8 +169,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Forged Steel Splitting Axe"
                         data-item-price="4800.00">Buy Now</a>
+                    <!-- Forged Steel Splitting Axe -->
                     <a class="add-cart-btn" href="#" data-item-name="Forged Steel Splitting Axe"
-                        data-item-price="4800.00">Add to Cart</a>
+                        data-item-price="4800.00" data-item-image="assets/img/tools/axe.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -174,8 +183,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="10-lb Sledgehammer"
                         data-item-price="2500.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="10-lb Sledgehammer" data-item-price="2500.00">Add
-                        to Cart</a>
+                    <!-- 10-lb Sledgehammer -->
+                    <a class="add-cart-btn" href="#" data-item-name="10-lb Sledgehammer" data-item-price="2500.00"
+                        data-item-image="assets/img/tools/sledgehammer.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -187,8 +197,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="All-Purpose Tactical Tomahawk"
                         data-item-price="4100.00">Buy Now</a>
+                    <!-- All-Purpose Tactical Tomahawk -->
                     <a class="add-cart-btn" href="#" data-item-name="All-Purpose Tactical Tomahawk"
-                        data-item-price="4100.00">Add to Cart</a>
+                        data-item-price="4100.00" data-item-image="assets/img/tools/tomahawk.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -200,8 +211,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Folding Trench Shovel w/ Pick"
                         data-item-price="1950.00">Buy Now</a>
+                    <!-- Folding Trench Shovel w/ Pick -->
                     <a class="add-cart-btn" href="#" data-item-name="Folding Trench Shovel w/ Pick"
-                        data-item-price="1950.00">Add to Cart</a>
+                        data-item-price="1950.00" data-item-image="assets/img/tools/trench.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -213,8 +225,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Dual-Grit Sharpening Stone Kit"
                         data-item-price="1500.00">Buy Now</a>
+                    <!-- Dual-Grit Sharpening Stone Kit -->
                     <a class="add-cart-btn" href="#" data-item-name="Dual-Grit Sharpening Stone Kit"
-                        data-item-price="1500.00">Add to Cart</a>
+                        data-item-price="1500.00" data-item-image="assets/img/tools/dual.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -226,8 +239,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Heavy Leather Work Gloves"
                         data-item-price="950.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Heavy Leather Work Gloves"
-                        data-item-price="950.00">Add to Cart</a>
+                    <!-- Heavy Leather Work Gloves -->
+                    <a class="add-cart-btn" href="#" data-item-name="Heavy Leather Work Gloves" data-item-price="950.00"
+                        data-item-image="assets/img/tools/gloves.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -239,8 +253,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Mechanic's Wrench & Socket Roll"
                         data-item-price="5500.00">Buy Now</a>
+                    <!-- Mechanic's Wrench & Socket Roll -->
                     <a class="add-cart-btn" href="#" data-item-name="Mechanic's Wrench & Socket Roll"
-                        data-item-price="5500.00">Add to Cart</a>
+                        data-item-price="5500.00" data-item-image="assets/img/tools/wrench.png">Add to Cart</a>
                 </div>
             </div>
         </div>

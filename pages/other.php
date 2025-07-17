@@ -23,8 +23,9 @@
                 <div class="showcase-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Advanced First Aid Trauma Kit"
                         data-item-price="5500.00">Buy Now</a>
+                    <!-- Advanced First Aid Trauma Kit -->
                     <a class="add-cart-btn" href="#" data-item-name="Advanced First Aid Trauma Kit"
-                        data-item-price="5500.00">Add to Cart</a>
+                        data-item-price="5500.00" data-item-image="assets/img/other/first.png">Add to Cart</a>
                 </div>
             </div>
         </section>
@@ -38,8 +39,9 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="72-Hour Survival Backpack"
                             data-item-price="12000.00">Buy Now</a>
+                        <!-- 72-Hour Survival Backpack -->
                         <a class="add-cart-btn" href="#" data-item-name="72-Hour Survival Backpack"
-                            data-item-price="12000.00">Add to Cart</a>
+                            data-item-price="12000.00" data-item-image="assets/img/other/survival.png">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -52,8 +54,9 @@
                     <div class="showcase-buttons">
                         <a class="buy-btn buy-now-btn" href="#" data-item-name="High-Performance Water Filter Pump"
                             data-item-price="4800.00">Buy Now</a>
+                        <!-- High-Performance Water Filter Pump -->
                         <a class="add-cart-btn" href="#" data-item-name="High-Performance Water Filter Pump"
-                            data-item-price="4800.00">Add to Cart</a>
+                            data-item-price="4800.00" data-item-image="assets/img/other/water.png">Add to Cart</a>
                     </div>
                 </div>
             </section>
@@ -85,8 +88,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Waterproof Survival Handbook"
                         data-item-price="1100.00">Buy Now</a>
+                    <!-- Waterproof Survival Handbook -->
                     <a class="add-cart-btn" href="#" data-item-name="Waterproof Survival Handbook"
-                        data-item-price="1100.00">Add to Cart</a>
+                        data-item-price="1100.00" data-item-image="assets/img/other/handbook.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -98,8 +102,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Emergency Signal Mirror"
                         data-item-price="650.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="Emergency Signal Mirror"
-                        data-item-price="650.00">Add to Cart</a>
+                    <!-- Emergency Signal Mirror -->
+                    <a class="add-cart-btn" href="#" data-item-name="Emergency Signal Mirror" data-item-price="650.00"
+                        data-item-image="assets/img/other/signal.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -111,8 +116,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Titanium Spork & Utensil Set"
                         data-item-price="850.00">Buy Now</a>
+                    <!-- Titanium Spork & Utensil Set -->
                     <a class="add-cart-btn" href="#" data-item-name="Titanium Spork & Utensil Set"
-                        data-item-price="850.00">Add to Cart</a>
+                        data-item-price="850.00" data-item-image="assets/img/other/utensil.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -124,8 +130,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Chemical Light Sticks (12-Pack)"
                         data-item-price="1200.00">Buy Now</a>
+                    <!-- Chemical Light Sticks (12-Pack) -->
                     <a class="add-cart-btn" href="#" data-item-name="Chemical Light Sticks (12-Pack)"
-                        data-item-price="1200.00">Add to Cart</a>
+                        data-item-price="1200.00" data-item-image="assets/img/other/light.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -144,8 +151,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="&quot;Lifestraw&quot; Personal Water Filter"
                         data-item-price="1500.00">Buy Now</a>
+                    <!-- "Lifestraw" Personal Water Filter -->
                     <a class="add-cart-btn" href="#" data-item-name="&quot;Lifestraw&quot; Personal Water Filter"
-                        data-item-price="1500.00">Add to Cart</a>
+                        data-item-price="1500.00" data-item-image="assets/img/other/lifestraw.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -157,8 +165,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Ferro Rod & Striker Fire Starter"
                         data-item-price="950.00">Buy Now</a>
+                    <!-- Ferro Rod & Striker Fire Starter -->
                     <a class="add-cart-btn" href="#" data-item-name="Ferro Rod & Striker Fire Starter"
-                        data-item-price="950.00">Add to Cart</a>
+                        data-item-price="950.00" data-item-image="assets/img/other/ferro.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -170,8 +179,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Emergency Mylar Space Blankets (10-Pack)"
                         data-item-price="900.00">Buy Now</a>
+                    <!-- Emergency Mylar Space Blankets (10-Pack) -->
                     <a class="add-cart-btn" href="#" data-item-name="Emergency Mylar Space Blankets (10-Pack)"
-                        data-item-price="900.00">Add to Cart</a>
+                        data-item-price="900.00" data-item-image="assets/img/other/mylar.png">Add to Cart</a>a>
                 </div>
             </div>
         </div>
@@ -183,8 +193,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Military-Style Lensatic Compass"
                         data-item-price="1800.00">Buy Now</a>
+                    <!-- Military-Style Lensatic Compass -->
                     <a class="add-cart-btn" href="#" data-item-name="Military-Style Lensatic Compass"
-                        data-item-price="1800.00">Add to Cart</a>
+                        data-item-price="1800.00" data-item-image="assets/img/other/lensatic.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -196,8 +207,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="100ft. 550 Paracord"
                         data-item-price="650.00">Buy Now</a>
-                    <a class="add-cart-btn" href="#" data-item-name="100ft. 550 Paracord" data-item-price="650.00">Add
-                        to Cart</a>
+                    <!-- 100ft. 550 Paracord -->
+                    <a class="add-cart-btn" href="#" data-item-name="100ft. 550 Paracord" data-item-price="650.00"
+                        data-item-image="assets/img/other/paracord.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -209,8 +221,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="High-Decibel Emergency Whistle"
                         data-item-price="550.00">Buy Now</a>
+                    <!-- High-Decibel Emergency Whistle -->
                     <a class="add-cart-btn" href="#" data-item-name="High-Decibel Emergency Whistle"
-                        data-item-price="550.00">Add to Cart</a>
+                        data-item-price="550.00" data-item-image="assets/img/other/whistle.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -222,8 +235,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Waterproof Match Case with Matches"
                         data-item-price="750.00">Buy Now</a>
+                    <!-- Waterproof Match Case with Matches -->
                     <a class="add-cart-btn" href="#" data-item-name="Waterproof Match Case with Matches"
-                        data-item-price="750.00">Add to Cart</a>
+                        data-item-price="750.00" data-item-image="assets/img/other/waterproof.png">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -235,8 +249,9 @@
                 <div class="product-buttons">
                     <a class="buy-btn buy-now-btn" href="#" data-item-name="Rechargeable LED Headlamp"
                         data-item-price="1500.00">Buy Now</a>
+                    <!-- Rechargeable LED Headlamp -->
                     <a class="add-cart-btn" href="#" data-item-name="Rechargeable LED Headlamp"
-                        data-item-price="1500.00">Add to Cart</a>
+                        data-item-price="1500.00" data-item-image="assets/img/other/headlamp.png">Add to Cart</a>
                 </div>
             </div>
         </div>
