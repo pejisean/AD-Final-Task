@@ -283,8 +283,61 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Add Buy Now functionality for marketplace items
+    function attachBuyNowListeners() {
+        marketplaceGrid.removeEventListener('click', handleBuyNowClick);
+        marketplaceGrid.addEventListener('click', handleBuyNowClick);
+    }
+
+    function handleBuyNowClick(event) {
+        if (event.target.classList.contains('buy-now-btn')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            
+            const button = event.target;
+            const itemId = button.getAttribute('data-item-id');
+            const itemName = button.getAttribute('data-item-name');
+            const itemPrice = parseFloat(button.getAttribute('data-item-price'));
+
+            // Use existing cart handler - much simpler!
+            addToCartViaHandler(itemId, itemName, itemPrice);
+        }
+    }
+
+    function addToCartViaHandler(itemId, itemName, itemPrice) {
+        // Use your existing cart.handler.php
+        fetch('../handlers/cart.handler.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                item_id: itemId,
+                quantity: 1
+            }),
+            credentials: 'same-origin'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`${itemName} added to cart!`);
+                // Use existing cart count update function
+                if (typeof updateCartIconCount === 'function') {
+                    updateCartIconCount();
+                }
+            } else {
+                alert("Failed to add item to cart: " + (data.message || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Error adding to cart:', error);
+            alert("Error adding item to cart. Please try again.");
+        });
+    }
+
     // Initial setup
     attachMoreInfoListeners();
+    attachBuyNowListeners();
 
     if (closeDescriptionModal) {
         closeDescriptionModal.addEventListener('click', function (e) {
