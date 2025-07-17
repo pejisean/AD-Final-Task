@@ -17,12 +17,14 @@
                     <a href="/pages/weapons.php">Weapons</a>
                     <a href="/pages/other.php">Other Essentials</a>
                     <a href="/pages/cart.php">Cart</a>
+                    <a href="/pages/login.php">Login</a>
+
                 </nav>
                 <div class="hamburger" onclick="toggleMenu()">☰</div>
             </div>
 
             <div class="dropdown-menu" id="dropdownMenu">
-                <a id="login-signup-link" href="/pages/login.php">👤 Login / Sign Up</a>
+                <span id="login-signup-link">Please Login First</span>
                 <a href="/index.php">🏠 Home</a>
                 <a href="/pages/cart.php">🛒 Cart (<span id="cart-item-count">0</span>)</a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>

@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const preloader = document.getElementById('preloader');
     if (preloader) {
         preloader.classList.add('hidden');
@@ -84,33 +84,33 @@ function updateCartIconCount() {
     fetch('../handlers/check-session.handler.php', {
         credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success && data.logged_in) {
-            // User is logged in - get count from server
-            fetch('../handlers/cart.handler.php', {
-                credentials: 'same-origin'
-            })
-            .then(response => response.json())
-            .then(cartData => {
-                const cartCountElement = document.getElementById('cart-item-count');
-                if (cartCountElement && cartData.success) {
-                    cartCountElement.textContent = cartData.data.item_count || 0;
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching cart count:', error);
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.logged_in) {
+                // User is logged in - get count from server
+                fetch('../handlers/cart.handler.php', {
+                    credentials: 'same-origin'
+                })
+                    .then(response => response.json())
+                    .then(cartData => {
+                        const cartCountElement = document.getElementById('cart-item-count');
+                        if (cartCountElement && cartData.success) {
+                            cartCountElement.textContent = cartData.data.item_count || 0;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching cart count:', error);
+                        updateCartIconCountFromLocalStorage();
+                    });
+            } else {
+                // User not logged in - use localStorage
                 updateCartIconCountFromLocalStorage();
-            });
-        } else {
-            // User not logged in - use localStorage
+            }
+        })
+        .catch(error => {
+            console.error('Session check failed:', error);
             updateCartIconCountFromLocalStorage();
-        }
-    })
-    .catch(error => {
-        console.error('Session check failed:', error);
-        updateCartIconCountFromLocalStorage();
-    });
+        });
 }
 
 function updateCartIconCountFromLocalStorage() {
@@ -165,7 +165,7 @@ function renderCart() {
 
     // Add event listeners for quantity changes and remove buttons
     cartItemsList.querySelectorAll('input[type="number"]').forEach(input => {
-        input.addEventListener('change', function() {
+        input.addEventListener('change', function () {
             const itemId = this.dataset.itemId;
             const newQuantity = parseInt(this.value);
             updateCartItemQuantity(itemId, newQuantity);
@@ -173,7 +173,7 @@ function renderCart() {
     });
 
     cartItemsList.querySelectorAll('.remove-item-btn').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const itemId = this.dataset.itemId;
             removeFromCart(itemId);
         });
@@ -233,7 +233,7 @@ function closeCart() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     const mainSortDropdown = document.querySelector('#sort-by-main');
 
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const originalOrder = [...allCards];
             const newArrivalsCapacity = newArrivalsGrid.children.length;
 
-            mainSortDropdown.addEventListener('change', function() {
+            mainSortDropdown.addEventListener('change', function () {
                 const sortBy = this.value;
                 let sortedProducts;
 
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
             logoutLink.innerHTML = '➡️ Logout';
             logoutLink.classList.add('logout-link');
 
-            logoutLink.onclick = function(event) {
+            logoutLink.onclick = function (event) {
                 event.preventDefault();
                 localStorage.removeItem('loggedInCodename');
                 window.location.reload();
@@ -351,14 +351,14 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         if (buyButton) {
-            buyButton.addEventListener('click', function(event) {
+            buyButton.addEventListener('click', function (event) {
                 event.preventDefault();
                 addPurchaseToHistory(purchaseData);
                 alert(`${itemName} purchased from The Last Trade Post!`);
             });
         }
         if (addToCartButton) {
-            addToCartButton.addEventListener('click', function(event) {
+            addToCartButton.addEventListener('click', function (event) {
                 event.preventDefault();
                 addToCart(purchaseData); // Use addToCart for "Add to Cart"
             });
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         if (viewDetailsButton) {
-            viewDetailsButton.addEventListener('click', function() {
+            viewDetailsButton.addEventListener('click', function () {
                 addPurchaseToHistory(purchaseData);
                 alert(`${itemName} purchased from the Marketplace!`);
             });
@@ -398,6 +398,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateCartIconCount();
 
+    // Intercept Login link click if logged in (header and dropdown)
+    const loginLinks = document.querySelectorAll('a[href="/pages/login.php"]');
+    loginLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            // Check login status (localStorage or session)
+            const loggedInCodename = localStorage.getItem('loggedInCodename');
+            if (loggedInCodename) {
+                e.preventDefault();
+                alert('You are already logged in');
+            }
+        });
+    });
 });
 
 function toggleMenu() {

@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const preloader = document.getElementById('preloader');
     if (preloader) {
         preloader.classList.add('hidden');
@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Prevent multiple initializations
     if (window.scriptInitialized) {
         console.log('Script already initialized, skipping...');
@@ -20,38 +20,38 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('handlers/check-session.handler.php', {
         credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(data => {
-        const loginSignupLink = document.getElementById('login-signup-link');
-        if (!loginSignupLink) return;
+        .then(response => response.json())
+        .then(data => {
+            const loginSignupLink = document.getElementById('login-signup-link');
+            if (!loginSignupLink) return;
 
-        if (data.success && data.logged_in && data.user) {
-            // User is logged in
-            updateUIForLoggedInUser(data.user.username, loginSignupLink);
-            localStorage.setItem('loggedInCodename', data.user.username);
-        } else {
-            // User is not logged in
-            localStorage.removeItem('loggedInCodename');
-            updateUIForLoggedOutUser(loginSignupLink);
-        }
-    })
-    .catch(error => {
-        console.error('Session check failed:', error);
-        // Fallback to localStorage
-        const loggedInCodename = localStorage.getItem('loggedInCodename');
-        const loginSignupLink = document.getElementById('login-signup-link');
-        if (loginSignupLink) {
-            if (loggedInCodename) {
-                updateUIForLoggedInUser(loggedInCodename, loginSignupLink);
+            if (data.success && data.logged_in && data.user) {
+                // User is logged in
+                updateUIForLoggedInUser(data.user.username, loginSignupLink);
+                localStorage.setItem('loggedInCodename', data.user.username);
             } else {
+                // User is not logged in
+                localStorage.removeItem('loggedInCodename');
                 updateUIForLoggedOutUser(loginSignupLink);
             }
-        }
-    });
+        })
+        .catch(error => {
+            console.error('Session check failed:', error);
+            // Fallback to localStorage
+            const loggedInCodename = localStorage.getItem('loggedInCodename');
+            const loginSignupLink = document.getElementById('login-signup-link');
+            if (loginSignupLink) {
+                if (loggedInCodename) {
+                    updateUIForLoggedInUser(loggedInCodename, loginSignupLink);
+                } else {
+                    updateUIForLoggedOutUser(loginSignupLink);
+                }
+            }
+        });
 
     // Initialize sorting only once
     initializeSorting();
-    
+
     // Initialize navigation
     initializeNavigation();
 
@@ -64,7 +64,7 @@ function initializeSorting() {
 
     if (mainSortDropdown && !mainSortDropdown.hasAttribute('data-initialized')) {
         mainSortDropdown.setAttribute('data-initialized', 'true');
-        
+
         const newArrivalsGrid = document.querySelector('#new-arrivals-grid');
         const topSellersGrid = document.querySelector('#top-sellers-grid');
 
@@ -77,7 +77,7 @@ function initializeSorting() {
             const originalOrder = [...allCards];
             const newArrivalsCapacity = newArrivalsGrid.children.length;
 
-            mainSortDropdown.addEventListener('change', function() {
+            mainSortDropdown.addEventListener('change', function () {
                 const sortBy = this.value;
                 let sortedProducts;
 
@@ -130,7 +130,7 @@ function initializeNavigation() {
 }
 
 function updateUIForLoggedInUser(username, loginSignupLink) {
-    loginSignupLink.innerHTML = `👤 ${username}`;
+    loginSignupLink.innerHTML = `User: ${username}`;
     loginSignupLink.href = 'profile.php';
 
     const dropdownMenu = document.getElementById('dropdownMenu');
@@ -144,7 +144,7 @@ function updateUIForLoggedInUser(username, loginSignupLink) {
         logoutLink.href = '#';
         logoutLink.innerHTML = '➡️ Logout';
         logoutLink.classList.add('logout-link');
-        logoutLink.onclick = function(event) {
+        logoutLink.onclick = function (event) {
             event.preventDefault();
             handleLogout();
         };
@@ -154,9 +154,8 @@ function updateUIForLoggedInUser(username, loginSignupLink) {
 }
 
 function updateUIForLoggedOutUser(loginSignupLink) {
-    loginSignupLink.innerHTML = '👤 Login / Sign Up';
     loginSignupLink.href = 'login.php';
-    
+
     const dropdownMenu = document.getElementById('dropdownMenu');
     if (dropdownMenu) {
         const existingLogout = dropdownMenu.querySelector('.logout-link');
@@ -177,24 +176,24 @@ function handleLogout() {
         method: 'POST',
         credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            localStorage.removeItem('loggedInCodename');
-            localStorage.removeItem('cartItems');
-            window.location.href = 'index.php';
-        } else {
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.removeItem('loggedInCodename');
+                localStorage.removeItem('cartItems');
+                window.location.href = 'index.php';
+            } else {
+                localStorage.removeItem('loggedInCodename');
+                localStorage.removeItem('cartItems');
+                window.location.reload();
+            }
+        })
+        .catch(error => {
+            console.error('Logout error:', error);
             localStorage.removeItem('loggedInCodename');
             localStorage.removeItem('cartItems');
             window.location.reload();
-        }
-    })
-    .catch(error => {
-        console.error('Logout error:', error);
-        localStorage.removeItem('loggedInCodename');
-        localStorage.removeItem('cartItems');
-        window.location.reload();
-    });
+        });
 }
 
 function toggleMenu() {
@@ -265,7 +264,7 @@ function updateCartIconCount() {
 
 function performCartUpdate() {
     if (cartUpdateInProgress) return;
-    
+
     cartUpdateInProgress = true;
     console.log('Performing cart update...');
 
@@ -274,42 +273,42 @@ function performCartUpdate() {
         credentials: 'same-origin',
         signal: AbortSignal.timeout(5000) // 5 second timeout
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success && data.logged_in) {
-            // User is logged in - get count from server
-            return fetch('handlers/cart.handler.php', {
-                credentials: 'same-origin',
-                signal: AbortSignal.timeout(5000) // 5 second timeout
-            });
-        } else {
-            // User not logged in - use localStorage
-            updateCartIconCountFromLocalStorage();
-            return null;
-        }
-    })
-    .then(response => {
-        if (response) {
-            return response.json();
-        }
-        return null;
-    })
-    .then(cartData => {
-        if (cartData) {
-            const cartCountElement = document.getElementById('cart-item-count');
-            if (cartCountElement && cartData.success) {
-                cartCountElement.textContent = cartData.data.item_count || 0;
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.logged_in) {
+                // User is logged in - get count from server
+                return fetch('handlers/cart.handler.php', {
+                    credentials: 'same-origin',
+                    signal: AbortSignal.timeout(5000) // 5 second timeout
+                });
+            } else {
+                // User not logged in - use localStorage
+                updateCartIconCountFromLocalStorage();
+                return null;
             }
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching cart count:', error);
-        updateCartIconCountFromLocalStorage();
-    })
-    .finally(() => {
-        cartUpdateInProgress = false;
-        console.log('Cart update completed');
-    });
+        })
+        .then(response => {
+            if (response) {
+                return response.json();
+            }
+            return null;
+        })
+        .then(cartData => {
+            if (cartData) {
+                const cartCountElement = document.getElementById('cart-item-count');
+                if (cartCountElement && cartData.success) {
+                    cartCountElement.textContent = cartData.data.item_count || 0;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching cart count:', error);
+            updateCartIconCountFromLocalStorage();
+        })
+        .finally(() => {
+            cartUpdateInProgress = false;
+            console.log('Cart update completed');
+        });
 }
 
 function updateCartIconCountFromLocalStorage() {
@@ -319,4 +318,39 @@ function updateCartIconCountFromLocalStorage() {
     if (cartCountElement) {
         cartCountElement.textContent = totalItems;
     }
+}
+
+function handleLogin() {
+    const codename = document.getElementById('codename').value.trim();
+    const password = document.getElementById('password').value;
+    const formMessage = document.getElementById('form-message');
+    formMessage.textContent = '';
+    formMessage.className = 'info-message';
+
+    // Example AJAX login (replace with your actual login logic)
+    fetch('handlers/login.handler.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codename, password }),
+        credentials: 'same-origin'
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                formMessage.textContent = 'Logged in, redirecting to home page...';
+                formMessage.classList.add('success');
+                setTimeout(() => {
+                    window.location.href = '../index.php';
+                }, 1200);
+            } else {
+                formMessage.textContent = 'Invalid username or password';
+                formMessage.classList.add('error');
+            }
+        })
+        .catch(() => {
+            formMessage.textContent = 'Login failed. Please try again.';
+            formMessage.classList.add('error');
+        });
+
+    return false; // Prevent default form submit
 }

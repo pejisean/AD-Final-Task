@@ -17,7 +17,6 @@
 <div class="products-container">
     <h2 class="cart-title">Your Cart</h2>
     <div id="cart-loading" style="text-align: center; padding: 20px;">
-        <p>Loading your cart...</p>
     </div>
     <div id="cart-items-list" style="display: none;"></div>
     <div class="cart-summary-section" id="cart-summary" style="display: none;">
@@ -26,9 +25,8 @@
         <button id="checkoutBtn" class="checkout-button member-checkout">Proceed to Checkout</button>
     </div>
     <div id="empty-cart-message" style="display: none; text-align: center; padding: 40px;">
-        <h3>Your cart is empty</h3>
-        <p>Browse our <a href="marketplace.php">marketplace</a> or check out our <a href="weapons.php">weapons</a>, <a
-                href="tools.php">tools</a>, and other categories!</p>
+
+
     </div>
 </div>
 
