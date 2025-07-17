@@ -7,8 +7,8 @@ header('Content-Type: application/json');
 
 try {
     require_once '../bootstrap.php';
-    require_once UTILS_PATH . '/marketplace.util.php';
-    require_once UTILS_PATH . '/auth.util.php';
+    require_once UTILS_PATH . 'marketplace.util.php';
+    require_once UTILS_PATH . 'auth.util.php';
 
     $method = $_SERVER['REQUEST_METHOD'];
     $input = json_decode(file_get_contents('php://input'), true) ?: $_POST;
@@ -19,7 +19,7 @@ try {
             break;
         case 'POST':
             // Delegate to existing item.handler.php logic
-            require_once HANDLERS_PATH . '/item.handler.php';
+            require_once HANDLERS_PATH . 'item.handler.php';
             handleCreateItem($input);
             break;
         default:
