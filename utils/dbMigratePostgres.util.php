@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-define('UTILS_PATH', __DIR__);
+
 
 require 'vendor/autoload.php';
 require 'bootstrap.php';
@@ -22,16 +22,16 @@ try {
 
     // Drop existing tables first (in reverse dependency order)
     dropExistingTables($pdo);
-    
+
     // Create new tables (in dependency order)
     createTables($pdo);
-    
+
     // Commit the transaction
     $pdo->commit();
-    
+
     echo "🎉 Database migration completed successfully!\n";
     echo "📊 All tables have been recreated with fresh structure.\n";
-    
+
     // Optional: Show table status
     echo "\n📋 Created tables:\n";
     showTableStatus($pdo);
@@ -48,21 +48,22 @@ try {
 
 // ===== MIGRATION FUNCTIONS =====
 
-function dropExistingTables($pdo) {
+function dropExistingTables($pdo)
+{
     echo "🧹 Dropping existing tables...\n";
-    
+
     // Drop tables in reverse dependency order to avoid foreign key issues
     $dropTables = [
         'receipt_items',
-        'receipts', 
-        'cart', 
-        'items', 
+        'receipts',
+        'cart',
+        'items',
         'users'
     ];
-    
+
     // Disable foreign key checks temporarily
     $pdo->exec("SET session_replication_role = replica;");
-    
+
     foreach ($dropTables as $table) {
         try {
             // Check if table exists before dropping
@@ -74,7 +75,7 @@ function dropExistingTables($pdo) {
             $stmt = $pdo->prepare($checkQuery);
             $stmt->execute([$table]);
             $tableExists = $stmt->fetchColumn();
-            
+
             if ($tableExists) {
                 $pdo->exec("DROP TABLE IF EXISTS public.\"$table\" CASCADE;");
                 echo "❌ Dropped table: $table\n";
@@ -86,14 +87,15 @@ function dropExistingTables($pdo) {
             // Continue with other tables instead of failing completely
         }
     }
-    
+
     // Re-enable foreign key checks
     $pdo->exec("SET session_replication_role = DEFAULT;");
 }
 
-function createTables($pdo) {
+function createTables($pdo)
+{
     echo "🏗️ Creating new tables...\n";
-    
+
     // Create tables in dependency order
     $modelFiles = [
         'users.model.sql',
@@ -102,22 +104,22 @@ function createTables($pdo) {
         'receipts.model.sql',
         'receipt_items.model.sql'
     ];
-    
+
     foreach ($modelFiles as $modelFile) {
         $filePath = "sql/$modelFile";
-        
+
         if (!file_exists($filePath)) {
             echo "⚠️ Model file $filePath not found, skipping.\n";
             continue;
         }
-        
+
         echo "📄 Applying schema from $filePath...\n";
-        
+
         $sql = file_get_contents($filePath);
         if ($sql === false) {
             throw new RuntimeException("❌ Could not read $filePath");
         }
-        
+
         try {
             $pdo->exec($sql);
             echo "✅ Created table from $modelFile\n";
@@ -127,12 +129,13 @@ function createTables($pdo) {
     }
 }
 
-function showTableStatus($pdo) {
+function showTableStatus($pdo)
+{
     try {
         $tablesQuery = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name";
         $stmt = $pdo->query($tablesQuery);
         $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        
+
         foreach ($tables as $table) {
             $countQuery = "SELECT COUNT(*) FROM public.\"$table\"";
             try {
