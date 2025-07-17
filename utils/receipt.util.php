@@ -80,6 +80,69 @@ class ReceiptUtil extends DatabaseUtil {
     }
     
     /**
+     * Create a receipt
+     * @param array $receiptData
+     * @return int|false Receipt ID on success, false on failure
+     */
+    public static function createReceipt($receiptData) {
+        $query = "INSERT INTO receipts 
+                  (receipt_number, user_id, session_token, total_amount, tax_amount, 
+                   shipping_address, billing_address, payment_method, payment_status, order_status, notes) 
+                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id";
+        
+        $result = self::executeQuery($query, [
+            $receiptData['receipt_number'],
+            $receiptData['user_id'],
+            $receiptData['session_token'],
+            $receiptData['total_amount'],
+            $receiptData['tax_amount'],
+            $receiptData['shipping_address'],
+            $receiptData['billing_address'],
+            $receiptData['payment_method'],
+            $receiptData['payment_status'],
+            $receiptData['order_status'],
+            $receiptData['notes']
+        ]);
+        
+        return $result['success'] && !empty($result['data']) ? $result['data'][0]['id'] : false;
+    }
+    
+    /**
+     * Add item to receipt
+     * @param int $receiptId
+     * @param array $itemData
+     * @return bool
+     */
+    public static function addReceiptItem($receiptId, $itemData) {
+        $query = "INSERT INTO receipt_items 
+                  (receipt_id, item_id, item_name, item_description, quantity, unit_price, total_price, seller_name) 
+                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+        
+        $result = self::executeQuery($query, [
+            $receiptId,
+            $itemData['item_id'],
+            $itemData['item_name'],
+            $itemData['item_description'],
+            $itemData['quantity'],
+            $itemData['unit_price'],
+            $itemData['total_price'],
+            $itemData['seller_name']
+        ]);
+        
+        return $result['success'];
+    }
+    
+    /**
+     * Generate receipt number
+     * @return string
+     */
+    public static function generateReceiptNumber() {
+        $date = date('Ymd');
+        $random = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
+        return "RCP-{$date}-{$random}";
+    }
+    
+    /**
      * Get receipt by ID
      * @param int $receiptId
      * @return array|null
@@ -201,6 +264,76 @@ class ReceiptUtil extends DatabaseUtil {
             'average_order_value' => 0,
             'delivered_orders' => 0
         ];
+    }
+    
+    /**
+     * Find receipt by receipt number
+     * @param string $receiptNumber
+     * @return array|null
+     */
+    public static function findReceiptByNumber($receiptNumber) {
+        $query = "SELECT r.*, u.username 
+                  FROM receipts r
+                  LEFT JOIN users u ON r.user_id = u.id
+                  WHERE r.receipt_number = $1";
+        $result = self::executeQuery($query, [$receiptNumber]);
+        
+        return $result['success'] && !empty($result['data']) ? $result['data'][0] : null;
+    }
+
+    /**
+     * Find receipt by ID
+     * @param int $receiptId
+     * @return array|null
+     */
+    public static function findReceiptById($receiptId) {
+        return self::getReceiptById($receiptId);
+    }
+
+    /**
+     * Get receipt count
+     * @param int|null $userId
+     * @return int
+     */
+    public static function getReceiptCount($userId = null) {
+        if ($userId) {
+            $query = "SELECT COUNT(*) as count FROM receipts WHERE user_id = $1";
+            $result = self::executeQuery($query, [$userId]);
+        } else {
+            $query = "SELECT COUNT(*) as count FROM receipts";
+            $result = self::executeQuery($query);
+        }
+        
+        return $result['success'] && !empty($result['data']) ? (int)$result['data'][0]['count'] : 0;
+    }
+
+    /**
+     * Generate delivery address
+     * @return string
+     */
+    public static function generateDeliveryAddress() {
+        $addresses = [
+            "Safe Zone Alpha-7, Sector 12",
+            "Outpost Beta-3, Northern District",
+            "Settlement Gamma-9, Eastern Quarter",
+            "Bunker Delta-5, Underground Level 2",
+            "Trading Post Echo-1, Central Plaza"
+        ];
+        
+        return $addresses[array_rand($addresses)] . " - " . self::generateRandomIP();
+    }
+
+    /**
+     * Generate random IP
+     * @return string
+     */
+    private static function generateRandomIP() {
+        return implode('.', [
+            rand(1, 255),
+            rand(1, 255),
+            rand(1, 255),
+            rand(1, 255)
+        ]);
     }
 }
 ?>

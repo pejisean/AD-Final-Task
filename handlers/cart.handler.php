@@ -140,6 +140,8 @@ function handleUpdateCartItem($input, $sessionToken) {
 }
 
 function handleRemoveFromCart($input, $sessionToken) {
+    error_log("handleRemoveFromCart called with: " . print_r($input, true)); // Debug log
+    
     if (empty($input['item_id'])) {
         echo json_encode(['success' => false, 'message' => 'Item ID is required']);
         return;
@@ -156,6 +158,8 @@ function handleRemoveFromCart($input, $sessionToken) {
         $result = CartUtil::removeFromCart($sessionToken, $itemId);
         $message = $result ? 'Item removed from cart' : 'Failed to remove item';
     }
+    
+    error_log("Remove result: " . ($result ? 'SUCCESS' : 'FAILED') . " - " . $message); // Debug log
     
     echo json_encode([
         'success' => $result,
