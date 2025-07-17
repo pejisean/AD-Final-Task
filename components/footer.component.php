@@ -6,14 +6,13 @@
 
         <div class="footer-links-section">
             <h4>Links</h4>
-
             <a href="/index.php">Home</a>
-
             <a href="/pages/marketplace.php">Marketplace</a>
             <a href="/pages/electronics.php">Electronics</a>
             <a href="/pages/tools.php">Tools</a>
             <a href="/pages/weapons.php">Weapons</a>
             <a href="/pages/other.php">Other Essentials</a>
+            <a href="/pages/cart.php">Cart</a>
         </div>
 
         <div class="footer-company-section">
