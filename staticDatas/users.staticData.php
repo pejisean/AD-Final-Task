@@ -16,6 +16,13 @@ return [
         'role' => 'admin'
     ],
     [
+        'username' => 'Company',
+        'email' => 'company@tradepost.com',
+        'password' => 'company123',
+        'gender' => 'others',
+        'role' => 'user'
+    ],
+    [
         'username' => 'jane.doe',
         'email' => 'jane.doe@tradepost.com',
         'password' => 'securePass456',
