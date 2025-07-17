@@ -11,11 +11,11 @@
 
 <?php 
 require_once '../components/dropdown.component.php';
-require_once '../utils/marketplace.util.php'; // Use the new util
+require_once '../utils/marketplace.util.php';
+require_once '../utils/imagePath.util.php';
 
 // Get items using the marketplace util
 $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
-$formattedItems = MarketplaceUtil::formatItemsForDisplay($items, 'pages');
 ?>
 
 <main class="marketplace-container">
@@ -59,6 +59,7 @@ $formattedItems = MarketplaceUtil::formatItemsForDisplay($items, 'pages');
     </div>
 </main>
 
+<!-- Modals -->
 <div id="addItemModal" class="modal">
     <div class="modal-content">
         <span class="close-button" id="closeAddItemModal">&times;</span>
@@ -112,23 +113,8 @@ $formattedItems = MarketplaceUtil::formatItemsForDisplay($items, 'pages');
     </div>
 </div>
 
-<div id="buyNowOverlay" class="overlay" style="display: none;">
-    <div class="overlay-content">
-        <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
-        <h2>Confirm Purchase</h2>
-        <div class="receipt-details">
-            <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
-            <p><strong>Price:</strong> $<span id="receiptItemPrice"></span></p>
-            <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
-            <p><strong>Secure Address:</strong> <span id="receiptIPAddress"></span></p>
-        </div>
-        <button id="proceedPaymentButton" class="proceed-payment-button">Proceed to Payment</button>
-    </div>
-</div>
-
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
 <script src="assets/js/marketplace.js"></script>
-<script src="assets/js/shop/buynowoverlay.js"></script>
 </body>
 </html>
