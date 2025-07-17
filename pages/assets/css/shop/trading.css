@@ -340,6 +340,7 @@
     box-shadow: 0 0 10px -2px #DA6015;
 }
 
+
 @media (max-width: 1024px) {
     .product-card {
         width: calc(100% / 3 - 20px);

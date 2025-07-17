@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="hide-scrollbar">
+
+<head>
+    <title>The Last Trade Post - Cart</title>
+    <?php require_once '../components/head.component.php'; ?>
+    <?php require_once '../components/script.component.php'; ?>
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/shop/trading.css" />
+    <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
+    <link rel="stylesheet" href="assets/css/shop/addtocartoverlay.css" />
+    <link rel="stylesheet" href="assets/css/shop/cart.css" />
+</head>
+
+<?php require_once '../components/dropdown.component.php'; ?>
+
+<div class="products-container">
+    <h2 class="cart-title">Your Cart</h2>
+    <div id="cart-items-list"></div>
+    <div class="cart-summary-section">
+        <p><strong>Subtotal:</strong> <span id="cart-subtotal">₱0.00</span></p>
+        <p><strong>Total:</strong> <span id="cart-total">₱0.00</span></p>
+        <button id="checkoutBtn" class="checkout-button member-checkout">Proceed to Checkout</button>
+    </div>
+</div>
+
+<!-- Receipt Overlay -->
+<div id="receiptOverlay" class="overlay" style="display: none;">
+    <div class="overlay-content">
+        <span class="close-button" id="closeReceiptOverlayBtn">&times;</span>
+        <h2>Order Receipt</h2>
+        <div class="receipt">
+            <p><strong>Customer Name:</strong> <span id="receiptCustomerName"></span></p>
+            <div id="receiptItems"></div>
+            <hr>
+            <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
+            <p><strong>Secure Address:</strong> <span id="receiptIPAddress"></span></p>
+        </div>
+        <button id="finalCheckoutBtn" class="checkout-button member-checkout">Checkout</button>
+    </div>
+</div>
+
+<?php include '../components/feedback.component.php'; ?>
+<?php include '../components/footer.component.php'; ?>
+<script src="assets/js/cart.js"></script>
+</body>
+
+</html>
