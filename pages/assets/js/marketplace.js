@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     window.marketplaceInitialized = true;
 
+    // Only run on marketplace page
+    if (!document.getElementById('marketplaceGrid')) {
+        console.log('Not on marketplace page, skipping initialization');
+        return;
+    }
+
     const addItemBtn = document.getElementById('addItemBtn');
     const addItemModal = document.getElementById('addItemModal');
     const closeAddItemModal = document.getElementById('closeAddItemModal');
@@ -35,13 +41,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (closeDescriptionModal) {
-            closeDescriptionModal.addEventListener('click', closeDescriptionModal);
+            closeDescriptionModal.addEventListener('click', () => {
+                itemDescriptionModal.style.display = 'none';
+            });
         }
 
         // Modal backdrop click
         window.addEventListener('click', function (event) {
             if (event.target === addItemModal) {
                 closeModal();
+            }
+            if (event.target === itemDescriptionModal) {
+                itemDescriptionModal.style.display = 'none';
             }
         });
     }
@@ -176,25 +187,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function handleBuyNowClick(event) {
         event.preventDefault();
+        event.stopImmediatePropagation();
         
         const button = event.target;
         const itemId = button.getAttribute('data-item-id');
         const itemName = button.getAttribute('data-item-name');
+        const itemPrice = parseFloat(button.getAttribute('data-item-price'));
         
-        // Use existing cart.handler.php
+        console.log('Buy Now clicked:', { itemId, itemName, itemPrice });
+
+        // Validate data
+        if (!itemId || !itemName || isNaN(itemPrice)) {
+            console.error('Invalid item data:', { itemId, itemName, itemPrice });
+            alert('Error: Invalid item data');
+            return;
+        }
+
+        // Use existing cart.handler.php with proper data
         fetch('../handlers/cart.handler.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                item_id: itemId,
+                item_id: parseInt(itemId),
                 quantity: 1
             }),
             credentials: 'same-origin'
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('Cart response status:', response.status);
+            return response.json();
+        })
         .then(data => {
+            console.log('Cart response data:', data);
             if (data.success) {
                 alert(`${itemName} added to cart!`);
                 // Use existing cart count update function from script.js
@@ -202,6 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     updateCartIconCount();
                 }
             } else {
+                console.error('Cart error:', data);
                 alert("Failed to add item to cart: " + (data.message || 'Unknown error'));
             }
         })
