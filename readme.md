@@ -4,22 +4,21 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/zyx-0314/">
-  <!-- TODO: If you want to add logo or banner you can add it here -->
-    <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
+  <a href="https://github.com/pejisean/">
+  <br>
+    <img src="./assets/img/HomeLogo.png" alt="Nyebe" width="200" height="150">
   </a>
-<!-- TODO: Change Title to the name of the title of your Project -->
-  <h3 align="center">Title</h3>
+  <h3 align="center">The Last Trade Post</h3>
+  <br>
+  <br>
 </div>
-<!-- TODO: Make a short description -->
 <div align="center">
-  Short Description. (Optional)
+ In the aftermath of a world left in ruins, where cities crumbled and systems failed, a group of survivors banded together to build something rare... a spark of order in the chaos.
 </div>
 
 <br />
 
-<!-- TODO: Change the zyx-0314 into your github username  -->
-<!-- TODO: Change the WD-Template-Project into the same name of your folder -->
+
 
 ![](https://visit-counter.vercel.app/counter.png?page=pejisean/AD-Final-Task)
 
@@ -32,7 +31,6 @@
 <br />
 <br />
 
-<!-- TODO: If you want to add more layers for your readme -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -60,40 +58,33 @@
 
 ## Overview
 
-<!-- TODO: To be changed -->
-<!-- The following are just sample -->
-
-Description of the project in details.
+The Last Trade Post is a post-apocalyptic online marketplace where survivors can barter, buy, and sell essential goods. Built with PHP, JavaScript, and PostgreSQL, it features secure authentication, inventory management, and a user-friendly interface to help users connect and trade for survival.
 
 ### Key Components
 
-<!-- TODO: List of Key Components -->
-<!-- The following are just sample -->
-
 - Authentication & Authorization
 - CRUD Operations for Invetory System
+- Cart & Checkout
+- User Marketplace Listings
+- Feedback System
 
 ### Technology
 
-<!-- TODO: List of Technology Used -->
 #### Language
+
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 
-#### Framework/Library
-![CodeIgniter](https://img.shields.io/badge/CodeIgniter-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 #### Databases
-![MySQL](https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 
+
 #### Deployment
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+- Docker
 
 ## Rules, Practices and Principles
 
@@ -157,11 +148,9 @@ AD-ProjectName
 
 ## Resources
 
-<!-- TODO: Add References -->
-
-| Title        | Purpose                                                                       | Link          |
-| ------------ | ----------------------------------------------------------------------------- | ------------- |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
+| Title        | Purpose                                                                              | Link                           |
+| ------------ | ------------------------------------------------------------------------------------ | ------------------------------ |
+| W3Schools    |  Learning mainly php, css stylings and themes, especially gradients.                 | https://www.w3schools.com/Css/ |
+| Copilot      | 	Assisted with code structure, PHP and JS logic implementation, and troubleshooting. | https://chatgpt.com/           |
+| Deepseek     | 	Provided template references and helped optimize CSS animations.                    | https://www.deepseek.com/      |
+| Youtube      |  Php, js, and css tutorials. Tips and Tricks.                                        | https://www.youtube.com/       |
