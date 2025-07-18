@@ -13,10 +13,7 @@
 </head>
 
 <body>
-<?php 
-require_once '../components/dropdown.component.php';
-require_once '../utils/imagePath.util.php';
-?>
+<?php require_once '../components/dropdown.component.php'; ?>
 
 <div class="products-container">
     <h2 class="cart-title">Your Cart</h2>
@@ -56,29 +53,9 @@ require_once '../utils/imagePath.util.php';
     </div>
 </div>
 
-<!-- Pass PHP data to JavaScript -->
-<script>
-window.CART_CONFIG = {
-    PLACEHOLDER_PATH: '<?= ImagePathUtil::getMarketplaceFallback("pages") ?>',
-    FALLBACK_IMAGES: [
-        '../assets/img/electronics/powerbank.png',
-        '../assets/img/tools/crowbar.png',
-        '../assets/img/weapons/machete.png',
-        '../assets/img/other/first.png',
-        '../assets/img/electronics/led.png',
-        '../assets/img/tools/hammer.png',
-        '../assets/img/weapons/sentry.png',
-        '../assets/img/other/survival.png',
-        '../assets/img/electronics/circuit.png',
-        '../assets/img/tools/axe.png'
-    ],
-    UPLOAD_PATH: '../assets/img/marketplace/uploads/',
-    BASE_PATH: '<?= BASE_PATH ?>'
-};
-</script>
-
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
+<script src="../assets/js/script.js"></script>
 <script src="assets/js/cart.js"></script>
 </body>
 
