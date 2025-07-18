@@ -8,8 +8,20 @@ header('Content-Type: application/json');
 try {
     require_once '../bootstrap.php';
     require_once UTILS_PATH . '/receipt.util.php';
-    require_once UTILS_PATH . '/cart.util.php';  // Add this line
+    require_once UTILS_PATH . '/cart.util.php';
     require_once UTILS_PATH . '/auth.util.php';
+
+    // Add the missing getSessionToken function
+    function getSessionToken() {
+        AuthUtil::startSession();
+        
+        if (AuthUtil::isLoggedIn()) {
+            $user = AuthUtil::getCurrentUser();
+            return 'user_' . $user['id'] . '_' . md5(session_id() . $user['username']);
+        } else {
+            return 'guest_' . md5(session_id());
+        }
+    }
 
     $method = $_SERVER['REQUEST_METHOD'];
     $input = json_decode(file_get_contents('php://input'), true) ?: $_POST;
