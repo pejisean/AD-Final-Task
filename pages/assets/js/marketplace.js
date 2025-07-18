@@ -100,13 +100,11 @@
                     // Clear localStorage if server says not logged in
                     localStorage.removeItem('loggedInCodename');
                     alert('Your session has expired. Please log in again.');
-                    // Redirect to login
                     window.location.href = 'login.php';
                 }
             })
             .catch(error => {
                 console.error('Session check failed:', error);
-                // Clear localStorage on error
                 localStorage.removeItem('loggedInCodename');
                 alert('Session check failed. Please log in again.');
                 window.location.href = 'login.php';
