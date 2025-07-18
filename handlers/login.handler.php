@@ -68,10 +68,14 @@ try {
 
         // Start session and store user data
         session_start();
+        session_regenerate_id(true); // Prevent session fixation
+        
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['user_role'] = $user['role']; // For backward compatibility
         $_SESSION['logged_in'] = true;
+        $_SESSION['login_time'] = time();
 
         echo json_encode([
             'success' => true,
@@ -80,7 +84,8 @@ try {
                 'id' => $user['id'],
                 'username' => $user['username'],
                 'role' => $user['role']
-            ]
+            ],
+            'clear_localStorage' => false // Don't clear localStorage on successful login
         ]);
         
     } else {
