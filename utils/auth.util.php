@@ -115,7 +115,7 @@ class AuthUtil {
                 return null;
             }
             
-            // Get role with proper fallback
+            // Get role with proper fallback - fix the undefined key issue
             $role = 'user'; // default role
             if (isset($_SESSION['role'])) {
                 $role = $_SESSION['role'];
