@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scriptInitialized = true;
 
     // Always check server session first (not localStorage)
-    fetch('handlers/check-session.handler.php', {
+    fetch('../handlers/check-session.handler.php', {
         credentials: 'same-origin'
     })
     .then(response => response.json())
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loginLinks.forEach(function (link) {
         link.addEventListener('click', function (e) {
             // Check server session first, not localStorage
-            fetch('handlers/check-session.handler.php', {
+            fetch('../handlers/check-session.handler.php', {
                 method: 'GET',
                 credentials: 'same-origin'
             })
