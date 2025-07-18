@@ -234,6 +234,44 @@ function closeCart() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Prevent multiple initializations
+    if (window.scriptInitialized) {
+        console.log('Script already initialized, skipping...');
+        return;
+    }
+    window.scriptInitialized = true;
+
+    // Always check server session first (not localStorage)
+    fetch('handlers/check-session.handler.php', {
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        const loginSignupLink = document.getElementById('login-signup-link');
+        if (!loginSignupLink) return;
+
+        if (data.success && data.logged_in && data.user) {
+            // User is logged in on server
+            updateUIForLoggedInUser(data.user.username, loginSignupLink);
+            // Sync localStorage with server
+            localStorage.setItem('loggedInCodename', data.user.username);
+        } else {
+            // User is not logged in on server
+            localStorage.removeItem('loggedInCodename');
+            sessionStorage.clear();
+            updateUIForLoggedOutUser(loginSignupLink);
+        }
+    })
+    .catch(error => {
+        console.error('Session check failed:', error);
+        // Clear everything on error
+        localStorage.removeItem('loggedInCodename');
+        sessionStorage.clear();
+        const loginSignupLink = document.getElementById('login-signup-link');
+        if (loginSignupLink) {
+            updateUIForLoggedOutUser(loginSignupLink);
+        }
+    });
 
     const mainSortDropdown = document.querySelector('#sort-by-main');
 
