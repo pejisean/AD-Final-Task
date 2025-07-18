@@ -398,16 +398,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     updateCartIconCount();
 
-    // Intercept Login link click if logged in (header and dropdown)
-    const loginLinks = document.querySelectorAll('a[href="/pages/login.php"]');
+    // Updated login link interceptor
+    const loginLinks = document.querySelectorAll('a[href="/pages/login.php"], a[href="login.php"], a[href="pages/login.php"]');
     loginLinks.forEach(function (link) {
         link.addEventListener('click', function (e) {
-            // Check login status (localStorage or session)
-            const loggedInCodename = localStorage.getItem('loggedInCodename');
-            if (loggedInCodename) {
-                e.preventDefault();
-                alert('You are already logged in');
-            }
+            // Check server session first, not localStorage
+            fetch('handlers/check-session.handler.php', {
+                method: 'GET',
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.logged_in) {
+                    e.preventDefault();
+                    alert('You are already logged in');
+                } else {
+                    // Clear localStorage if server says not logged in
+                    localStorage.removeItem('loggedInCodename');
+                    sessionStorage.clear();
+                    // Allow normal navigation to login page
+                }
+            })
+            .catch(error => {
+                console.error('Session check failed:', error);
+                // Clear storage on error and allow navigation
+                localStorage.removeItem('loggedInCodename');
+                sessionStorage.clear();
+            });
         });
     });
 });
