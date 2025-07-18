@@ -40,8 +40,9 @@ class AuthUtil {
                 // Set session variables with consistent naming
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['role'] = $user['role'];
-                $_SESSION['user_role'] = $user['role']; // Add this for backward compatibility
+                $_SESSION['email'] = $user['email'] ?? null;
+                $_SESSION['role'] = $user['role'] ?? 'user';
+                $_SESSION['user_role'] = $user['role'] ?? 'user'; // Add this for backward compatibility
                 $_SESSION['logged_in'] = true;
                 $_SESSION['login_time'] = time();
                 
@@ -51,7 +52,8 @@ class AuthUtil {
                     'user' => [
                         'id' => $user['id'],
                         'username' => $user['username'],
-                        'role' => $user['role']
+                        'email' => $user['email'] ?? null,
+                        'role' => $user['role'] ?? 'user'
                     ]
                 ];
             } else {
@@ -90,8 +92,14 @@ class AuthUtil {
             return false;
         }
         
-        // Check both possible session keys for backward compatibility
-        $userRole = $_SESSION['user_role'] ?? $_SESSION['role'] ?? null;
+        // Check both possible session keys for backward compatibility, with proper null checking
+        $userRole = 'user'; // Default fallback
+        if (isset($_SESSION['user_role'])) {
+            $userRole = $_SESSION['user_role'];
+        } elseif (isset($_SESSION['role'])) {
+            $userRole = $_SESSION['role'];
+        }
+        
         return $userRole === $role;
     }
     
@@ -102,10 +110,24 @@ class AuthUtil {
     public static function getCurrentUser() {
         self::startSession();
         if (self::isLoggedIn()) {
+            // Ensure all required session variables exist with fallbacks
+            if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
+                return null;
+            }
+            
+            // Get role with proper fallback
+            $role = 'user'; // default role
+            if (isset($_SESSION['role'])) {
+                $role = $_SESSION['role'];
+            } elseif (isset($_SESSION['user_role'])) {
+                $role = $_SESSION['user_role'];
+            }
+            
             return [
                 'id' => $_SESSION['user_id'],
                 'username' => $_SESSION['username'],
-                'role' => $_SESSION['role'] ?? $_SESSION['user_role'] ?? 'user'
+                'email' => $_SESSION['email'] ?? null,
+                'role' => $role
             ];
         }
         return null;

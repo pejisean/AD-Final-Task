@@ -43,8 +43,8 @@ try {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ]);
 
-        // Find user by username
-        $query = "SELECT id, username, password, role FROM users WHERE username = ?";
+        // Find user by username - include email in selection
+        $query = "SELECT id, username, email, password, role FROM users WHERE username = ?";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -67,13 +67,16 @@ try {
         }
 
         // Start session and store user data
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         session_regenerate_id(true); // Prevent session fixation
         
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
-        $_SESSION['user_role'] = $user['role']; // For backward compatibility
+        $_SESSION['email'] = $user['email'] ?? null; // Store email in session
+        $_SESSION['role'] = $user['role'] ?? 'user';
+        $_SESSION['user_role'] = $user['role'] ?? 'user'; // For backward compatibility
         $_SESSION['logged_in'] = true;
         $_SESSION['login_time'] = time();
 
@@ -83,7 +86,8 @@ try {
             'user' => [
                 'id' => $user['id'],
                 'username' => $user['username'],
-                'role' => $user['role']
+                'email' => $user['email'] ?? null,
+                'role' => $user['role'] ?? 'user'
             ],
             'clear_localStorage' => false // Don't clear localStorage on successful login
         ]);
@@ -99,22 +103,19 @@ try {
     error_log("Database error in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Database error occurred. Please try again.',
-        'debug' => $e->getMessage() // Remove this in production
+        'message' => 'Database error occurred. Please try again.'
     ]);
 } catch (Error $e) {
     error_log("Fatal Error in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Server error occurred. Please try again.',
-        'debug' => $e->getMessage() // Remove this in production
+        'message' => 'Server error occurred. Please try again.'
     ]);
 } catch (Exception $e) {
     error_log("Exception in login: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'An error occurred. Please try again.',
-        'debug' => $e->getMessage() // Remove this in production
+        'message' => 'An error occurred. Please try again.'
     ]);
 }
 ?>
