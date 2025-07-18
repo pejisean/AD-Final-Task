@@ -1,5 +1,14 @@
 <?php
-session_start();
+// filepath: c:\Users\Sean\Desktop\Schoolwork\2nd Year\Third Sem\CCS0043\AD-Final-Task\AD-Final-Task\handlers\check-session.handler.php
+// Prevent any output before headers
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+error_reporting(E_ALL);
+
+// Start session first
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 header('Content-Type: application/json');
 
@@ -20,7 +29,8 @@ try {
             $response['user'] = [
                 'id' => $user['id'],
                 'username' => $user['username'],
-                'email' => $user['email']
+                'email' => $user['email'] ?? null,
+                'role' => $user['role'] ?? 'user'
             ];
         }
     }
@@ -28,6 +38,7 @@ try {
     echo json_encode($response);
 
 } catch (Exception $e) {
+    error_log("Session check error: " . $e->getMessage());
     echo json_encode([
         'success' => false,
         'message' => 'Session check failed: ' . $e->getMessage(),
