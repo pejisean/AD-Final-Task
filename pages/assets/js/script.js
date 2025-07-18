@@ -191,78 +191,6 @@ function updateCartIconCountFromLocalStorage() {
     }
 }
 
-function renderCart() {
-    const cartItemsList = document.getElementById('cart-items-list');
-    const cartSubtotalElement = document.getElementById('cart-subtotal');
-    const cartTotalElement = document.getElementById('cart-total');
-    const emptyCartMessage = document.querySelector('.empty-cart-message');
-
-    if (!cartItemsList || !cartSubtotalElement || !cartTotalElement) return;
-
-    const cart = getCart();
-    cartItemsList.innerHTML = '';
-
-    let subtotal = 0;
-
-    if (cart.length === 0) {
-        if (emptyCartMessage) emptyCartMessage.style.display = 'block';
-    } else {
-        if (emptyCartMessage) emptyCartMessage.style.display = 'none';
-        cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('cart-item');
-            const itemPriceValue = parseFloat(item.price.replace('₱', '').replace(',', ''));
-            subtotal += itemPriceValue * item.quantity;
-
-            itemElement.innerHTML = `
-                <div class="cart-item-details">
-                    <h3>${item.name}</h3>
-                    <p>${item.price} x ${item.quantity}</p>
-                </div>
-                <div class="cart-item-controls">
-                    <input type="number" value="${item.quantity}" min="1" data-item-id="${item.id}">
-                    <button class="remove-item-btn" data-item-id="${item.id}">×</button>
-                </div>
-            `;
-            cartItemsList.appendChild(itemElement);
-        });
-    }
-
-    cartSubtotalElement.textContent = `₱${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    cartTotalElement.textContent = `₱${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
-    // Add event listeners for quantity changes and remove buttons
-    cartItemsList.querySelectorAll('input[type="number"]').forEach(input => {
-        input.addEventListener('change', function () {
-            const itemId = this.dataset.itemId;
-            const newQuantity = parseInt(this.value);
-            updateCartItemQuantity(itemId, newQuantity);
-        });
-    });
-
-    cartItemsList.querySelectorAll('.remove-item-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            const itemId = this.dataset.itemId;
-            removeFromCart(itemId);
-        });
-    });
-}
-
-function addToCart(item) {
-    let cart = getCart();
-    const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
-
-    if (existingItemIndex > -1) {
-        cart[existingItemIndex].quantity += 1;
-    } else {
-        item.quantity = 1;
-        cart.push(item);
-    }
-    saveCart(cart);
-    renderCart();
-    alert(`${item.name} added to cart!`);
-}
-
 function removeFromCart(itemId) {
     let cart = getCart();
     cart = cart.filter(item => item.id !== itemId);
@@ -299,6 +227,84 @@ function closeCart() {
         cartOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
+}
+
+// Add the missing UI update functions
+function updateUIForLoggedInUser(username, loginSignupLink) {
+    if (loginSignupLink) {
+        loginSignupLink.innerHTML = `👤 ${username}`;
+        loginSignupLink.href = 'profile.php';
+    }
+    
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    if (dropdownMenu) {
+        // Check if logout link already exists
+        let logoutLink = dropdownMenu.querySelector('.logout-link');
+        if (!logoutLink) {
+            logoutLink = document.createElement('a');
+            logoutLink.href = '#';
+            logoutLink.innerHTML = '➡️ Logout';
+            logoutLink.classList.add('logout-link');
+            
+            logoutLink.onclick = function (event) {
+                event.preventDefault();
+                handleLogout();
+            };
+            
+            dropdownMenu.appendChild(logoutLink);
+        }
+    }
+}
+
+function updateUIForLoggedOutUser(loginSignupLink) {
+    if (loginSignupLink) {
+        loginSignupLink.innerHTML = '👤 Login / Sign Up';
+        loginSignupLink.href = 'login.php';
+    }
+    
+    // Remove logout link if it exists
+    const logoutLink = document.querySelector('.logout-link');
+    if (logoutLink) {
+        logoutLink.remove();
+    }
+}
+
+function handleLogout() {
+    fetch('../handlers/logout.handler.php', {
+        method: 'POST',
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Logout response:', data);
+        
+        // Clear localStorage if instructed
+        if (data.clear_localStorage) {
+            localStorage.removeItem('loggedInCodename');
+        }
+        
+        // Clear sessionStorage if instructed
+        if (data.clear_sessionStorage) {
+            sessionStorage.clear();
+        }
+        
+        if (data.success) {
+            alert('Logged out successfully!');
+            window.location.href = 'login.php';
+        } else {
+            alert('Logout failed: ' + data.message);
+            // Still redirect to login on failure
+            window.location.href = 'login.php';
+        }
+    })
+    .catch(error => {
+        console.error('Logout error:', error);
+        // Clear all storage on error
+        localStorage.removeItem('loggedInCodename');
+        sessionStorage.clear();
+        alert('Logout error. Redirecting to login.');
+        window.location.href = 'login.php';
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -403,38 +409,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     } catch (e) {
         console.error("Error setting active navigation link:", e);
-    }
-
-    const loggedInCodename = localStorage.getItem('loggedInCodename');
-    const loginSignupLink = document.getElementById('login-signup-link');
-
-    if (loginSignupLink) {
-        if (loggedInCodename) {
-            loginSignupLink.innerHTML = `👤 ${loggedInCodename}`;
-            loginSignupLink.href = 'pages/profile.php';
-
-            const dropdownMenu = document.getElementById('dropdownMenu');
-            const logoutLink = document.createElement('a');
-            logoutLink.href = '#';
-            logoutLink.innerHTML = '➡️ Logout';
-            logoutLink.classList.add('logout-link');
-
-            logoutLink.onclick = function (event) {
-                event.preventDefault();
-                localStorage.removeItem('loggedInCodename');
-                window.location.reload();
-            };
-
-            if (dropdownMenu.firstChild) {
-                dropdownMenu.insertBefore(logoutLink, loginSignupLink.nextSibling);
-            } else {
-                dropdownMenu.appendChild(logoutLink);
-            }
-
-        } else {
-            loginSignupLink.innerHTML = '👤 Login / Sign Up';
-            //loginSignupLink.href = 'pages/login.php';
-        }
     }
 
     const shopProductCards = document.querySelectorAll('.product-grid .product-card');
