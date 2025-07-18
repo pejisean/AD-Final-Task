@@ -28,6 +28,7 @@ require_once '../utils/imagePath.util.php';
     <div id="cart-items-list" class="cart-items-list"></div>
     
     <div class="cart-summary-section" id="cart-summary">
+        <h3>Order Summary</h3>
         <p><strong>Subtotal:</strong> <span id="cart-subtotal">₱0.00</span></p>
         <p><strong>Total:</strong> <span id="cart-total">₱0.00</span></p>
         <button id="checkoutBtn" class="checkout-button member-checkout">Proceed to Checkout</button>
