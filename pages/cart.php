@@ -71,6 +71,7 @@ window.CART_CONFIG = {
         '../assets/img/electronics/circuit.png',
         '../assets/img/tools/axe.png'
     ],
+    UPLOAD_PATH: '../assets/img/marketplace/uploads/',
     BASE_PATH: '<?= BASE_PATH ?>'
 };
 </script>
