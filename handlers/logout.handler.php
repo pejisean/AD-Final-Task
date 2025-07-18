@@ -6,32 +6,52 @@ require_once UTILS_PATH . '/cart.util.php';
 header('Content-Type: application/json');
 
 try {
+    // Clear all user cart data if logged in
     if (AuthUtil::isLoggedIn()) {
         $user = AuthUtil::getCurrentUser();
-        
-        // Clear all user cart sessions from database
-        CartUtil::clearAllUserSessions($user['id']);
-        
-        // Logout user (destroys PHP session)
-        AuthUtil::logout();
-        
-        echo json_encode([
-            'success' => true,
-            'message' => 'Logged out successfully',
-            'clear_localStorage' => true // Signal to clear localStorage
-        ]);
-    } else {
-        echo json_encode([
-            'success' => false,
-            'message' => 'User not logged in',
-            'clear_localStorage' => true // Clear localStorage anyway
-        ]);
+        if ($user) {
+            CartUtil::clearAllUserSessions($user['id']);
+        }
     }
+    
+    // Complete-reset
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Clear all session variables
+    $_SESSION = array();
+    
+    // Delete session cookie
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+    
+    // Destroy session
+    session_destroy();
+    
+    // Start a new clean session for next login
+    session_start();
+    session_regenerate_id(true);
+    
+    echo json_encode([
+        'success' => true,
+        'message' => 'Logged out successfully',
+        'clear_localStorage' => true,
+        'clear_sessionStorage' => true
+    ]);
+    
 } catch (Exception $e) {
+    error_log("Logout error: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Error during logout',
-        'clear_localStorage' => true // Clear localStorage on error
+        'message' => 'Error during logout: ' . $e->getMessage(),
+        'clear_localStorage' => true,
+        'clear_sessionStorage' => true
     ]);
 }
 ?>
