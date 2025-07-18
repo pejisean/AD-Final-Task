@@ -71,11 +71,7 @@
         function handleAddItem() {
             console.log('Checking session...');
             
-            // Check both localStorage and server session
-            const loggedInCodename = localStorage.getItem('loggedInCodename');
-            console.log('localStorage loggedInCodename:', loggedInCodename);
-            
-            // Always check server session for security
+            // Always check server session first for security
             fetch('../handlers/check-session.handler.php', {
                 method: 'GET',
                 credentials: 'same-origin',
@@ -96,17 +92,24 @@
                 
                 if (data.success && data.logged_in) {
                     console.log('User logged in via session, opening modal');
+                    // Sync localStorage with server session
+                    localStorage.setItem('loggedInCodename', data.user.username);
                     addItemModal.style.display = 'flex';
                 } else {
                     console.log('User not logged in via session');
-                    alert('You must be logged in to add items to the marketplace. Please log in first.');
-                    // Redirect to login if not logged in
-                    window.location.href = '../pages/login.php';
+                    // Clear localStorage if server says not logged in
+                    localStorage.removeItem('loggedInCodename');
+                    alert('Your session has expired. Please log in again.');
+                    // Redirect to login
+                    window.location.href = 'login.php';
                 }
             })
             .catch(error => {
                 console.error('Session check failed:', error);
-                alert('Session check failed. Please refresh the page and try logging in again.');
+                // Clear localStorage on error
+                localStorage.removeItem('loggedInCodename');
+                alert('Session check failed. Please log in again.');
+                window.location.href = 'login.php';
             });
         }
 
