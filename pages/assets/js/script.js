@@ -15,6 +15,78 @@ function addPurchaseToHistory(item) {
     console.log('Item added to history:', item);
 }
 
+function renderCart() {
+    const cartItemsList = document.getElementById('cart-items-list');
+    const cartSubtotalElement = document.getElementById('cart-subtotal');
+    const cartTotalElement = document.getElementById('cart-total');
+    const emptyCartMessage = document.querySelector('.empty-cart-message');
+
+    if (!cartItemsList || !cartSubtotalElement || !cartTotalElement) return;
+
+    const cart = getCart();
+    cartItemsList.innerHTML = '';
+
+    let subtotal = 0;
+
+    if (cart.length === 0) {
+        if (emptyCartMessage) emptyCartMessage.style.display = 'block';
+    } else {
+        if (emptyCartMessage) emptyCartMessage.style.display = 'none';
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            const itemPriceValue = parseFloat(item.price.replace('₱', '').replace(',', ''));
+            subtotal += itemPriceValue * item.quantity;
+
+            itemElement.innerHTML = `
+                <div class="cart-item-details">
+                    <h3>${item.name}</h3>
+                    <p>${item.price} x ${item.quantity}</p>
+                </div>
+                <div class="cart-item-controls">
+                    <input type="number" value="${item.quantity}" min="1" data-item-id="${item.id}">
+                    <button class="remove-item-btn" data-item-id="${item.id}">×</button>
+                </div>
+            `;
+            cartItemsList.appendChild(itemElement);
+        });
+    }
+
+    cartSubtotalElement.textContent = `₱${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    cartTotalElement.textContent = `₱${subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    // Add event listeners for quantity changes and remove buttons
+    cartItemsList.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('change', function () {
+            const itemId = this.dataset.itemId;
+            const newQuantity = parseInt(this.value);
+            updateCartItemQuantity(itemId, newQuantity);
+        });
+    });
+
+    cartItemsList.querySelectorAll('.remove-item-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const itemId = this.dataset.itemId;
+            removeFromCart(itemId);
+        });
+    });
+}
+
+function addToCart(item) {
+    let cart = getCart();
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+
+    if (existingItemIndex > -1) {
+        cart[existingItemIndex].quantity += 1;
+    } else {
+        item.quantity = 1;
+        cart.push(item);
+    }
+    saveCart(cart);
+    renderCart();
+    alert(`${item.name} added to cart!`);
+}
+
 function renderPurchaseHistory() {
     const marketplaceGrid = document.getElementById('marketplace-purchases');
     const shopGrid = document.getElementById('shop-purchases');
@@ -35,10 +107,7 @@ function renderPurchaseHistory() {
         const purchaseCard = document.createElement('div');
         purchaseCard.classList.add('purchase-card');
 
-        const itemImage = item.image.startsWith('../') ? item.image : `../${item.image}`;
-
         purchaseCard.innerHTML = `
-            <img src="${itemImage}" alt="${item.name}">
             <div class="purchase-details">
                 <h3>Item: ${item.name}</h3>
                 <p>Bought from: ${item.seller}</p>
@@ -131,7 +200,7 @@ function renderCart() {
     if (!cartItemsList || !cartSubtotalElement || !cartTotalElement) return;
 
     const cart = getCart();
-    cartItemsList.innerHTML = ''; // Clear existing items
+    cartItemsList.innerHTML = '';
 
     let subtotal = 0;
 
@@ -146,7 +215,6 @@ function renderCart() {
             subtotal += itemPriceValue * item.quantity;
 
             itemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-details">
                     <h3>${item.name}</h3>
                     <p>${item.price} x ${item.quantity}</p>
