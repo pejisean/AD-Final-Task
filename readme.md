@@ -5,9 +5,12 @@
 <br />
 <div align="center">
   <a href="https://github.com/pejisean/">
+  <br>
     <img src="./assets/img/HomeLogo.png" alt="Nyebe" width="200" height="150">
   </a>
   <h3 align="center">The Last Trade Post</h3>
+  <br>
+  <br>
 </div>
 <div align="center">
  In the aftermath of a world left in ruins, where cities crumbled and systems failed, a group of survivors banded together to build something rare... a spark of order in the chaos.
