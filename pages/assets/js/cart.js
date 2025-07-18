@@ -509,10 +509,27 @@ document.addEventListener("DOMContentLoaded", () => {
         currentCartData.items.forEach(item => {
             const itemDiv = document.createElement('div');
             
-            // Handle both server and localStorage item formats
+            // Handle both server and localStorage item formats with better error handling
             const itemName = item.name || 'Unknown Item';
-            const itemQuantity = item.quantity || 1;
-            const itemPrice = item.price_at_time || parseFloat((item.price || '0').replace('₱', '').replace(',', ''));
+            const itemQuantity = parseInt(item.quantity) || 1;
+            
+            // Better price handling with multiple fallbacks
+            let itemPrice = 0;
+            if (item.price_at_time !== undefined && item.price_at_time !== null) {
+                itemPrice = parseFloat(item.price_at_time);
+            } else if (item.price !== undefined && item.price !== null) {
+                if (typeof item.price === 'string') {
+                    itemPrice = parseFloat(item.price.replace('₱', '').replace(',', ''));
+                } else {
+                    itemPrice = parseFloat(item.price);
+                }
+            }
+            
+            // Ensure itemPrice is a valid number
+            if (isNaN(itemPrice) || itemPrice < 0) {
+                itemPrice = 0;
+            }
+            
             const itemTotal = itemQuantity * itemPrice;
             
             itemDiv.innerHTML = `
@@ -522,10 +539,44 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>Total: ₱${itemTotal.toFixed(2)}</p>
                 <hr>
             `;
+            
             if (receiptItems) receiptItems.appendChild(itemDiv);
         });
 
-        if (receiptTotalPrice) receiptTotalPrice.textContent = currentCartData.total.toFixed(2);
+        // Calculate total with proper error handling
+        let totalPrice = 0;
+        if (currentCartData.total !== undefined && currentCartData.total !== null) {
+            totalPrice = parseFloat(currentCartData.total);
+        } else {
+            // Calculate total from items if cart total is not available
+            totalPrice = currentCartData.items.reduce((sum, item) => {
+                const quantity = parseInt(item.quantity) || 1;
+                let price = 0;
+                
+                if (item.price_at_time !== undefined && item.price_at_time !== null) {
+                    price = parseFloat(item.price_at_time);
+                } else if (item.price !== undefined && item.price !== null) {
+                    if (typeof item.price === 'string') {
+                        price = parseFloat(item.price.replace('₱', '').replace(',', ''));
+                    } else {
+                        price = parseFloat(item.price);
+                    }
+                }
+                
+                if (isNaN(price) || price < 0) {
+                    price = 0;
+                }
+                
+                return sum + (quantity * price);
+            }, 0);
+        }
+        
+        // Ensure total is a valid number
+        if (isNaN(totalPrice) || totalPrice < 0) {
+            totalPrice = 0;
+        }
+
+        if (receiptTotalPrice) receiptTotalPrice.textContent = totalPrice.toFixed(2);
         
         // Get customer name from session or default
         fetch('../handlers/check-session.handler.php', {
