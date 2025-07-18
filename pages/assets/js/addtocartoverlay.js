@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const itemName = button.getAttribute("data-item-name");
             const itemPrice = button.getAttribute("data-item-price");
-            const itemImage = button.getAttribute("data-item-image"); // <-- get image path
             const ip = generateRandomIP();
 
             itemNameEl.textContent = itemName;
@@ -42,8 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 price: parseFloat(itemPrice).toFixed(2),
                 ip: ip,
                 item_id: generateItemId(itemName),
-                quantity: 1,
-                image: itemImage // <-- add image property
+                quantity: 1
             };
 
             overlay.style.display = "flex";
@@ -52,25 +50,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (proceedAddButton) {
         proceedAddButton.addEventListener("click", () => {
-            // Check if user is logged in
             fetch('../handlers/check-session.handler.php', {
                 credentials: 'same-origin'
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success && data.logged_in) {
-                        // User is logged in - add to database cart
-                        addToServerCart(currentItem);
-                    } else {
-                        // User not logged in - add to localStorage cart
-                        addToLocalStorageCart(currentItem);
-                    }
-                })
-                .catch(error => {
-                    console.error('Session check failed:', error);
-                    // Fallback to localStorage
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.logged_in) {
+                    addToServerCart(currentItem);
+                } else {
                     addToLocalStorageCart(currentItem);
-                });
+                }
+            })
+            .catch(error => {
+                console.error('Session check failed:', error);
+                addToLocalStorageCart(currentItem);
+            });
         });
     }
 
@@ -87,27 +81,26 @@ document.addEventListener("DOMContentLoaded", () => {
             }),
             credentials: 'same-origin'
         })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Item added to cart!");
-                    updateCartIconCount(); // Update cart count display
-                } else {
-                    alert("Failed to add item to cart: " + (data.message || 'Unknown error'));
-                }
-                closeOverlay();
-            })
-            .catch(error => {
-                console.error('Error adding to cart:', error);
-                alert("Error adding item to cart. Please try again.");
-                closeOverlay();
-            });
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Item added to cart!");
+                updateCartIconCount();
+            } else {
+                alert("Failed to add item to cart: " + (data.message || 'Unknown error'));
+            }
+            closeOverlay();
+        })
+        .catch(error => {
+            console.error('Error adding to cart:', error);
+            alert("Error adding item to cart. Please try again.");
+            closeOverlay();
+        });
     }
 
     function addToLocalStorageCart(item) {
         let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-        // Check if item already exists in cart
         const existingItemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
 
         if (existingItemIndex > -1) {
@@ -117,8 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: item.item_id,
                 name: item.name,
                 price: `₱${item.price}`,
-                quantity: 1,
-                image: item.image || 'assets/img/placeholder.jpg'
+                quantity: 1
             });
         }
 
@@ -129,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function generateItemId(itemName) {
-        // Generate a simple ID based on item name
         return itemName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     }
 });
