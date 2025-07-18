@@ -1,29 +1,34 @@
 <?php
 
 class ImagePathUtil {
+    
     /**
-     * Resolve image path based on context
+     * Resolve image path for different contexts
      * @param string $imagePath The image path from database
      * @param string $context The context ('pages' or 'root')
      * @return string The resolved path
      */
-    public static function resolve($imagePath, $context = 'pages') {
-        // Handle null/empty paths
+    public static function resolve($imagePath, $context = 'root') {
         if (empty($imagePath)) {
-            return self::getPlaceholder();
+            return self::getMarketplaceFallback($context);
         }
         
-        // If path starts with /, it's absolute from domain root - use as is
+        // Handle uploads folder paths
+        if (strpos($imagePath, 'assets/img/marketplace/uploads/') === 0) {
+            return $context === 'pages' ? '../' . $imagePath : $imagePath;
+        }
+        
+        // If path starts with /, it's absolute from domain root
         if (strpos($imagePath, '/') === 0) {
-            return $imagePath;
+            return $context === 'pages' ? $imagePath : substr($imagePath, 1);
         }
         
-        // If path starts with assets/, make it relative to context
+        // If path starts with assets/, make it context-appropriate
         if (strpos($imagePath, 'assets/') === 0) {
             return $context === 'pages' ? '../' . $imagePath : $imagePath;
         }
         
-        // If path starts with ../, it's already relative to pages context
+        // If path starts with ../, it's already relative to pages
         if (strpos($imagePath, '../') === 0) {
             return $context === 'pages' ? $imagePath : substr($imagePath, 3);
         }
@@ -40,6 +45,11 @@ class ImagePathUtil {
     public static function getAbsolutePath($imagePath) {
         if (empty($imagePath)) {
             return null;
+        }
+        
+        // Handle uploads folder paths
+        if (strpos($imagePath, 'assets/img/marketplace/uploads/') === 0) {
+            return BASE_PATH . '/' . $imagePath;
         }
         
         // If path starts with /, it's absolute from domain root
@@ -67,7 +77,7 @@ class ImagePathUtil {
      * @return string The upload directory path
      */
     public static function getUploadDirectory() {
-        return defined('UPLOAD_PATH') ? UPLOAD_PATH : BASE_PATH . '/assets/img/marketplace/uploads/';
+        return BASE_PATH . '/assets/img/marketplace/uploads/';
     }
     
     /**
@@ -164,24 +174,19 @@ class ImagePathUtil {
      * @param string $imagePath The image path
      * @return array|false Array with width/height or false if not exists
      */
-    public static function getImageDimensions($imagePath) {
+    public static function getImageSize($imagePath) {
         if (empty($imagePath)) {
             return false;
         }
         
         $absolutePath = self::getAbsolutePath($imagePath);
-        if (!$absolutePath || !file_exists($absolutePath)) {
-            return false;
-        }
-        
-        $imageInfo = getimagesize($absolutePath);
-        return $imageInfo ? ['width' => $imageInfo[0], 'height' => $imageInfo[1]] : false;
+        return $absolutePath && file_exists($absolutePath) ? getimagesize($absolutePath) : false;
     }
     
     /**
-     * Validate image file
+     * Validate if path is a valid image
      * @param string $imagePath The image path
-     * @return bool Whether the file is a valid image
+     * @return bool Whether it's a valid image
      */
     public static function isValidImage($imagePath) {
         if (empty($imagePath)) {
