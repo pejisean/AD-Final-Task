@@ -144,6 +144,10 @@
             uploadFormData.append('type', 'marketplace');
 
             console.log('Uploading image...');
+            console.log('Image file:', imageFile);
+            console.log('Image file name:', imageFile.name);
+            console.log('Image file size:', imageFile.size);
+            console.log('Image file type:', imageFile.type);
 
             fetch('../handlers/upload.handler.php', {
                 method: 'POST',
@@ -152,6 +156,7 @@
             })
             .then(response => {
                 console.log('Upload response status:', response.status);
+                console.log('Upload response headers:', response.headers);
                 return response.text();
             })
             .then(text => {
@@ -162,6 +167,18 @@
                     
                     if (result.success) {
                         console.log('Image uploaded successfully:', result.data.url);
+                        console.log('Full server path:', result.data.full_path);
+                        
+                        // Test if the file actually exists by trying to access it
+                        const testImg = new Image();
+                        testImg.onload = function() {
+                            console.log('Image is accessible via web path');
+                        };
+                        testImg.onerror = function() {
+                            console.error('Image is NOT accessible via web path');
+                        };
+                        testImg.src = '../' + result.data.url;
+                        
                         createItem(formData, result.data.url);
                     } else {
                         console.error('Upload failed:', result.message);

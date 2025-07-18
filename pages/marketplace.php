@@ -12,7 +12,6 @@
 <?php 
 require_once '../components/dropdown.component.php';
 require_once '../utils/marketplace.util.php';
-require_once '../utils/imagePath.util.php';
 require_once '../utils/auth.util.php';
 
 // Get items using the marketplace util
@@ -34,9 +33,20 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
                          data-description="<?= htmlspecialchars($item['description']) ?>">
                         <div class="item-image">
                             <?php if (!empty($item['image_url'])): ?>
-                                <img src="../<?= $item['image_url'] ?>" 
+                                <?php
+                                // Debug: Log the image path
+                                error_log("Item image_url: " . $item['image_url']);
+                                
+                                // For pages context, add ../ prefix to the stored path
+                                $imagePath = '../' . $item['image_url'];
+                                error_log("Resolved image path: " . $imagePath);
+                                ?>
+                                <img src="<?= $imagePath ?>" 
                                      alt="<?= htmlspecialchars($item['name']) ?>"
-                                     loading="lazy">
+                                     loading="lazy"
+                                     onerror="console.error('Failed to load image:', this.src); this.style.display='none';">
+                            <?php else: ?>
+                                <div class="no-image-placeholder">No Image</div>
                             <?php endif; ?>
                             <div class="item-overlay">
                                 <p class="item-name"><?= htmlspecialchars($item['name']) ?></p>
