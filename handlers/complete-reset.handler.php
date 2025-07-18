@@ -14,7 +14,7 @@ try {
         }
     }
     
-    // Complete-reset
+    // Clear PHP session completely
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -34,22 +34,23 @@ try {
     // Destroy session
     session_destroy();
     
-    // Start a new clean session for next login
+    // Start a new clean session
     session_start();
     session_regenerate_id(true);
     
     echo json_encode([
         'success' => true,
-        'message' => 'Logged out successfully',
+        'message' => 'Complete reset successful',
         'clear_localStorage' => true,
-        'clear_sessionStorage' => true
+        'clear_sessionStorage' => true,
+        'reload_page' => true
     ]);
     
 } catch (Exception $e) {
-    error_log("Logout error: " . $e->getMessage());
+    error_log("Complete reset error: " . $e->getMessage());
     echo json_encode([
         'success' => false,
-        'message' => 'Error during logout: ' . $e->getMessage(),
+        'message' => 'Error during reset: ' . $e->getMessage(),
         'clear_localStorage' => true,
         'clear_sessionStorage' => true
     ]);

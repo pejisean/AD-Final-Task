@@ -46,9 +46,10 @@ function getSessionToken() {
     
     if (AuthUtil::isLoggedIn()) {
         $user = AuthUtil::getCurrentUser();
-        return 'user_' . $user['id'] . '_' . session_id();
+        // Use a more stable session token that doesn't change on session regeneration
+        return 'user_' . $user['id'] . '_' . md5(session_id() . $user['username']);
     } else {
-        return 'guest_' . session_id();
+        return 'guest_' . md5(session_id());
     }
 }
 

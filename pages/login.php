@@ -1,9 +1,12 @@
 <?php
+// filepath: c:\Users\Sean\Desktop\Schoolwork\2nd Year\Third Sem\CCS0043\AD-Final-Task\AD-Final-Task\pages\login.php
 require_once '../bootstrap.php';
 require_once '../components/auth.component.php';
 
-// TEMPORARY DEBUG - Remove after testing
+// Handle debug mode safely
+$debugOutput = '';
 if (isset($_GET['debug'])) {
+    ob_start(); // Start output buffering
     echo "<h3>Database Debug Test</h3>";
 
     // Test 1: Check connection
@@ -39,10 +42,20 @@ if (isset($_GET['debug'])) {
     }
 
     echo "<hr>";
+    $debugOutput = ob_get_clean(); // Get buffered output
 }
 
-// Redirect if already logged in
-if (AuthUtil::isLoggedIn()) {
+// Check if logged in BEFORE any output
+$isLoggedIn = false;
+try {
+    $isLoggedIn = AuthUtil::isLoggedIn();
+} catch (Exception $e) {
+    error_log("Login check error: " . $e->getMessage());
+    $isLoggedIn = false;
+}
+
+// Redirect if already logged in (and not in debug mode)
+if ($isLoggedIn && !isset($_GET['debug'])) {
     header("Location: ../index.php");
     exit();
 }
@@ -54,12 +67,18 @@ if (AuthUtil::isLoggedIn()) {
     <title>The Last Trade Post - Login</title>
     <?php require_once '../components/head.component.php'; ?>
     <?php require_once '../components/script.component.php'; ?>
-    <?php require_once '../components/dropdown.component.php'; ?>
     <link rel="stylesheet" href="assets/css/shop/login.css" />
-
 </head>
 
+<body>
+<?php require_once '../components/dropdown.component.php'; ?>
 
+<?php 
+// Output debug info if requested
+if (isset($_GET['debug'])) {
+    echo $debugOutput;
+}
+?>
 
 <main class="login-container">
     <div class="login-form-wrapper">
@@ -89,6 +108,7 @@ if (AuthUtil::isLoggedIn()) {
 </main>
 
 <?php include '../components/footer.component.php'; ?>
+<script src="assets/js/login.js"></script>
 </body>
 
 </html>

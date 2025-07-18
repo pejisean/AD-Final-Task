@@ -8,8 +8,20 @@ header('Content-Type: application/json');
 try {
     require_once '../bootstrap.php';
     require_once UTILS_PATH . '/receipt.util.php';
-    require_once UTILS_PATH . '/cart.util.php';  // Add this line
+    require_once UTILS_PATH . '/cart.util.php';
     require_once UTILS_PATH . '/auth.util.php';
+
+    // Add the missing getSessionToken function
+    function getSessionToken() {
+        AuthUtil::startSession();
+        
+        if (AuthUtil::isLoggedIn()) {
+            $user = AuthUtil::getCurrentUser();
+            return 'user_' . $user['id'] . '_' . md5(session_id() . $user['username']);
+        } else {
+            return 'guest_' . md5(session_id());
+        }
+    }
 
     $method = $_SERVER['REQUEST_METHOD'];
     $input = json_decode(file_get_contents('php://input'), true) ?: $_POST;
@@ -102,103 +114,41 @@ function handleGetReceipts() {
 }
 
 function handleCreateReceipt($input) {
-    // Validate required fields
-    $required = ['total_amount', 'shipping_address'];
-    foreach ($required as $field) {
-        if (!isset($input[$field])) {
-            echo json_encode(['success' => false, 'message' => ucfirst(str_replace('_', ' ', $field)) . ' is required']);
-            return;
-        }
-    }
+    // Get session token
+    $sessionToken = getSessionToken();
     
-    // Get user info if logged in
+    // Get user ID if logged in
     $userId = null;
-    $sessionToken = null;
-    
-    AuthUtil::startSession();
-    
     if (AuthUtil::isLoggedIn()) {
         $user = AuthUtil::getCurrentUser();
         $userId = $user['id'];
-        $sessionToken = 'user_' . $user['id'] . '_' . session_id();
-    } else {
-        $sessionToken = 'guest_' . session_id();
     }
     
-    // Check if this is a cart-based checkout
-    if (isset($input['items']) && !empty($input['items'])) {
-        // Direct receipt creation from provided items
-        $receiptData = [
-            'receipt_number' => ReceiptUtil::generateReceiptNumber(),
-            'user_id' => $userId,
-            'session_token' => $sessionToken,
-            'total_amount' => (float)$input['total_amount'],
-            'tax_amount' => (float)($input['tax_amount'] ?? ($input['total_amount'] * 0.10)),
-            'shipping_address' => $input['shipping_address'],
-            'billing_address' => $input['billing_address'] ?? $input['shipping_address'],
-            'payment_method' => $input['payment_method'] ?? 'cash',
-            'payment_status' => $input['payment_status'] ?? 'completed',
-            'order_status' => $input['order_status'] ?? 'processing',
-            'notes' => $input['notes'] ?? 'Cart checkout'
-        ];
+    // Create receipt
+    $receiptId = ReceiptUtil::createReceiptFromCart(
+        $sessionToken,
+        $userId,
+        $input['shipping_address'],
+        $input['billing_address'] ?? $input['shipping_address'],
+        $input['payment_method'] ?? 'cash'
+    );
+    
+    if ($receiptId) {
+        // Get the receipt number
+        $receipt = ReceiptUtil::getReceiptById($receiptId);
         
-        $receiptId = ReceiptUtil::createReceipt($receiptData);
+        // Don't clear the session here - let the receipt creation handle cart clearing
         
-        if ($receiptId) {
-            // Add receipt items
-            foreach ($input['items'] as $item) {
-                ReceiptUtil::addReceiptItem($receiptId, [
-                    'item_id' => $item['item_id'],
-                    'item_name' => $item['item_name'],
-                    'item_description' => $item['item_description'] ?? '',
-                    'quantity' => $item['quantity'],
-                    'unit_price' => $item['unit_price'],
-                    'total_price' => $item['total_price'],
-                    'seller_name' => $item['seller_name'] ?? 'Unknown'
-                ]);
-            }
-            
-            // Clear the cart after successful receipt creation
-            if ($sessionToken) {
-                CartUtil::clearCart($sessionToken);
-            }
-            
-            echo json_encode([
-                'success' => true,
-                'message' => 'Receipt created successfully',
-                'data' => [
-                    'receipt_id' => $receiptId,
-                    'receipt_number' => $receiptData['receipt_number']
-                ]
-            ]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Failed to create receipt']);
-        }
+        echo json_encode([
+            'success' => true,
+            'message' => 'Receipt created successfully',
+            'data' => [
+                'receipt_id' => $receiptId,
+                'receipt_number' => $receipt['receipt_number'] ?? 'Generated'
+            ]
+        ]);
     } else {
-        // Cart-based receipt creation (fallback)
-        $receiptId = ReceiptUtil::createReceiptFromCart(
-            $sessionToken,
-            $userId,
-            $input['shipping_address'],
-            $input['billing_address'] ?? $input['shipping_address'],
-            $input['payment_method'] ?? 'cash'
-        );
-        
-        if ($receiptId) {
-            // Get the receipt number
-            $receipt = ReceiptUtil::getReceiptById($receiptId);
-            
-            echo json_encode([
-                'success' => true,
-                'message' => 'Receipt created successfully',
-                'data' => [
-                    'receipt_id' => $receiptId,
-                    'receipt_number' => $receipt['receipt_number'] ?? 'Generated'
-                ]
-            ]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Failed to create receipt from cart']);
-        }
+        echo json_encode(['success' => false, 'message' => 'Failed to create receipt from cart']);
     }
 }
 

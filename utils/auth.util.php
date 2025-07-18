@@ -34,10 +34,15 @@ class AuthUtil {
             
             // Verify password (plain text for now)
             if ($user['password'] === $password) {
-                // Set session variables
+                // Regenerate session ID to prevent session fixation
+                session_regenerate_id(true);
+                
+                // Set session variables with consistent naming
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['user_role'] = $user['role'];
+                $_SESSION['email'] = $user['email'] ?? null;
+                $_SESSION['role'] = $user['role'] ?? 'user';
+                $_SESSION['user_role'] = $user['role'] ?? 'user'; // Add this for backward compatibility
                 $_SESSION['logged_in'] = true;
                 $_SESSION['login_time'] = time();
                 
@@ -47,7 +52,8 @@ class AuthUtil {
                     'user' => [
                         'id' => $user['id'],
                         'username' => $user['username'],
-                        'role' => $user['role']
+                        'email' => $user['email'] ?? null,
+                        'role' => $user['role'] ?? 'user'
                     ]
                 ];
             } else {
@@ -82,7 +88,19 @@ class AuthUtil {
      */
     public static function hasRole($role) {
         self::startSession();
-        return self::isLoggedIn() && isset($_SESSION['user_role']) && $_SESSION['user_role'] === $role;
+        if (!self::isLoggedIn()) {
+            return false;
+        }
+        
+        // Check both possible session keys for backward compatibility, with proper null checking
+        $userRole = 'user'; // Default fallback
+        if (isset($_SESSION['user_role'])) {
+            $userRole = $_SESSION['user_role'];
+        } elseif (isset($_SESSION['role'])) {
+            $userRole = $_SESSION['role'];
+        }
+        
+        return $userRole === $role;
     }
     
     /**
@@ -92,10 +110,24 @@ class AuthUtil {
     public static function getCurrentUser() {
         self::startSession();
         if (self::isLoggedIn()) {
+            // Ensure all required session variables exist with fallbacks
+            if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
+                return null;
+            }
+            
+            // Get role with proper fallback - fix the undefined key issue
+            $role = 'user'; // default role
+            if (isset($_SESSION['role'])) {
+                $role = $_SESSION['role'];
+            } elseif (isset($_SESSION['user_role'])) {
+                $role = $_SESSION['user_role'];
+            }
+            
             return [
                 'id' => $_SESSION['user_id'],
                 'username' => $_SESSION['username'],
-                'role' => $_SESSION['user_role']
+                'email' => $_SESSION['email'] ?? null,
+                'role' => $role
             ];
         }
         return null;
@@ -106,8 +138,11 @@ class AuthUtil {
      */
     public static function logout() {
         self::startSession();
+        
+        // Clear all session variables
         $_SESSION = array();
         
+        // Delete session cookie
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(session_name(), '', time() - 42000,
@@ -116,6 +151,7 @@ class AuthUtil {
             );
         }
         
+        // Destroy session
         session_destroy();
     }
 }

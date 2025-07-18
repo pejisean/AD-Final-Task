@@ -166,34 +166,35 @@ function updateUIForLoggedOutUser(loginSignupLink) {
 }
 
 function handleLogout() {
-    const logoutButton = document.querySelector('.logout-link');
-    if (logoutButton) {
-        logoutButton.innerHTML = '⏳ Logging out...';
-        logoutButton.style.pointerEvents = 'none';
-    }
-
-    fetch('handlers/logout.handler.php', {
+    fetch('../handlers/logout.handler.php', {
         method: 'POST',
         credentials: 'same-origin'
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                localStorage.removeItem('loggedInCodename');
-                localStorage.removeItem('cartItems');
-                window.location.href = 'index.php';
-            } else {
-                localStorage.removeItem('loggedInCodename');
-                localStorage.removeItem('cartItems');
-                window.location.reload();
-            }
-        })
-        .catch(error => {
-            console.error('Logout error:', error);
+    .then(response => response.json())
+    .then(data => {
+        console.log('Logout response:', data);
+        
+        // Clear localStorage if instructed
+        if (data.clear_localStorage) {
             localStorage.removeItem('loggedInCodename');
-            localStorage.removeItem('cartItems');
-            window.location.reload();
-        });
+        }
+        
+        if (data.success) {
+            alert('Logged out successfully!');
+            window.location.href = 'login.php';
+        } else {
+            alert('Logout failed: ' + data.message);
+            // Still redirect to login on failure
+            window.location.href = 'login.php';
+        }
+    })
+    .catch(error => {
+        console.error('Logout error:', error);
+        // Clear localStorage on error
+        localStorage.removeItem('loggedInCodename');
+        alert('Logout error. Redirecting to login.');
+        window.location.href = 'login.php';
+    });
 }
 
 function toggleMenu() {
@@ -337,19 +338,19 @@ function handleLogin() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                formMessage.textContent = 'Logged in, redirecting to home page...';
-                formMessage.classList.add('success');
-                setTimeout(() => {
-                    window.location.href = '../index.php';
-                }, 1200);
+                // Sync localStorage with successful login
+                localStorage.setItem('loggedInCodename', data.user.username);
+                window.location.href = 'index.php';
             } else {
-                formMessage.textContent = 'Invalid username or password';
-                formMessage.classList.add('error');
+                // Clear localStorage on failed login
+                localStorage.removeItem('loggedInCodename');
+                alert('Login failed: ' + data.message);
             }
         })
-        .catch(() => {
-            formMessage.textContent = 'Login failed. Please try again.';
-            formMessage.classList.add('error');
+        .catch(error => {
+            console.error('Login error:', error);
+            localStorage.removeItem('loggedInCodename');
+            alert('Login error. Please try again.');
         });
 
     return false; // Prevent default form submit

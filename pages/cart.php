@@ -12,26 +12,33 @@
     <link rel="stylesheet" href="assets/css/shop/cart.css" />
 </head>
 
+<body>
 <?php require_once '../components/dropdown.component.php'; ?>
 
 <div class="products-container">
     <h2 class="cart-title">Your Cart</h2>
-    <div id="cart-loading" style="text-align: center; padding: 20px;">
+    
+    <div id="cart-loading" class="cart-loading">
+        <p>Loading cart...</p>
     </div>
-    <div id="cart-items-list" style="display: none;"></div>
-    <div class="cart-summary-section" id="cart-summary" style="display: none;">
+    
+    <div id="cart-items-list" class="cart-items-list"></div>
+    
+    <div class="cart-summary-section" id="cart-summary">
+        <h3>Order Summary</h3>
         <p><strong>Subtotal:</strong> <span id="cart-subtotal">₱0.00</span></p>
         <p><strong>Total:</strong> <span id="cart-total">₱0.00</span></p>
         <button id="checkoutBtn" class="checkout-button member-checkout">Proceed to Checkout</button>
     </div>
-    <div id="empty-cart-message" style="display: none; text-align: center; padding: 40px;">
-
-
+    
+    <div id="empty-cart-message" class="empty-cart-message">
+        <p>Your cart is empty</p>
+        <a href="marketplace.php" class="continue-shopping-btn">Continue Shopping</a>
     </div>
 </div>
 
 <!-- Receipt Overlay -->
-<div id="receiptOverlay" class="overlay" style="display: none;">
+<div id="receiptOverlay" class="overlay">
     <div class="overlay-content">
         <span class="close-button" id="closeReceiptOverlayBtn">&times;</span>
         <h2>Order Receipt</h2>
@@ -48,6 +55,7 @@
 
 <?php include '../components/feedback.component.php'; ?>
 <?php include '../components/footer.component.php'; ?>
+<script src="../assets/js/script.js"></script>
 <script src="assets/js/cart.js"></script>
 </body>
 
