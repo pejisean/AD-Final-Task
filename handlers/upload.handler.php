@@ -34,9 +34,29 @@ try {
         exit();
     }
 
-    $uploadDir = '../assets/img/marketplace/';
+    // Use absolute path from BASE_PATH
+    $uploadDir = BASE_PATH . '/assets/img/marketplace/';
+    
+    // Create directory if it doesn't exist
     if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0755, true);
+        if (!mkdir($uploadDir, 0755, true)) {
+            error_log("Failed to create upload directory: " . $uploadDir);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Failed to create upload directory'
+            ]);
+            exit();
+        }
+    }
+
+    // Check if directory is writable
+    if (!is_writable($uploadDir)) {
+        error_log("Upload directory not writable: " . $uploadDir);
+        echo json_encode([
+            'success' => false,
+            'message' => 'Upload directory not writable'
+        ]);
+        exit();
     }
 
     $file = $_FILES['image'];
