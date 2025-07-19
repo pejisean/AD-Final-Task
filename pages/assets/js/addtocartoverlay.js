@@ -27,24 +27,39 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", event => {
             event.preventDefault();
 
-            const itemName = button.getAttribute("data-item-name");
-            const itemPrice = button.getAttribute("data-item-price");
-            const ip = generateRandomIP();
+            // Check login status before showing overlay
+            fetch('../handlers/check-session.handler.php', {
+                credentials: 'same-origin'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (!(data.success && data.logged_in)) {
+                        alert("You must login first before adding to cart");
+                        return;
+                    }
 
-            itemNameEl.textContent = itemName;
-            itemPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
-            totalPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
-            ipAddressEl.textContent = ip;
+                    const itemName = button.getAttribute("data-item-name");
+                    const itemPrice = button.getAttribute("data-item-price");
+                    const ip = generateRandomIP();
 
-            currentItem = {
-                name: itemName,
-                price: parseFloat(itemPrice).toFixed(2),
-                ip: ip,
-                item_id: generateItemId(itemName),
-                quantity: 1
-            };
+                    itemNameEl.textContent = itemName;
+                    itemPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
+                    totalPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
+                    ipAddressEl.textContent = ip;
 
-            overlay.style.display = "flex";
+                    currentItem = {
+                        name: itemName,
+                        price: parseFloat(itemPrice).toFixed(2),
+                        ip: ip,
+                        item_id: generateItemId(itemName),
+                        quantity: 1
+                    };
+
+                    overlay.style.display = "flex";
+                })
+                .catch(() => {
+                    alert("You must login first before adding to cart");
+                });
         });
     });
 
@@ -53,18 +68,18 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch('../handlers/check-session.handler.php', {
                 credentials: 'same-origin'
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.logged_in) {
-                    addToServerCart(currentItem);
-                } else {
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.logged_in) {
+                        addToServerCart(currentItem);
+                    } else {
+                        addToLocalStorageCart(currentItem);
+                    }
+                })
+                .catch(error => {
+                    console.error('Session check failed:', error);
                     addToLocalStorageCart(currentItem);
-                }
-            })
-            .catch(error => {
-                console.error('Session check failed:', error);
-                addToLocalStorageCart(currentItem);
-            });
+                });
         });
     }
 
@@ -81,21 +96,21 @@ document.addEventListener("DOMContentLoaded", () => {
             }),
             credentials: 'same-origin'
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert("Item added to cart!");
-                updateCartIconCount();
-            } else {
-                alert("Failed to add item to cart: " + (data.message || 'Unknown error'));
-            }
-            closeOverlay();
-        })
-        .catch(error => {
-            console.error('Error adding to cart:', error);
-            alert("Error adding item to cart. Please try again.");
-            closeOverlay();
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Item added to cart!");
+                    updateCartIconCount();
+                } else {
+                    alert("Failed to add item to cart: " + (data.message || 'Unknown error'));
+                }
+                closeOverlay();
+            })
+            .catch(error => {
+                console.error('Error adding to cart:', error);
+                alert("Error adding item to cart. Please try again.");
+                closeOverlay();
+            });
     }
 
     function addToLocalStorageCart(item) {

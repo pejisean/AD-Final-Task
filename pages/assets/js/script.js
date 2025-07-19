@@ -235,7 +235,7 @@ function updateUIForLoggedInUser(username, loginSignupLink) {
         loginSignupLink.innerHTML = `👤 ${username}`;
         loginSignupLink.href = 'profile.php';
     }
-    
+
     const dropdownMenu = document.getElementById('dropdownMenu');
     if (dropdownMenu) {
         // Check if logout link already exists
@@ -245,12 +245,12 @@ function updateUIForLoggedInUser(username, loginSignupLink) {
             logoutLink.href = '#';
             logoutLink.innerHTML = '➡️ Logout';
             logoutLink.classList.add('logout-link');
-            
+
             logoutLink.onclick = function (event) {
                 event.preventDefault();
                 handleLogout();
             };
-            
+
             dropdownMenu.appendChild(logoutLink);
         }
     }
@@ -261,7 +261,7 @@ function updateUIForLoggedOutUser(loginSignupLink) {
         loginSignupLink.innerHTML = 'Please Login First';
         loginSignupLink.href = 'login.php';
     }
-    
+
     // Remove logout link if it exists
     const logoutLink = document.querySelector('.logout-link');
     if (logoutLink) {
@@ -274,37 +274,37 @@ function handleLogout() {
         method: 'POST',
         credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Logout response:', data);
-        
-        // Clear localStorage if instructed
-        if (data.clear_localStorage) {
+        .then(response => response.json())
+        .then(data => {
+            console.log('Logout response:', data);
+
+            // Clear localStorage if instructed
+            if (data.clear_localStorage) {
+                localStorage.removeItem('loggedInCodename');
+            }
+
+            // Clear sessionStorage if instructed
+            if (data.clear_sessionStorage) {
+                sessionStorage.clear();
+            }
+
+            if (data.success) {
+                alert('Logged out successfully!');
+                window.location.href = 'login.php';
+            } else {
+                alert('Logout failed: ' + data.message);
+                // Still redirect to login on failure
+                window.location.href = 'login.php';
+            }
+        })
+        .catch(error => {
+            console.error('Logout error:', error);
+            // Clear all storage on error
             localStorage.removeItem('loggedInCodename');
-        }
-        
-        // Clear sessionStorage if instructed
-        if (data.clear_sessionStorage) {
             sessionStorage.clear();
-        }
-        
-        if (data.success) {
-            alert('Logged out successfully!');
+            alert('Logout error. Redirecting to login.');
             window.location.href = 'login.php';
-        } else {
-            alert('Logout failed: ' + data.message);
-            // Still redirect to login on failure
-            window.location.href = 'login.php';
-        }
-    })
-    .catch(error => {
-        console.error('Logout error:', error);
-        // Clear all storage on error
-        localStorage.removeItem('loggedInCodename');
-        sessionStorage.clear();
-        alert('Logout error. Redirecting to login.');
-        window.location.href = 'login.php';
-    });
+        });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -319,33 +319,33 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('../handlers/check-session.handler.php', {
         credentials: 'same-origin'
     })
-    .then(response => response.json())
-    .then(data => {
-        const loginSignupLink = document.getElementById('login-signup-link');
-        if (!loginSignupLink) return;
+        .then(response => response.json())
+        .then(data => {
+            const loginSignupLink = document.getElementById('login-signup-link');
+            if (!loginSignupLink) return;
 
-        if (data.success && data.logged_in && data.user) {
-            // User is logged in on server
-            updateUIForLoggedInUser(data.user.username, loginSignupLink);
-            // Sync localStorage with server
-            localStorage.setItem('loggedInCodename', data.user.username);
-        } else {
-            // User is not logged in on server
+            if (data.success && data.logged_in && data.user) {
+                // User is logged in on server
+                updateUIForLoggedInUser(data.user.username, loginSignupLink);
+                // Sync localStorage with server
+                localStorage.setItem('loggedInCodename', data.user.username);
+            } else {
+                // User is not logged in on server
+                localStorage.removeItem('loggedInCodename');
+                sessionStorage.clear();
+                updateUIForLoggedOutUser(loginSignupLink);
+            }
+        })
+        .catch(error => {
+            console.error('Session check failed:', error);
+            // Clear everything on error
             localStorage.removeItem('loggedInCodename');
             sessionStorage.clear();
-            updateUIForLoggedOutUser(loginSignupLink);
-        }
-    })
-    .catch(error => {
-        console.error('Session check failed:', error);
-        // Clear everything on error
-        localStorage.removeItem('loggedInCodename');
-        sessionStorage.clear();
-        const loginSignupLink = document.getElementById('login-signup-link');
-        if (loginSignupLink) {
-            updateUIForLoggedOutUser(loginSignupLink);
-        }
-    });
+            const loginSignupLink = document.getElementById('login-signup-link');
+            if (loginSignupLink) {
+                updateUIForLoggedOutUser(loginSignupLink);
+            }
+        });
 
     const mainSortDropdown = document.querySelector('#sort-by-main');
 
@@ -411,6 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error setting active navigation link:", e);
     }
 
+    // Shop product cards
     const shopProductCards = document.querySelectorAll('.product-grid .product-card');
     shopProductCards.forEach((card, index) => {
         const buyButton = card.querySelector('.buy-btn:not(.buy-now-btn):not([data-item-name])');
@@ -418,10 +419,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const itemName = card.querySelector('h3')?.textContent;
         const itemPrice = card.querySelector('p:not(.product-description)')?.textContent;
         const itemImage = card.querySelector('img')?.getAttribute('src');
-        const itemId = `shop-item-${index}`; // Unique ID for cart item
+        const itemId = `shop-item-${index}`;
 
         const purchaseData = {
-            id: itemId, // Add ID for cart
+            id: itemId,
             name: itemName,
             image: itemImage,
             source: 'Shop',
@@ -430,32 +431,60 @@ document.addEventListener('DOMContentLoaded', function () {
             price: itemPrice
         };
 
+        // Always check server session for login status
+        function checkLoggedIn(callback) {
+            fetch('../handlers/check-session.handler.php', {
+                credentials: 'same-origin'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    callback(data.success && data.logged_in);
+                })
+                .catch(() => {
+                    callback(false);
+                });
+        }
+
         if (buyButton) {
             buyButton.addEventListener('click', function (event) {
                 event.preventDefault();
-                addPurchaseToHistory(purchaseData);
-                alert(`${itemName} purchased from The Last Trade Post!`);
+                checkLoggedIn(function (isLoggedIn) {
+                    if (!isLoggedIn) {
+                        alert('You must login first');
+                        return;
+                    }
+                    addPurchaseToHistory(purchaseData);
+                    alert(`${itemName} purchased from The Last Trade Post!`);
+                });
             });
         }
         if (addToCartButton) {
             addToCartButton.addEventListener('click', function (event) {
                 event.preventDefault();
-                addToCart(purchaseData); // Use addToCart for "Add to Cart"
+                checkLoggedIn(function (isLoggedIn) {
+                    if (!isLoggedIn) {
+                        alert('You must login first');
+                        return;
+                    }
+                    addToCart(purchaseData);
+                });
             });
         }
     });
 
+    // Marketplace product cards
     const marketplaceCards = document.querySelectorAll('.marketplace-main .product-card');
-    marketplaceCards.forEach((card, index) => { // Added index for unique ID
-        const viewDetailsButton = card.querySelector('button');
+    marketplaceCards.forEach((card, index) => {
+        const buyNowButton = card.querySelector('.buy-now-btn');
+        const addToCartButton = card.querySelector('.add-cart-btn');
         const itemName = card.querySelector('h3')?.textContent;
         const itemPrice = card.querySelector('p:not(.product-description)')?.textContent;
         const itemImage = card.querySelector('img')?.getAttribute('src');
         const sellerName = "User Listed";
-        const itemId = `marketplace-item-${index}`; // Unique ID for cart item
+        const itemId = `marketplace-item-${index}`;
 
         const purchaseData = {
-            id: itemId, // Add ID for cart
+            id: itemId,
             name: itemName,
             image: itemImage,
             source: 'Marketplace',
@@ -464,10 +493,42 @@ document.addEventListener('DOMContentLoaded', function () {
             price: itemPrice
         };
 
-        if (viewDetailsButton) {
-            viewDetailsButton.addEventListener('click', function () {
-                addPurchaseToHistory(purchaseData);
-                alert(`${itemName} purchased from the Marketplace!`);
+        // Always check server session for login status
+        function checkLoggedIn(callback) {
+            fetch('../handlers/check-session.handler.php', {
+                credentials: 'same-origin'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    callback(data.success && data.logged_in);
+                })
+                .catch(() => {
+                    callback(false);
+                });
+        }
+
+        if (buyNowButton) {
+            buyNowButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                checkLoggedIn(function (isLoggedIn) {
+                    if (!isLoggedIn) {
+                        alert('You must login first');
+                        return;
+                    }
+                    // Your buy now logic here
+                });
+            });
+        }
+        if (addToCartButton) {
+            addToCartButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                checkLoggedIn(function (isLoggedIn) {
+                    if (!isLoggedIn) {
+                        alert('You must login first');
+                        return;
+                    }
+                    // Your add to cart logic here
+                });
             });
         }
     });
@@ -487,24 +548,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 method: 'GET',
                 credentials: 'same-origin'
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.logged_in) {
-                    e.preventDefault();
-                    alert('You are already logged in');
-                } else {
-                    // Clear localStorage if server says not logged in
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.logged_in) {
+                        e.preventDefault();
+                        alert('You are already logged in');
+                    } else {
+                        // Clear localStorage if server says not logged in
+                        localStorage.removeItem('loggedInCodename');
+                        sessionStorage.clear();
+                        // Allow normal navigation to login page
+                    }
+                })
+                .catch(error => {
+                    console.error('Session check failed:', error);
+                    // Clear storage on error and allow navigation
                     localStorage.removeItem('loggedInCodename');
                     sessionStorage.clear();
-                    // Allow normal navigation to login page
-                }
-            })
-            .catch(error => {
-                console.error('Session check failed:', error);
-                // Clear storage on error and allow navigation
-                localStorage.removeItem('loggedInCodename');
-                sessionStorage.clear();
-            });
+                });
         });
     });
 });

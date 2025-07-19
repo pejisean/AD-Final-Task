@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="item-description">${item.description || ''}</p>
                     <p class="item-seller">Customer: ${item.seller_name || 'Unknown'}</p>
                     <p class="item-price">₱${parseFloat(item.price_at_time).toFixed(2)} × ${item.quantity}</p>
-                    <p class="item-source"> Source:${item.source || 'Marketplace'}</p>
+                    <p class="item-source">${item.source || ''}</p>
                 </div>
                 <div class="cart-item-controls">
                     <div class="quantity-controls">
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h3>${item.name}</h3>
                     <p class="item-description">${item.description || ''}</p>
                     <p class="item-price">₱${itemPriceValue.toFixed(2)} × ${quantity}</p>
-                    <p class="item-source">Source: ${item.source || 'Shop'}</p>
+                    <p class="item-source"> ${item.source || ''}</p>
                 </div>
                 <div class="cart-item-controls">
                     <div class="quantity-controls">

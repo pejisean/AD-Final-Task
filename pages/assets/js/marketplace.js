@@ -99,7 +99,7 @@
                         console.log('User not logged in via session');
                         // Clear localStorage if server says not logged in
                         localStorage.removeItem('loggedInCodename');
-                        alert('Your session has expired. Please log in again.');
+                        alert('You must login first before adding an item');
                         window.location.href = 'login.php';
                     }
                 })
