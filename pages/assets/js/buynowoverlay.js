@@ -38,22 +38,37 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", event => {
       event.preventDefault();
 
-      const itemName = button.getAttribute("data-item-name");
-      const itemPrice = button.getAttribute("data-item-price");
-      const ip = generateRandomIP();
+      // Check login status before showing overlay
+      fetch('../handlers/check-session.handler.php', {
+        credentials: 'same-origin'
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (!(data.success && data.logged_in)) {
+            alert("You must login before buying");
+            return;
+          }
 
-      itemNameEl.textContent = itemName;
-      itemPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
-      totalPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
-      ipAddressEl.textContent = ip;
+          const itemName = button.getAttribute("data-item-name");
+          const itemPrice = button.getAttribute("data-item-price");
+          const ip = generateRandomIP();
 
-      currentItem = {
-        name: itemName,
-        price: parseFloat(itemPrice).toFixed(2),
-        ip: ip
-      };
+          itemNameEl.textContent = itemName;
+          itemPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
+          totalPriceEl.textContent = parseFloat(itemPrice).toFixed(2);
+          ipAddressEl.textContent = ip;
 
-      overlay.style.display = "flex";
+          currentItem = {
+            name: itemName,
+            price: parseFloat(itemPrice).toFixed(2),
+            ip: ip
+          };
+
+          overlay.style.display = "flex";
+        })
+        .catch(() => {
+          alert("You must login before buying");
+        });
     });
   });
 
