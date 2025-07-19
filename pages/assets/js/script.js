@@ -258,7 +258,7 @@ function updateUIForLoggedInUser(username, loginSignupLink) {
 
 function updateUIForLoggedOutUser(loginSignupLink) {
     if (loginSignupLink) {
-        loginSignupLink.innerHTML = '👤 Login / Sign Up';
+        loginSignupLink.innerHTML = 'Please Login First';
         loginSignupLink.href = 'login.php';
     }
     

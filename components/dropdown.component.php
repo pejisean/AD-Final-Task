@@ -26,7 +26,7 @@
             <div class="dropdown-menu" id="dropdownMenu">
                 <span id="login-signup-link">Please Login First</span>
                 <a href="/index.php">🏠 Home</a>
-                <a href="/pages/cart.php">🛒 Cart (<span id="cart-item-count">0</span>)</a>
+                <a href="/pages/cart.php">🛒 Cart </a>
                 <a href="#" onclick="openFeedback(); return false;">💬 Feedback</a>
                 <a href="/pages/about.php">ℹ️ About Us</a>
             </div>

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log('Cart script loaded');
-    
+
     const cartItemsList = document.getElementById('cart-items-list');
     const cartSubtotalElement = document.getElementById('cart-subtotal');
     const cartTotalElement = document.getElementById('cart-total');
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load cart from server and localStorage
     function loadCart() {
         console.log('Loading cart...');
-        
+
         showElement(cartLoading);
         hideElement(cartItemsList);
         hideElement(cartSummary);
@@ -47,29 +47,29 @@ document.addEventListener("DOMContentLoaded", () => {
             method: 'GET',
             credentials: 'same-origin'
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Server cart data:', data);
-            hideElement(cartLoading);
-            
-            if (data.success && data.data && data.data.items && data.data.items.length > 0) {
-                currentCartData = data.data;
-                renderServerCart(data.data);
-            } else {
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server cart data:', data);
+                hideElement(cartLoading);
+
+                if (data.success && data.data && data.data.items && data.data.items.length > 0) {
+                    currentCartData = data.data;
+                    renderServerCart(data.data);
+                } else {
+                    loadLocalStorageCart();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading server cart:', error);
+                hideElement(cartLoading);
                 loadLocalStorageCart();
-            }
-        })
-        .catch(error => {
-            console.error('Error loading server cart:', error);
-            hideElement(cartLoading);
-            loadLocalStorageCart();
-        });
+            });
     }
 
     // Render cart from server data (NO IMAGES)
     function renderServerCart(cartData) {
         console.log('Rendering server cart:', cartData);
-        
+
         const items = cartData.items || [];
         const total = cartData.total || 0;
 
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showElement(cartItemsList);
         showElement(cartSummary);
         hideElement(emptyCartMessage);
-        
+
         if (cartItemsList) cartItemsList.innerHTML = '';
 
         items.forEach(item => {
@@ -90,14 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
             itemElement.dataset.itemId = item.item_id;
 
             const totalPrice = item.quantity * item.price_at_time;
-            
+
             itemElement.innerHTML = `
                 <div class="cart-item-details">
                     <h3>${item.name}</h3>
                     <p class="item-description">${item.description || ''}</p>
-                    <p class="item-seller">Sold by: ${item.seller_name || 'Unknown'}</p>
+                    <p class="item-seller">Customer: ${item.seller_name || 'Unknown'}</p>
                     <p class="item-price">₱${parseFloat(item.price_at_time).toFixed(2)} × ${item.quantity}</p>
-                    <p class="item-source">Source: ${item.source || 'Marketplace'}</p>
+                    <p class="item-source"> Source:${item.source || 'Marketplace'}</p>
                 </div>
                 <div class="cart-item-controls">
                     <div class="quantity-controls">
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="remove-item-btn" data-item-id="${item.item_id}">Remove</button>
                 </div>
             `;
-            
+
             if (cartItemsList) {
                 cartItemsList.appendChild(itemElement);
             }
@@ -135,10 +135,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load localStorage cart (NO IMAGES)
     function loadLocalStorageCart() {
         console.log('Loading localStorage cart...');
-        
+
         const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
         console.log('LocalStorage cart found:', cart);
-        
+
         if (cart.length === 0) {
             showEmptyCart();
             return;
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showElement(cartItemsList);
         showElement(cartSummary);
         hideElement(emptyCartMessage);
-        
+
         if (cartItemsList) cartItemsList.innerHTML = '';
 
         let subtotal = 0;
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h3>${item.name}</h3>
                     <p class="item-description">${item.description || ''}</p>
                     <p class="item-price">₱${itemPriceValue.toFixed(2)} × ${quantity}</p>
-                    <p class="item-source">Source: ${item.source || 'Local Storage'}</p>
+                    <p class="item-source">Source: ${item.source || 'Shop'}</p>
                 </div>
                 <div class="cart-item-controls">
                     <div class="quantity-controls">
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="remove-item-btn-local" data-item-id="${item.id || `local-${index}`}">Remove</button>
                 </div>
             `;
-            
+
             if (cartItemsList) {
                 cartItemsList.appendChild(itemElement);
             }
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Add event listeners
         addLocalStorageEventListeners();
-        
+
         // Set current cart data
         currentCartData = {
             items: cart,
@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateLocalStorageQuantity(itemId, change) {
         let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
         const itemIndex = cart.findIndex(item => (item.id || `local-${cart.indexOf(item)}`) === itemId);
-        
+
         if (itemIndex > -1) {
             cart[itemIndex].quantity = Math.max(1, (cart[itemIndex].quantity || 1) + change);
             localStorage.setItem('cartItems', JSON.stringify(cart));
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function setLocalStorageQuantity(itemId, quantity) {
         let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
         const itemIndex = cart.findIndex(item => (item.id || `local-${cart.indexOf(item)}`) === itemId);
-        
+
         if (itemIndex > -1) {
             cart[itemIndex].quantity = quantity;
             localStorage.setItem('cartItems', JSON.stringify(cart));
@@ -277,12 +277,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!confirm('Are you sure you want to remove this item from your cart?')) {
             return;
         }
-        
+
         let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
         cart = cart.filter(item => (item.id || `local-${cart.indexOf(item)}`) !== itemId);
         localStorage.setItem('cartItems', JSON.stringify(cart));
         loadLocalStorageCart();
-        
+
         if (typeof window.updateCartIconCount === 'function') {
             window.updateCartIconCount();
         }
@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const itemId = e.target.dataset.itemId;
                 const quantityInput = document.querySelector(`input[data-item-id="${itemId}"]`);
                 const currentQuantity = parseInt(quantityInput.value);
-                
+
                 if (currentQuantity > 1) {
                     updateCartItemQuantity(itemId, currentQuantity - 1);
                 } else {
@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const quantityInput = document.querySelector(`input[data-item-id="${itemId}"]`);
                 const currentQuantity = parseInt(quantityInput.value);
                 const maxQuantity = parseInt(quantityInput.max);
-                
+
                 if (currentQuantity < maxQuantity) {
                     updateCartItemQuantity(itemId, currentQuantity + 1);
                 } else {
@@ -340,19 +340,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }),
             credentials: 'same-origin'
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                loadCart();
-            } else {
-                console.error('Failed to update cart:', data.message);
-                alert('Failed to update cart. Please try again.');
-            }
-        })
-        .catch(error => {
-            console.error('Error updating cart:', error);
-            alert('Error updating cart. Please try again.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadCart();
+                } else {
+                    console.error('Failed to update cart:', data.message);
+                    alert('Failed to update cart. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error updating cart:', error);
+                alert('Error updating cart. Please try again.');
+            });
     }
 
     // Remove item from cart
@@ -371,19 +371,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }),
             credentials: 'same-origin'
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                loadCart();
-            } else {
-                console.error('Failed to remove item:', data.message);
-                alert('Failed to remove item. Please try again.');
-            }
-        })
-        .catch(error => {
-            console.error('Error removing item:', error);
-            alert('Error removing item. Please try again.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadCart();
+                } else {
+                    console.error('Failed to remove item:', data.message);
+                    alert('Failed to remove item. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error removing item:', error);
+                alert('Error removing item. Please try again.');
+            });
     }
 
     // Generate random IP
@@ -399,13 +399,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (receiptItems) receiptItems.innerHTML = '';
-        
+
         currentCartData.items.forEach(item => {
             const itemDiv = document.createElement('div');
-            
+
             const itemName = item.name || 'Unknown Item';
             const itemQuantity = parseInt(item.quantity) || 1;
-            
+
             let itemPrice = 0;
             if (item.price_at_time !== undefined && item.price_at_time !== null) {
                 itemPrice = parseFloat(item.price_at_time);
@@ -416,13 +416,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     itemPrice = parseFloat(item.price);
                 }
             }
-            
+
             if (isNaN(itemPrice) || itemPrice < 0) {
                 itemPrice = 0;
             }
-            
+
             const itemTotal = itemQuantity * itemPrice;
-            
+
             itemDiv.innerHTML = `
                 <p><strong>${itemName}</strong></p>
                 <p>Quantity: ${itemQuantity}</p>
@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>Total: ₱${itemTotal.toFixed(2)}</p>
                 <hr>
             `;
-            
+
             if (receiptItems) receiptItems.appendChild(itemDiv);
         });
 
@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
             totalPrice = currentCartData.items.reduce((sum, item) => {
                 const quantity = parseInt(item.quantity) || 1;
                 let price = 0;
-                
+
                 if (item.price_at_time !== undefined && item.price_at_time !== null) {
                     price = parseFloat(item.price_at_time);
                 } else if (item.price !== undefined && item.price !== null) {
@@ -452,36 +452,36 @@ document.addEventListener("DOMContentLoaded", () => {
                         price = parseFloat(item.price);
                     }
                 }
-                
+
                 if (isNaN(price) || price < 0) {
                     price = 0;
                 }
-                
+
                 return sum + (quantity * price);
             }, 0);
         }
-        
+
         if (isNaN(totalPrice) || totalPrice < 0) {
             totalPrice = 0;
         }
 
         if (receiptTotalPrice) receiptTotalPrice.textContent = totalPrice.toFixed(2);
-        
+
         // Get customer name
         fetch('../handlers/check-session.handler.php', {
             credentials: 'same-origin'
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success && data.logged_in) {
-                if (receiptCustomerName) receiptCustomerName.textContent = data.user.username;
-            } else {
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.logged_in) {
+                    if (receiptCustomerName) receiptCustomerName.textContent = data.user.username;
+                } else {
+                    if (receiptCustomerName) receiptCustomerName.textContent = 'Guest User';
+                }
+            })
+            .catch(() => {
                 if (receiptCustomerName) receiptCustomerName.textContent = 'Guest User';
-            }
-        })
-        .catch(() => {
-            if (receiptCustomerName) receiptCustomerName.textContent = 'Guest User';
-        });
+            });
 
         if (receiptIPAddress) receiptIPAddress.textContent = generateRandomIP();
         if (receiptOverlay) receiptOverlay.style.display = 'flex';
@@ -504,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert('Order completed successfully!');
             closeReceiptOverlay();
             loadCart();
-            
+
             if (typeof window.updateCartIconCount === 'function') {
                 window.updateCartIconCount();
             }
@@ -524,20 +524,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(checkoutData),
                 credentials: 'same-origin'
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Order completed successfully!');
-                    closeReceiptOverlay();
-                    loadCart();
-                } else {
-                    alert('Checkout failed: ' + (data.message || 'Unknown error'));
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Order completed successfully!');
+                        closeReceiptOverlay();
+                        loadCart();
+                    } else {
+                        alert('Checkout failed: ' + (data.message || 'Unknown error'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Checkout error:', error);
+                    alert('Checkout failed. Please try again.');
+                });
+        }
+    }
+
+    // After cart is loaded, check for ?checkout=1 in URL
+    function openReceiptIfCheckoutParam() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('checkout') === '1') {
+            // Wait for cart to load, then open receipt overlay
+            setTimeout(() => {
+                if (typeof openReceiptOverlay === 'function') {
+                    openReceiptOverlay();
                 }
-            })
-            .catch(error => {
-                console.error('Checkout error:', error);
-                alert('Checkout failed. Please try again.');
-            });
+            }, 500); // Adjust delay if needed
         }
     }
 
@@ -554,6 +567,7 @@ document.addEventListener("DOMContentLoaded", () => {
         finalCheckoutBtn.addEventListener('click', completeCheckout);
     }
 
-    // Initialize cart
+    // Call after cart is loaded
     loadCart();
+    openReceiptIfCheckoutParam();
 });
