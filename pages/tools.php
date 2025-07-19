@@ -267,10 +267,10 @@
         <span class="close-button" id="closeBuyNowOverlayBtn">&times;</span>
         <h2>Order Summary</h2>
         <div class="receipt">
-            <p><strong>Customer Name:</strong> <span id="receiptCustomerName"></span></p>
+            <p><strong></strong> <span id="receiptCustomerName"></span></p>
             <p><strong>Item:</strong> <span id="receiptItemName"></span></p>
             <p><strong>Price:</strong> ₱<span id="receiptItemPrice"></span></p>
-            <p><strong>Secure Address:</strong> <span id="receiptIPAddress"></span></p>
+            <p><strong>Shop Address:</strong> <span id="receiptIPAddress"></span></p>
             <hr>
             <p><strong>Total:</strong> ₱<span id="receiptTotalPrice"></span></p>
         </div>
@@ -285,7 +285,7 @@
         <div class="receipt">
             <p><strong>Item:</strong> <span id="cartItemName"></span></p>
             <p><strong>Price:</strong> ₱<span id="cartItemPrice"></span></p>
-            <p><strong>Secure Address:</strong> <span id="cartIPAddress"></span></p>
+            <p><strong>Shop Address:</strong> <span id="cartIPAddress"></span></p>
             <hr>
             <p><strong>Total:</strong> ₱<span id="cartTotalPrice"></span></p>
         </div>

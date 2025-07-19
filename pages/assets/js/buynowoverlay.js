@@ -1,4 +1,3 @@
-
 function closeBuyNowOverlay() {
   const buyNowOverlay = document.getElementById("buyNowOverlay");
   if (buyNowOverlay) {
@@ -63,15 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const loggedInCodename = localStorage.getItem('loggedInCodename');
       if (!loggedInCodename) {
         alert("You must be logged in to proceed with payment.");
-        closeOverlay();
+        closeBuyNowOverlay();
         return;
       }
 
       let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
       cart.push(currentItem);
       localStorage.setItem('cartItems', JSON.stringify(cart));
-      alert("Item added to cart!");
-      closeOverlay();
+      // Redirect to cart and trigger checkout overlay
+      window.location.href = '/pages/cart.php?checkout=1';
     });
   }
 });

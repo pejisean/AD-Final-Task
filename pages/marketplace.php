@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/shop/buynowoverlay.css" />
 </head>
 
-<?php 
+<?php
 require_once '../components/dropdown.component.php';
 require_once '../utils/marketplace.util.php';
 require_once '../utils/auth.util.php';
@@ -28,23 +28,20 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
         <div class="marketplace-grid" id="marketplaceGrid">
             <?php if (!empty($items)): ?>
                 <?php foreach ($items as $item): ?>
-                    <div class="marketplace-item" 
-                         data-item-id="<?= $item['id'] ?>"
-                         data-description="<?= htmlspecialchars($item['description']) ?>">
+                    <div class="marketplace-item" data-item-id="<?= $item['id'] ?>"
+                        data-description="<?= htmlspecialchars($item['description']) ?>">
                         <div class="item-image">
                             <?php if (!empty($item['image_url'])): ?>
                                 <?php
                                 // Debug: Log the image path
                                 error_log("Item image_url: " . $item['image_url']);
-                                
+
                                 // For pages context, add ../ prefix to the stored path
                                 $imagePath = '../' . $item['image_url'];
                                 error_log("Resolved image path: " . $imagePath);
                                 ?>
-                                <img src="<?= $imagePath ?>" 
-                                     alt="<?= htmlspecialchars($item['name']) ?>"
-                                     loading="lazy"
-                                     onerror="console.error('Failed to load image:', this.src); this.style.display='none';">
+                                <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($item['name']) ?>" loading="lazy"
+                                    onerror="console.error('Failed to load image:', this.src); this.style.display='none';">
                             <?php else: ?>
                                 <div class="no-image-placeholder">No Image</div>
                             <?php endif; ?>
@@ -55,10 +52,8 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
                         </div>
                         <div class="item-bottom-actions">
                             <button class="more-info-btn">More Info</button>
-                            <button class="buy-now-btn" 
-                                    data-item-name="<?= htmlspecialchars($item['name']) ?>" 
-                                    data-item-price="<?= $item['price'] ?>"
-                                    data-item-id="<?= $item['id'] ?>">Buy Now</button>
+                            <button class="buy-now-btn" data-item-name="<?= htmlspecialchars($item['name']) ?>"
+                                data-item-price="<?= $item['price'] ?>" data-item-id="<?= $item['id'] ?>">Add to Cart</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -128,4 +123,5 @@ $items = MarketplaceUtil::getMarketplaceItems([], 50, 0);
 <script src="../assets/js/script.js"></script>
 <script src="assets/js/marketplace.js"></script>
 </body>
+
 </html>

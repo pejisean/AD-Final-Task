@@ -39,7 +39,7 @@ class ItemUtil extends DatabaseUtil {
         
         $result = self::executeQuery($query, [
             $name,
-            "Auto-generated item from shop",
+            "Original Item From Shop",
             $price,
             1, // Default seller (admin)
             'general',

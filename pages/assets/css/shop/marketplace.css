@@ -37,7 +37,7 @@
 }
 
 .add-item-button:hover {
-    background-color: #DA6015;
+    background-color: #ff9735;
     transform: translateY(-2px);
 }
 
@@ -65,8 +65,10 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    height: auto; /* Allow flexible height */
-    min-height: 250px; /* Minimum height for consistency */
+    height: auto;
+    /* Allow flexible height */
+    min-height: 250px;
+    /* Minimum height for consistency */
 }
 
 /* Animation for new items */
@@ -81,6 +83,7 @@
         opacity: 0;
         transform: translateY(-30px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -98,14 +101,17 @@
     width: 100%;
     overflow: hidden;
     background-color: #2a2a2a;
-    border-radius: 8px 8px 0 0; /* Round top corners */
+    border-radius: 8px 8px 0 0;
+    /* Round top corners */
 }
 
 .item-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This ensures the image covers the container while maintaining aspect ratio */
-    object-position: center; /* Centers the image within the container */
+    object-fit: cover;
+    /* This ensures the image covers the container while maintaining aspect ratio */
+    object-position: center;
+    /* Centers the image within the container */
     display: block;
     transition: transform 0.3s ease;
     border: 2px solid transparent;
@@ -124,8 +130,10 @@
 .product-card .item-image img {
     min-width: 100%;
     min-height: 100%;
-    max-width: none; /* Allow scaling */
-    max-height: none; /* Allow scaling */
+    max-width: none;
+    /* Allow scaling */
+    max-height: none;
+    /* Allow scaling */
 }
 
 .item-overlay {
@@ -166,9 +174,9 @@
     gap: 10px;
 }
 
-.more-info-btn,
-.buy-now-btn {
-    background-color: #DA6015;
+.more-info-btn {
+    color: rgb(0, 0, 0);
+    background-color: #41572f;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -176,19 +184,30 @@
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .buy-now-btn {
-    background-color: #41572f;
+    background-color: #DA6015;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
+
 .more-info-btn:hover {
-    background-color: #DA6015;
+    background-color: #00a71c;
     transform: translateY(-1px);
 }
 
 .buy-now-btn:hover {
-    background-color: #41572f;
+    background-color: #ff9735;
     transform: translateY(-1px);
 }
 
@@ -356,7 +375,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
     }
-    
+
     .marketplace-container {
         padding: 20px 30px;
     }
@@ -384,7 +403,7 @@
         padding: 10px 12px;
         font-size: 0.85em;
     }
-    
+
     /* Smaller image height on mobile for better proportion */
     .item-image {
         height: 120px;
@@ -400,28 +419,28 @@
     .marketplace-container {
         padding: 10px 15px;
     }
-    
+
     .marketplace-header-controls {
         flex-direction: column;
         gap: 15px;
         text-align: center;
     }
-    
+
     .add-item-button {
         margin-left: 0;
         width: 100%;
         max-width: 250px;
     }
-    
+
     /* Better mobile image sizing */
     .item-image {
         height: 180px;
     }
-    
+
     .item-name {
         font-size: 1em;
     }
-    
+
     .item-price {
         font-size: 1.1em;
     }
@@ -445,8 +464,15 @@
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.1; }
-    50% { opacity: 0.3; }
+
+    0%,
+    100% {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
 }
 
 @keyframes pulse-glow {
@@ -500,6 +526,6 @@
 }
 
 /* Error state styling */
-.item-image img[style*="display: none"] + .no-image-placeholder {
+.item-image img[style*="display: none"]+.no-image-placeholder {
     display: flex;
 }
