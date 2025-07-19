@@ -63,7 +63,7 @@ The Last Trade Post is a post-apocalyptic online marketplace where survivors can
 ### Key Components
 
 - Authentication & Authorization
-- CRUD Operations for Invetory System
+- CRUD Operations for Inventory System
 - Cart & Checkout
 - User Marketplace Listings
 - Feedback System
